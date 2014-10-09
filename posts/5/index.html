@@ -336,6 +336,7 @@
 
   <div class="entry-content"><p>iBeacons这个怪怪的单词<a href="https://www.google.com/search?q=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;oq=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;aqs=chrome..69i57.5408j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8#newwindow=1&amp;q=ibeacons+site:36kr.com&amp;safe=off">最近出镜率很高</a>。它可以用的场景很多，考勤打卡，室内导航，各种关联位置的推送以及我们现在还想不到诡异的应用。但虽然满坑满谷的文章介绍如何应用iBeacons，但它工作的原理究竟是什么样的呢？</p>
 
+<a name="Bluetooth.LE"></a>
 <h1>Bluetooth LE</h1>
 
 <p><a href="http://www.bluetooth.com/Pages/Low-Energy.aspx">Bluetooth Low Energy</a>，也就是低功耗蓝牙，经常被缩写成BLE。它其实是2010年颁布的Bluetooth 4.0标准的一部分：说准确点儿就是由Nokia提出的本来叫<code>Wibree</code>的那部分。</p>
@@ -357,6 +358,7 @@
 
 <p>Beacons，如前面所述，是仅支持低功耗这部分的标准，所以就是&#8221;Smart&#8221;的。这些设备一般一颗纽扣电池就可以保证它运行2年左右，发射频率和传统蓝牙一样都是2.4GHz-2.4835GHz，在无遮挡的情况下100米内都有信号，但传输速率比传统蓝牙慢：当然，低功耗蓝牙设计的目的也不是用来输送大量的数据。</p>
 
+<a name="BLE......"></a>
 <h1>BLE通信</h1>
 
 <p>BLE通信主要是两种模式：<code>Advertising</code>和<code>Connecting</code>。</p>
@@ -381,6 +383,7 @@
 
 <p>关于<code>Connecting</code>到BLE设备，苹果的教程或者更专业的EE times的介绍都可以看看。但其实beacons没有使用<code>Connecting</code>模式，它只工作在<code>Advertising</code>模式下。</p>
 
+<a name="beacons............BLE"></a>
 <h1>beacons如何使用BLE</h1>
 
 <p>beacons仅仅工作在<code>Advertising</code>模式下。因此，可以说所谓的<code>iBeacons</code>就是iOS下对BLE的<code>Advertising</code>工作模式里数据的定义和封装。</p>
@@ -409,6 +412,7 @@
 
 <p>换句哈说，如果你想试玩一下iBeacons技术，在买到beacon之前，其实你手边的任何新一点儿的iPhone或者<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">Mac设备都可以拿来作为iBeacon</a>的发射端或者接收端。当然，<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">万能的树莓</a>也可以改造成beacon。</p>
 
+<a name="iBeacon............"></a>
 <h1>iBeacon数据格式</h1>
 
 <p><code>02 01 06 1A FF 4C 00 02 15</code>是固定不变的prefix。</p>
@@ -419,12 +423,14 @@
 
 <p><code>Minor Number</code> (2 bytes，例子里面是<code>0x000A</code>，也就是10)用来标识单个的beacon。因为商店里面每个beacon都有不同的<code>Minor Number</code>，才能知道顾客是处在什么位置。</p>
 
+<a name="L......"></a>
 <h1>测距</h1>
 
 <p>数据里面的最后一位，<code>TX Power</code>，就是用来表征你离某个beacon的距离的。它测距离主要就是用所谓的RSSI(Received Signal Strength Indication)去算，这个算法在iOS里面是已经集成了的，即便是需要在Android平台上面实现一遍<a href="http://stackoverflow.com/questions/20416218/understanding-ibeacon-distancing">也不是那么的复杂</a>。</p>
 
 <p>另外需要注意的就是，无线信号总会因为障碍物以及其他的信号源更快的衰减。所以测算出来的距离只是一个有大概。</p>
 
+<a name="iOS......"></a>
 <h1>iOS集成</h1>
 
 <p>苹果既然敢在beacon前面加个i当然是做了很多增强的。对应用开发者来说，最主要的就是当用户靠近iBeacons设备的时候，App即使不在前台也可以被唤醒，并发送notification给用户。</p>
@@ -433,6 +439,7 @@
 
 <p>iOS下详细的应用开发教程可以见<a href="http://www.cocoanetics.com/2013/11/can-you-smell-the-ibeacon/">这里</a>。更多的例子可以参考设备商Estimote的iOS SDK和Android。</p>
 
+<a name="L.................."></a>
 <h1>如何购买设备</h1>
 
 <p>现在整个供货情况还是接不上趟的。我的<a href="http://estimote.com/">Estimote</a>已经订了4个多礼拜了还杳无音讯。因此最快的上手方案仍然是改造你的手机或者用Raspberry Pi自己搭个玩。但是如果你不满足（一般是满足不了的）这种玩法可以试试：</p>

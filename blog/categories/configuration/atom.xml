@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Configuration | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/configuration/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -32,6 +32,7 @@
 
 <p>我们拿到的第一台机器是Ubuntu的，因为 <code>Gitlab</code> 只有Debian的版本。后面的机器大多会是CentOS，所以使用的命令可能会稍微有调整，但是意思是不变的。</p>
 
+<a name="L......root......"></a>
 <h2>更换root密码</h2>
 
 <pre><code class="bash">passwd
@@ -39,12 +40,14 @@
 
 <p>可以很长很复杂（反正也不需要记得），保存在某个地方在你忘记 <code>sudo</code> 密码或者是不能正常 <code>ssh</code> 的时候能找出来用就可以了。</p>
 
+<a name="L............"></a>
 <h2>更新系统</h2>
 
 <pre><code class="bash">apt-get update
 apt-get upgrade
 </code></pre>
 
+<a name="L......Fail2ban"></a>
 <h2>安装Fail2ban</h2>
 
 <pre><code class="bash">apt-get install fail2ban
@@ -52,6 +55,7 @@ apt-get upgrade
 
 <p>Fail2ban是一个用来监控登录尝试的 <code>daemon</code> ，可以有效侦测和防止可疑行为的发生。这个工具文档很全，而且出厂配置就很齐全，几乎不需要定制就能投入使用了。</p>
 
+<a name="L......deploy......"></a>
 <h2>添加deploy用户</h2>
 
 <pre><code class="bash">useradd deploy
@@ -60,6 +64,7 @@ mkdir /home/deploy/.ssh
 chmod 700 /home/deploy/.ssh
 </code></pre>
 
+<a name="L........code.public.key..code.."></a>
 <h2>配置 <code>public key</code> </h2>
 
 <p>使用密码的日子已经慢慢过时了，这方面Github很有<a href="https://help.github.com/categories/56/articles">贡献</a>。只需要：</p>
@@ -75,6 +80,7 @@ chown deploy:deploy /home/deploy -R
 
 <p>当然你也可以使用 <code>id_rsa.pub</code> 之外的key，然后在本地的 <code>~/.ssh/config</code> 里面对 <code>IdentityFile</code> 做指定。具体方式可以查看 <code>~/.ssh/config</code>的说明。</p>
 
+<a name="L......deploy.................code.Sudo..code........"></a>
 <h2>测试deploy用户并赋予 <code>Sudo</code> 权限</h2>
 
 <p>先测试deploy是否能够正常登录，然后使用 <code>root</code> 账号设置密码：</p>
@@ -93,6 +99,7 @@ chown deploy:deploy /home/deploy -R
 deploy  ALL=(ALL) ALL
 </code></pre>
 
+<a name="L......SSH"></a>
 <h2>锁定SSH</h2>
 
 <p>设置ssh，禁止使用密码ssh，禁止使用 <code>root</code> 账号ssh。</p>
@@ -116,6 +123,7 @@ PasswordAuthentication no
 <pre><code class="bash">service ssh restart
 </code></pre>
 
+<a name="L..............."></a>
 <h2>设置防火墙</h2>
 
 <p>Ubuntu提供了 <code>ufw</code>，所以只需要：</p>
@@ -126,6 +134,7 @@ ufw allow 443
 ufw enable
 </code></pre>
 
+<a name="L........................"></a>
 <h2>打开自动安全更新</h2>
 
 <p>虽然很多习惯好的服务器使用者会知道运行<code>apt-get update/upgrade</code> 但是如果服务器很多，总会有一些不那么被经常登录的机器，系统会比较陈旧。特别是做负载均衡的机器，可能很少有人登录。为了保证所有的机器都有足够的安全性需要打开自动更新（作为习惯控制一切的开发人员，自动更新总是一件让我很抗拒的事情，但是安全漏洞更让人抗拒）：</p>
@@ -155,6 +164,7 @@ APT::Periodic::Unattended-Upgrade "1";
 };
 </code></pre>
 
+<a name="L......Logwatch"></a>
 <h2>安装Logwatch</h2>
 
 <p>Logwatch是一个监控你的日志并发送邮件通知的daemon。</p>
@@ -168,6 +178,7 @@ vim /etc/cron.daily/00logwatch
 <pre><code class="bash">/usr/sbin/logwatch --output mail --mailto lenciel@gmail.com --detail high
 </code></pre>
 
+<a name="What.s.Next"></a>
 <h2>What&rsquo;s Next</h2>
 
 <ul>

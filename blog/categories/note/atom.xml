@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -26,6 +26,7 @@
 
 <p>那么读取64KB内存和获取这么多关键信息究竟有什么关系呢？</p>
 
+<a name="The.bug"></a>
 <h2>The bug</h2>
 
 <p>先来看看<a href="http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=96db9023b881d7cd9f379b0c154650d6c108e9a3">patch</a>里面的<code>ssl/d1_both.c</code>:</p>
@@ -91,6 +92,7 @@ memcpy(bp, pl, payload);
 
 <p>看起来是很平常的操作，只不过没有认真的检查用户输入而已，但问题也就在这里了。</p>
 
+<a name="Where.is.the.bug"></a>
 <h2>Where is the bug</h2>
 
 <p>如果用户并没有正在提交声称的那么多个bytes的payload，那么memcpy就会读到同一个process里面SSLv3 record附近的内存内容。</p>
@@ -101,6 +103,7 @@ memcpy(bp, pl, payload);
 
 <p>在这里，<code>pl</code>因为malloc里面的mmap_threshhold多半是sbrk分配的，但是，那些关键的用户数据，则多半是通过mmap分配内存。于是这些数据就会被攻击者用<code>pl</code>拿到。如果再考虑并发请求，就&hellip;</p>
 
+<a name="The.fix"></a>
 <h2>The fix</h2>
 
 <p>所以，整个patch里面最主要的fix就是：
@@ -119,6 +122,7 @@ memcpy(bp, pl, payload);
     pl = p;
 </code></pre>
 
+<a name="So."></a>
 <h2>So?</h2>
 
 <p>这个bug大概算是影响这么剧烈的bug里面最好明白的一个，所以居然我也看明白了。感受：</p>

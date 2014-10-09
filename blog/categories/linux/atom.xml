@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -26,6 +26,7 @@
 
 <p>那么读取64KB内存和获取这么多关键信息究竟有什么关系呢？</p>
 
+<a name="The.bug"></a>
 <h2>The bug</h2>
 
 <p>先来看看<a href="http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=96db9023b881d7cd9f379b0c154650d6c108e9a3">patch</a>里面的<code>ssl/d1_both.c</code>:</p>
@@ -91,6 +92,7 @@ memcpy(bp, pl, payload);
 
 <p>看起来是很平常的操作，只不过没有认真的检查用户输入而已，但问题也就在这里了。</p>
 
+<a name="Where.is.the.bug"></a>
 <h2>Where is the bug</h2>
 
 <p>如果用户并没有正在提交声称的那么多个bytes的payload，那么memcpy就会读到同一个process里面SSLv3 record附近的内存内容。</p>
@@ -101,6 +103,7 @@ memcpy(bp, pl, payload);
 
 <p>在这里，<code>pl</code>因为malloc里面的mmap_threshhold多半是sbrk分配的，但是，那些关键的用户数据，则多半是通过mmap分配内存。于是这些数据就会被攻击者用<code>pl</code>拿到。如果再考虑并发请求，就&hellip;</p>
 
+<a name="The.fix"></a>
 <h2>The fix</h2>
 
 <p>所以，整个patch里面最主要的fix就是：
@@ -119,6 +122,7 @@ memcpy(bp, pl, payload);
     pl = p;
 </code></pre>
 
+<a name="So."></a>
 <h2>So?</h2>
 
 <p>这个bug大概算是影响这么剧烈的bug里面最好明白的一个，所以居然我也看明白了。感受：</p>
@@ -141,6 +145,7 @@ memcpy(bp, pl, payload);
 
 <p>从Nagios切到<a href="https://www.zabbix.com">Zabbix</a>之后，经常大清早被iowait过高的告警邮件叫醒。因为这套Zabbix监控是本座搭的，所以解决这个问题就只有本座来了&hellip;..哎，不知道是不是把首席运营官给宠坏了。</p>
 
+<a name="iowait........................"></a>
 <h2>iowait的定义和计算方式</h2>
 
 <p>iowait的定义为：</p>
@@ -163,28 +168,33 @@ memcpy(bp, pl, payload);
 </ol>
 
 
+<a name="iowait........."></a>
 <h2>iowait的意义</h2>
 
 <p>这其实比它怎么计算要难理解一些。比如本座之前心里就有一个疑问：既然只是某个process在block，那么系统会schedule其他的事情，这对性能有什么大不了的影响呢？</p>
 
 <p>来看几个例子。</p>
 
+<a name="L........."></a>
 <h3>例子一</h3>
 
 <p>假设一个程序进行批量的事务，每个事务都有一个10ms的计算任务，计算出的结果通过同步的方式写到磁盘。由于它写结果的文件是阻塞方式打开的，所以I/O完成之前写操作是不会<code>return</code>的。如果我们假设磁盘系统没有cache，每个物理的I/O需要20ms，那么一个事务需要30ms。也就是每秒33个事务（33 tps）。如果把系统算成只有一个CPU的话，很显然<code>iowait</code>就是66%。</p>
 
 <p>这种情况下，如果我们能改进I/O子系统，比如启用磁盘的缓存，让每次物理的I/O只需要1ms的话，那么<code>iowait</code>就会迅速下降到8%左右。可见这种情况下，<code>iowait</code>直接影响着程序的performance。</p>
 
+<a name="L........."></a>
 <h3>例子二</h3>
 
 <p>假设一个磁盘检查的程序运行在系统上，每秒钟读4k的数据。我们假设这个程序的入口是main()，然后读磁盘的函数是read()，main()和read()都是用户态的。read()属于libc.a，会调用kread()这个系统调用来进行物理的I/O，这个时候就进入了kernel态。整个main(),read()和kread执行的时间加起来不长，我们假设是50微秒。而物理的I/O需要多久要看seek的数据有多远，假设需要2-20ms。这样就完全有可能当时钟中断的时候，cpu是idle的，而且I/O正在发生，于是<code>iowait</code>值就达到97-98% (如果每个I/O需要20ms就是99-100%)。</p>
 
 <p>这种情况下，虽然<code>iowait</code>数值非常高，其实这个系统的性能是正常的。</p>
 
+<a name="L........."></a>
 <h3>例子三</h3>
 
 <p>假设有两个程序跑在同一个CPU上。一个程序写得有点儿问题，I/O会阻塞10秒左右。另一个则100%的时间都在做计算。由于当前一个程序阻塞起来的时候，后面这个程序被运行了，因此无论什么时候都没有CPU处于idle的状态等I/O，于是<code>iowait</code>一直是0，这时候其实系统的performance是有很大的问题的。</p>
 
+<a name="L........."></a>
 <h3>例子四</h3>
 
 <p>假设系统是4核的CPU，运行了6个程序。其中4个程序有70%时间在进行物理的I/O，30%的时间在进行计算任务（假设其中25%在用户态，5%在kernel态）。另外2个程序假设100%时间都在用户态进行计算任务，没有任何I/O操作。</p>
@@ -213,6 +223,7 @@ memcpy(bp, pl, payload);
 
 <p>也就是说，同样的程序跑在不同的系统上，iowait增加了一倍多，而这个时候其实没有什么performance问题，只不过是系统还能做更多的计算工作。</p>
 
+<a name="L......"></a>
 <h3>结论</h3>
 
 <ul>
@@ -221,6 +232,7 @@ memcpy(bp, pl, payload);
 </ul>
 
 
+<a name="L..........................."></a>
 <h2>找出造成问题的进程</h2>
 
 <p>虽然每次都是6点半多少说明应该是某个cron任务（因为机器上没有其他自定义的定时任务）但没法具体知道究竟是哪个。</p>

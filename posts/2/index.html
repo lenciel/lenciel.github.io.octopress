@@ -153,6 +153,7 @@
 <p>下面是本座最近撸完的一个项目，印到衣服上感觉还好吧：
 <img src="/downloads/images/2014_08/yawp.png" title="yawp dependencies" alt="yawp" /></p>
 
+<a name="L......"></a>
 <h2>结论</h2>
 
 <p>首先，本座挺喜欢Snakefood那种Unix范儿的：所有的命令都可以给其他命令来一管，比如：</p>
@@ -449,6 +450,7 @@
 
 <p>So&hellip;</p>
 
+<a name="Migrations............"></a>
 <h1>Migrations是什么？</h1>
 
 <p>Migrations其实就是一堆帮助你完成数据库变更和数据迁移的命令，使得你可以用“Django”的方式来管理和变更数据库的schema。比如，当你的model改变了，你需要在数据库里面去重命名一列时，你不会想跑到命令行下面去敲SQL吧？特别是，如果你要变更的数据库是线上的，有几百万用户数据，你应该更不愿意搭上这种活了吧？</p>
@@ -463,8 +465,10 @@
 </ol>
 
 
+<a name="Migrations......"></a>
 <h1>Migrations上手</h1>
 
+<a name="L.................."></a>
 <h2>创建测试项目</h2>
 
 <p>首先创建一个virtualenv和django项目：</p>
@@ -512,6 +516,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Migrations"></a>
 <h2>创建Migrations</h2>
 
 <p>使用下面的命令可以创建ts_data这个app的Migrations。当然，和大多数Django命令一样，如果你不显式的指定，就</p>
@@ -527,6 +532,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Migrations"></a>
 <h2>应用Migrations</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -560,6 +566,7 @@
 </ol>
 
 
+<a name="L................................."></a>
 <h1>不是新建的项目如何使用</h1>
 
 <p>大多数情况下我们都是从旧版本的Django迁移过来，也就意味着是从South迁移过来。这种情况下需要：</p>
@@ -575,10 +582,12 @@
 
 <p>如果你不想丢掉过去的South维护的历史记录，可以同时使用South和Django Migrations：升级South到1.0，然后<a href="http://www.aeracode.org/2014/7/1/end-era/">参考这篇文章的做法</a>。</p>
 
+<a name="South...Django.Migrations......"></a>
 <h1>South和Django Migrations比较</h1>
 
 <p>对比一下South和Django Migrations的workflow，可能会更加清晰：</p>
 
+<a name="L............migrations"></a>
 <h2>首次全新migrations</h2>
 
 <p>South:</p>
@@ -597,6 +606,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......migrations"></a>
 <h2>应用migrations</h2>
 
 <p>South:</p>
@@ -613,6 +623,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L.........migrations"></a>
 <h2>非首次migrations</h2>
 
 <p>South:</p>
@@ -631,8 +642,10 @@
 
 <p>可以看到，大概是因为出自同一个作者的原因，Django Migrations基本上follow了South的工作流程，只不过是命令更加简洁和清晰了。</p>
 
+<a name="L............"></a>
 <h1>更多细节</h1>
 
+<a name="L..................Django.Migrations........."></a>
 <h2>哪些变化会被Django Migrations找到？</h2>
 
 <p>如果你再次运行<code>python manage.py migrate</code>，会发现什么都没有发生：这是因为在项目的数据库中有一张<code>django_migrations</code>仍然被更新。表，记录了哪些Migrations已经被应用过了：无论是运行了migrate还是fake的，这个表都会被插入一条记录。比如从South升级到使用Django自带的MigrationsDjango会检查是否有更新。如果没有，它就fake一次，但<code>django_migrations</code>仍然被更新。</p>
@@ -641,6 +654,7 @@
 
 <p>在极少数情况下，如果你有需要回退到特定的版本，比如最初的zero版本，可以用类似<code>python manage.py migrate &lt;app_name&gt; zero</code>的语法。</p>
 
+<a name="Migration......."></a>
 <h2>Migration 文件</h2>
 
 <p>在我们运行<code>python manage.py migrate &lt;app_name&gt;</code>究竟发生了什么？实际上，Django会创建一个python文件来描述如何完成这个migration，以前面的ts_data为例，这个文件位于<code>ts_data/migrations/0001_initial.py</code>，内容如下：</p>
@@ -698,6 +712,7 @@
 
 <p>可以看到，是完全可读的Python代码。这也是为什么推荐把整个<code>migrations</code>文件夹加入版本控制的原因：这样你的应用经过了怎样的变更就变得可以回溯了。</p>
 
+<a name="Migration.Dependencies"></a>
 <h2>Migration Dependencies</h2>
 
 <p>上面的源代码有一些值得注意的地方。</p>
@@ -732,6 +747,7 @@
 
 <p>这里使用list的结果是，所有的依赖是没有顺序的，也就是说你不需要按照0001、0002、0003的顺序来排列所有的依赖。</p>
 
+<a name="Migration.Operations"></a>
 <h2>Migration Operations</h2>
 
 <p>这个list定义的就是migration完成的操作，可以分为下面的这些种类：</p>
@@ -753,6 +769,7 @@
 
 <p>前面的那些操作是整个Django Migrations的核心：因为需要对各种不同的数据库做适配。而后面的两个操作则是灵活度非常高的，几乎可以干任何事情。</p>
 
+<a name="L......"></a>
 <h1>实例</h1>
 
 <p>让我们试试把<code>PingPongPrice</code>的<code>price</code>这个field的<code>max_digits</code>改成8位的（通货膨胀嘛），然后再次运<code>makemigrations</code>行命令:</p>

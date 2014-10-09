@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Server | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/server/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -22,6 +22,7 @@
 
 <p>从Nagios切到<a href="https://www.zabbix.com">Zabbix</a>之后，经常大清早被iowait过高的告警邮件叫醒。因为这套Zabbix监控是本座搭的，所以解决这个问题就只有本座来了&hellip;..哎，不知道是不是把首席运营官给宠坏了。</p>
 
+<a name="iowait........................"></a>
 <h2>iowait的定义和计算方式</h2>
 
 <p>iowait的定义为：</p>
@@ -44,28 +45,33 @@
 </ol>
 
 
+<a name="iowait........."></a>
 <h2>iowait的意义</h2>
 
 <p>这其实比它怎么计算要难理解一些。比如本座之前心里就有一个疑问：既然只是某个process在block，那么系统会schedule其他的事情，这对性能有什么大不了的影响呢？</p>
 
 <p>来看几个例子。</p>
 
+<a name="L........."></a>
 <h3>例子一</h3>
 
 <p>假设一个程序进行批量的事务，每个事务都有一个10ms的计算任务，计算出的结果通过同步的方式写到磁盘。由于它写结果的文件是阻塞方式打开的，所以I/O完成之前写操作是不会<code>return</code>的。如果我们假设磁盘系统没有cache，每个物理的I/O需要20ms，那么一个事务需要30ms。也就是每秒33个事务（33 tps）。如果把系统算成只有一个CPU的话，很显然<code>iowait</code>就是66%。</p>
 
 <p>这种情况下，如果我们能改进I/O子系统，比如启用磁盘的缓存，让每次物理的I/O只需要1ms的话，那么<code>iowait</code>就会迅速下降到8%左右。可见这种情况下，<code>iowait</code>直接影响着程序的performance。</p>
 
+<a name="L........."></a>
 <h3>例子二</h3>
 
 <p>假设一个磁盘检查的程序运行在系统上，每秒钟读4k的数据。我们假设这个程序的入口是main()，然后读磁盘的函数是read()，main()和read()都是用户态的。read()属于libc.a，会调用kread()这个系统调用来进行物理的I/O，这个时候就进入了kernel态。整个main(),read()和kread执行的时间加起来不长，我们假设是50微秒。而物理的I/O需要多久要看seek的数据有多远，假设需要2-20ms。这样就完全有可能当时钟中断的时候，cpu是idle的，而且I/O正在发生，于是<code>iowait</code>值就达到97-98% (如果每个I/O需要20ms就是99-100%)。</p>
 
 <p>这种情况下，虽然<code>iowait</code>数值非常高，其实这个系统的性能是正常的。</p>
 
+<a name="L........."></a>
 <h3>例子三</h3>
 
 <p>假设有两个程序跑在同一个CPU上。一个程序写得有点儿问题，I/O会阻塞10秒左右。另一个则100%的时间都在做计算。由于当前一个程序阻塞起来的时候，后面这个程序被运行了，因此无论什么时候都没有CPU处于idle的状态等I/O，于是<code>iowait</code>一直是0，这时候其实系统的performance是有很大的问题的。</p>
 
+<a name="L........."></a>
 <h3>例子四</h3>
 
 <p>假设系统是4核的CPU，运行了6个程序。其中4个程序有70%时间在进行物理的I/O，30%的时间在进行计算任务（假设其中25%在用户态，5%在kernel态）。另外2个程序假设100%时间都在用户态进行计算任务，没有任何I/O操作。</p>
@@ -94,6 +100,7 @@
 
 <p>也就是说，同样的程序跑在不同的系统上，iowait增加了一倍多，而这个时候其实没有什么performance问题，只不过是系统还能做更多的计算工作。</p>
 
+<a name="L......"></a>
 <h3>结论</h3>
 
 <ul>
@@ -102,6 +109,7 @@
 </ul>
 
 
+<a name="L..........................."></a>
 <h2>找出造成问题的进程</h2>
 
 <p>虽然每次都是6点半多少说明应该是某个cron任务（因为机器上没有其他自定义的定时任务）但没法具体知道究竟是哪个。</p>
@@ -187,16 +195,19 @@ sudo chmod -x /etc/cron.daily/mlocate
     <id>http://lenciel.cn/2013/08/why-you-need-something-like-gunicorn</id>
     <content type="html"><![CDATA[<p>因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。</p>
 
+<a name="L........."></a>
 <h3>服务器</h3>
 
 <p>到了服务器组你会发现原来有各种各样的服务器，那些叫法很多是有历史沉淀的，不需要太深究能对上号就行，因为本来也是乱七八糟的。</p>
 
+<a name="HTTP........."></a>
 <h4>HTTP服务器</h4>
 
 <p>如果网站是HTML/CSS/JS（不包括node.js这种<a href="http://en.wikipedia.org/wiki/Comparison_of_server-side_JavaScript_solutions">SSJS</a>）组成的，那么这是一个静态的网站。</p>
 
 <p>用户访问这个网站的时候，HTTP请求被浏览器发送，经过DNS等被送到网站的服务器。服务器处理HTTP请求，将浏览器能够处理的响应返回给用户的浏览器。所以这个场景下的服务器一般被称为HTTP服务器，常见的有Apache的httpd和Nginx。</p>
 
+<a name="Application........."></a>
 <h4>Application服务器</h4>
 
 <p>如果你的网站是动态的，比如是用Django写的。</p>
@@ -205,10 +216,12 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>WSGI服务器的选择很多，包括uWSGI和gunicorn。它们都可以处理所有的请求，包括确实应该由python对象处理的，也包括不该python对象处理的，比如静态的图像，css，js等文件。所有理论上你可以把整个动态网站都用WSGI服务器承载起来，也就是整个应用完全跑在Application服务器上。</p>
 
+<a name="L..............."></a>
 <h4>代理服务器</h4>
 
 <p>代理无非是A来做B干的事情。在服务器语境下，代理就是一台服务器干另外一台服务器的事情。这个是平常不会有很多人聊到的，多说两句。</p>
 
+<a name="L....................."></a>
 <h5>前向代理服务器</h5>
 
 <p>大多数的代理都是前向代理。假设网络上有三台机器:</p>
@@ -234,6 +247,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 </ol>
 
 
+<a name="L....................."></a>
 <h5>反向代理服务器</h5>
 
 <p>没有代理的情况下，访问仍然是 <code>X---&gt;Z</code>，但是在某些情况下，Z的管理者决定限制资源被直接访问。用户必须现在Y上做访问，Y再访问Z。整个流程是<code>X---&gt;Y</code>，然后<code>Y----&gt;Z</code>，最后<code>X----&gt;Y</code> 。</p>
@@ -252,12 +266,14 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>然后你就会发现，原来nginx不止是一个HTTP服务器，它还是一个<a href="http://en.wikipedia.org/wiki/Reverse_proxy">反向代理服务器</a>：它可以把请求重定向到uWSGI或者任何别的服务器，然后把下游服务器的响应集成再返回给用户。于是你就可以配置对静态内容的请求直接在nginx完成，而动态内容的请求发送给uWSGI服务器。</p>
 
+<a name="L....................."></a>
 <h4>负载均衡服务器</h4>
 
 <p>在我自己的心中，负责均衡服务器不过是反向代理的一种（你看CDN我也觉得是反向代理的一种），但是很多地方这种服务器是被拿出来专门讨论的。</p>
 
 <p>随着你的网站访问量不断增大，你用一个nginx集中所有的请求再分发就显得性能不够了。这个时候你可以配置专门用于进行请求分发处理的负载均衡服务器，比如<a href="http://haproxy.1wt.eu/">HAProxy</a>，而负载均衡服务器背后是集群。</p>
 
+<a name="L..............."></a>
 <h4>缓存服务器</h4>
 
 <p>随着网站访问量的继续增大，你的VPS流量又扛不住了。你调查发现有一些多媒体文件被经常请求，这个时候你部署了缓存服务器。</p>
@@ -265,6 +281,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 <p>&ldquo;缓存&#8221;这个经常被提到的术语，核心就是把常用的信息放在一个读取成本很低地方(比如内存中或者是虚拟内存中），从而避免每次查找它的时候昂贵的操作。比如HTTP缓存解决的是在服务器上找信息的过程。而Redis或者Memcached这些缓存则是解决在数据库里面找信息的过程。
 面。</p>
 
+<a name="L...........................uwsgi......gunicorn."></a>
 <h3>那，我们为什么需要uwsgi或者gunicorn?</h3>
 
 <p>一句话：因为你需要有东西在服务器上运行Python，但是Python不是处理所有的请求都很强。</p>
@@ -279,8 +296,10 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>配置上的简单，大概是它流行的最大的原因。</p>
 
+<a name="Good.Refs"></a>
 <h3>Good Refs</h3>
 
+<a name="L..........................."></a>
 <h4>正向代理服务器软件</h4>
 
 <ul>
@@ -291,6 +310,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 </ul>
 
 
+<a name="L..........................."></a>
 <h4>反向代理服务器软件</h4>
 
 <ul>
@@ -303,6 +323,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 </ul>
 
 
+<a name="TCP................................."></a>
 <h4>TCP上的反向代理服务器软件</h4>
 
 <ul>
@@ -315,6 +336,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 </ul>
 
 
+<a name="L......"></a>
 <h4>其他</h4>
 
 <ul>
@@ -346,6 +368,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>我们拿到的第一台机器是Ubuntu的，因为 <code>Gitlab</code> 只有Debian的版本。后面的机器大多会是CentOS，所以使用的命令可能会稍微有调整，但是意思是不变的。</p>
 
+<a name="L......root......"></a>
 <h2>更换root密码</h2>
 
 <pre><code class="bash">passwd
@@ -353,12 +376,14 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>可以很长很复杂（反正也不需要记得），保存在某个地方在你忘记 <code>sudo</code> 密码或者是不能正常 <code>ssh</code> 的时候能找出来用就可以了。</p>
 
+<a name="L............"></a>
 <h2>更新系统</h2>
 
 <pre><code class="bash">apt-get update
 apt-get upgrade
 </code></pre>
 
+<a name="L......Fail2ban"></a>
 <h2>安装Fail2ban</h2>
 
 <pre><code class="bash">apt-get install fail2ban
@@ -366,6 +391,7 @@ apt-get upgrade
 
 <p>Fail2ban是一个用来监控登录尝试的 <code>daemon</code> ，可以有效侦测和防止可疑行为的发生。这个工具文档很全，而且出厂配置就很齐全，几乎不需要定制就能投入使用了。</p>
 
+<a name="L......deploy......"></a>
 <h2>添加deploy用户</h2>
 
 <pre><code class="bash">useradd deploy
@@ -374,6 +400,7 @@ mkdir /home/deploy/.ssh
 chmod 700 /home/deploy/.ssh
 </code></pre>
 
+<a name="L........code.public.key..code.."></a>
 <h2>配置 <code>public key</code> </h2>
 
 <p>使用密码的日子已经慢慢过时了，这方面Github很有<a href="https://help.github.com/categories/56/articles">贡献</a>。只需要：</p>
@@ -389,6 +416,7 @@ chown deploy:deploy /home/deploy -R
 
 <p>当然你也可以使用 <code>id_rsa.pub</code> 之外的key，然后在本地的 <code>~/.ssh/config</code> 里面对 <code>IdentityFile</code> 做指定。具体方式可以查看 <code>~/.ssh/config</code>的说明。</p>
 
+<a name="L......deploy.................code.Sudo..code........"></a>
 <h2>测试deploy用户并赋予 <code>Sudo</code> 权限</h2>
 
 <p>先测试deploy是否能够正常登录，然后使用 <code>root</code> 账号设置密码：</p>
@@ -407,6 +435,7 @@ chown deploy:deploy /home/deploy -R
 deploy  ALL=(ALL) ALL
 </code></pre>
 
+<a name="L......SSH"></a>
 <h2>锁定SSH</h2>
 
 <p>设置ssh，禁止使用密码ssh，禁止使用 <code>root</code> 账号ssh。</p>
@@ -430,6 +459,7 @@ PasswordAuthentication no
 <pre><code class="bash">service ssh restart
 </code></pre>
 
+<a name="L..............."></a>
 <h2>设置防火墙</h2>
 
 <p>Ubuntu提供了 <code>ufw</code>，所以只需要：</p>
@@ -440,6 +470,7 @@ ufw allow 443
 ufw enable
 </code></pre>
 
+<a name="L........................"></a>
 <h2>打开自动安全更新</h2>
 
 <p>虽然很多习惯好的服务器使用者会知道运行<code>apt-get update/upgrade</code> 但是如果服务器很多，总会有一些不那么被经常登录的机器，系统会比较陈旧。特别是做负载均衡的机器，可能很少有人登录。为了保证所有的机器都有足够的安全性需要打开自动更新（作为习惯控制一切的开发人员，自动更新总是一件让我很抗拒的事情，但是安全漏洞更让人抗拒）：</p>
@@ -469,6 +500,7 @@ APT::Periodic::Unattended-Upgrade "1";
 };
 </code></pre>
 
+<a name="L......Logwatch"></a>
 <h2>安装Logwatch</h2>
 
 <p>Logwatch是一个监控你的日志并发送邮件通知的daemon。</p>
@@ -482,6 +514,7 @@ vim /etc/cron.daily/00logwatch
 <pre><code class="bash">/usr/sbin/logwatch --output mail --mailto lenciel@gmail.com --detail high
 </code></pre>
 
+<a name="What.s.Next"></a>
 <h2>What&rsquo;s Next</h2>
 
 <ul>

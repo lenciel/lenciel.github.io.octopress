@@ -122,14 +122,17 @@
 
 <div class="entry-content"><p><img src="/downloads/images/tmux_tips_1.png" title="Don't touch me..." alt="tmux screenshot 1" /></p>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>简介</strong></h3>
 
 <p><code>tmux</code> ,其实就是 <code>terminal multiplexer</code> 的简称。使用tmux你可以把多个任务同时运行起来，使用不同的 <code>tmux</code> 窗口来查看它们。你也可以 <code>detach</code> 一个 <code>session</code>，也就是让一个窗口的活动，比如编译这种耗时你又不希望断开的活动，放到后台去运行。如果你使用过 <code>screen</code> 对 <code>detach</code> 一个 <code>session</code> 应该非常熟悉。其实初用 <code>tmux</code> 的时候，它很大程度上就像一个 <code>GNU-Session</code> 外加很多窗口管理的功能。而且由于 <code>tmux</code> 使用了 <code>client-server</code> 架构，我们可以在一个总控的地方去操作所有的窗口和pannel，甚至可以在一个窗口里面切换不同的 <code>session</code>。</p>
 
+<a name="L.strong.tmux...........strong."></a>
 <h4><strong>tmux的安装</strong></h4>
 
 <p>用你的Linux package manager或者如果你和我一样在OSX可以用<code>brew</code>。另外，iTerm2<a href="http://code.google.com/p/iterm2/wiki/TmuxIntegration">集成了</a>对<code>tmux</code>的支持，它也是很多Mac上的<a href="http://tangledhelix.com/blog/2012/04/28/iterm2-keymaps-for-tmux/">程序员</a>最爱的Terminal。</p>
 
+<a name="L.strong......................Session..strong."></a>
 <h4><strong>创建一个具名的Session</strong></h4>
 
 <p>由于使用 <code>tmux</code> 可以在一个电脑上创建多个 <code>session</code> ，为了更好的管理它们我们一般可以使用名字来辨识这些 <code>session</code> 。
@@ -143,6 +146,7 @@
 <p>回车之后就会进入一个新的 <code>session</code> 里面。可以看到具名的<code>session</code>的<code>terminal</code>和正常打开<code>iTerm2</code>大致相同，没有特别之处。
 这个时候我们敲<code>exit</code>就会回到原来的<code>terminal</code>中去。</p>
 
+<a name="L.strong.Detaching.....Attaching..strong."></a>
 <h4><strong>Detaching 和 Attaching</strong></h4>
 
 <p>使用<code>tmux</code>一大好处就是我们可以启动<code>terminal</code>，运行一个任务在后台，然后<code>detach</code>这个<code>session</code>。如果在一般的<code>session</code>里面工作，一旦我们关闭了窗口，跑在里面的所有程序都会被退出。
@@ -190,6 +194,7 @@
 
 <p>后面我们可以看到在session之间进行切换还有更多更方便的办法。</p>
 
+<a name="L.strong.........strong."></a>
 <h4><strong>窗口</strong></h4>
 
 <p>很多时候我们都需要打开窗口运行多个任务。这种情况比较适用于<code>tmux</code>的窗口概念：用起来和现代操作系统里面的<code>tab</code>类似。</p>
@@ -215,6 +220,7 @@
 </ul>
 
 
+<a name="L.strong.........strong."></a>
 <h4><strong>分栏</strong></h4>
 
 <ul>
@@ -227,10 +233,12 @@
 </ul>
 
 
+<a name="L.strong..................strong."></a>
 <h4><strong>命令行模式</strong></h4>
 
 <p><code>Prefix+:</code></p>
 
+<a name="L.strong...........................strong."></a>
 <h4><strong>取得所有的快捷键</strong></h4>
 
 <p><code>Prefix+?</code></p>

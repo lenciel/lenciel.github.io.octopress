@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Oauth | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/oauth/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -18,14 +18,7 @@
     <link href="http://lenciel.cn/2013/07/oauth-introduction-and-tips/"/>
     <updated>2013-07-22T09:53:00+08:00</updated>
     <id>http://lenciel.cn/2013/07/oauth-introduction-and-tips</id>
-    <content type="html"><![CDATA[<ul>
-<li>TOC
-{:toc}</li>
-</ul>
-
-
-<h1>Table Of Contents</h1>
-
+    <content type="html"><![CDATA[<a name="Terminology...Reference"></a>
 <h2>Terminology / Reference</h2>
 
 <ul>
@@ -124,12 +117,14 @@
 </ul>
 
 
+<a name="Signed.Requests"></a>
 <h3>Signed Requests</h3>
 
 <blockquote><p>本章描述的是OAuth 1.0</p></blockquote>
 
 <p>对request签名(Sign)是非常重要的，本章主要解释签名流程和各个参数的作用。从数据流上来说，签名的过程就是把应用所获取和所生成的信息放到一个地方去：可以是通过 <code>OAuth</code> 头，也可以是 <code>Query</code> 字符串。</p>
 
+<a name="Signature.Base.String"></a>
 <h4>Signature Base String</h4>
 
 <p>签名的基本组成有：request的 <code>Method</code>，request的 <code>URL</code> (如果是 <code>OAuth Echo</code>则是 <code>credentials uri</code>) 和 request的 <code>Query String</code>。没有加密前它看起来会是下面这样 (例子来自 <a href="https://dev.twitter.com/docs/auth/creating-signature">twitter</a>):</p>
@@ -137,6 +132,7 @@
 <pre><code>POST&amp;https%3A%2F%2Fapi.twitter.com%2F1%2Fstatuses%2Fupdate.json&amp;include_entities%3Dtrue%26oauth_consumer_key%3Dxvz1evFS4wEEPTGEFPHBog%26oauth_nonce%3DkYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1318622958%26oauth_token%3D370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb%26oauth_version%3D1.0%26status%3DHello%2520Ladies%2520%252B%2520Gentlemen%252C%2520a%2520signed%2520OAuth%2520request%2521
 </code></pre>
 
+<a name="Signing.Key"></a>
 <h5>Signing Key</h5>
 
 <p>上面的 <code>signature base</code> 字符串会被加密。加密时用到的key就是 <em>signing key</em> ， 是由OAuth <code>Consumer Secret</code> 和 <code>Token Secret</code> 用 <code>&amp;</code> 字符连接起来组成的:</p>
@@ -150,14 +146,17 @@
 
 <hr />
 
+<a name="Signature......"></a>
 <h4>Signature编码</h4>
 
 <p>有了 <code>signature base string</code> 和 <code>signature key</code> 之后，就需要从这两个字符串中提取信息完成编码。编码的方式共有三种：PLAINTEXT, HMAC, 或者是 RSA。</p>
 
+<a name="PLAINTEXT"></a>
 <h5>PLAINTEXT</h5>
 
 <p>没有任何编码，直接传 <code>Signature Key</code></p>
 
+<a name="HMAC-SHA1"></a>
 <h5>HMAC-SHA1</h5>
 
 <p>这种编码方式下，二进制格式的key被用来更新base，然后被编码成 <code>Base64</code> 放到<code>signature string</code>里面：</p>
@@ -165,6 +164,7 @@
 <pre><code>tnnArxj06cWHq44gCs1OSKk/jLY=
 </code></pre>
 
+<a name="RSA-SHA1"></a>
 <h5>RSA-SHA1</h5>
 
 <p>这种更复杂但是更安全的方式是根据<code>Signature Base</code>来生成一对<code>private key</code>和<code>public key</code>进行加密。</p>
@@ -173,6 +173,7 @@
 
 <p><strong>Note:</strong> mashape-oauth/tests/oauth.js的第<a href="https://github.com/Mashape/mashape-oauth/blob/master/tests/oauth.js#L74">74</a>行说明了如何使用生成的<code>private key</code>来对<code>signature base</code>进行编码。</p>
 
+<a name="OAuth........."></a>
 <h4>OAuth请求头</h4>
 
 <p>OAuth请求头包括了<code>oauth_signature</code> 和 <code>oauth_signature_method</code> 等参数及值。这些<code>oauth_*</code> 参数一般会用名字和其他<a href="https://github.com/Mashape/mashape-oauth/blob/master/lib/oauth.js#L111">复杂的规则</a>排序，相互之间用 <code>,</code> 或者是空格分隔。下面是一个取得Twitter的Request Token的例子:</p>
@@ -215,6 +216,7 @@ oauth_callback_confirmed=true
 
 <p>一般来说, <code>oauth_token</code> 发送的格式是 <code>?oauth_token=[token]</code> ，在认证的endpoint收到之后会进行一次 <code>3-Legged OAuth 1.0a</code> 并返回 <code>oauth_token</code> 和 <code>oauth_verifier</code>。返回的参数也会被用到 <code>Access Token</code> request<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>中去。</p>
 
+<a name="OAuth.1.0a..one-legged."></a>
 <h2>OAuth 1.0a (one-legged)</h2>
 
 <p>一般被叫成 <code>two-legged</code> 的OAuth其实是只有一步的。</p>
@@ -247,6 +249,7 @@ oauth_callback_confirmed=true
 
 <hr />
 
+<a name="OAuth.1.0a..two-legged."></a>
 <h2>OAuth 1.0a (two-legged)</h2>
 
 <p>真正的<code>two-legged</code>是1.0a版本的OAuth。</p>
@@ -291,6 +294,7 @@ oauth_callback_confirmed=true
 
 <p>这里我们可以看到安全性被增强了，而应用开发者不会有太多的工作，用户更是完全觉察不到。</p>
 
+<a name="OAuth.1.0a..three-legged."></a>
 <h2>OAuth 1.0a (three-legged)</h2>
 
 <p>最完备同时也是带来最多麻烦的一个版本，特别是引入了需要用户操作来确认的部分，增加了开发和交互上的复杂度。一开始推出的时候，让很多用户感到不知所措。</p>
@@ -357,6 +361,7 @@ oauth_callback_confirmed=true
 
 <hr />
 
+<a name="OAuth.1.0a..Echo."></a>
 <h2>OAuth 1.0a (Echo)</h2>
 
 <p>非主流的一种实现，但是确实是存在的：发明者是Twitter的Raffi。这种实现允许在首次发送的请求token里面多带两个header，这样可以通过代理的方式在代理服务商那里对原始服务商的用户进行认证。</p>
@@ -389,6 +394,7 @@ oauth_callback_confirmed=true
 </ol>
 
 
+<a name="OAuth.1.0a..xAuth."></a>
 <h2>OAuth 1.0a (xAuth)</h2>
 
 <p>xAuth是一种桌面程序或者手机程序（没有使用webview等控件不能完成完整流程的程序）使用的OAuth方式。它通过提供用户的<code>email</code>和<code>password</code>给服务器提供商来换取<code>access token</code>。</p>
@@ -432,10 +438,12 @@ oauth_callback_confirmed=true
 </ol>
 
 
+<a name="OAuth.2..two-legged."></a>
 <h2>OAuth 2 (two-legged)</h2>
 
 <p>目前为止最容易解释的一种流程，也被称为 <em>Client Credentials</em> 认证流程<sup id="fnref:6"><a href="#fn:6" rel="footnote">6</a></sup>，也有一种 <em>Resource Owner Password</em> 流程属于这类。</p>
 
+<a name="Client.Credentials"></a>
 <h3>Client Credentials</h3>
 
 <ol>
@@ -452,6 +460,7 @@ oauth_callback_confirmed=true
     - <code>expires_in</code>
     - <code>token_type</code></p>
 
+<a name="Resource.Owner.Password"></a>
 <h3>Resource Owner Password</h3>
 
 <p>基本上就是 <code>OAuth 1.0a Echo</code> 流程，但是去掉了签名等复杂的部分。</p>
@@ -501,6 +510,7 @@ oauth_callback_confirmed=true
 </ol>
 
 
+<a name="OAuth.2..three-legged."></a>
 <h2>OAuth 2 (three-legged)</h2>
 
 <p>同样去掉了很多复杂的步骤。</p>
@@ -562,6 +572,7 @@ oauth_callback_confirmed=true
 
 <hr />
 
+<a name="OAuth.2..refresh.token."></a>
 <h2>OAuth 2 (refresh token)</h2>
 
 <p>在OAuth2中，<code>access_token</code>一般是有有效期的。一个过期的token被使用时，服务器会返回一个token过期的错误，并带上<code>refresh_token</code>。应用使用<code>refresh token</code>获取新的<code>access_token</code>会比前面描述的流程简单得多。</p>
@@ -587,18 +598,22 @@ oauth_callback_confirmed=true
 </ol>
 
 
+<a name="Tips..amp..Tricks"></a>
 <h2>Tips &amp; Tricks</h2>
 
+<a name="L......Access.Token...Refresh.Key"></a>
 <h3>生成Access Token和Refresh Key</h3>
 
 <p>最好使用uuid，也就是固定长度的随机字符组成的字符串。</p>
 
+<a name="L......"></a>
 <h4>例子</h4>
 
 <pre><code class="javascript">var OAuth = require('mashape-oauth').OAuth,
     access_token = OAuth.nonce(/* Length, Default 32 */);
 </code></pre>
 
+<a name="References"></a>
 <h2>References</h2>
 
 <ol>

@@ -243,6 +243,7 @@
 
 <p>但这么说公平吗？</p>
 
+<a name="L......................................."></a>
 <h1>口感其实并不是仅仅来自味蕾</h1>
 
 <p>要明白这是为什么你首先要知道味蕾只是舌头上让你感知食物的酸甜苦辣的部分，这些是味觉但不是口感。口感的形成是视觉、嗅觉、味觉等五官都有参与的。</p>
@@ -256,6 +257,7 @@
 
 <p>味蕾之外的其他感觉影响口感的例子还有很多。比如环境，<a href="http://www.amsciepub.com/doi/abs/10.2466/01.PR0.111.4.228-232">研究表明</a>人们在柔光的环境下就餐觉得更舒服。比如预期，我们过往的<a href="http://www.huffingtonpost.com/Menuism/does-the-way-we-see-food-affect-taste_b_1872204.html">经验</a>，食物的<a href="http://www.jstor.org/discover/10.2307/3152198?uid=3739560&amp;uid=2&amp;uid=4&amp;uid=3739256&amp;sid=21102447342477">品牌</a>，<a href="http://www.griffithhack.com.au/mediacentre-Canafoodsbrandaffectyourperceptionsoftaste">包装</a>和<a href="http://www.psychologytoday.com/blog/evolved-primate/201002/does-price-tag-have-taste">价格</a>都会影响我们对它的口感。</p>
 
+<a name="L..........................."></a>
 <h1>并非所有的酒都一样</h1>
 
 <p>公认的最好的品酒师，被称为 <code>Master Sommeliers</code> ，在全世界只有不到200名。这些人要获得 <code>Master Sommeliers</code> 的称号，必须蒙上眼睛鉴别出6种不同葡萄酒的葡萄品种、产地和年份。如果这些人不是酒行业养的神棍，而是真有这样的本领，那么是否意味着不同的酒确实口感是不一样的呢？</p>
@@ -267,6 +269,7 @@
 
 <p>换句话说即使是Master Sommelier也有可能把染色的white wine搞成red wine，或者是在盲测的时候觉得一种便宜的酒比贵的酒还好喝。他们像福尔摩斯一样，是根据线索和知识解开口中的酒是什么样的酒的谜题，而不可能像广告里面一口入喉，就击掌高呼：“哇，这酒太好喝了，这一定是xxx年份的xxx。”</p>
 
+<a name="So."></a>
 <h1>So?</h1>
 
 <p>人们知道十几块一瓶的红酒和几万块的味道没太大的区别后，反应是非常激烈的。特别是因为众所知周的原因，品红酒这种本来没啥大不了的活动在天朝更容易因为和“小资”甚至“奢侈”挂钩而备受非议。</p>
@@ -307,6 +310,7 @@
 
   <div class="entry-content"><p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
 
+<a name="L......VirtualBox"></a>
 <h2>安装VirtualBox</h2>
 
 <p>VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、Linux和Solaris上都发行了相应版本。</p>
@@ -318,6 +322,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Vagrant"></a>
 <h2>安装Vagrant</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -337,6 +342,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="Vagrant........."></a>
 <h2>Vagrant的好处</h2>
 
 <p>软件开发，特别是Web应用的开发正处于环境异常复杂的年代。为了在开发和实际部署的环境直接做到无缝切换，虚拟化技术被大规模的使用。与此同时，自动的配置管理，如 <code>Chef</code> 或者 <code>Puppet</code> 也在发挥着巨大的作用。Vagrant就是在这些技术的基础上进行了集成，从而完成（虚拟化+自动配置管理）的效果。</p>
@@ -353,10 +359,12 @@
 
 <p>如果管理过大型项目，你就知道新人和新设计的引入往往是非常大的考验。大量的环境搭建工作，都可以由Vagrant来代替。并且Vagrant的配置只需要写一次，然后分发给大家用就行了，省掉了大量的时间。</p>
 
+<a name="Vagrant..............."></a>
 <h2>Vagrant可执行文件</h2>
 
 <p>Vagrant安装好之后，主要是通过命令行使用。 <code>vagrant</code> 命令带很多子命令，如 <code>vagrant up</code> ， <code>vagrant ssh</code> ， <code>vagrant package</code> 等等。敲 <code>vagrant</code> 就可以看到有哪些可用的命令。</p>
 
+<a name="Vagrantfile............"></a>
 <h2>Vagrantfile配置文件</h2>
 
 <p><code>Vagrantfile</code> 对于Vagrant就像 <code>Makefile</code> 对Make的作用一样：它被放置在每个Vagrant项目的根目录，用来配置Vagrant以及它创建的虚拟机的行为。一个最简单的配置文件如下：</p>
@@ -374,6 +382,7 @@
 
 <p>可以看到，<code>Vagrantfile</code> 是用标准的Ruby代码写成的。需要注意的是在大版本之间<code>Vagrantfile</code> 是不兼容的。</p>
 
+<a name="L......setup"></a>
 <h2>基本setup</h2>
 
 <p>首选创建项目目录，然后在项目目录中初始化：</p>

@@ -115,6 +115,7 @@
 
 <p>在下面的部分，我们先从总体上看看Linux的启动过程，做到心中有数。然后再对每个步骤进行深入的解释。结合后面给出的参考代码，就可以对整个kernel的相关部分有比较深刻的理解了。</p>
 
+<a name="L......"></a>
 <h2>概览</h2>
 
 <p>下图可以给你一个概览（真的是很概&#8230;览）</p>
@@ -131,6 +132,7 @@
 
 <p>这些就是一个简要的linux系统启动过程。下面我们深入到每个部分。</p>
 
+<a name="L............"></a>
 <h2>系统启动</h2>
 
 <p>系统启动时的动作和Linux最终运行的硬件平台有关。对于嵌入式系统而言，一个bootstrap环境，如U-Boot、RedBoot、MicroMonitor等，会在系统上电或复位后运行。具体来说，和嵌入式系统一起发布的flash特殊位置中的boot monitor会在上电或复位后，将Linux kernel映像加载到flash中，然后执行它。同时，这个boot monitor还会负责一部分系统测试和硬件初始化工作。也就是说嵌入式环境中，一个boot monitor会执行两个stage的boot loader的任务。</p>
@@ -139,6 +141,7 @@
 
 <p>硬盘上，会有一个位于硬盘的第一个sector（也就是cylinder 0，head 0的sector1）的叫MBR（Master Boot Record）的地方，保存着primary boot loader。一旦这个boot loader加载到RAM，BIOS就把控制权交给它。</p>
 
+<a name="Extracting.the.MBR"></a>
 <h2>Extracting the MBR</h2>
 
 <p>使用下面的命令可以查看MBR的内容:</p>
@@ -151,6 +154,7 @@
 
 <p>命令<code>dd</code>必须由root执行，它读取<code>/dev/hda</code>（了解linux的朋友应该知道，这是系统上的第一个IDE设备）中的第一个512bytes，然后把它写到<code>mbr.bin</code>文件中。命令<code>od</code>则是按照<code>hex</code>和<code>ASCII</code>两种格式把这个二进制文件打印出来。</p>
 
+<a name="Stage.1.boot.loader"></a>
 <h2>Stage 1 boot loader</h2>
 
 <p>这时在内存中运行的从MBR搞来的Primary boot loader，包括了程序代码和分区表两个部分，如图2所示。512bytes中的前446bytes用来放loader，其中既有可执行代码也有错误消息文件。接下来的64bytes是四个分区表，每个16bytes。最后是两个bytes的magic number（其实就是0xAA55），主要是用来校验这个MBR是不是有效。</p>
@@ -161,6 +165,7 @@
 
 <p>Primary boot loader的主要作用无非是把secondary boot loader (stage 2)加载进内存：它会顺序查看各个分区，当找到一个活动的分区时，它会检查一下其他的分区状态是不是都不是活动的。确定只有一个活动的分区后，该分区的boot record就会从设备上拷贝到RAM中执行。</p>
 
+<a name="Stage.2.boot.loader"></a>
 <h2>Stage 2 boot loader</h2>
 
 <p>Secondary或者说second-stage的boot loader其实就负责加载Linux kernel等。</p>
@@ -169,6 +174,7 @@
 
 <p>GRUB的舒爽之处在于它能读懂Linux的文件系统，于是我们可以从ext2或者ext3文件系统加载Linux Kernel，而不像LILO那样，要从原始的sector中加载。实际上，GRUB是把前面说的两个stage的boot loader扩展到三个阶段，也就是在stage1之后，加入了stage1.5 boot loader，来完成对文件系统的认知的。比如<code>reiserfs_stage1_5</code> (从一个 Reiser文件系统)或者<code>e2fs_stage1_5</code> (从ext2或者ext3文件系统)加载。当这个stage 1.5 boot loader加载运行之后，stage 2 boot loader才加载。</p>
 
+<a name="GRUB.stage.boot.loaders"></a>
 <h2>GRUB stage boot loaders</h2>
 
 <p><code>/boot/grub</code> 目录下保存着<code>stage1</code>, <code>stage1.5</code>, 和 <code>stage2</code> 的boot loaders，以及很多其他的可选loader (比如供CR-ROMs使用的<code>iso9660_stage_1_5</code>)。</p>
@@ -177,6 +183,7 @@
 
 <p>当second-stage的boot loader加载到内存后，默认的kernel映像和<code>initrd</code>映像会加载到内存中。这些映像加载完毕之后，second-stage的boot loader就会激活kernel映像。</p>
 
+<a name="Manual.boot.in.GRUB"></a>
 <h2>Manual boot in GRUB</h2>
 
 <p>在GRUB的命令行下，你可以引导一个特定的kernel和特定名称的<code>initrd</code>映像:</p>
@@ -201,6 +208,7 @@
 
 <p>如果你不知道将要用于加载的kernel的名称，可以在GRUB命令行中用/+Tab命令列出可用的kernel和<code>initrd映像。</code></p>
 
+<a name="Kernel"></a>
 <h2>Kernel</h2>
 
 <p>当kernel映像加载到内存中，并从stage 2的boot loader手中接过了控制权之后，我们要知道，这个kernel一般还不是一个可执行的kernel，而是压缩过的kernel映像。通常这个映像使用zlib压缩为zImage (compressed image，小于512KB) 或者是bzImage (big compressed image，大于512KB)。在这个映像的初始部分是一个小模块，进行一些基本的硬件初始化工作，然后把可执行的kernel部分解压出来，放到内存高位。接下来，这个模块就调用kernel，开始kernel引导工作。</p>
@@ -215,16 +223,19 @@
 
 <p>在整个kernel的启动中，在stage 2的boot loader载入到内存中的initial-RAM disk (<code>initrd</code>) 会被拷贝到RAM中，并挂载起来。它以一个临时的文件系统的身份在RAM中工作，使得kernel在没有任何物理设备挂载的情况下也可以完整的启动起来。正是由于所有与外围设备相关的交互都可以放到<code>initrd</code>中，kernel本身虽然很小，但却支持范围极其广的硬件设备。在kernel的启动完成之后，root文件系统就会回滚(通过<code>pivot_root</code>)，<code>initrd的</code>root文件系统被卸载，实际的root文件系统被挂载起来。</p>
 
+<a name="Init"></a>
 <h2>Init</h2>
 
 <p>kernel的启动和初始化完成后，kernel开始第一个用户空间程序。这也是整个过程中激活的第一个用标准C库编译的程序。</p>
 
 <p>对于一个桌面Linux系统而言，一般来说启动后运行的第一个程序是/sbin/init。但这显然不是必须的：很多嵌入式系统不需要init提供的那么多功能（看看/etc/inittab就知道有多复杂了），所以你可以运行一个简单的脚本启动嵌入式程序。</p>
 
+<a name="L......"></a>
 <h2>总结</h2>
 
 <p>从上面的叙述我们知道，和Linux系统本身一样，Linux的启动过程是非常灵活的。最初的loadlin boot loader提供了简便的启动linux的可能。接下来的LILO boot loader扩展了启动功能，但是没有区分文件系统的能力。最新一代的boot loaders，如GRUB等，则支持从一系列文件系统（Minix到Reiser等）来启动Linux的功能。</p>
 
+<a name="Resources"></a>
 <h2>Resources</h2>
 
 <p><strong>学习资料</strong></p>

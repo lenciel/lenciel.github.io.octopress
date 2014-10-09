@@ -125,6 +125,7 @@
 
   <div class="entry-content"><p>如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架<a href="http://boxen.github.com/">Boxen</a>，趁着新笔记本需要起轿，尝试了一把。</p>
 
+<a name="Boxen............"></a>
 <h2>Boxen框架简介</h2>
 
 <p>Boxen基于大红大紫的<a href="https://puppetlabs.com/">Puppet</a>，但和后者目前主要侧重于服务器的Privision不同，Boxen更主要是用于组织内工作人员使用的机器的配置和管理流程标准化。</p>
@@ -135,6 +136,7 @@
 
 <p>简单地概括Boxen的思路，就是像对待产品一样对待开发环境。使用包括版本控制，持续集成这些手段，在团队中维护一个开发环境的仓库。如果你想更深入地了解Boxen的设计哲学，可以看看这个slide：<a href="https://speakerdeck.com/wfarr/boxen">BOXEN by Will Farrington</a>。</p>
 
+<a name="L......Boxen"></a>
 <h2>使用Boxen</h2>
 
 <p>首先确保你的初始环境是干净的：</p>
@@ -155,6 +157,7 @@
 
 <p>接下来就是安装一些必须的软件，比如Git和Xcode的 <code>Command Line Tools</code>。</p>
 
+<a name="Xcode.CLT"></a>
 <h3>Xcode CLT</h3>
 
 <ul>
@@ -166,12 +169,14 @@
 
 <p><img src="/downloads/images/xcode_clt.png" title="Don't touch me..." alt="Xcode Command Line Tools" /></p>
 
+<a name="L......FireVault2"></a>
 <h3>打开FireVault2</h3>
 
 <p>Boxen默认会希望硬盘信息是被加密的：</p>
 
 <p><img src="/downloads/images/turn_on_fire_vault.png" title="Don't touch me..." alt="Turn on FireVault2" /></p>
 
+<a name="Fork.our-boxen"></a>
 <h3>Fork our-boxen</h3>
 
 <p><a href="https://github.com/boxen/our-boxen">our-boxen</a>是Boxen提供的基线repo，也是整个Boxen框架里面文档最全的一个repo。</p>
@@ -246,6 +251,7 @@
 
 <p>然后新开一个shell运行 <code>boxen --env</code>，结果一切正常你的box就配置完毕了。</p>
 
+<a name="L...............box"></a>
 <h2>自定义你的box</h2>
 
 <p>默认安装的内容当然不一定对你的口味，如果你用过Puppet那么自定义Boxen的box是非常简单的。不过埋头开干之前还是可以check一下是不是已经<a href="https://github.com/boxen">有人做好了</a>。这些做好的repo可以直接通过修改配置文件是用，因为Boxen对librarian-puppet做了wrapper，对fetch各种module也做了wrapper。</p>
@@ -322,6 +328,7 @@
 
 <p>接下来只需要运行 <code>boxen</code> (如果你运行了 <code>boxen --env</code> 命令会在可执行路径里)或者是 <code>boxen --debug</code> (如果你需要更多的verbose信息)，指定的软件就安装上了。</p>
 
+<a name="What.s.Next"></a>
 <h2>What&rsquo;s Next</h2>
 
 <p>目前为止主要是解释了如何使用Boxen来安装一些基本软件。目前本座机器上使用Boxen安装的软件包括：</p>
@@ -375,6 +382,7 @@
 
   <div class="entry-content"><p><img src="/downloads/images/nerd_sniping.png" title="Don't touch me..." alt="nerd sniping" /></p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>起</strong></h2>
 
 <p><a href="http://xkcd.com/730/" target="_blank">xkcd</a>一直是本座最喜欢的网站（嗯哼）。上面这幅图说了一个很有趣的现象，正好最近深有体会，就来这边吐槽一下。整个经过是：</p>
@@ -403,6 +411,7 @@
 
 <p>经过了4天，本座把Wii Remote用蓝牙连到PC输出手柄信号，本座有了一个不错的vim下开发python的环境，本座还学习了一点儿R。唯一没有开始的就是，嗯，还没有开始写那个游戏。</p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>承</strong></h2>
 
 <p>你的情况可能具体细节和我不一样，但是结果估计都是南辕北辙：你是网页设计师，在需要画 <code>wireframe</code> 的时候花了一大把时间去看搜索出来的新鲜的、华丽的 <code>CSS3</code> 效果；你上淘宝买手机结果研究移动电源用了4个小时；你想学怎么养花结果因为选盆子下面水漏的形状耽误了。</p>
@@ -417,6 +426,7 @@
 
 <p>人的精力是有限的，如果你长期处于这种状况（太正常了，如果你是玩电脑的话），可就要小心了。</p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>转</strong></h2>
 
 <p>其实这种发散的工作方式并不是完全错误的。其实在我们这个行业，这种“总想追求更好”的想法，是整个Agile的基础。Facebook在自己的员工的邮件<a href="http://blogs.wsj.com/deals/2012/02/01/mark-zuckerbergs-letter-from-the-facebook-filing/" target="_blank">里面</a>写到：</p>
@@ -427,6 +437,7 @@
 
 <blockquote><p>I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don&#8217;t know quite about what problems are worth working on … He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. ….</p></blockquote>
 
+<a name="L.strong......strong."></a>
 <h2><strong>合</strong></h2>
 
 <p>不能闭门造车，又需要有固定的输出值，怎么办？今天本座是这么办的：</p>
@@ -528,6 +539,7 @@
 
 <p>不过，在最近自己的职业生涯发生了不小的变化，在可预见的未来，肯定要做很多跟code有关的笔记。<a href="http://lenciel.cn">现在的blog</a>系统是wordpress，虽然非常好用，但是比起markdown来说，写起code来速度就差太多了。所以今天下定决心试了一把Octopress+Github Pages，效果非常满意，特别记录一下过程，像大家做个推荐。</p>
 
+<a name="Jekyll.amp.Octopress"></a>
 <h2>Jekyll&amp;Octopress</h2>
 
 <p><a href="http://octopress.org/">Octopress</a>是在<a href="https://github.com/mojombo/jekyll">Jekyll</a>基础上进行的开发。<a href="https://github.com/mojombo/jekyll">Jekyll</a>作为Ruby开发的静态页面blog系统，吸引本座的地方在于：</p>
@@ -539,8 +551,10 @@
 </ul>
 
 
+<a name="Mac........................"></a>
 <h2>Mac下的安装设置过程</h2>
 
+<a name="Xcode"></a>
 <h3>Xcode</h3>
 
 <ul>
@@ -550,6 +564,7 @@
 </ul>
 
 
+<a name="Homebrew"></a>
 <h3>Homebrew</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -565,6 +580,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="rbenv"></a>
 <h3>rbenv</h3>
 
 <p>首先如果你本来是用rvm，需要删除：</p>
@@ -606,6 +622,7 @@
 
 <p>注意在环境变量设置完毕之后，最好把<code>$PATH</code>打出来看看，确保没有其他版本的Ruby被启用了，特别要注意<code>/Users/***/.gem/ruby/***/bin</code>这样的路径。</p>
 
+<a name="L......Octopress"></a>
 <h2>安装Octopress</h2>
 
 <p>首选在Github上创建一个repo来放blog，命名规则是username.github.com（比如本座的就是lenciel.github.com）。</p>
@@ -675,8 +692,10 @@
 
 <p>这样一来，你就即可以从<code>octopress/master</code>取到更新，又可以往<code>origin/master</code>去push自己最新的日志了。</p>
 
+<a name="L......Octopress"></a>
 <h2>使用Octopress</h2>
 
+<a name="L............"></a>
 <h3>新建文章</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -686,6 +705,7 @@
 
 <p>这里要注意使用zsh的时候，对<code>[]</code>要转义成<code>\[\]</code>不然会报错。</p>
 
+<a name="L............"></a>
 <h3>编辑文章</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -695,16 +715,19 @@
 
 <p>subl是本座在mac上使用的编辑器<code>Sublime Text 2</code>的命令行命令，它的markdown插件<code>Markdown Editing</code>和<code>OmniMarkupPreview</code>非常好用。</p>
 
+<a name="Markdown.Editing"></a>
 <h4>Markdown Editing</h4>
 
 <p><a href="http://ttscoff.github.com/MarkdownEditing/">Markdown Editing</a>对语法高亮，粘贴超链接，样式化，加footnote等都做了很好的支持：</p>
 
 <p><img src="/downloads/images/sublime_with_markdown_editing.png" title="Don't touch me..." alt="Sublime with Markdown Editing" /></p>
 
+<a name="OmniMarkupPreview"></a>
 <h4>OmniMarkupPreview</h4>
 
 <p>OmniMarkupPreview支持<code>Cmd+Alt+O</code>在你指定的浏览器里面预览并且动态刷新你正在编辑的Markup文档。这样你就可以不用不停的<code>rake preview</code>了。</p>
 
+<a name="L......"></a>
 <h3>更多</h3>
 
 <ul>

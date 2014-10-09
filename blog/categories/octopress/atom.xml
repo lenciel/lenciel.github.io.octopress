@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -157,6 +157,7 @@ index 137d475..5465286 100644
     <id>http://lenciel.cn/2014/04/time-to-talk-about-math</id>
     <content type="html"><![CDATA[<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:source/_posts/2014-04-02-time-to-talk-about-math.markdown</p>
 
+<a name="L..............................:"></a>
 <h1>这篇日志主要是想试试:</h1>
 
 <p>  <title>&lt;![CDATA[Category: d3 | @Lenciel]]&gt;</title>
@@ -164,6 +165,7 @@ index 137d475..5465286 100644
   <link href="http://lenciel.cn/"/>
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:blog/categories/d3/atom.xml</p>
 
+<a name="L...updated.2014-10-08T21:04:22.08:00..updated."></a>
 <h1>  <updated>2014-10-08T21:04:22+08:00</updated></h1>
 
 <p>  <updated>2014-09-22T03:04:55+08:00</updated></p>
@@ -288,6 +290,7 @@ index 137d475..5465286 100644
 
 <p>不过，在最近自己的职业生涯发生了不小的变化，在可预见的未来，肯定要做很多跟code有关的笔记。<a href="http://lenciel.cn">现在的blog</a>系统是wordpress，虽然非常好用，但是比起markdown来说，写起code来速度就差太多了。所以今天下定决心试了一把Octopress+Github Pages，效果非常满意，特别记录一下过程，像大家做个推荐。</p>
 
+<a name="Jekyll.amp.Octopress"></a>
 <h2>Jekyll&amp;Octopress</h2>
 
 <p><a href="http://octopress.org/">Octopress</a>是在<a href="https://github.com/mojombo/jekyll">Jekyll</a>基础上进行的开发。<a href="https://github.com/mojombo/jekyll">Jekyll</a>作为Ruby开发的静态页面blog系统，吸引本座的地方在于：</p>
@@ -299,8 +302,10 @@ index 137d475..5465286 100644
 </ul>
 
 
+<a name="Mac........................"></a>
 <h2>Mac下的安装设置过程</h2>
 
+<a name="Xcode"></a>
 <h3>Xcode</h3>
 
 <ul>
@@ -310,6 +315,7 @@ index 137d475..5465286 100644
 </ul>
 
 
+<a name="Homebrew"></a>
 <h3>Homebrew</h3>
 
 <pre><code class="bash">brew update
@@ -319,6 +325,7 @@ brew install apple-gcc42 git
 brew upgrade
 </code></pre>
 
+<a name="rbenv"></a>
 <h3>rbenv</h3>
 
 <p>首先如果你本来是用rvm，需要删除：</p>
@@ -346,6 +353,7 @@ export LANG=en_US.UTF-8
 
 <p>注意在环境变量设置完毕之后，最好把<code>$PATH</code>打出来看看，确保没有其他版本的Ruby被启用了，特别要注意<code>/Users/***/.gem/ruby/***/bin</code>这样的路径。</p>
 
+<a name="L......Octopress"></a>
 <h2>安装Octopress</h2>
 
 <p>首选在Github上创建一个repo来放blog，命名规则是username.github.com（比如本座的就是lenciel.github.com）。</p>
@@ -388,8 +396,10 @@ rake generate &amp;&amp; rake deploy
 
 <p>这样一来，你就即可以从<code>octopress/master</code>取到更新，又可以往<code>origin/master</code>去push自己最新的日志了。</p>
 
+<a name="L......Octopress"></a>
 <h2>使用Octopress</h2>
 
+<a name="L............"></a>
 <h3>新建文章</h3>
 
 <pre><code class="">rake new_post\["Blog with Octopress and Github Pages"\]
@@ -397,6 +407,7 @@ rake generate &amp;&amp; rake deploy
 
 <p>这里要注意使用zsh的时候，对<code>[]</code>要转义成<code>\[\]</code>不然会报错。</p>
 
+<a name="L............"></a>
 <h3>编辑文章</h3>
 
 <pre><code>subl source/_posts/2013-03-10-blog-with-octopress-and-github-pages.markdown
@@ -404,16 +415,19 @@ rake generate &amp;&amp; rake deploy
 
 <p>subl是本座在mac上使用的编辑器<code>Sublime Text 2</code>的命令行命令，它的markdown插件<code>Markdown Editing</code>和<code>OmniMarkupPreview</code>非常好用。</p>
 
+<a name="Markdown.Editing"></a>
 <h4>Markdown Editing</h4>
 
 <p><a href="http://ttscoff.github.com/MarkdownEditing/">Markdown Editing</a>对语法高亮，粘贴超链接，样式化，加footnote等都做了很好的支持：</p>
 
 <p><img src="/downloads/images/sublime_with_markdown_editing.png" title="Don't touch me..." alt="Sublime with Markdown Editing" /></p>
 
+<a name="OmniMarkupPreview"></a>
 <h4>OmniMarkupPreview</h4>
 
 <p>OmniMarkupPreview支持<code>Cmd+Alt+O</code>在你指定的浏览器里面预览并且动态刷新你正在编辑的Markup文档。这样你就可以不用不停的<code>rake preview</code>了。</p>
 
+<a name="L......"></a>
 <h3>更多</h3>
 
 <ul>

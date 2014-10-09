@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Django | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -96,6 +96,7 @@ class Migration(migrations.Migration):
 
 <p>So&hellip;</p>
 
+<a name="Migrations............"></a>
 <h1>Migrations是什么？</h1>
 
 <p>Migrations其实就是一堆帮助你完成数据库变更和数据迁移的命令，使得你可以用“Django”的方式来管理和变更数据库的schema。比如，当你的model改变了，你需要在数据库里面去重命名一列时，你不会想跑到命令行下面去敲SQL吧？特别是，如果你要变更的数据库是线上的，有几百万用户数据，你应该更不愿意搭上这种活了吧？</p>
@@ -110,8 +111,10 @@ class Migration(migrations.Migration):
 </ol>
 
 
+<a name="Migrations......"></a>
 <h1>Migrations上手</h1>
 
+<a name="L.................."></a>
 <h2>创建测试项目</h2>
 
 <p>首先创建一个virtualenv和django项目：</p>
@@ -141,6 +144,7 @@ class PingPongPrice(models.Model):
 )
 </code></pre>
 
+<a name="L......Migrations"></a>
 <h2>创建Migrations</h2>
 
 <p>使用下面的命令可以创建ts_data这个app的Migrations。当然，和大多数Django命令一样，如果你不显式的指定，就</p>
@@ -151,6 +155,7 @@ Migrations for 'ts_data':
     - Create model PingPongPrice
 </code></pre>
 
+<a name="L......Migrations"></a>
 <h2>应用Migrations</h2>
 
 <pre><code class="bash">(django17) ○ python manage.py migrate
@@ -174,6 +179,7 @@ Running migrations:
 </ol>
 
 
+<a name="L................................."></a>
 <h1>不是新建的项目如何使用</h1>
 
 <p>大多数情况下我们都是从旧版本的Django迁移过来，也就意味着是从South迁移过来。这种情况下需要：</p>
@@ -189,10 +195,12 @@ Running migrations:
 
 <p>如果你不想丢掉过去的South维护的历史记录，可以同时使用South和Django Migrations：升级South到1.0，然后<a href="http://www.aeracode.org/2014/7/1/end-era/">参考这篇文章的做法</a>。</p>
 
+<a name="South...Django.Migrations......"></a>
 <h1>South和Django Migrations比较</h1>
 
 <p>对比一下South和Django Migrations的workflow，可能会更加清晰：</p>
 
+<a name="L............migrations"></a>
 <h2>首次全新migrations</h2>
 
 <p>South:</p>
@@ -206,6 +214,7 @@ Running migrations:
 <pre><code class="python">./manage.py makemigrations &lt;appname&gt;
 </code></pre>
 
+<a name="L......migrations"></a>
 <h2>应用migrations</h2>
 
 <p>South:</p>
@@ -218,6 +227,7 @@ Running migrations:
 <pre><code class="python">./manage.py migrate &lt;appname&gt;
 </code></pre>
 
+<a name="L.........migrations"></a>
 <h2>非首次migrations</h2>
 
 <p>South:</p>
@@ -232,8 +242,10 @@ Running migrations:
 
 <p>可以看到，大概是因为出自同一个作者的原因，Django Migrations基本上follow了South的工作流程，只不过是命令更加简洁和清晰了。</p>
 
+<a name="L............"></a>
 <h1>更多细节</h1>
 
+<a name="L..................Django.Migrations........."></a>
 <h2>哪些变化会被Django Migrations找到？</h2>
 
 <p>如果你再次运行<code>python manage.py migrate</code>，会发现什么都没有发生：这是因为在项目的数据库中有一张<code>django_migrations</code>仍然被更新。表，记录了哪些Migrations已经被应用过了：无论是运行了migrate还是fake的，这个表都会被插入一条记录。比如从South升级到使用Django自带的MigrationsDjango会检查是否有更新。如果没有，它就fake一次，但<code>django_migrations</code>仍然被更新。</p>
@@ -242,6 +254,7 @@ Running migrations:
 
 <p>在极少数情况下，如果你有需要回退到特定的版本，比如最初的zero版本，可以用类似<code>python manage.py migrate &lt;app_name&gt; zero</code>的语法。</p>
 
+<a name="Migration......."></a>
 <h2>Migration 文件</h2>
 
 <p>在我们运行<code>python manage.py migrate &lt;app_name&gt;</code>究竟发生了什么？实际上，Django会创建一个python文件来描述如何完成这个migration，以前面的ts_data为例，这个文件位于<code>ts_data/migrations/0001_initial.py</code>，内容如下：</p>
@@ -274,6 +287,7 @@ class Migration(migrations.Migration):
 
 <p>可以看到，是完全可读的Python代码。这也是为什么推荐把整个<code>migrations</code>文件夹加入版本控制的原因：这样你的应用经过了怎样的变更就变得可以回溯了。</p>
 
+<a name="Migration.Dependencies"></a>
 <h2>Migration Dependencies</h2>
 
 <p>上面的源代码有一些值得注意的地方。</p>
@@ -298,6 +312,7 @@ class Migration(migrations.Migration):
 
 <p>这里使用list的结果是，所有的依赖是没有顺序的，也就是说你不需要按照0001、0002、0003的顺序来排列所有的依赖。</p>
 
+<a name="Migration.Operations"></a>
 <h2>Migration Operations</h2>
 
 <p>这个list定义的就是migration完成的操作，可以分为下面的这些种类：</p>
@@ -319,6 +334,7 @@ class Migration(migrations.Migration):
 
 <p>前面的那些操作是整个Django Migrations的核心：因为需要对各种不同的数据库做适配。而后面的两个操作则是灵活度非常高的，几乎可以干任何事情。</p>
 
+<a name="L......"></a>
 <h1>实例</h1>
 
 <p>让我们试试把<code>PingPongPrice</code>的<code>price</code>这个field的<code>max_digits</code>改成8位的（通货膨胀嘛），然后再次运<code>makemigrations</code>行命令:</p>
@@ -361,16 +377,19 @@ class Migration(migrations.Migration):
     <id>http://lenciel.cn/2013/08/why-you-need-something-like-gunicorn</id>
     <content type="html"><![CDATA[<p>因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。</p>
 
+<a name="L........."></a>
 <h3>服务器</h3>
 
 <p>到了服务器组你会发现原来有各种各样的服务器，那些叫法很多是有历史沉淀的，不需要太深究能对上号就行，因为本来也是乱七八糟的。</p>
 
+<a name="HTTP........."></a>
 <h4>HTTP服务器</h4>
 
 <p>如果网站是HTML/CSS/JS（不包括node.js这种<a href="http://en.wikipedia.org/wiki/Comparison_of_server-side_JavaScript_solutions">SSJS</a>）组成的，那么这是一个静态的网站。</p>
 
 <p>用户访问这个网站的时候，HTTP请求被浏览器发送，经过DNS等被送到网站的服务器。服务器处理HTTP请求，将浏览器能够处理的响应返回给用户的浏览器。所以这个场景下的服务器一般被称为HTTP服务器，常见的有Apache的httpd和Nginx。</p>
 
+<a name="Application........."></a>
 <h4>Application服务器</h4>
 
 <p>如果你的网站是动态的，比如是用Django写的。</p>
@@ -379,10 +398,12 @@ class Migration(migrations.Migration):
 
 <p>WSGI服务器的选择很多，包括uWSGI和gunicorn。它们都可以处理所有的请求，包括确实应该由python对象处理的，也包括不该python对象处理的，比如静态的图像，css，js等文件。所有理论上你可以把整个动态网站都用WSGI服务器承载起来，也就是整个应用完全跑在Application服务器上。</p>
 
+<a name="L..............."></a>
 <h4>代理服务器</h4>
 
 <p>代理无非是A来做B干的事情。在服务器语境下，代理就是一台服务器干另外一台服务器的事情。这个是平常不会有很多人聊到的，多说两句。</p>
 
+<a name="L....................."></a>
 <h5>前向代理服务器</h5>
 
 <p>大多数的代理都是前向代理。假设网络上有三台机器:</p>
@@ -408,6 +429,7 @@ class Migration(migrations.Migration):
 </ol>
 
 
+<a name="L....................."></a>
 <h5>反向代理服务器</h5>
 
 <p>没有代理的情况下，访问仍然是 <code>X---&gt;Z</code>，但是在某些情况下，Z的管理者决定限制资源被直接访问。用户必须现在Y上做访问，Y再访问Z。整个流程是<code>X---&gt;Y</code>，然后<code>Y----&gt;Z</code>，最后<code>X----&gt;Y</code> 。</p>
@@ -426,12 +448,14 @@ class Migration(migrations.Migration):
 
 <p>然后你就会发现，原来nginx不止是一个HTTP服务器，它还是一个<a href="http://en.wikipedia.org/wiki/Reverse_proxy">反向代理服务器</a>：它可以把请求重定向到uWSGI或者任何别的服务器，然后把下游服务器的响应集成再返回给用户。于是你就可以配置对静态内容的请求直接在nginx完成，而动态内容的请求发送给uWSGI服务器。</p>
 
+<a name="L....................."></a>
 <h4>负载均衡服务器</h4>
 
 <p>在我自己的心中，负责均衡服务器不过是反向代理的一种（你看CDN我也觉得是反向代理的一种），但是很多地方这种服务器是被拿出来专门讨论的。</p>
 
 <p>随着你的网站访问量不断增大，你用一个nginx集中所有的请求再分发就显得性能不够了。这个时候你可以配置专门用于进行请求分发处理的负载均衡服务器，比如<a href="http://haproxy.1wt.eu/">HAProxy</a>，而负载均衡服务器背后是集群。</p>
 
+<a name="L..............."></a>
 <h4>缓存服务器</h4>
 
 <p>随着网站访问量的继续增大，你的VPS流量又扛不住了。你调查发现有一些多媒体文件被经常请求，这个时候你部署了缓存服务器。</p>
@@ -439,6 +463,7 @@ class Migration(migrations.Migration):
 <p>&ldquo;缓存&#8221;这个经常被提到的术语，核心就是把常用的信息放在一个读取成本很低地方(比如内存中或者是虚拟内存中），从而避免每次查找它的时候昂贵的操作。比如HTTP缓存解决的是在服务器上找信息的过程。而Redis或者Memcached这些缓存则是解决在数据库里面找信息的过程。
 面。</p>
 
+<a name="L...........................uwsgi......gunicorn."></a>
 <h3>那，我们为什么需要uwsgi或者gunicorn?</h3>
 
 <p>一句话：因为你需要有东西在服务器上运行Python，但是Python不是处理所有的请求都很强。</p>
@@ -453,8 +478,10 @@ class Migration(migrations.Migration):
 
 <p>配置上的简单，大概是它流行的最大的原因。</p>
 
+<a name="Good.Refs"></a>
 <h3>Good Refs</h3>
 
+<a name="L..........................."></a>
 <h4>正向代理服务器软件</h4>
 
 <ul>
@@ -465,6 +492,7 @@ class Migration(migrations.Migration):
 </ul>
 
 
+<a name="L..........................."></a>
 <h4>反向代理服务器软件</h4>
 
 <ul>
@@ -477,6 +505,7 @@ class Migration(migrations.Migration):
 </ul>
 
 
+<a name="TCP................................."></a>
 <h4>TCP上的反向代理服务器软件</h4>
 
 <ul>
@@ -489,6 +518,7 @@ class Migration(migrations.Migration):
 </ul>
 
 
+<a name="L......"></a>
 <h4>其他</h4>
 
 <ul>
@@ -508,6 +538,7 @@ class Migration(migrations.Migration):
     <id>http://lenciel.cn/2013/06/vagrant-on-mac-os-x</id>
     <content type="html"><![CDATA[<p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
 
+<a name="L......VirtualBox"></a>
 <h2>安装VirtualBox</h2>
 
 <p>VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、Linux和Solaris上都发行了相应版本。</p>
@@ -517,6 +548,7 @@ class Migration(migrations.Migration):
 <pre><code class="bash">http://www.virtualbox.org/wiki/Downloads
 </code></pre>
 
+<a name="L......Vagrant"></a>
 <h2>安装Vagrant</h2>
 
 <pre><code class="bash">http://downloads.vagrantup.com/
@@ -530,6 +562,7 @@ vagrant init lucid32
 vagrant up
 </code></pre>
 
+<a name="Vagrant........."></a>
 <h2>Vagrant的好处</h2>
 
 <p>软件开发，特别是Web应用的开发正处于环境异常复杂的年代。为了在开发和实际部署的环境直接做到无缝切换，虚拟化技术被大规模的使用。与此同时，自动的配置管理，如 <code>Chef</code> 或者 <code>Puppet</code> 也在发挥着巨大的作用。Vagrant就是在这些技术的基础上进行了集成，从而完成（虚拟化+自动配置管理）的效果。</p>
@@ -546,10 +579,12 @@ vagrant up
 
 <p>如果管理过大型项目，你就知道新人和新设计的引入往往是非常大的考验。大量的环境搭建工作，都可以由Vagrant来代替。并且Vagrant的配置只需要写一次，然后分发给大家用就行了，省掉了大量的时间。</p>
 
+<a name="Vagrant..............."></a>
 <h2>Vagrant可执行文件</h2>
 
 <p>Vagrant安装好之后，主要是通过命令行使用。 <code>vagrant</code> 命令带很多子命令，如 <code>vagrant up</code> ， <code>vagrant ssh</code> ， <code>vagrant package</code> 等等。敲 <code>vagrant</code> 就可以看到有哪些可用的命令。</p>
 
+<a name="Vagrantfile............"></a>
 <h2>Vagrantfile配置文件</h2>
 
 <p><code>Vagrantfile</code> 对于Vagrant就像 <code>Makefile</code> 对Make的作用一样：它被放置在每个Vagrant项目的根目录，用来配置Vagrant以及它创建的虚拟机的行为。一个最简单的配置文件如下：</p>
@@ -562,6 +597,7 @@ end
 
 <p>可以看到，<code>Vagrantfile</code> 是用标准的Ruby代码写成的。需要注意的是在大版本之间<code>Vagrantfile</code> 是不兼容的。</p>
 
+<a name="L......setup"></a>
 <h2>基本setup</h2>
 
 <p>首选创建项目目录，然后在项目目录中初始化：</p>

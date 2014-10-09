@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Font | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/font/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -32,6 +32,7 @@
 
 <p>使用Suite Fusion管理字体就可以到达这两个目的。</p>
 
+<a name="Mac.............................."></a>
 <h2>Mac上的字体集和安装路径</h2>
 
 <p>过去在Windows平台上工作的时候，字体都是放在一个地方的，而在Mac下面字体主要是下面三部分字体集组成：</p>
@@ -43,12 +44,14 @@
 </ul>
 
 
+<a name="L......Suite.Fusion...Font.Vault"></a>
 <h2>启用Suite Fusion的Font Vault</h2>
 
 <p>Suite Fusion提供了一个可以自己定义路径的Font Vault。然后你如果在<code>Preferences</code>里面把<code>Copy added fonts into the vault</code>勾上，那么所有添加到Suite Fusion的字体都会被放在一个地方。这样的好处是管理方便：保证字体没有重复，并且很容易备份。</p>
 
 <p>一旦你的字体都在Font Vault里面了，就可以使用Suitcase Fusion删除原来放在各个地方的字体了。在字体清理好之后，你就可以根据不同的项目或者是文档类型建立Set，根据需要来激活它们。</p>
 
+<a name="L.............................."></a>
 <h2>添加字体和创建字体库</h2>
 
 <p>只需要使用快捷键&#8221;Cmd+L&#8221;就可以添加字体到字体库。如果默认的字体库不符合你的要求还可以自己新建。添加字体的过程中，SF会扫描字体，提取字体信息，检测是否有错（注意，Suite Fusion不支持orphan outline和orphan bitmap字体）。</p>
@@ -72,6 +75,7 @@
 
 <p>除开字体给人的感觉很细腻之外，M+还满足了本座心中好字体的几大标准。</p>
 
+<a name="L..."></a>
 <h2>窄</h2>
 
 <p><img src="/downloads/images/2014_07/fonts_comparision.png" title="Don't touch me..." alt="fonts comparision" /></p>
@@ -82,12 +86,14 @@
 
 <p>当然，如果你对码农们为什么需要显示一根80个字符宽度的标线有疑问：这一方面是<a href="http://programmers.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width">处女座程序员对历史的坚持</a>，另一方面，如果你经常写出很长的语句，也意味着你的代码质量有问题。</p>
 
+<a name="L..."></a>
 <h2>全</h2>
 
 <p>除开基本的字符，M+因为是出自日本设计师的关系，字符很全。</p>
 
 <p><img src="/downloads/images/2014_07/fonts_map.png" title="Don't touch me..." alt="fonts map" /></p>
 
+<a name="L..."></a>
 <h2>清</h2>
 
 <p>对程序员来说，清楚的字体主要是指：</p>

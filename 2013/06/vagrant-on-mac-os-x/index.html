@@ -122,6 +122,7 @@
 
 <div class="entry-content"><p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
 
+<a name="L......VirtualBox"></a>
 <h2>安装VirtualBox</h2>
 
 <p>VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、Linux和Solaris上都发行了相应版本。</p>
@@ -133,6 +134,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Vagrant"></a>
 <h2>安装Vagrant</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -152,6 +154,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="Vagrant........."></a>
 <h2>Vagrant的好处</h2>
 
 <p>软件开发，特别是Web应用的开发正处于环境异常复杂的年代。为了在开发和实际部署的环境直接做到无缝切换，虚拟化技术被大规模的使用。与此同时，自动的配置管理，如 <code>Chef</code> 或者 <code>Puppet</code> 也在发挥着巨大的作用。Vagrant就是在这些技术的基础上进行了集成，从而完成（虚拟化+自动配置管理）的效果。</p>
@@ -168,10 +171,12 @@
 
 <p>如果管理过大型项目，你就知道新人和新设计的引入往往是非常大的考验。大量的环境搭建工作，都可以由Vagrant来代替。并且Vagrant的配置只需要写一次，然后分发给大家用就行了，省掉了大量的时间。</p>
 
+<a name="Vagrant..............."></a>
 <h2>Vagrant可执行文件</h2>
 
 <p>Vagrant安装好之后，主要是通过命令行使用。 <code>vagrant</code> 命令带很多子命令，如 <code>vagrant up</code> ， <code>vagrant ssh</code> ， <code>vagrant package</code> 等等。敲 <code>vagrant</code> 就可以看到有哪些可用的命令。</p>
 
+<a name="Vagrantfile............"></a>
 <h2>Vagrantfile配置文件</h2>
 
 <p><code>Vagrantfile</code> 对于Vagrant就像 <code>Makefile</code> 对Make的作用一样：它被放置在每个Vagrant项目的根目录，用来配置Vagrant以及它创建的虚拟机的行为。一个最简单的配置文件如下：</p>
@@ -189,6 +194,7 @@
 
 <p>可以看到，<code>Vagrantfile</code> 是用标准的Ruby代码写成的。需要注意的是在大版本之间<code>Vagrantfile</code> 是不兼容的。</p>
 
+<a name="L......setup"></a>
 <h2>基本setup</h2>
 
 <p>首选创建项目目录，然后在项目目录中初始化：</p>

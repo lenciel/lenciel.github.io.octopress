@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Productivity | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/productivity/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -20,6 +20,7 @@
     <id>http://lenciel.cn/2013/03/use-done-list-rather-than-todo-list</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/nerd_sniping.png" title="Don't touch me..." alt="nerd sniping" /></p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>起</strong></h2>
 
 <p><a href="http://xkcd.com/730/" target="_blank">xkcd</a>一直是本座最喜欢的网站（嗯哼）。上面这幅图说了一个很有趣的现象，正好最近深有体会，就来这边吐槽一下。整个经过是：</p>
@@ -48,6 +49,7 @@
 
 <p>经过了4天，本座把Wii Remote用蓝牙连到PC输出手柄信号，本座有了一个不错的vim下开发python的环境，本座还学习了一点儿R。唯一没有开始的就是，嗯，还没有开始写那个游戏。</p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>承</strong></h2>
 
 <p>你的情况可能具体细节和我不一样，但是结果估计都是南辕北辙：你是网页设计师，在需要画 <code>wireframe</code> 的时候花了一大把时间去看搜索出来的新鲜的、华丽的 <code>CSS3</code> 效果；你上淘宝买手机结果研究移动电源用了4个小时；你想学怎么养花结果因为选盆子下面水漏的形状耽误了。</p>
@@ -62,6 +64,7 @@
 
 <p>人的精力是有限的，如果你长期处于这种状况（太正常了，如果你是玩电脑的话），可就要小心了。</p>
 
+<a name="L.strong......strong."></a>
 <h2><strong>转</strong></h2>
 
 <p>其实这种发散的工作方式并不是完全错误的。其实在我们这个行业，这种“总想追求更好”的想法，是整个Agile的基础。Facebook在自己的员工的邮件<a href="http://blogs.wsj.com/deals/2012/02/01/mark-zuckerbergs-letter-from-the-facebook-filing/" target="_blank">里面</a>写到：</p>
@@ -72,6 +75,7 @@
 
 <blockquote><p>I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don&#8217;t know quite about what problems are worth working on … He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. ….</p></blockquote>
 
+<a name="L.strong......strong."></a>
 <h2><strong>合</strong></h2>
 
 <p>不能闭门造车，又需要有固定的输出值，怎么办？今天本座是这么办的：</p>

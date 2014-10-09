@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -47,6 +47,7 @@
 <p>下面是本座最近撸完的一个项目，印到衣服上感觉还好吧：
 <img src="/downloads/images/2014_08/yawp.png" title="yawp dependencies" alt="yawp" /></p>
 
+<a name="L......"></a>
 <h2>结论</h2>
 
 <p>首先，本座挺喜欢Snakefood那种Unix范儿的：所有的命令都可以给其他命令来一管，比如：</p>
@@ -273,6 +274,7 @@ print d
 
 <p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度。</p>
 
+<a name="L.strong.Hash..strong."></a>
 <h2><strong>Hash</strong></h2>
 
 <p>hash就是给输入的字符串生成一个固定长度的字符串（被称为hash值）。理想的hash要满足：</p>
@@ -288,6 +290,7 @@ print d
 
 <p>hash函数可以被用来计算checksum，也可以用来进行数字签名和认证。</p>
 
+<a name="L.strong.MD5..strong."></a>
 <h3><strong>MD5</strong></h3>
 
 <p>1991年面世的一种hash算法，生成的字符串长度为128bit。</p>
@@ -320,10 +323,12 @@ def get_file_checksum(filename):
     return h.hexdigest()
 </code></pre>
 
+<a name="L.strong...............strong."></a>
 <h2><strong>加密算法</strong></h2>
 
 <p>加密算法使用key把输入的文本变成加密的文本。有两种加密的方式：分块和流。分块处理的单位是固定大小比如8或者16个bytes，流则是一个一个byte。只有知道了解密的<code>key</code>才能对加密的文本进行解密。</p>
 
+<a name="L.em.........em."></a>
 <h3><em>分块</em></h3>
 
 <p>DES是分块加密的一种，其处理对象的大小是8个bytes。DES最简单的模式是所谓的<code>ECB( electronic code book)模式</code>，也就是每个block都是独立加密，最后组成整个加密后的文本。</p>
@@ -361,6 +366,7 @@ def get_file_checksum(filename):
 'abcdefghijklmnop'
 </code></pre>
 
+<a name="L.em......em."></a>
 <h3><em>流</em></h3>
 
 <p>这些算法基于一个个bytes，所以block的大小总是1 byte。pycrypto提供了两个这样的算法：<code>ARC4</code> 和 <code>XOR</code>。这种基于流的算法只有一种模式：<code>ECB</code>。</p>
@@ -378,6 +384,7 @@ def get_file_checksum(filename):
 'abcdefghijklmnop'
 </code></pre>
 
+<a name="L.strong...............strong."></a>
 <h3><strong>应用程序</strong></h3>
 
 <p>在程序里面我们常常使用DES3对文件进行加密解密操作。一般来说操作对象是文件时，总是分成一个个chunck来处理以免占用太多内存。如果读入的chunck少于16bytes，就需要扩展它才能进行加密。</p>
@@ -433,12 +440,14 @@ to_enc.enc: ??~?E??.??]!=)??"t?
 to_enc.dec: this content needs to be encrypted.
 </code></pre>
 
+<a name="L.strong.Public-key.algorithms..strong."></a>
 <h2><strong>Public-key algorithms</strong></h2>
 
 <p>上面提到的加密算法的一大问题是双方都需要知道key。而<code>public-key算法</code>提供了两个key，一个用来加密，一个用来解密。</p>
 
 <p><img src="/downloads/images/public_private_key.png" title="Don't touch me..." alt="ecb" /></p>
 
+<a name="L.strong.public.private.key..strong."></a>
 <h3><strong>public/private key</strong></h3>
 
 <p>使用pycrpto很容易就可以生成一对<code>private/public key</code>，生成key的时候必须规定key的长度，越长越安全。除开长度，还需要设定生成key的方法。下面是一个使用RSA生成1024bit长度key的过程：</p>
@@ -464,6 +473,7 @@ True
 True
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>加密</strong></h3>
 
 <p>现在我们有了一对key，我们就可以加密一些数据了。加密的时候使用的是公钥: <code>public key</code> ：</p>
@@ -479,6 +489,7 @@ True
 \xce\x13 \xaf\x10|\x80\x0e\x14\xbc\x14\x1ec\xf6Rs\xbb\x93\x06\xbe',)
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>解密</strong></h3>
 
 <p>只要有用于解密的私钥(private key)解密是很简单的：</p>
@@ -487,6 +498,7 @@ True
 'abcdefgh'
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>签名</strong></h3>
 
 <p>对信息进行签名，可以用来验证信息的作者，让我们相信它的来源。下面这个例子展示了如何先算出信息的hash值，然后送给RSA key的<code>sign()</code>方法。使用其他算法如<code>DSA</code>或者是<code>ElGamal</code>也类似。</p>
@@ -508,6 +520,7 @@ True
 6400328917297225219942913552938646767912958849053L,)
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>验证</strong></h3>
 
 <p>只要有公钥，验证信息就很简单了。未加密的文本和签名一起被发送给接收方。接收方计算hash值然后调用公钥的<code>verify()</code>方法来进行验证：</p>

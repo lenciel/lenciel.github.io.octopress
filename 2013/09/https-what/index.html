@@ -124,6 +124,7 @@
 
 <p>使用HTTPS之后，数据是如何被保护的？Client和Server之间如果有人在hacking，HTTPS建立的连接凭什么就是安全的？什么是安全证书？为什么有时候我们需要付钱才能买到一个？</p>
 
+<a name="A.Series.of.Tubes"></a>
 <h3>A Series of Tubes</h3>
 
 <p>当你访问网页的时候，你发出的请求其实要翻越各种网关走很长的路，这一路上都可能有妖魔鬼怪在等着搞你，的数据。</p>
@@ -141,6 +142,7 @@
 
 <p>当然，还有一个很多开发组织羞于承认的原因，加密增加了开发的难度。但是，只要是负责任的Web应用开发者，都不会让你的密码等关键信息以明文的方式传来传去。</p>
 
+<a name="Transport.Layer.Security..TLS."></a>
 <h3>Transport Layer Security (TLS)</h3>
 
 <p>TLS作为SSL的前驱协议，常常被用来实现对HTTP连接的加密（比如用来实现HTTPS）。TLS是传输层的，因此在<a href="http://en.wikipedia.org/wiki/OSI_model#Examples">OSI模型</a>里面比HTTP更底层，换句话说，在HTTP连接之前，先要进行TLS连接的建立。</p>
@@ -151,6 +153,7 @@
 
 <p><strong>Symmetric Key Cryptography</strong></p></blockquote>
 
+<a name="Public.Key.Encryption"></a>
 <h3>Public Key Encryption</h3>
 
 <p><code>Public Key Encryption</code>使用公钥私钥进行加密解密：通信中的各方都有一对公钥私钥。明文信息用公钥加密成密文，密文用私钥解密成明文。</p>
@@ -163,6 +166,7 @@
 
 <p>这是怎么做到的? 数学!</p>
 
+<a name="Diffie-Hellman"></a>
 <h4>Diffie-Hellman</h4>
 
 <p>这种交换通常使用所谓的<a href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman密钥交换流程</a>。这套流程主要是让Client和Server之间生成一个<code>shared secret key</code>。</p>
@@ -189,12 +193,14 @@ Bob这边：(Alice的Bob私钥值次方) % 大质数</p></blockquote>
 
 <p>从图里可以看到，双方一开始共享的黄色，在最后生成了共享的褐色，而这期间交换的只有被称为<code>mixture</code>的中间产物：即使有人监听并拿到，也无所谓。</p>
 
+<a name="Symmetric.Key.Encryption"></a>
 <h3>Symmetric Key Encryption</h3>
 
 <p>前面说的这种流程每个session只用在初始化连接的时候发生一次。一旦生成了<code>shared secret</code>，Client和Server之间就可以使用<a href="http://en.wikipedia.org/wiki/Symmetric-key_cryptography">symmetric-key加密系统</a>了。</p>
 
 <p>这种使用<code>shared secret</code>的加密通信会涉及一系列的<a href="http://en.wikipedia.org/wiki/Cipher_suite">cipher suite</a>，也就是一系列的加密算法。</p>
 
+<a name="L......"></a>
 <h3>认证</h3>
 
 <p>Diffie-Hellman密钥交换流程没有解决认证的问题。这就好比我们拿起电话跟朋友打过去，先进行了DH交换，这样这次通话是其他人没法破解的。但是如果其实对方根本就不是朋友，那么还是白加密了。</p>
@@ -203,6 +209,7 @@ Bob这边：(Alice的Bob私钥值次方) % 大质数</p></blockquote>
 
 <p>证书是什么东西？为什么它可以让通信更安全？</p>
 
+<a name="L......"></a>
 <h3>证书</h3>
 
 <p>粗略地说，证书就是一个使用数字签名把机器的公钥和身份进行绑定的文件，来防止有人把自己的公钥亮出来冒充他人身份。在实际操作中，身份主要是通过域名来体现。</p>

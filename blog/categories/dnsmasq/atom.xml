@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dnsmasq | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/dnsmasq/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -28,6 +28,7 @@
 
 <p>这里记一下如何用<a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a>把所有<code>dev</code>结尾的域名都指向<code>127.0.0.1</code>。</p>
 
+<a name="L......dnsmasq"></a>
 <h4>安装dnsmasq</h4>
 
 <p>在Mac下安装什么东西本座都用<a href="http://brew.sh/">homebrew</a>，先更新brew:</p>
@@ -51,6 +52,7 @@ Then to load dnsmasq now:
 /opt/boxen/homebrew/Cellar/dnsmasq/2.69: 7 files, 488K, built in 22 seconds
 </code></pre>
 
+<a name="L......dnsmasq"></a>
 <h4>配置dnsmasq</h4>
 
 <p>在<code>dnsmasq.conf</code>里面添加一个配置<code>dev</code>的配置：</p>
@@ -64,6 +66,7 @@ Then to load dnsmasq now:
 $ sudo launchctl start homebrew.mxcl.dnsmasq
 </code></pre>
 
+<a name="L......OSX"></a>
 <h4>配置OSX</h4>
 
 <p>安装了dnsmasq之后你有两个选择：</p>
@@ -84,6 +87,7 @@ $ sudo vi /etc/resolver/dev
 
 <p>在<code>/etc/resolver/dev</code>里面添加一行<code>nameserver 127.0.0.1</code>就可以了。</p>
 
+<a name="L............"></a>
 <h3>测试效果</h3>
 
 <pre><code class="bash">

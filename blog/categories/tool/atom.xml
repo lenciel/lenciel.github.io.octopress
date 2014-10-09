@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tool | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -20,6 +20,7 @@
     <id>http://lenciel.cn/2013/03/boxen-introduction</id>
     <content type="html"><![CDATA[<p>如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架<a href="http://boxen.github.com/">Boxen</a>，趁着新笔记本需要起轿，尝试了一把。</p>
 
+<a name="Boxen............"></a>
 <h2>Boxen框架简介</h2>
 
 <p>Boxen基于大红大紫的<a href="https://puppetlabs.com/">Puppet</a>，但和后者目前主要侧重于服务器的Privision不同，Boxen更主要是用于组织内工作人员使用的机器的配置和管理流程标准化。</p>
@@ -30,6 +31,7 @@
 
 <p>简单地概括Boxen的思路，就是像对待产品一样对待开发环境。使用包括版本控制，持续集成这些手段，在团队中维护一个开发环境的仓库。如果你想更深入地了解Boxen的设计哲学，可以看看这个slide：<a href="https://speakerdeck.com/wfarr/boxen">BOXEN by Will Farrington</a>。</p>
 
+<a name="L......Boxen"></a>
 <h2>使用Boxen</h2>
 
 <p>首先确保你的初始环境是干净的：</p>
@@ -50,6 +52,7 @@
 
 <p>接下来就是安装一些必须的软件，比如Git和Xcode的 <code>Command Line Tools</code>。</p>
 
+<a name="Xcode.CLT"></a>
 <h3>Xcode CLT</h3>
 
 <ul>
@@ -61,12 +64,14 @@
 
 <p><img src="/downloads/images/xcode_clt.png" title="Don't touch me..." alt="Xcode Command Line Tools" /></p>
 
+<a name="L......FireVault2"></a>
 <h3>打开FireVault2</h3>
 
 <p>Boxen默认会希望硬盘信息是被加密的：</p>
 
 <p><img src="/downloads/images/turn_on_fire_vault.png" title="Don't touch me..." alt="Turn on FireVault2" /></p>
 
+<a name="Fork.our-boxen"></a>
 <h3>Fork our-boxen</h3>
 
 <p><a href="https://github.com/boxen/our-boxen">our-boxen</a>是Boxen提供的基线repo，也是整个Boxen框架里面文档最全的一个repo。</p>
@@ -115,6 +120,7 @@ Warning: Host is missing hostname and/or domain: suttlemac
 
 <p>然后新开一个shell运行 <code>boxen --env</code>，结果一切正常你的box就配置完毕了。</p>
 
+<a name="L...............box"></a>
 <h2>自定义你的box</h2>
 
 <p>默认安装的内容当然不一定对你的口味，如果你用过Puppet那么自定义Boxen的box是非常简单的。不过埋头开干之前还是可以check一下是不是已经<a href="https://github.com/boxen">有人做好了</a>。这些做好的repo可以直接通过修改配置文件是用，因为Boxen对librarian-puppet做了wrapper，对fetch各种module也做了wrapper。</p>
@@ -165,6 +171,7 @@ end
 
 <p>接下来只需要运行 <code>boxen</code> (如果你运行了 <code>boxen --env</code> 命令会在可执行路径里)或者是 <code>boxen --debug</code> (如果你需要更多的verbose信息)，指定的软件就安装上了。</p>
 
+<a name="What.s.Next"></a>
 <h2>What&rsquo;s Next</h2>
 
 <p>目前为止主要是解释了如何使用Boxen来安装一些基本软件。目前本座机器上使用Boxen安装的软件包括：</p>

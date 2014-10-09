@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -48,6 +48,7 @@
     <id>http://lenciel.cn/2012/02/integration-of-proguard-and-maven-in-android-projects</id>
     <content type="html"><![CDATA[<p>今天被同事问到怎么在release版本里面所有的日志都去掉的时候，竟然只能回忆起用<code>ProGuard</code>做过这个，完全忘记怎么做的了，特立此存照。文章里面使用的例子放在<a class="network" href="https://github.com/lenciel/AMP" rel="me"><img src="http://lenciel.cn/downloads/images/github_button.png" alt="" width="16" height="16" /> Android-Maven-ProGuard-Sample-App</a>。</p>
 
+<a name="ProGuard......"></a>
 <h4>ProGuard简介</h4>
 
 <p>在移动设备上面开发应用程序，性能是一个很关键的指标。你的老板走过来要你提高性能的时候，你的第一反应有可能是抓起熟悉的工具花几个小时profile自己的应用，找出那些时间都花在哪里了。在使用这么终极的手段之前，千万不要忘记了先试试ProGuard。</p>
@@ -78,6 +79,7 @@
 
 <p>如此看来，ProGuard真是美好事物一枚。但是ProGuard也不是随手一点药到病除的，也有一点学习曲线。</p>
 
+<a name="L......ProGuard"></a>
 <h4>启用ProGuard</h4>
 
 <p>如果你使用Eclipse的ADT，每个新建的项目都会生成一个<code>proguard.cfg</code>文件在项目的根目录。你对ProGuard的所有设定就是在这个文件里面完成的。要想在项目里面启用Proguard，只需要把同样在项目根目录的<code>default.properties</code>里面加上：</p>
@@ -104,6 +106,7 @@
 
 <p>从执行过程的日志来看，ProGuard对类文件的操作分为三个步骤：shrink，optimize，obfuscate。每个步骤都是可选的，可以通过使用<code>-dontshrink</code>、<code>-dontoptimize</code>和<code>-dontobfuscate</code>来分别关掉。一般来说，不用因为结果“不如人意”就随意的关掉某个步骤。完整的进行三个步骤，然后不断的改变规则，直到达到最佳效果，是使用ProGuard的最佳方式。</p>
 
+<a name="L......ProGuard......"></a>
 <h4>编写ProGuard规则</h4>
 
 <p>ProGuard和很多工具一样，其强大之处在于选项够多。作为Android开发者使用，首先心里要明白，没有一个唯一的最佳配置规则。在此基础上，去掌握一些对Android程序而言通常是适用的规则。然后，就像在文章里面已经反复强调过的一样，以这些规则为起点，反复的调整你的规则，找出一个对自己的程序最适用的规则。</p>
@@ -178,6 +181,7 @@
 
 <p>可以看到，使用ProGuard存在一个不断调优的过程。他山之石，可以攻玉，已经有很多人使用ProGuard来优化Android程序了，于是也有了一些被普遍采用的规则和选项，我们下面来个简单说明。</p>
 
+<a name="L....................."></a>
 <h4>常用规则和选项</h4>
 
 <p>前面看到的规则对于例子程序就足够了。但是如果我们的程序使用了<code>Service</code>怎么办？和<code>Activity</code>一样，<code>Service</code>也是在manifest xml里面定义的，因此我们需要对<code>proguard.cfg</code>做一定的扩展。</p>
@@ -252,6 +256,7 @@
 <pre><code class="java">-optimizationpasses 5
 </code></pre>
 
+<a name="L.........................................."></a>
 <h4>如果处理混淆后版本的错误报告</h4>
 
 <p>如果你发布了混淆的版本，有一个问题你就得面对：用户提交的问题单里面产生自这些类和方法都完全打乱过后的版本。为了展示这种问题，在Demo程序里面专门加了这么一个类：</p>

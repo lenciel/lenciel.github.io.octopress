@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Course | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/course/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -18,14 +18,7 @@
     <link href="http://lenciel.cn/2013/07/market-research/"/>
     <updated>2013-07-15T15:04:00+08:00</updated>
     <id>http://lenciel.cn/2013/07/market-research</id>
-    <content type="html"><![CDATA[<ul>
-<li>TOC
-{:toc}</li>
-</ul>
-
-
-<h2>Table Of Contents</h2>
-
+    <content type="html"><![CDATA[<a name="L.strong..............................strong."></a>
 <h4><strong>点子，执行力和市场</strong></h4>
 
 <p>Quora上有一个著名的<a href="http://www.quora.com/Startup-Advice-and-Strategy/As-first-time-entrepreneurs-what-part-of-the-process-are-people-often-completely-blind-to/answer/Mike-Sellers">问答</a>，Mike Sellers的答案里面有一部分在江湖上流传很广：</p>
@@ -84,10 +77,12 @@
 
 <p>从完成各个stage需要的时间可以看出，成功的企业都不是只有一个好点子：在状态机的前端，一定是一大堆好的点子。这些点子中的致命缺陷一定要在下面的某个stage才会暴露出来，但足够多的点子是基础。建议有一个专门的地方，<code>Google Docs</code> 也好， <code>OmniFocus</code> 也好，就是个简单的txt也好，保存和整理自己的点子，并且记录这些点子被推动到哪个阶段了。</p>
 
+<a name="L.strong.........strong."></a>
 <h5><strong>点子</strong></h5>
 
 <p>一说到开自己的公司，最重要的似乎就是一个好的点子。这就是为什么很多人觉得自己和扎克伯格之间就差一个点子而已<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>；也是为什么那么多完全不生产产品的<a href="http://www.npr.org/blogs/money/2013/06/07/188370495/when-patents-attack-part-two">知识产权风投公司</a>靠着专利费<a href="http://www.plainsite.org/articles/article.html?id=2">活得好好</a>的。换句话来说，在很多人看来，只要有了好点子，如何实现并且推向市场就只是一些细节的问题了。</p>
 
+<a name="L.strong............strong."></a>
 <h5><strong>执行力</strong></h5>
 
 <p><a href="http://www.wired.com/wired/archive//6.11/metcalfe_pr.html">Bob Metcalfe</a>，以太网的发明者，3Com的创始人却有另一种认识：</p>
@@ -102,16 +97,19 @@
 
 <p>这也是另一个对创业者来说执行力比点子更重要的原因：一旦你的点子被市场证明是可行的，就会有模仿者。不管多么伟大的社会，一旦一种商业模式被验证，就会有人开始跟进：这是因为找到一个solution比<a href="http://en.wikipedia.org/wiki/Primality_test">验证一个solution</a>难多了。所有跟进的人在抄袭你的核心功能时，都会加上他们自己独特的改进，这个竞争的过程中你必须有很强的执行力才能保持领先并脱颖而出。从Google战胜AltaVista，Facebook战胜Myspace和Friendster的过程都验证了这点。这也是为什么保持专注，不断努力的实现<a href="http://www.ashmaurya.com/2009/11/achievingproductmarketfit/">product-market fit</a>而不要惊动竞争对手显得特别关键的原因。</p>
 
+<a name="L.strong.........strong."></a>
 <h5><strong>市场</strong></h5>
 
 <p>除开前面两个观点之外，还有一种观点。站在投资者角度，可以把&#8221;点子&#8221;对应到&#8221;产品&#8221;，把&#8221;执行力&#8221;对应到&#8221;团队&#8221;。也就是说，一个足够好的团队是可以推动各种执行层面的细节（财务上的，商务上的，技术上的，法律上的），把一个好的点子落实成一个产品的。但是这些仍然不是全部。用<a href="http://pmarchive.com/guide_to_startups_part4.html">Marc Andreessen</a>的话来说：</p>
 
 <p><blockquote><p>Personally, I’ll take the third position – I’ll assert that market is the most impor- tant factor in a startup’s success or failure.</p></p><p><p>Why?</p></p><p><p>In a great market – a market with lots of real potential customers – the market pulls product out of the startup. The market needs to be fulfilled and the market will be fulfilled, by the first viable product that comes along. The product doesn’t need to be great; it just has to basically work. And, the market doesn’t care how good the team is, as long as the team can produce that viable product.</p></blockquote></p>
 
+<a name="L.strong.......................................................................................strong."></a>
 <h5><strong>那么究竟什么是最重要的：产品/点子，执行力/团队，还是市场?</strong></h5>
 
 <p>任何有一点儿<a href="http://cs229.stanford.edu/materials.html">机器学习</a>知识的人都能明白这三者是没有绝对的优先顺序的：它们都是关键因子，我们需要挨个解决。首先，我们要解决的问题是如何找到一个好点子？</p>
 
+<a name="L.strong...............strong."></a>
 <h5><strong>点子迷宫</strong></h5>
 
 <p>一个好的创始人不应该只是有个好点子，他/她应该具备鸟瞰“点子迷宫”的能力。把解决一个需求的各种点子想象成迷宫里面的各条道路，作为消费者很可能只看到了拿出了产品的公司走的那条路。而作为好的创始人需要了解其他的公司是死在什么样的路上以及它们遇到了什么样的无法解决的问题。下图就是一个迷宫的例子：</p>
@@ -124,14 +122,17 @@
 
 <p>因此，好的创始人要有能力鸟瞰整个迷宫，了解所有可能的路径和可能的问题。如果你能够使用示例中图表的形式详细的描述整个问题域，分析各种决策树上的各个分支，解释为什么你的计划能够顺利通过迷宫到达出口而不会遇到前面20个公司遇到的这样那样的问题，你可能就真的有一个不错的点子了。这就是为什么了解行业历史和做足够市场调查是那么重要。</p>
 
+<a name="L.strong............strong."></a>
 <h5><strong>执行力</strong></h5>
 
 <p>有了好的点子之后，如何建立执行力？其实简单来说，执行力无非是把todo list上的下一个东西做了。这是一个说起来很容易，但做起来非常有难度的事情：你要学会对其他人说不，你要学会对干扰说不，聚精会神地完成你的任务。</p>
 
 <p>在各种保持专注力的方法论中，最好的是Thiel的 <a href="http://blog.idonethis.com/post/37113345206/peter-thiels-unorthodox-management-philosophy-of">One thing</a> ：组织里面每个人在任何时间都应该不仅知道自己首要的任务是什么，同时也要明白别人手里首要任务是什么。Marc Andreessen的 <a href="http://blog.idonethis.com/post/34170232603/marc-andreessens-productivity-trick-to-feeling">anti-todo list</a> 也<a href="http://lencie.cn/blog/2013/03/15/use-done-list-rather-than-todo-list/">值得一试</a>。</p>
 
+<a name="L.strong.....................strong."></a>
 <h4><strong>你的目标市场</strong></h4>
 
+<a name="L.strong..............vs................strong."></a>
 <h5><strong>创业公司 vs. 小型企业</strong></h5>
 
 <p>清楚创业公司和小企业之间的<a href="http://www.kauffman.org/uploadedFiles/DownLoadableResources/a-tale-of-two-entrepreneurs.pdf">区别</a>是非常重要的。一个创业公司关注的是增长：如何引领行业，如何从小做大，如何创造丰厚的利润。Google，Facebook，Square，AirBnB等，这些公司都是标志性的创业公司。相比而言，小企业的目标可能不是那么宏伟：它们建立的基础多半是在一定地域内的某个行业有一些特别的优势，比如咖啡店，洗衣店等。</p>
@@ -142,6 +143,7 @@
 
 <p>另外创业公司需要锻炼的就是和资本打交道的能力。VC的钱既可能造成<a href="http://mystartuphas30daystolive.tumblr.com/">严重的问题</a>，也可能让创业公司一飞冲天。做出决定的最核心的考量在于你的野心和你承受失败的能力：如果你不能承受从0开始，那就不要希望做到很大（<a href="http://diffle-history.blogspot.com/">1</a>,<a href="http://www.paulgraham.com/startupmistakes.html">2</a>,<a href="http://www.businessinsider.com/33-startups-that-died-reveal-why-they-failed-2013-6?op=1">3</a>）。</p>
 
+<a name="L.strong...................................................strong."></a>
 <h5><strong>创业公司必须清楚自己的成本和利润</strong></h5>
 
 <p>如果你是有一飞冲天的雄心也准备好了迎接失败，那么投身到一个行业之前，也要先调查清楚你的产品是不是能够承载你的梦想。</p>
@@ -180,6 +182,7 @@
 
 <p>这些简单的计算告诉我们：首先，降成本是非常关键的，比如通过使用软件把单位产品的成本变成固定的成本。其次，把整个事情做起来需要的资本是要提前计算的，这也是VC们需要的数据之一。最后，定价也是需要技巧的。由于一开始没有竞争，你可以定一个相对高的价格来赚取足够的成本。而且，<a href="http://innovatobase.wordpress.com/2013/03/04/loyal-customers-vs-groupon-csutomers/">研究证明</a>免费或者是以极低折扣拿到产品的用户是没有忠诚度的。那些给钱的用户会认为自己也参与了产品的过程（比如提出建议等）。</p>
 
+<a name="L.strong.............................................strong."></a>
 <h5><strong>创业公司必须清楚经济体的规模</strong></h5>
 
 <p>当有了一个从数据上看起来不错的产品之后，你还要研究所处的市场是什么样一个规模。</p>
@@ -204,10 +207,12 @@
 
 <p>另外需要注意的是均价低的产品需要自动化程度极高的生产和稳定的质量才会有利润。如果你$1的可乐经常被消费者投诉你是没有办法做下去的。相对的，低价的产品对销售的需求也降低了：你不需要售楼小姐那样巧舌如簧的队伍也能把可乐卖出去，不是吗？</p>
 
+<a name="L.strong...............strong."></a>
 <h4><strong>市场调查</strong></h4>
 
 <p>在了解了市场调查的重要性之后，我们究竟如何能够掌握一个市场的规模以及相应的我们的产品需要多少财力人力的投入呢？</p>
 
+<a name="L.strong.....................strong."></a>
 <h5><strong>市场调查工具</strong></h5>
 
 <p>假设你现在对一个市场有了兴趣。比如，你相信新闻里面说的<a href="http://www.scmp.com/business/money/markets-investing/article/1076500/yuan-hailed-world-reserve-currency">人民币</a>最终会取代美元成为<a href="http://online.wsj.com/article/SB10001424052702303561504577496233362694486.html">世界通用币</a>。于是你想做一个服务让人们可以方便的把USD换成RMB。你如何验证你的构想是否成立？</p>
@@ -223,6 +228,7 @@
 
 <p>这些步骤主要的目的就是，在你开始投入时间和金钱进行所谓的MVP(<a href="http://en.wikipedia.org/wiki/Minimum_viable_product">Minimum Viable Product</a>)开发之前，需要验证市场的存在性。了解市场这件事情要从数据入手，也是一个重要原则。就像福特说的一样，如果他只是去问每个消费者他们想要什么，可能他们的回答会是：一匹更快的马。</p>
 
+<a name="L.strong...........................strong."></a>
 <h5><strong>如何确定产品层次</strong></h5>
 
 <p>在你有了点子，也调查清楚了市场，如果进行你产品的市场定位？首先可以读读Kickstarter的<a href="http://blog.boundforanything.com/2012/02/how-to-set-tiers-on-kickstarter/">product tiers</a>和<a href="http://www.kickstarter.com/blog/trends-in-pricing-and-duration">trends</a>。</p>
@@ -231,10 +237,12 @@
 
 <p>当然，如果你是认真的要开始一个startup，付费给专业的机构进行市场调查可能比使用这些产品对你来说性价比更高。</p>
 
+<a name="L.strong.Wireframe...Copywriting...Design..strong."></a>
 <h4><strong>Wireframe，Copywriting和Design</strong></h4>
 
 <p>一旦确定了要动手，你就得首先设计你的产品网站的mockup，也就是所谓的wireframe。</p>
 
+<a name="L.strong.Wireframe..strong."></a>
 <h5><strong>Wireframe</strong></h5>
 
 <p>优秀的Wireframe工具很多，特别是下面几个：</p>
@@ -249,6 +257,7 @@
 
 <p>熟练掌握上面的一两个就足够了，Wireframe的目的是为了得到一个全站的<a href="http://wireframes.linowski.ca/2009/12/omnigraffle-wireflows/">架构和流程示意</a>。</p>
 
+<a name="L.strong.Copywriting..strong."></a>
 <h5><strong>Copywriting</strong></h5>
 
 <p>筑造品牌形象的一些原则：</p>
@@ -261,6 +270,7 @@
 </ul>
 
 
+<a name="L.strong.Design..strong."></a>
 <h5><strong>Design</strong></h5>
 
 <p>设计的一些原则：</p>

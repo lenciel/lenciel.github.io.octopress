@@ -121,6 +121,7 @@
 
 <p>这，当然也是错误的。unicode和16bit从来就没有必然联系。</p>
 
+<a name="L.strong..................strong."></a>
 <h2><strong>治学先治史</strong></h2>
 
 <p>最初计算机可以读的，是小箭猪打孔机处理过的卡片。不久，<a href="http://en.wikipedia.org/wiki/EBCDIC" target="_blank">EBCDIC</a>编码方式得到了使用。这些东西，和现代的计算机编码解码已经无关。</p>
@@ -141,6 +142,7 @@
 
 <p>但是对于大多数写程序的人来说，他们仍然认为一个字符是8bit，因为他们很少需要把一种语言的字符拿到另一种语言的平台上去处理。不过，当世界很多角落都已经通了internet之后，世界变平了。人们看到了满坑满谷的乱码，于是<code>Unicode</code>出现了。</p>
 
+<a name="L.strong.Unicode..strong."></a>
 <h2><strong>Unicode</strong></h2>
 
 <p><code>Unicode</code>组织和天朝搞奥运会一样，一出来就是打着同一个世界，同一个字符集的口号。不过，和航空爱好者普遍以为“太空没有重力”一样，有很多<code>Unicode</code>的支持者都以为<code>Unicode</code>是一种16位的字符集，<strong>这种想法其实是不对的</strong>。</p>
@@ -165,6 +167,7 @@
 
 <p>那么这两坨<code>u5168\u90e8</code>怎么在内存中放置，还要看你是用的哪种编码才能确定。</p>
 
+<a name="L.strong.........strong."></a>
 <h2><strong>编码</strong></h2>
 
 <p>Unicode的编码，最先被想到也是最容易被想到的，就是使用两个byte，16个bit（这也是后来造成unicode是双字节的误会的起源）。比如我们前面说了“全部”：</p>
@@ -189,6 +192,7 @@
 
 <p>世界清静了一段时间，每个人都过得幸福美满。但是不久，使用英语的主流程序员队伍看到内存里面大片大片的<code>00</code>（英文的Unicode都是<code>+U00FF</code>以下的，记得吗？），就难免有希望处理稀疏矩阵的怨念。也难怪，他们又不是中国的官僚，看到那么多旧格式的文档需要转换，看到同样的英文文档保存的大小翻倍了，他们当然会怨念。于是，<code>Unicode</code>组织也和天朝首次申奥一样，在相当长的一段时间内被人淡忘了。</p>
 
+<a name="L.strong.UTF-8..strong."></a>
 <h2><strong>UTF-8</strong></h2>
 
 <p>UTF-8<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>的思想一句话就能说清：对code point分段进行编码。从0-127的用8个bit，后面的用16个、24个、32个…</p>
@@ -200,6 +204,7 @@
 
 <p>由于很多旧的<code>encoding</code>方式下，有的Unicode的码位没有包含，比如传统的欧洲字符集<code>ISO-8859-1</code><sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup> ，如果你要它显示中文，就会看到一串的问号。而UTF-x则都包括了所有的Unicode的<code>code point</code>。</p>
 
+<a name="L.strong...........................strong."></a>
 <h2><strong>你只要记住一点点</strong></h2>
 
 <p>你居然读到了这里……好吧，我知道，不是每个人都需要知道上面的东西。作为程序员你只需要知道一件事情：</p>

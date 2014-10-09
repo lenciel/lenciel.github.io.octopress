@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tutorials | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tutorials/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -34,6 +34,7 @@
 
 <p>那么，如果你到了一个新公司，推开门发现那是一个蛮荒之地，应该怎么办呢？这篇先理一下基本的概念，然后后面分节描述一下讲到的这些工具具体要怎么配置怎么用。</p>
 
+<a name="L........."></a>
 <h1>善其器</h1>
 
 <p>先check一下东西齐不齐活:</p>
@@ -50,6 +51,7 @@
 
 <p>你选择的工具当然对后面的流程有很大的影响。我们公司是采用<code>git</code>+<code>Gitlab</code>+<code>Reviewboard</code>+<code>Jenkins</code>+<code>fabric</code>来做部署。在搭建这套东西之前我也试过很多其他的东西，有的东西我放弃了是因为太复杂不够轻量(比如Puppet)，有的东西我放弃了是因为，长得太丑(比如Gerrit)。</p>
 
+<a name="L..............."></a>
 <h1>开发者视角</h1>
 
 <p>假设你今天入职，写了段代码，从你的视角看到的deployment流程:</p>
@@ -68,6 +70,7 @@
 
 <p>整个流程里面，如果你是一个靠谱的开发者，需要花时间参与的步骤很少。但是如果是一个习惯不好的开发者，可能被review代码的人，Jenkins的自动测试，QA的集成测试或者是回归测试不断修理，惨痛的教训一定会让你成长起来的。</p>
 
+<a name="L............"></a>
 <h1>机器视角</h1>
 
 <p>很多重复性的事情，都是机器在干:</p>
@@ -103,6 +106,7 @@
 
 <p>这里很多具体的步骤需要通过Jenkins和它的插件甚至是自己写的各种脚本来配合完成</p>
 
+<a name="L..............."></a>
 <h1>考虑扩展性</h1>
 
 <p>未知的未来，你可能会发现项目换了开发语言，项目换了JS框架，项目自动化测试改成手动了&hellip;在架构整套部署系统的时候，要做好和具体语言具体流程的解耦。</p>
@@ -127,6 +131,7 @@
 
 <p>如果是用了Jenkins，上面这些就非常方便了，因为说白了每个build不过就是当特定条件满足时执行的一堆特定脚本而已：当然，如果你发现公司还在用Ubuntu 12.04做build server，可能也没有那么方便。</p>
 
+<a name="Rants"></a>
 <h1>Rants</h1>
 
 <ol>
@@ -152,6 +157,7 @@
 
 <p>倒是从E公司就一直用到现在的<a href="http://pomodorotechnique.com">Pomodoro Technique</a><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，因为规则简单上手迅捷疗效明显，最终成为了日常生活的一部分。</p>
 
+<a name="L..."></a>
 <h2>起</h2>
 
 <p>Francesco Cirillo在1992年正式提出了<code>Pomodoro Technique</code>，命名似乎来源于手边的番茄形状的烹调定时器。简单的说，Pomodoro就是：</p>
@@ -186,28 +192,34 @@
 </ul>
 
 
+<a name="L..."></a>
 <h2>承</h2>
 
 <p>为什么这种办法是有效的呢？个人觉得主要是两方面的原因。</p>
 
+<a name="L............"></a>
 <h3>心理层面</h3>
 
+<a name="L..........................."></a>
 <h4>分解过的任务更具体</h4>
 
 <p>我们做一件事情，复杂度太高的话，兴奋度就会降低，你就会选择拖延。一件事情在被分解成很小的部分之后，才会变得清晰。甚至在操作中，如果你一个任务需要7、8个钟都迭代不完，你可能还应该把这件事情先分解成更小的子任务。</p>
 
+<a name="L..........................."></a>
 <h4>分解过的任务更可控</h4>
 
 <p>休息和工作之间的心境切换起来很难。有时候你来上班或者吃过饭之后，要进入真正做事的状态花的时间会比你想象的要多很多。番茄大法是动作导向的：上好闹钟，订好提示音，可以让你更好控制自己。</p>
 
 <p>完美主义也是妨碍你按时完成任务的一大原因。想出一个完美的解决方案，那不就是拖延么？在Pomodoro大法中有很多迭代开发的禅意：你不能用25分钟内的时间去考虑完美的方案，乖乖上好闹钟，完成25分钟的任务，然后5分钟休息时间里面去想那些改进的方案吧。</p>
 
+<a name="L..........................."></a>
 <h4>分解过的任务更有趣</h4>
 
 <p>如果任务无趣时，拖延的时间会增加。比如做项目做到最后的收尾工作之类时，常常非常无趣。分解它们，让你知道你多快就能完成它，可以激励自己。</p>
 
 <p>别人催你完成你不想完成的事情时，你多半也做不好。&#8221;have-to&#8221;和&#8221;want-to&#8221;之间的矛盾简直就是<a href="http://en.wikipedia.org/wiki/Terrible_twosX">the-terrible-two</a>终生梦魇版。通过使用番茄大法，你每天确信自己能够完成的事情能够做到心中有数。</p>
 
+<a name="L............"></a>
 <h3>生理层面</h3>
 
 <p>如果你常看球赛的话，就会知道一些关于<strong>模式</strong>的八卦。</p>
@@ -220,6 +232,7 @@
 
 <p>我们的大脑在一定环境下，会进入某种模式，处理某些问题特别迅速。这种受后天训练得到的反应是Conditioned Reflexes（条件反射）。而简短且固定的专注时间，可以训练你进入这种模式。</p>
 
+<a name="L..."></a>
 <h2>转</h2>
 
 <p>Pomodoro说到底是一种轻量的<a href="http://zh.wikipedia.org/wiki/GTD">GTD</a>规则。</p>
@@ -228,6 +241,7 @@
 
 <p>如果是对创意要求很高的工种，比如画家，作家，好像也不太适合这种非常规律的迭代。</p>
 
+<a name="L..."></a>
 <h2>合</h2>
 
 <p>拿出纸笔，写下你很想完成的一些事情。从里面挑一个最重要的，你最想马上完成的。然后：</p>
@@ -391,6 +405,7 @@ print d
 
 <p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度。</p>
 
+<a name="L.strong.Hash..strong."></a>
 <h2><strong>Hash</strong></h2>
 
 <p>hash就是给输入的字符串生成一个固定长度的字符串（被称为hash值）。理想的hash要满足：</p>
@@ -406,6 +421,7 @@ print d
 
 <p>hash函数可以被用来计算checksum，也可以用来进行数字签名和认证。</p>
 
+<a name="L.strong.MD5..strong."></a>
 <h3><strong>MD5</strong></h3>
 
 <p>1991年面世的一种hash算法，生成的字符串长度为128bit。</p>
@@ -438,10 +454,12 @@ def get_file_checksum(filename):
     return h.hexdigest()
 </code></pre>
 
+<a name="L.strong...............strong."></a>
 <h2><strong>加密算法</strong></h2>
 
 <p>加密算法使用key把输入的文本变成加密的文本。有两种加密的方式：分块和流。分块处理的单位是固定大小比如8或者16个bytes，流则是一个一个byte。只有知道了解密的<code>key</code>才能对加密的文本进行解密。</p>
 
+<a name="L.em.........em."></a>
 <h3><em>分块</em></h3>
 
 <p>DES是分块加密的一种，其处理对象的大小是8个bytes。DES最简单的模式是所谓的<code>ECB( electronic code book)模式</code>，也就是每个block都是独立加密，最后组成整个加密后的文本。</p>
@@ -479,6 +497,7 @@ def get_file_checksum(filename):
 'abcdefghijklmnop'
 </code></pre>
 
+<a name="L.em......em."></a>
 <h3><em>流</em></h3>
 
 <p>这些算法基于一个个bytes，所以block的大小总是1 byte。pycrypto提供了两个这样的算法：<code>ARC4</code> 和 <code>XOR</code>。这种基于流的算法只有一种模式：<code>ECB</code>。</p>
@@ -496,6 +515,7 @@ def get_file_checksum(filename):
 'abcdefghijklmnop'
 </code></pre>
 
+<a name="L.strong...............strong."></a>
 <h3><strong>应用程序</strong></h3>
 
 <p>在程序里面我们常常使用DES3对文件进行加密解密操作。一般来说操作对象是文件时，总是分成一个个chunck来处理以免占用太多内存。如果读入的chunck少于16bytes，就需要扩展它才能进行加密。</p>
@@ -551,12 +571,14 @@ to_enc.enc: ??~?E??.??]!=)??"t?
 to_enc.dec: this content needs to be encrypted.
 </code></pre>
 
+<a name="L.strong.Public-key.algorithms..strong."></a>
 <h2><strong>Public-key algorithms</strong></h2>
 
 <p>上面提到的加密算法的一大问题是双方都需要知道key。而<code>public-key算法</code>提供了两个key，一个用来加密，一个用来解密。</p>
 
 <p><img src="/downloads/images/public_private_key.png" title="Don't touch me..." alt="ecb" /></p>
 
+<a name="L.strong.public.private.key..strong."></a>
 <h3><strong>public/private key</strong></h3>
 
 <p>使用pycrpto很容易就可以生成一对<code>private/public key</code>，生成key的时候必须规定key的长度，越长越安全。除开长度，还需要设定生成key的方法。下面是一个使用RSA生成1024bit长度key的过程：</p>
@@ -582,6 +604,7 @@ True
 True
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>加密</strong></h3>
 
 <p>现在我们有了一对key，我们就可以加密一些数据了。加密的时候使用的是公钥: <code>public key</code> ：</p>
@@ -597,6 +620,7 @@ True
 \xce\x13 \xaf\x10|\x80\x0e\x14\xbc\x14\x1ec\xf6Rs\xbb\x93\x06\xbe',)
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>解密</strong></h3>
 
 <p>只要有用于解密的私钥(private key)解密是很简单的：</p>
@@ -605,6 +629,7 @@ True
 'abcdefgh'
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>签名</strong></h3>
 
 <p>对信息进行签名，可以用来验证信息的作者，让我们相信它的来源。下面这个例子展示了如何先算出信息的hash值，然后送给RSA key的<code>sign()</code>方法。使用其他算法如<code>DSA</code>或者是<code>ElGamal</code>也类似。</p>
@@ -626,6 +651,7 @@ True
 6400328917297225219942913552938646767912958849053L,)
 </code></pre>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>验证</strong></h3>
 
 <p>只要有公钥，验证信息就很简单了。未加密的文本和签名一起被发送给接收方。接收方计算hash值然后调用公钥的<code>verify()</code>方法来进行验证：</p>
@@ -645,14 +671,17 @@ True
     <id>http://lenciel.cn/2013/07/tmux-introduction-and-tips</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/tmux_tips_1.png" title="Don't touch me..." alt="tmux screenshot 1" /></p>
 
+<a name="L.strong.........strong."></a>
 <h3><strong>简介</strong></h3>
 
 <p><code>tmux</code> ,其实就是 <code>terminal multiplexer</code> 的简称。使用tmux你可以把多个任务同时运行起来，使用不同的 <code>tmux</code> 窗口来查看它们。你也可以 <code>detach</code> 一个 <code>session</code>，也就是让一个窗口的活动，比如编译这种耗时你又不希望断开的活动，放到后台去运行。如果你使用过 <code>screen</code> 对 <code>detach</code> 一个 <code>session</code> 应该非常熟悉。其实初用 <code>tmux</code> 的时候，它很大程度上就像一个 <code>GNU-Session</code> 外加很多窗口管理的功能。而且由于 <code>tmux</code> 使用了 <code>client-server</code> 架构，我们可以在一个总控的地方去操作所有的窗口和pannel，甚至可以在一个窗口里面切换不同的 <code>session</code>。</p>
 
+<a name="L.strong.tmux...........strong."></a>
 <h4><strong>tmux的安装</strong></h4>
 
 <p>用你的Linux package manager或者如果你和我一样在OSX可以用<code>brew</code>。另外，iTerm2<a href="http://code.google.com/p/iterm2/wiki/TmuxIntegration">集成了</a>对<code>tmux</code>的支持，它也是很多Mac上的<a href="http://tangledhelix.com/blog/2012/04/28/iterm2-keymaps-for-tmux/">程序员</a>最爱的Terminal。</p>
 
+<a name="L.strong......................Session..strong."></a>
 <h4><strong>创建一个具名的Session</strong></h4>
 
 <p>由于使用 <code>tmux</code> 可以在一个电脑上创建多个 <code>session</code> ，为了更好的管理它们我们一般可以使用名字来辨识这些 <code>session</code> 。
@@ -664,6 +693,7 @@ True
 <p>回车之后就会进入一个新的 <code>session</code> 里面。可以看到具名的<code>session</code>的<code>terminal</code>和正常打开<code>iTerm2</code>大致相同，没有特别之处。
 这个时候我们敲<code>exit</code>就会回到原来的<code>terminal</code>中去。</p>
 
+<a name="L.strong.Detaching.....Attaching..strong."></a>
 <h4><strong>Detaching 和 Attaching</strong></h4>
 
 <p>使用<code>tmux</code>一大好处就是我们可以启动<code>terminal</code>，运行一个任务在后台，然后<code>detach</code>这个<code>session</code>。如果在一般的<code>session</code>里面工作，一旦我们关闭了窗口，跑在里面的所有程序都会被退出。
@@ -700,6 +730,7 @@ basic: 1 windows (created Thu Sep 27 14:32:50 2012) [122x22]
 
 <p>后面我们可以看到在session之间进行切换还有更多更方便的办法。</p>
 
+<a name="L.strong.........strong."></a>
 <h4><strong>窗口</strong></h4>
 
 <p>很多时候我们都需要打开窗口运行多个任务。这种情况比较适用于<code>tmux</code>的窗口概念：用起来和现代操作系统里面的<code>tab</code>类似。</p>
@@ -721,6 +752,7 @@ basic: 1 windows (created Thu Sep 27 14:32:50 2012) [122x22]
 </ul>
 
 
+<a name="L.strong.........strong."></a>
 <h4><strong>分栏</strong></h4>
 
 <ul>
@@ -733,10 +765,12 @@ basic: 1 windows (created Thu Sep 27 14:32:50 2012) [122x22]
 </ul>
 
 
+<a name="L.strong..................strong."></a>
 <h4><strong>命令行模式</strong></h4>
 
 <p><code>Prefix+:</code></p>
 
+<a name="L.strong...........................strong."></a>
 <h4><strong>取得所有的快捷键</strong></h4>
 
 <p><code>Prefix+?</code></p>
@@ -918,6 +952,7 @@ basic: 1 windows (created Thu Sep 27 14:32:50 2012) [122x22]
     <id>http://lenciel.cn/2013/06/vagrant-on-mac-os-x</id>
     <content type="html"><![CDATA[<p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
 
+<a name="L......VirtualBox"></a>
 <h2>安装VirtualBox</h2>
 
 <p>VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、Linux和Solaris上都发行了相应版本。</p>
@@ -927,6 +962,7 @@ basic: 1 windows (created Thu Sep 27 14:32:50 2012) [122x22]
 <pre><code class="bash">http://www.virtualbox.org/wiki/Downloads
 </code></pre>
 
+<a name="L......Vagrant"></a>
 <h2>安装Vagrant</h2>
 
 <pre><code class="bash">http://downloads.vagrantup.com/
@@ -940,6 +976,7 @@ vagrant init lucid32
 vagrant up
 </code></pre>
 
+<a name="Vagrant........."></a>
 <h2>Vagrant的好处</h2>
 
 <p>软件开发，特别是Web应用的开发正处于环境异常复杂的年代。为了在开发和实际部署的环境直接做到无缝切换，虚拟化技术被大规模的使用。与此同时，自动的配置管理，如 <code>Chef</code> 或者 <code>Puppet</code> 也在发挥着巨大的作用。Vagrant就是在这些技术的基础上进行了集成，从而完成（虚拟化+自动配置管理）的效果。</p>
@@ -956,10 +993,12 @@ vagrant up
 
 <p>如果管理过大型项目，你就知道新人和新设计的引入往往是非常大的考验。大量的环境搭建工作，都可以由Vagrant来代替。并且Vagrant的配置只需要写一次，然后分发给大家用就行了，省掉了大量的时间。</p>
 
+<a name="Vagrant..............."></a>
 <h2>Vagrant可执行文件</h2>
 
 <p>Vagrant安装好之后，主要是通过命令行使用。 <code>vagrant</code> 命令带很多子命令，如 <code>vagrant up</code> ， <code>vagrant ssh</code> ， <code>vagrant package</code> 等等。敲 <code>vagrant</code> 就可以看到有哪些可用的命令。</p>
 
+<a name="Vagrantfile............"></a>
 <h2>Vagrantfile配置文件</h2>
 
 <p><code>Vagrantfile</code> 对于Vagrant就像 <code>Makefile</code> 对Make的作用一样：它被放置在每个Vagrant项目的根目录，用来配置Vagrant以及它创建的虚拟机的行为。一个最简单的配置文件如下：</p>
@@ -972,6 +1011,7 @@ end
 
 <p>可以看到，<code>Vagrantfile</code> 是用标准的Ruby代码写成的。需要注意的是在大版本之间<code>Vagrantfile</code> 是不兼容的。</p>
 
+<a name="L......setup"></a>
 <h2>基本setup</h2>
 
 <p>首选创建项目目录，然后在项目目录中初始化：</p>

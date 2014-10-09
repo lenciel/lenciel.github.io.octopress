@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -143,6 +143,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="Jenkins....................."></a>
 <h2>Jenkins服务器配置代理</h2>
 
 <p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
@@ -263,6 +264,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L...............android.sdk"></a>
 <h2>命令行更新android sdk</h2>
 
 <p>先配置java命令使用的代理，然后
@@ -279,6 +281,7 @@
 
 <p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
 
+<a name="When.shit.happens"></a>
 <h2>When shit happens</h2>
 
 <p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
@@ -386,6 +389,7 @@
 <p>下面是本座最近撸完的一个项目，印到衣服上感觉还好吧：
 <img src="http://lenciel.cn/downloads/images/2014_08/yawp.png" title="yawp dependencies" alt="yawp" /></p>
 
+<a name="L......"></a>
 <h2>结论</h2>
 
 <p>首先，本座挺喜欢Snakefood那种Unix范儿的：所有的命令都可以给其他命令来一管，比如：</p>
@@ -613,6 +617,7 @@
 
 <p>So&hellip;</p>
 
+<a name="Migrations............"></a>
 <h1>Migrations是什么？</h1>
 
 <p>Migrations其实就是一堆帮助你完成数据库变更和数据迁移的命令，使得你可以用“Django”的方式来管理和变更数据库的schema。比如，当你的model改变了，你需要在数据库里面去重命名一列时，你不会想跑到命令行下面去敲SQL吧？特别是，如果你要变更的数据库是线上的，有几百万用户数据，你应该更不愿意搭上这种活了吧？</p>
@@ -627,8 +632,10 @@
 </ol>
 
 
+<a name="Migrations......"></a>
 <h1>Migrations上手</h1>
 
+<a name="L.................."></a>
 <h2>创建测试项目</h2>
 
 <p>首先创建一个virtualenv和django项目：</p>
@@ -676,6 +683,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Migrations"></a>
 <h2>创建Migrations</h2>
 
 <p>使用下面的命令可以创建ts_data这个app的Migrations。当然，和大多数Django命令一样，如果你不显式的指定，就</p>
@@ -691,6 +699,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......Migrations"></a>
 <h2>应用Migrations</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -724,6 +733,7 @@
 </ol>
 
 
+<a name="L................................."></a>
 <h1>不是新建的项目如何使用</h1>
 
 <p>大多数情况下我们都是从旧版本的Django迁移过来，也就意味着是从South迁移过来。这种情况下需要：</p>
@@ -739,10 +749,12 @@
 
 <p>如果你不想丢掉过去的South维护的历史记录，可以同时使用South和Django Migrations：升级South到1.0，然后<a href="http://www.aeracode.org/2014/7/1/end-era/">参考这篇文章的做法</a>。</p>
 
+<a name="South...Django.Migrations......"></a>
 <h1>South和Django Migrations比较</h1>
 
 <p>对比一下South和Django Migrations的workflow，可能会更加清晰：</p>
 
+<a name="L............migrations"></a>
 <h2>首次全新migrations</h2>
 
 <p>South:</p>
@@ -761,6 +773,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......migrations"></a>
 <h2>应用migrations</h2>
 
 <p>South:</p>
@@ -777,6 +790,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L.........migrations"></a>
 <h2>非首次migrations</h2>
 
 <p>South:</p>
@@ -795,8 +809,10 @@
 
 <p>可以看到，大概是因为出自同一个作者的原因，Django Migrations基本上follow了South的工作流程，只不过是命令更加简洁和清晰了。</p>
 
+<a name="L............"></a>
 <h1>更多细节</h1>
 
+<a name="L..................Django.Migrations........."></a>
 <h2>哪些变化会被Django Migrations找到？</h2>
 
 <p>如果你再次运行<code>python manage.py migrate</code>，会发现什么都没有发生：这是因为在项目的数据库中有一张<code>django_migrations</code>仍然被更新。表，记录了哪些Migrations已经被应用过了：无论是运行了migrate还是fake的，这个表都会被插入一条记录。比如从South升级到使用Django自带的MigrationsDjango会检查是否有更新。如果没有，它就fake一次，但<code>django_migrations</code>仍然被更新。</p>
@@ -805,6 +821,7 @@
 
 <p>在极少数情况下，如果你有需要回退到特定的版本，比如最初的zero版本，可以用类似<code>python manage.py migrate &lt;app_name&gt; zero</code>的语法。</p>
 
+<a name="Migration......."></a>
 <h2>Migration 文件</h2>
 
 <p>在我们运行<code>python manage.py migrate &lt;app_name&gt;</code>究竟发生了什么？实际上，Django会创建一个python文件来描述如何完成这个migration，以前面的ts_data为例，这个文件位于<code>ts_data/migrations/0001_initial.py</code>，内容如下：</p>
@@ -862,6 +879,7 @@
 
 <p>可以看到，是完全可读的Python代码。这也是为什么推荐把整个<code>migrations</code>文件夹加入版本控制的原因：这样你的应用经过了怎样的变更就变得可以回溯了。</p>
 
+<a name="Migration.Dependencies"></a>
 <h2>Migration Dependencies</h2>
 
 <p>上面的源代码有一些值得注意的地方。</p>
@@ -896,6 +914,7 @@
 
 <p>这里使用list的结果是，所有的依赖是没有顺序的，也就是说你不需要按照0001、0002、0003的顺序来排列所有的依赖。</p>
 
+<a name="Migration.Operations"></a>
 <h2>Migration Operations</h2>
 
 <p>这个list定义的就是migration完成的操作，可以分为下面的这些种类：</p>
@@ -917,6 +936,7 @@
 
 <p>前面的那些操作是整个Django Migrations的核心：因为需要对各种不同的数据库做适配。而后面的两个操作则是灵活度非常高的，几乎可以干任何事情。</p>
 
+<a name="L......"></a>
 <h1>实例</h1>
 
 <p>让我们试试把<code>PingPongPrice</code>的<code>price</code>这个field的<code>max_digits</code>改成8位的（通货膨胀嘛），然后再次运<code>makemigrations</code>行命令:</p>
@@ -1050,6 +1070,7 @@
 
 <p>使用Suite Fusion管理字体就可以到达这两个目的。</p>
 
+<a name="Mac.............................."></a>
 <h2>Mac上的字体集和安装路径</h2>
 
 <p>过去在Windows平台上工作的时候，字体都是放在一个地方的，而在Mac下面字体主要是下面三部分字体集组成：</p>
@@ -1061,12 +1082,14 @@
 </ul>
 
 
+<a name="L......Suite.Fusion...Font.Vault"></a>
 <h2>启用Suite Fusion的Font Vault</h2>
 
 <p>Suite Fusion提供了一个可以自己定义路径的Font Vault。然后你如果在<code>Preferences</code>里面把<code>Copy added fonts into the vault</code>勾上，那么所有添加到Suite Fusion的字体都会被放在一个地方。这样的好处是管理方便：保证字体没有重复，并且很容易备份。</p>
 
 <p>一旦你的字体都在Font Vault里面了，就可以使用Suitcase Fusion删除原来放在各个地方的字体了。在字体清理好之后，你就可以根据不同的项目或者是文档类型建立Set，根据需要来激活它们。</p>
 
+<a name="L.............................."></a>
 <h2>添加字体和创建字体库</h2>
 
 <p>只需要使用快捷键&#8221;Cmd+L&#8221;就可以添加字体到字体库。如果默认的字体库不符合你的要求还可以自己新建。添加字体的过程中，SF会扫描字体，提取字体信息，检测是否有错（注意，Suite Fusion不支持orphan outline和orphan bitmap字体）。</p>
@@ -1090,6 +1113,7 @@
 
 <p>除开字体给人的感觉很细腻之外，M+还满足了本座心中好字体的几大标准。</p>
 
+<a name="L..."></a>
 <h2>窄</h2>
 
 <p><img src="http://lenciel.cn/downloads/images/2014_07/fonts_comparision.png" title="Don't touch me..." alt="fonts comparision" /></p>
@@ -1100,12 +1124,14 @@
 
 <p>当然，如果你对码农们为什么需要显示一根80个字符宽度的标线有疑问：这一方面是<a href="http://programmers.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width">处女座程序员对历史的坚持</a>，另一方面，如果你经常写出很长的语句，也意味着你的代码质量有问题。</p>
 
+<a name="L..."></a>
 <h2>全</h2>
 
 <p>除开基本的字符，M+因为是出自日本设计师的关系，字符很全。</p>
 
 <p><img src="http://lenciel.cn/downloads/images/2014_07/fonts_map.png" title="Don't touch me..." alt="fonts map" /></p>
 
+<a name="L..."></a>
 <h2>清</h2>
 
 <p>对程序员来说，清楚的字体主要是指：</p>
@@ -1722,6 +1748,7 @@
     <id>http://lenciel.cn/2014/05/how-does-ibeacons-work</id>
     <content type="html"><![CDATA[<p>iBeacons这个怪怪的单词<a href="https://www.google.com/search?q=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;oq=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;aqs=chrome..69i57.5408j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8#newwindow=1&amp;q=ibeacons+site:36kr.com&amp;safe=off">最近出镜率很高</a>。它可以用的场景很多，考勤打卡，室内导航，各种关联位置的推送以及我们现在还想不到诡异的应用。但虽然满坑满谷的文章介绍如何应用iBeacons，但它工作的原理究竟是什么样的呢？</p>
 
+<a name="Bluetooth.LE"></a>
 <h1>Bluetooth LE</h1>
 
 <p><a href="http://www.bluetooth.com/Pages/Low-Energy.aspx">Bluetooth Low Energy</a>，也就是低功耗蓝牙，经常被缩写成BLE。它其实是2010年颁布的Bluetooth 4.0标准的一部分：说准确点儿就是由Nokia提出的本来叫<code>Wibree</code>的那部分。</p>
@@ -1743,6 +1770,7 @@
 
 <p>Beacons，如前面所述，是仅支持低功耗这部分的标准，所以就是&#8221;Smart&#8221;的。这些设备一般一颗纽扣电池就可以保证它运行2年左右，发射频率和传统蓝牙一样都是2.4GHz-2.4835GHz，在无遮挡的情况下100米内都有信号，但传输速率比传统蓝牙慢：当然，低功耗蓝牙设计的目的也不是用来输送大量的数据。</p>
 
+<a name="BLE......"></a>
 <h1>BLE通信</h1>
 
 <p>BLE通信主要是两种模式：<code>Advertising</code>和<code>Connecting</code>。</p>
@@ -1767,6 +1795,7 @@
 
 <p>关于<code>Connecting</code>到BLE设备，苹果的教程或者更专业的EE times的介绍都可以看看。但其实beacons没有使用<code>Connecting</code>模式，它只工作在<code>Advertising</code>模式下。</p>
 
+<a name="beacons............BLE"></a>
 <h1>beacons如何使用BLE</h1>
 
 <p>beacons仅仅工作在<code>Advertising</code>模式下。因此，可以说所谓的<code>iBeacons</code>就是iOS下对BLE的<code>Advertising</code>工作模式里数据的定义和封装。</p>
@@ -1795,6 +1824,7 @@
 
 <p>换句哈说，如果你想试玩一下iBeacons技术，在买到beacon之前，其实你手边的任何新一点儿的iPhone或者<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">Mac设备都可以拿来作为iBeacon</a>的发射端或者接收端。当然，<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">万能的树莓</a>也可以改造成beacon。</p>
 
+<a name="iBeacon............"></a>
 <h1>iBeacon数据格式</h1>
 
 <p><code>02 01 06 1A FF 4C 00 02 15</code>是固定不变的prefix。</p>
@@ -1805,12 +1835,14 @@
 
 <p><code>Minor Number</code> (2 bytes，例子里面是<code>0x000A</code>，也就是10)用来标识单个的beacon。因为商店里面每个beacon都有不同的<code>Minor Number</code>，才能知道顾客是处在什么位置。</p>
 
+<a name="L......"></a>
 <h1>测距</h1>
 
 <p>数据里面的最后一位，<code>TX Power</code>，就是用来表征你离某个beacon的距离的。它测距离主要就是用所谓的RSSI(Received Signal Strength Indication)去算，这个算法在iOS里面是已经集成了的，即便是需要在Android平台上面实现一遍<a href="http://stackoverflow.com/questions/20416218/understanding-ibeacon-distancing">也不是那么的复杂</a>。</p>
 
 <p>另外需要注意的就是，无线信号总会因为障碍物以及其他的信号源更快的衰减。所以测算出来的距离只是一个有大概。</p>
 
+<a name="iOS......"></a>
 <h1>iOS集成</h1>
 
 <p>苹果既然敢在beacon前面加个i当然是做了很多增强的。对应用开发者来说，最主要的就是当用户靠近iBeacons设备的时候，App即使不在前台也可以被唤醒，并发送notification给用户。</p>
@@ -1819,6 +1851,7 @@
 
 <p>iOS下详细的应用开发教程可以见<a href="http://www.cocoanetics.com/2013/11/can-you-smell-the-ibeacon/">这里</a>。更多的例子可以参考设备商Estimote的iOS SDK和Android。</p>
 
+<a name="L.................."></a>
 <h1>如何购买设备</h1>
 
 <p>现在整个供货情况还是接不上趟的。我的<a href="http://estimote.com/">Estimote</a>已经订了4个多礼拜了还杳无音讯。因此最快的上手方案仍然是改造你的手机或者用Raspberry Pi自己搭个玩。但是如果你不满足（一般是满足不了的）这种玩法可以试试：</p>

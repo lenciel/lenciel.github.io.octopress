@@ -203,6 +203,7 @@
 
 <p>这里记一下如何用<a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a>把所有<code>dev</code>结尾的域名都指向<code>127.0.0.1</code>。</p>
 
+<a name="L......dnsmasq"></a>
 <h4>安装dnsmasq</h4>
 
 <p>在Mac下安装什么东西本座都用<a href="http://brew.sh/">homebrew</a>，先更新brew:</p>
@@ -241,6 +242,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......dnsmasq"></a>
 <h4>配置dnsmasq</h4>
 
 <p>在<code>dnsmasq.conf</code>里面添加一个配置<code>dev</code>的配置：</p>
@@ -259,6 +261,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......OSX"></a>
 <h4>配置OSX</h4>
 
 <p>安装了dnsmasq之后你有两个选择：</p>
@@ -283,6 +286,7 @@
 
 <p>在<code>/etc/resolver/dev</code>里面添加一行<code>nameserver 127.0.0.1</code>就可以了。</p>
 
+<a name="L............"></a>
 <h3>测试效果</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -352,6 +356,7 @@
 
 <p>那么，如果你到了一个新公司，推开门发现那是一个蛮荒之地，应该怎么办呢？这篇先理一下基本的概念，然后后面分节描述一下讲到的这些工具具体要怎么配置怎么用。</p>
 
+<a name="L........."></a>
 <h1>善其器</h1>
 
 <p>先check一下东西齐不齐活:</p>
@@ -368,6 +373,7 @@
 
 <p>你选择的工具当然对后面的流程有很大的影响。我们公司是采用<code>git</code>+<code>Gitlab</code>+<code>Reviewboard</code>+<code>Jenkins</code>+<code>fabric</code>来做部署。在搭建这套东西之前我也试过很多其他的东西，有的东西我放弃了是因为太复杂不够轻量(比如Puppet)，有的东西我放弃了是因为，长得太丑(比如Gerrit)。</p>
 
+<a name="L..............."></a>
 <h1>开发者视角</h1>
 
 <p>假设你今天入职，写了段代码，从你的视角看到的deployment流程:</p>
@@ -386,6 +392,7 @@
 
 <p>整个流程里面，如果你是一个靠谱的开发者，需要花时间参与的步骤很少。但是如果是一个习惯不好的开发者，可能被review代码的人，Jenkins的自动测试，QA的集成测试或者是回归测试不断修理，惨痛的教训一定会让你成长起来的。</p>
 
+<a name="L............"></a>
 <h1>机器视角</h1>
 
 <p>很多重复性的事情，都是机器在干:</p>
@@ -421,6 +428,7 @@
 
 <p>这里很多具体的步骤需要通过Jenkins和它的插件甚至是自己写的各种脚本来配合完成</p>
 
+<a name="L..............."></a>
 <h1>考虑扩展性</h1>
 
 <p>未知的未来，你可能会发现项目换了开发语言，项目换了JS框架，项目自动化测试改成手动了&hellip;在架构整套部署系统的时候，要做好和具体语言具体流程的解耦。</p>
@@ -445,6 +453,7 @@
 
 <p>如果是用了Jenkins，上面这些就非常方便了，因为说白了每个build不过就是当特定条件满足时执行的一堆特定脚本而已：当然，如果你发现公司还在用Ubuntu 12.04做build server，可能也没有那么方便。</p>
 
+<a name="Rants"></a>
 <h1>Rants</h1>
 
 <ol>

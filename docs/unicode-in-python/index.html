@@ -120,6 +120,7 @@
 
 <p>嗯哼，本座在用lxml抓网页回来进行解析的时候，也遇到了类似的错误。从解决问题的过程来看，其实Python 2对unicode的支持已经很好了。你首先需要知道Unicode只是一种概念而不是一种实现（把字符表示到内存或者文件里面）。如果你还不清楚基本概念，可以<a href="http://lenciel.cn/docs/unicode-complete/">先学习一下</a>。然后，我们只需要了解python具体实现的一些细节：</p>
 
+<a name="encode.decode"></a>
 <h2>encode/decode</h2>
 
 <ul>
@@ -128,6 +129,7 @@
 </ul>
 
 
+<a name="Debug.Part.I......................"></a>
 <h2>Debug Part I 单纯字符串操作</h2>
 
 <p>本座的开发工具是Eclipse3.3.1+pydev+python2.5，操作系统windows xp sp4。首先为了排除是开发环境的问题，写了一个utf8test.py：</p>
@@ -191,6 +193,7 @@
 
 <p>这段程序里面，有三个地方是跟编解码有关的。</p>
 
+<a name="L1.................utf-8......................................................"></a>
 <h3>1. 声明代码用utf-8编码保存：因为我们的代码里面有中文。</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -200,6 +203,7 @@
 
 <p>这个声明必须在最开始的两行，在后面就没有用了。</p>
 
+<a name="L2...........console.........sys........."></a>
 <h3>2. 指明在console显示中sys的编码</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -217,6 +221,7 @@
 
 <p><img src="/downloads/images/python_unicode_output0.png" title="Don't touch me..." alt="unicode" /></p>
 
+<a name="L3..................................."></a>
 <h3>3. 对字符串进行的编码解码</h3>
 
 <p>这里我们分别打印了str对象和unicode对象，并对它们进行了一些转换操作。程序的输出是这样的：</p>
@@ -227,6 +232,7 @@
 
 <p>很多的人在网上发帖的时候常说我在源文件加了<code>coding: utf-8</code>声明了，我的sys设置了<code>defaultencoding</code>了，我的console配置成xxx了，甚至还用了codec模块，还是乱码了。其实，是没有搞清楚这些步骤究竟是干啥用的表现。比如在很多地方本座都看到高手指导别人设置sys的编码。其实绝大多数的应用程序是不需要打印什么东西到console的，这样的声明反而会让你的程序在一些python安装包下面变得不可用。</p>
 
+<a name="Debug.Part.II.lxml......HTML"></a>
 <h2>Debug Part II lxml解析HTML</h2>
 
 <p>能够正常的打开和保存utf-8文件，那么错误可能就是出在lxml解析网页的过程中。本座一开始直接用了lxml.html里面那个parse方法，因为这个方法看起来很简洁：</p>
@@ -325,6 +331,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......"></a>
 <h2>总结</h2>
 
 <ul>

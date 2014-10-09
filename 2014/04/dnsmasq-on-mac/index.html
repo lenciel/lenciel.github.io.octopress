@@ -130,6 +130,7 @@
 
 <p>这里记一下如何用<a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a>把所有<code>dev</code>结尾的域名都指向<code>127.0.0.1</code>。</p>
 
+<a name="L......dnsmasq"></a>
 <h4>安装dnsmasq</h4>
 
 <p>在Mac下安装什么东西本座都用<a href="http://brew.sh/">homebrew</a>，先更新brew:</p>
@@ -168,6 +169,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......dnsmasq"></a>
 <h4>配置dnsmasq</h4>
 
 <p>在<code>dnsmasq.conf</code>里面添加一个配置<code>dev</code>的配置：</p>
@@ -186,6 +188,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<a name="L......OSX"></a>
 <h4>配置OSX</h4>
 
 <p>安装了dnsmasq之后你有两个选择：</p>
@@ -210,6 +213,7 @@
 
 <p>在<code>/etc/resolver/dev</code>里面添加一行<code>nameserver 127.0.0.1</code>就可以了。</p>
 
+<a name="L............"></a>
 <h3>测试效果</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

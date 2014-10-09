@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gfw | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/gfw/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:57:46+08:00</updated>
+  <updated>2014-10-09T20:20:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -44,6 +44,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 <pre><code class="bash">Failed connect to dl-ssl.google.com:443;
 </code></pre>
 
+<a name="Jenkins....................."></a>
 <h2>Jenkins服务器配置代理</h2>
 
 <p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
@@ -113,6 +114,7 @@ shadowsocks 2.1.0
 2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
 </code></pre>
 
+<a name="L...............android.sdk"></a>
 <h2>命令行更新android sdk</h2>
 
 <p>先配置java命令使用的代理，然后
@@ -126,6 +128,7 @@ $ android update sdk -u -s --all
 
 <p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
 
+<a name="When.shit.happens"></a>
 <h2>When shit happens</h2>
 
 <p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
