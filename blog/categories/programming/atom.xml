@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Retina屏幕上的最佳编程字体]]></title>
+    <link href="http://lenciel.cn/2014/07/font-for-programming/"/>
+    <updated>2014-07-13T18:45:27+08:00</updated>
+    <id>http://lenciel.cn/2014/07/font-for-programming</id>
+    <content type="html"><![CDATA[<p>关于编程使用什么样的字体比较好是一个由来已久的话题 <a href="" title="[Anonymous pro programming font](http://hivelogic.com/articles/anonymous-pro-programming-monospace-font).">^1</a> <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，但其实在不同分辨率和操作系统的屏幕上，字体的表现也不一样，所以并不应该有一统天下的字体。比如Retina的屏幕上，字体越细滑看起来似乎就好（当然这也是个体感觉），所以本座最近把所有的开发环境默认字体都换成了<a href="http://mplus-fonts.sourceforge.jp/">M+</a>。</p>
+
+<p>除开字体给人的感觉很细腻之外，M+还满足了本座心中好字体的几大标准。</p>
+
+<h2>窄</h2>
+
+<p><img src="/downloads/images/2014_07/fonts_comparision.png" title="Don't touch me..." alt="fonts comparision" /></p>
+
+<p>可以看到，它比大多数的等宽字体都要窄。这样在本座13寸的笔记本屏幕上，也能在显示80个字符宽度的标线的同时，完整看到最少两个水平分割的编辑区。</p>
+
+<p><img src="/downloads/images/2014_07/pycharm_split.png" title="Don't touch me..." alt="pycharm split" /></p>
+
+<p>当然，如果你对码农们为什么需要显示一根80个字符宽度的标线有疑问：这一方面是<a href="http://programmers.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width">处女座程序员对历史的坚持</a>，另一方面，如果你经常写出很长的语句，也意味着你的代码质量有问题。</p>
+
+<h2>全</h2>
+
+<p>除开基本的字符，M+因为是出自日本设计师的关系，字符很全。</p>
+
+<p><img src="/downloads/images/2014_07/fonts_map.png" title="Don't touch me..." alt="fonts map" /></p>
+
+<h2>清</h2>
+
+<p>对程序员来说，清楚的字体主要是指：</p>
+
+<ul>
+<li>要能很方便的区别开大写的字母<code>O</code>和数字<code>0</code></li>
+<li>要能很方便的区别开数字<code>1</code>，大写的<code>I</code>和小写的<code>l</code></li>
+<li>要能很方便的区别开<code>.</code>和IDE显示的Whitespace</li>
+</ul>
+
+
+<p>M+在这方面也是非常棒的：</p>
+
+<p><img src="/downloads/images/2014_07/fonts_clear.png" title="Don't touch me..." alt="fonts clear" /></p>
+
+<p>因为是开源字体，M+是可以自由下载和使用的。但因为你在中国，可能访问不了Sourceforge，不如下载<a href="http://pan.baidu.com/s/1gdgk6VT">我分享的zip包</a>吧，lol。</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://www.slant.co/topics/67/~what-are-the-best-programming-fonts">What are the best programming fonts</a>.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

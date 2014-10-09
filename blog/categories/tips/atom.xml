@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tips | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Update Android Sdk With Shadowsocks Proxy]]></title>
+    <link href="http://lenciel.cn/2014/09/update-android-sdk-with-proxy/"/>
+    <updated>2014-09-02T02:30:35+08:00</updated>
+    <id>http://lenciel.cn/2014/09/update-android-sdk-with-proxy</id>
+    <content type="html"><![CDATA[<p>博格坎普说，我们android项目的build挂了。</p>
+
+<p>去Jenkins看了一下，日志里面的错误是：</p>
+
+<pre><code>[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build
+Creating properties on demand (a.k.a. dynamic properties) has been deprecated and is scheduled to be removed in Gradle 2.0. Please read http://gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html for information on the replacement for dynamic properties.
+Deprecated dynamic property: "buildName" on "ProductFlavorDsl_Decorated{name=main, minSdkVersion=null, targetSdkVersion=null, renderscriptTargetApi=-1, renderscriptSupportMode=null, renderscriptNdkMode=null, versionCode=-1, versionName=null, applicationId=null, testApplicationId=null, testInstrumentationRunner=null, testHandleProfiling=null, testFunctionalTest=null, signingConfig=null, resConfig=null}", value: "1.0.97".
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':app'.
+&gt; Could not resolve all dependencies for configuration ':app:_debugCompile'.
+   &gt; Could not find com.android.support:appcompat-v7:20.0.0.
+     Required by:
+         android:app:unspecified
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.s
+</code></pre>
+
+<p>这其实在天朝是蛮常见的现象，因为<code>dl-ssl.google.com</code>被封了，所以你总是会因为下面的错误无法更新Android的SDK：</p>
+
+<pre><code class="bash">Failed connect to dl-ssl.google.com:443;
+</code></pre>
+
+<h2>Jenkins服务器配置代理</h2>
+
+<p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
+
+<p>安装shadowsocks的pythohn client:</p>
+
+<pre><code class="bash">$ pip install shadowsocks
+
+Downloading/unpacking shadowsocks
+  Running setup.py egg_info for package shadowsocks
+
+    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+
+Installing collected packages: shadowsocks
+  Running setup.py install for shadowsocks
+
+    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+
+    Installing sslocal script to /usr/local/bin
+    Installing ssserver script to /usr/local/bin
+Successfully installed shadowsocks
+Cleaning up...
+</code></pre>
+
+<p>可以看到安装完之后有两个可执行文件，运行其中的<code>sslocal</code>就可以启动shadowsocks的客户端了：</p>
+
+<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -h
+usage: sslocal [-h] -s SERVER_ADDR [-p SERVER_PORT]
+               [-b LOCAL_ADDR] [-l LOCAL_PORT] -k PASSWORD [-m METHOD]
+               [-t TIMEOUT] [-c CONFIG] [--fast-open] [-v] [-q]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SERVER_ADDR        server address
+  -p SERVER_PORT        server port, default: 8388
+  -b LOCAL_ADDR         local binding address, default: 127.0.0.1
+  -l LOCAL_PORT         local port, default: 1080
+  -k PASSWORD           password
+  -m METHOD             encryption method, default: aes-256-cfb
+  -t TIMEOUT            timeout in seconds, default: 300
+  -c CONFIG             path to config file
+  --fast-open           use TCP_FASTOPEN, requires Linux 3.7+
+  -v, -vv               verbose mode
+  -q, -qq               quiet mode, only show warnings/errors
+
+Online help: &lt;https://github.com/clowwindy/shadowsocks&gt;
+</code></pre>
+
+<p>最简单的办法就是新建一个配置文件：</p>
+
+<p><code>javascript ~/.shadowconfig
+{
+    "server":"my_server_ip",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"barfoo!",
+    "timeout":600,
+    "method":"table"
+}
+</code></p>
+
+<p>记得在防火墙打开你配置的本地端口，然后运行下面的命令：</p>
+
+<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -c ~/.shadowconfig
+INFO: loading config from /root/.shadowconfig
+shadowsocks 2.1.0
+2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
+</code></pre>
+
+<h2>命令行更新android sdk</h2>
+
+<p>先配置java命令使用的代理，然后
+从命令行更新android sdk。只需要到tools目录下面去跑(<code>-u</code>是不显示GUI，<code>-s</code>是指定不使用ssl链接)：</p>
+
+<pre><code class="bash">$ export _JAVA_OPTIONS="-DsocksProxyHost=127.0.0.1"
+$ android update sdk -u -s --all
+</code></pre>
+
+<p>注意<code>socksProxyHost</code>的默认端口就是1080，如果你使用了其他端口不能只配ip。</p>
+
+<p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
+
+<h2>When shit happens</h2>
+
+<p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
+
+<pre><code class="bash">2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+</code></pre>
+
+<p>因为本座平时上网也是在用Google VM上的这个代理，没理由这么慢。所以就怀疑那个74.125.237.1的地址是被谁在<code>/etc/hosts</code>里面给配了固定ip。打开一看果然有：</p>
+
+<pre><code class="bash">dl-ssl.google.com 74.125.237.1
+</code></pre>
+
+<p>估计是之前配置的基友搜索到了类似<a href="http://www.programering.com/a/MjM4YTMwATA.html">这样的文章</a>。这也是为什么我从来不用也不推荐别人用修改hosts文件的方法来翻墙的原因：它们总是在过期。</p>
+
+<p>Last but not the least, Fuck you, GFW.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Better Dictionary on Mac]]></title>
+    <link href="http://lenciel.cn/2014/05/better-dictionary-on-mac/"/>
+    <updated>2014-05-23T14:02:14+08:00</updated>
+    <id>http://lenciel.cn/2014/05/better-dictionary-on-mac</id>
+    <content type="html"><![CDATA[<p>Mac上很贴心的提供了词典，并且还绑定了快捷键：在任何页面按下&#8221;Ctrl+Cmd+D&#8221;，就会有词义解释的界面弹出。不过内置的<code>New Oxford American Dictionary</code>比较的弱，给人的感觉词条的水准就像《新华字典》一样单薄，所以换成了编了好几十年又修订了好几十年的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E6%B0%8F%E8%AF%8D%E5%85%B8">韦氏词典</a>，两者的差距还是明显的。</p>
+
+<p>这是自带词典对pathos的解释：</p>
+
+<p><blockquote><p>pathos /ˈpāˌTHäs/, a quality that evokes pity or sadness</p></blockquote></p>
+
+<p>这是《韦氏词典》的：</p>
+
+<p><blockquote><p>pathos /ˈpāˌTHäs/, n.</p></p><p><ol><br/><li><p>The quality or character of those emotions, traits, or experiences which are personal, and therefore restricted and evanescent; transitory and idiosyncratic dispositions or feelings as distinguished from those which are universal and deep-seated in character; — opposed to ethos.</p></li><br/><li><p>That quality or property of anything which touches the feelings or excites emotions and passions, esp., that which awakens tender emotions, such as pity, sorrow, and the like; contagious warmth of feeling, action, or expression; pathetic quality; as, the pathos of a picture, of a poem, or of a cry.</p></blockquote></p></li>
+</ol>
+
+
+<p>安装的方法也挺简单：</p>
+
+<ul>
+<li>如果下载的是<a href="http://pan.baidu.com/s/1o6z67dK#dir/path=%2Fdictionary">这样</a>的<code>dictionary</code>文件，直接拷贝到<code>~/Library/Dictionaries</code></li>
+<li>如果是<a href="http://pan.baidu.com/s/1i35ik7N">这样</a>的raw文件，需要运行DictUnifier应用编译</li>
+</ul>
+
+
+<p>安装完毕运行<code>Dictionary</code>应用，勾选你期望出现的字典和顺序即可，我启用了《朗道英汉词典》、《韦氏词典》和《维基百科》:</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2014_05/apple_dict_effect.png" title="Apple Dict" alt="Don't touch me" width="60%"></p>
+
+
+<p>另外，词典的样式其实是用css定义的，就在每个字典文件的Contetns目录，比如：<code>~/Library/Dictionaries/dictd_www.dict.org_web1913.dictionary/Contents/DefaultStyle.css</code>。如果你不满意字典出来的样子，可以自定义格式。</p>
+
+<p>最后，这些词典其实都是linux上著名的国产软件<a href="http://en.wikipedia.org/wiki/StarDict">stardict</a>的文件格式（写到这里，又想起stardict的作者<a href="http://www.huzheng.org/aboutme.php">胡正</a>），所以要在<a href="https://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">手机上使用</a>也是很容易的事情。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress里插入带中文Gist的问题和解决]]></title>
+    <link href="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/"/>
+    <updated>2014-05-17T13:00:38+08:00</updated>
+    <id>http://lenciel.cn/2014/05/fix-gist-style-in-octopress</id>
+    <content type="html"><![CDATA[<p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
+
+<p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:
+</p>
+
+<div class="highlight"><pre><code class="text">{% gist gist_id [filename] %}
+</code></pre></div>
+
+
+<p></p>
+
+<p>比如<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
+
+<p></p>
+
+<div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}
+</code></pre></div>
+
+
+<p></p>
+
+<p>当然之所以说理论上，是因为首先Octopress的markdown插件对unicode的支持<a href="http://tokkonopapa.github.io/blog/2013/02/23/octopress-toc/">是有bug</a>的。所以直接插入带中文的gist在build的时候会看到<code>Liquid Exception</code>:</p>
+
+<pre><code class="bash">&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+Liquid Exception: incompatible character encodings: UTF-8 and ASCII-8BIT in 2014-05-16-web-development-skill-set-and-reading-list.markdown
+</code></pre>
+
+<p>解决起来也很简单，只需要在<code>lib/jekyll/converters/markdown.rb</code>里面强制设定encoding就可以了：</p>
+
+<pre><code class="diff lib/jekyll/converters/markdown.rb">@@ -120,7 +120,7 @@ def convert(content)
+           rd = RDiscount.new(content, *@rdiscount_extensions)
+           html = rd.to_html
+           if rd.generate_toc and html.include?(@config['rdiscount']['toc_token'])
+-            html.gsub!(@config['rdiscount']['toc_token'], rd.toc_content)
++            html.gsub!(@config['rdiscount']['toc_token'], rd.toc_content.force_encoding('utf-8'))
+           end
+</code></pre>
+
+<p>接下来就是render出来的效果，样子丑到让人无法直视：</p>
+
+<p><img src="/downloads/images/2014_05/gist_render_output_orig.jpg" title="Don't touch me..." alt="original gist render output" /></p>
+
+<p>大概看了一下Octopress的文档，原来代码片断的样式（包括gist的渲染样式）都在<a href="https://github.com/imathis/octopress/blob/master/.themes/classic/sass/partials/_syntax.scss">_syntax.scss</a>里面。这个文件2012年就没有更新过了，但是github的gist输出在2013年有过变化，所以就有些不匹配了。</p>
+
+<p>打开自己的模板，大概调了一下这个sass，主要是和其他的代码高亮一致：</p>
+
+<p><img src="/downloads/images/2014_05/gist_render_output.jpg" title="Don't touch me..." alt="current gist render output" /></p>
+
+<p>调整的地方见<a href="https://gist.github.com/lenciel/ecc8b3805ed346727abe">这里</a>:</p>
+
+<pre><code class="diff _sass/partials/_syntax.scss">diff --git a/46501e4:sass/partials/_syntax.scss b/02b0441:sass/partials/_syntax.scss
+index 137d475..5465286 100644
+--- a/46501e4:sass/partials/_syntax.scss
++++ b/02b0441:sass/partials/_syntax.scss
+@@ -22,10 +22,6 @@
+   @include border-radius(0);
+ }
+
+-.line-data {
+-   font-size: 13px;
+-}
+-
+ figure.code, .gist-file, pre {
+   @include box-shadow(rgba(#000, .06) 0 0 10px);
+   .highlight pre { @include box-shadow(none); }
+@@ -43,10 +39,8 @@ html .gist .gist-file {
+     margin-bottom: 0;
+   }
+   .gist-syntax {
+-    background: #01222d !important;
+-    color: #d5dee2 !important;
+-    padding: 0 2em;
+     border-bottom: 0 !important;
++    background: none !important;
+     .gist-highlight {
+       background: $base03 !important;
+     }
+@@ -57,17 +51,15 @@ html .gist .gist-file {
+   }
+   .gist-meta {
+    padding: .6em 0.8em;
++   border: 1px solid lighten($base02, 2) !important;
++   color: $base01;
+    font-size: .7em !important;
+    @if $solarized == light {
+-     color: $base01;
+-     border: 1px solid lighten($base02, 2) !important;
+      background: lighten($base03, 2) $noise-bg;
+      border: 1px solid $pre-border !important;
+      border-top: 1px solid lighten($base03, 2) !important;
+    } @else {
+-     background: #01222d $noise-bg;
+-     text-shadow: none !important;
+-     color: #d5dee2;
++     background: $base02 $noise-bg;
+    }
+    @extend .sans;
+    line-height: 1.5em;
+@@ -77,7 +69,7 @@ html .gist .gist-file {
+       &amp;:hover { color: $base1 !important; }
+     }
+     a[href*='#file'] {
+-      position: absolute; top: 0; left:0; right:0px;
++      position: absolute; top: 0; left:0; right:-10px;
+       color: #474747 !important;
+       @extend .code-title;
+       &amp;:hover { color: $link-color !important; }
+@@ -221,7 +213,7 @@ pre, .highlight, .gist-highlight {
+   &amp;::-webkit-scrollbar-thumb:horizontal { background: $solar-scroll-thumb;  -webkit-border-radius: 4px; border-radius: 4px }
+ }
+
+-.highlight code {
++.highlight code { 
+   @extend .pre-code; background: #000;
+ }
+ figure.code {
+@@ -267,11 +259,3 @@ figure.code {
+   text-shadow: #cbcccc 0 1px 0;
+   padding-left: 3em;
+ }
+-
+-.gist-file {
+-  font-size:.8em !important;
+-}
+-
+-table.lines{
+-  width: 100%;
+-}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[如何review产品的UX设计]]></title>
+    <link href="http://lenciel.cn/2014/05/what-to-ask-about-design/"/>
+    <updated>2014-05-12T22:45:33+08:00</updated>
+    <id>http://lenciel.cn/2014/05/what-to-ask-about-design</id>
+    <content type="html"><![CDATA[<p>产品设计中UX设计是很重要的一方面，毕竟是拿来见人的嘛。像我这样的工程师怎么去构思自己产品的UX设计或者是review别人的设计呢？当然还是工程师的思维方式了：</p>
+
+<ul>
+<li> 它外在的形式是什么？</li>
+<li> 它内在的表达是什么？</li>
+<li> 它的外在形式和内在表达一致吗？</li>
+<li> 作为观者，我自己感觉如何？我能接收到它传达的东西吗？我能够被它激发起使用的兴趣吗？</li>
+<li> 有了兴趣，接下来该怎么点击，怎么拖动，怎么操作是明显的吗？</li>
+<li> 有没有过度的设计？有没有可以砍掉的地方？有没有做太多假设？有没有缺失的地方？</li>
+<li> 今后如果功能上有这样那样的扩展，是很容易加上去的吗？</li>
+</ul>
+
+
+<p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.cn/">我心中的好设计</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用dnsmasq配置本地开发环境]]></title>
+    <link href="http://lenciel.cn/2014/04/dnsmasq-on-mac/"/>
+    <updated>2014-04-25T14:53:37+08:00</updated>
+    <id>http://lenciel.cn/2014/04/dnsmasq-on-mac</id>
+    <content type="html"><![CDATA[<p>做Web开发的时候经常需要修改<code>/etc/hosts</code>文件把<code>dev.cool.project</code>或者<code>cool.project.dev</code>这样的域名指向127.0.0.1(如果你从来没有这么做过那你可以跳过后面的内容了但, seriously? you are a web dev and never did this before?）。这样做有些麻烦：</p>
+
+<ul>
+<li>每个项目需要修改hosts文件</li>
+<li>需要root权限才能修改这个文件</li>
+</ul>
+
+
+<p>这里记一下如何用<a href="http://www.thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a>把所有<code>dev</code>结尾的域名都指向<code>127.0.0.1</code>。</p>
+
+<h4>安装dnsmasq</h4>
+
+<p>在Mac下安装什么东西本座都用<a href="http://brew.sh/">homebrew</a>，先更新brew:</p>
+
+<pre><code class="bash">    $ brew up
+</code></pre>
+
+<p>然后安装dnsmasq。注意安装命令的输出，结尾是有配置的简单说明的。因为我用了<a href="http://lenciel.cn/2013/03/boxen-introduction/">boxen</a>所以路径不一定对每个人都适用，以你自己的输出为准：</p>
+
+<pre><code class="bash">    $ brew install dnsmasq
+==&gt; make install PREFIX=/opt/boxen/homebrew/Cellar/dnsmasq/2.69
+==&gt; Caveats
+To configure dnsmasq, copy the example configuration to /opt/boxen/homebrew/etc/dnsmasq.conf
+and edit to taste.
+  cp /opt/boxen/homebrew/opt/dnsmasq/dnsmasq.conf.example /opt/boxen/homebrew/etc/dnsmasq.conf
+To have launchd start dnsmasq at startup:
+    sudo cp -fv /opt/boxen/homebrew/opt/dnsmasq/*.plist /Library/LaunchDaemons
+Then to load dnsmasq now:
+    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+==&gt; Summary
+/opt/boxen/homebrew/Cellar/dnsmasq/2.69: 7 files, 488K, built in 22 seconds
+</code></pre>
+
+<h4>配置dnsmasq</h4>
+
+<p>在<code>dnsmasq.conf</code>里面添加一个配置<code>dev</code>的配置：</p>
+
+<pre><code class="bash">address=/dev/127.0.0.1
+</code></pre>
+
+<p>重启dnsmasq服务:</p>
+
+<pre><code class="bash">$ sudo launchctl stop homebrew.mxcl.dnsmasq
+$ sudo launchctl start homebrew.mxcl.dnsmasq
+</code></pre>
+
+<h4>配置OSX</h4>
+
+<p>安装了dnsmasq之后你有两个选择：</p>
+
+<ol>
+<li> 把操作系统所有的DNS查询都由dnsmasq处理</li>
+<li> 把<code>.dev</code>的DNS查询交给dnsmasq处理</li>
+</ol>
+
+
+<p>第一个比较简单，在<code>System Preferences</code>里面配置一下就可以了。
+第二个需要用/etc/reslov.conf文件来更精细的控制DNS查询:</p>
+
+<pre><code class="bash">$ sudo mkdir -p /etc/resolver
+$ sudo touch /etc/resolver/dev
+$ sudo vi /etc/resolver/dev 
+</code></pre>
+
+<p>在<code>/etc/resolver/dev</code>里面添加一行<code>nameserver 127.0.0.1</code>就可以了。</p>
+
+<h3>测试效果</h3>
+
+<pre><code class="bash">
+    $ ping -c 1 www.sina.com.cn
+    PING newscd.sina.com.cn (221.236.31.145): 56 data bytes
+
+    $ ping -c 1 this.is.a.test.dev
+    PING this.is.a.test.dev (127.0.0.1): 56 data bytes
+
+    $ ping -c 1 this.is.cool.dev
+    PING this.is.cool.dev (127.0.0.1): 56 data bytes
+</code></pre>
+
+<p>嗯哼~</p>
+]]></content>
+  </entry>
+  
+</feed>

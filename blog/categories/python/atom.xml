@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How Complex Your Python Project Is?]]></title>
+    <link href="http://lenciel.cn/2014/08/how-complex-your-python-project-is/"/>
+    <updated>2014-08-31T21:04:47+08:00</updated>
+    <id>http://lenciel.cn/2014/08/how-complex-your-python-project-is</id>
+    <content type="html"><![CDATA[<p>最近诸事不顺，却也理所应当。</p>
+
+<p>晚间时段迷上写字和画画，大概是因为之前看<a href="http://www.imdb.com/title/tt0460740/">《Cashback》</a>印象太深刻，觉得这些是美好遗失前力挽狂澜的技艺。</p>
+
+<p>除开纸上涂鸦，还用机器画了不少鸡零狗碎的东西：我想用python画点儿T恤图案，印出来送给大家，给大伙儿同时也给自己打打气。</p>
+
+<p>一开始看中了基于<a href="http://www.graphviz.org/">Graphviz</a>的<a href="http://furius.ca/snakefood/">Snakefood</a>。</p>
+
+<p>最开始接触Graphviz是因为<a href="https://github.com/django-extensions/django-extensions">django-extensions</a>项目用它来画django model的<a href="https://code.djangoproject.com/wiki/DjangoGraphviz">关系图</a>。我们用它冒充ER图，拿去跟那些喜欢看文档但其实又不专业的官僚客户们交差。</p>
+
+<p>Snakefood更进一步，通过分析你的代码依赖，从而得出你代码的“复杂度”。</p>
+
+<p>“复杂度”其实是用“代码行数”衡量码农工作效力被普遍吐槽之后，大公司发明出来折腾工程师的诸多metrics里面还算有点儿用的一个：至少你可以让要接手的人看看这项目大概是个什么规模，以及，大概要挠破几寸头皮才能看懂。</p>
+
+<p>当然，Snakefood这种基于文件依赖的复杂度分析其实不算特别靠谱，这可不是什么<a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic complexity</a>，更像是开飞机的时候边排查“事故征兆”边驾驶的辅助工具。作者自己是这么说的：</p>
+
+<p><blockquote><p>Producing pretty graphs is fun, but I found the most leverage of it when I try to make my code simpler, I generate the graph and inspect unexpected dependencies and try to refactor my code to simply the dependency graph as much as possible.</p><footer><strong>Martin Blais</strong></footer></blockquote></p>
+
+<p>下面是本座心目中永远的&#8221;优雅Python代码第一名&#8221;<a href="http://docs.python-requests.org/en/latest/">Requests</a>的分析结果：</p>
+
+<p><img src="/downloads/images/2014_08/requests.png" title="requests dependencies" alt="requests" /></p>
+
+<p>再来看看<a href="https://github.com/django/django">Django</a>的最新版分析结果：</p>
+
+<p><img src="/downloads/images/2014_08/django.png" title="django dependencies" alt="django" /></p>
+
+<p>下面是本座最近撸完的一个项目，印到衣服上感觉还好吧：
+<img src="/downloads/images/2014_08/yawp.png" title="yawp dependencies" alt="yawp" /></p>
+
+<h2>结论</h2>
+
+<p>首先，本座挺喜欢Snakefood那种Unix范儿的：所有的命令都可以给其他命令来一管，比如：</p>
+
+<pre><code class="bash">    sfood ./src | sfood-graph -p | dot -Tps | pstopdf -i -o ./1.pdf
+</code></pre>
+
+<p>其次，本座开始计划是给每个人生成一个他们自己写的模块的依赖图，印到衣服上让大家自己穿。但试了之前几个项目之后，Hmmmm&hellip;有的同学大概是不会愿意的吧&hellip;</p>
+
+<p>最后，T恤计划也没这么就打住：后来又发现了<a href="http://nodebox.net/">nodebox</a>这种真正是拿来搞艺术的玩意儿，于是要生成一点儿敢往自己胸口放的东西变得方便多了，过两天如果公司没有倒闭，就把东西放出来让大家看看。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Python After Upgrade to Maverick]]></title>
+    <link href="http://lenciel.cn/2013/10/maverick-and-python/"/>
+    <updated>2013-10-24T22:02:00+08:00</updated>
+    <id>http://lenciel.cn/2013/10/maverick-and-python</id>
+    <content type="html"><![CDATA[<p>升级到最新的osx版本Maverick之后，打开iTerm2就报错：</p>
+
+<pre><code class="bash">Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+ImportError: No module named virtualenvwrapper.hook_loader
+virtualenvwrapper.sh: There was a problem running the initialization hooks.
+If Python could not import the module virtualenvwrapper.hook_loader,
+check that virtualenv has been installed for
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python and that PATH is
+set properly.
+</code></pre>
+
+<p>敲pip之后也报错：</p>
+
+<pre><code class="bash">Traceback (most recent call last):
+  File "/usr/local/bin/pip", line 5, in &lt;module&gt;
+    from pkg_resources import load_entry_point
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources.py", line 2603, in &lt;module&gt;
+    working_set.require(__requires__)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources.py", line 666, in require
+    needed = self.resolve(parse_requirements(requirements))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources.py", line 565, in resolve
+    raise DistributionNotFound(req)  # XXX put more info here
+pkg_resources.DistributionNotFound: pip==1.3.1
+</code></pre>
+
+<p>这坨<code>pkg_resources.DistributionNotFound</code>的错正好前两天装CentOS的机器<a href="http://stackoverflow.com/questions/7446187/no-module-named-pkg-resources">看到过</a>。</p>
+
+<p>运行下面的命令更新了<code>setuptools</code>之后重装了<code>pip</code>和<code>virtualenv</code>、<code>virtualenvwrapper</code>就好了：</p>
+
+<pre><code class="bash">wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+sudo python ez_setup.py
+sudo easy_install -U pip
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[打开pip的download Cache]]></title>
+    <link href="http://lenciel.cn/2013/10/pip-download-cache/"/>
+    <updated>2013-10-17T13:25:00+08:00</updated>
+    <id>http://lenciel.cn/2013/10/pip-download-cache</id>
+    <content type="html"><![CDATA[<p>Python的标准库实在是<a href="http://lenciel.cn/2013/10/recharging-the-python-standard-library/">不够用</a>，所以一个很常见的情况是我们需要在每个项目使用的<code>virtualenv</code>里面都安装一些常用的库。</p>
+
+<p>为了加速安装的过程，有两个小窍门。</p>
+
+<p>一个是使用国内的源，比如<a href="http://www.v2ex.com/">v2ex</a>提供的。只需要新建或者编辑<code>~/.pip/pip.conf</code>，加入一行：</p>
+
+<pre><code>[global]
+index-url = http://pypi.v2ex.com/simple
+</code></pre>
+
+<p>另一个就是打开pip的<code>download cache</code>，这样可以避免pip每次都去下载相同的东西。只需要在<code>.bashrc</code>或者是<code>.zshrc</code>里面加入一行：</p>
+
+<pre><code>export PIP_DOWNLOAD_CACHE=$HOME/.pip-download-cache
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[给Python标准库充电]]></title>
+    <link href="http://lenciel.cn/2013/10/recharging-the-python-standard-library/"/>
+    <updated>2013-10-17T12:27:00+08:00</updated>
+    <id>http://lenciel.cn/2013/10/recharging-the-python-standard-library</id>
+    <content type="html"><![CDATA[<p>Python的自荐页面<a href="http://www.python.org/about/">About Python</a>上号称自家的标准库是&#8221;batteries included&#8221;的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包<a href="http://docs.python-requests.org/en/latest/">Requests</a>的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是：<a href="http://www.leancrew.com/all-this/2012/04/where-modules-go-to-die/">加入标准库就会死翘翘</a>。</p>
+
+<p>再举个例子，我们最近的项目里面都用到了<a href="https://pypi.python.org/pypi/pytz/">pytz</a>。标准库里面的datetime是支持时区的（tzinfo类），但是并没有包含时区信息（tzinfo是抽象类需要自己实现）。遵照前人的经验使用pytz是最好的办法<a href="" title="[如何在datetime转换中保存时区信息](http://stackoverflow.com/questions/14762518/python-datetime-strptime-and-strftime-how-to-preserve-the-timezone-informat).    ">^1</a>。</p>
+
+<p>所以不奇怪的是，几乎所有的Python项目都会引用一堆优秀的第三方库。为了管理这些依赖一般都会用上pip:</p>
+
+<ul>
+<li>在项目里面用pip freeze生成一个<code>requirement.txt</code>文件</li>
+<li>在创建<code>virtualenv</code>的时候使用之前生成的文件安装所有的依赖</li>
+</ul>
+
+
+<p>为了不在每次运行<code>pip install -r requirements.txt</code>的时候都下载一堆依赖，你还可以打开pip的<a href="http://lenciel.cn/2013/10/pip-download-cache/">download cache</a>。如果整个公司在做项目的时候都需要经常使用一些包，甚至可以考虑<a href="https://github.com/wolever/pip2pi">做一个Pypi</a>的库来共享，类似于Maven的Repo。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cryptography and Python]]></title>
+    <link href="http://lenciel.cn/2013/07/cryptography-and-python/"/>
+    <updated>2013-07-25T15:13:00+08:00</updated>
+    <id>http://lenciel.cn/2013/07/cryptography-and-python</id>
+    <content type="html"><![CDATA[<p>这周我们的一个项目里面需要调用第三方接口。对方的安全机制是调用时要进行加密和校验，但它们的文档没有描述具体是怎么加密的，而是给了一段代码：</p>
+
+<pre><code class="java">    private static BASE64Encoder base64 = new BASE64Encoder();
+//  private static byte[] myIV = { 50, 51, 52, 53, 54, 55, 56, 57 };
+//  private static byte[] myIV = null;
+//  private static String strkey = "W9qPIzjaVGKUp7CKRk/qpCkg/SCMkQRu"; // 字节数必须是8的倍数
+    //密钥
+    private static String strkey = "NDg5MDY2NjczMxxxxXXXXXyNzUzNTg2";
+    private static String removeBR(String str) {
+        StringBuffer sf = new StringBuffer(str);
+
+        for (int i = 0; i &lt; sf.length(); ++i)
+        {
+          if (sf.charAt(i) == '\n')
+          {
+            sf = sf.deleteCharAt(i);
+          }
+        }
+        for (int i = 0; i &lt; sf.length(); ++i)
+        {
+          if (sf.charAt(i) == '\r')
+          {
+            sf = sf.deleteCharAt(i);
+          }
+        }
+        return sf.toString();
+    }
+
+    private static String desEncrypt(String input) throws Exception
+    {
+
+        BASE64Decoder base64d = new BASE64Decoder();
+        DESedeKeySpec p8ksp = null;
+        p8ksp = new DESedeKeySpec(base64d.decodeBuffer(strkey));
+        Key key = null;
+        key = SecretKeyFactory.getInstance("DESede").generateSecret(p8ksp);
+
+        byte[] plainBytes = (byte[])null;
+        Cipher cipher = null;
+        byte[] cipherText = (byte[])null;
+        //“算法/模式/填充”
+        plainBytes = input.getBytes("UTF8");
+        cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+        SecretKeySpec myKey = new SecretKeySpec(key.getEncoded(), "DESede");
+ //       IvParameterSpec ivspec = new IvParameterSpec(myIV);
+        cipher.init(1, myKey);
+        cipherText = cipher.doFinal(plainBytes);
+        return removeBR(base64.encode(cipherText));
+    }
+
+    private static String desDecrypt(String cipherText) throws Exception
+    {
+
+        BASE64Decoder base64d = new BASE64Decoder();
+        DESedeKeySpec p8ksp = null;
+        p8ksp = new DESedeKeySpec(base64d.decodeBuffer(strkey));
+        Key key = null;
+        key = SecretKeyFactory.getInstance("DESede").generateSecret(p8ksp);
+
+        Cipher cipher = null;
+        byte[] inPut = base64d.decodeBuffer(cipherText);
+        //“算法/模式/填充”
+        cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+        SecretKeySpec myKey = new SecretKeySpec(key.getEncoded(), "DESede");
+ //       IvParameterSpec ivspec = new IvParameterSpec(myIV);
+        cipher.init(2, myKey);
+        byte[] output = cipher.doFinal(inPut);
+        return new String(output, "UTF8");
+    }
+</code></pre>
+
+<p>很明显，在提供文档的同学看来大家都是JEE程序员。仔细看了半天这两个函数<code>desEncrypt</code>和<code>desDecrypt</code>外加Google，才明白是<code>DES3</code>算法。</p>
+
+<p>接着这份文档的后面还有另一个对加密的描述也是代码，不过这次比较明显是MD5：</p>
+
+<pre><code class="java">public static final String MD5(String s)
+{
+  char hexDigits[] = {
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'a', 'b', 'c', 'd', 'e', 'f'
+    };
+  char str[] = null;
+  byte strTemp[] = s.getBytes();
+  MessageDigest mdTemp;
+  try {
+    mdTemp = MessageDigest.getInstance("MD5");
+    mdTemp.update(strTemp);
+    byte md[] = mdTemp.digest();
+    int j = md.length;
+    str = new char[j * 2];
+    int k = 0;
+    for (int i = 0; i &lt; j; i++)
+    {
+      byte b = md[i];
+      str[k++] = hexDigits[b &gt;&gt; 4 &amp; 0xf];
+      str[k++] = hexDigits[b &amp; 0xf];
+    }
+  } catch (NoSuchAlgorithmException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+  }
+
+  return new String(str);
+}
+</code></pre>
+
+<p>这些算法用python来实现当然就简单多了:MD5就是一句话，看起来非常复杂的DES3也不过几句话:</p>
+
+<pre><code class="python">from pyDes import triple_des, ECB, PAD_PKCS5
+import base64
+import datetime
+
+input_str = "test string"
+
+key_base64_str = base64.b64decode("NDg5MDY2NjczMxxxxXXXXXyNzUzNTg2", "utf-8")
+key_bytes = key_base64_str.encode('utf-8')
+k = triple_des(key_bytes, ECB, pad=None, padmode=PAD_PKCS5)
+d = base64.b64encode(k.encrypt(input_str))
+print d
+</code></pre>
+
+<p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度。</p>
+
+<h2><strong>Hash</strong></h2>
+
+<p>hash就是给输入的字符串生成一个固定长度的字符串（被称为hash值）。理想的hash要满足：</p>
+
+<ul>
+<li>根据生成的字符串非常难猜到输入的字符串</li>
+<li>任意两个不同的字符串不会生成相同的hash值</li>
+<li>如果输入字符串没有变生成的hash值应该不会变</li>
+</ul>
+
+
+<p><img src="/downloads/images/hash.png" title="Don't touch me..." alt="hash" /></p>
+
+<p>hash函数可以被用来计算checksum，也可以用来进行数字签名和认证。</p>
+
+<h3><strong>MD5</strong></h3>
+
+<p>1991年面世的一种hash算法，生成的字符串长度为128bit。</p>
+
+<p>它的算法详情可以看<a href="http://tools.ietf.org/html/rfc1321">这里</a>，简单说如下：</p>
+
+<ul>
+<li>首先需要对字符串进行扩展，使其位长对512求余的结果等于448。因此，位长（Bits Length）将被扩展至N*512+448，N为一个非负整数，N可以是零。填充的方法一般是在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</li>
+<li>然后，在这个结果后面附加一个以64位二进制表示的填充前信息长度。经过这两步的处理，现在的位长是 <code>N*512+448+64 = (N+1）*512</code>，即长度恰好是512的整数倍。</li>
+<li>最后以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</li>
+</ul>
+
+
+<p>MD5对碰撞攻击(不同的输入生成相同的hash)等攻击的抵抗力比较差。</p>
+
+<p>在python中使用MD5:</p>
+
+<pre><code class="python">import os
+from Crypto.Hash import MD5
+
+def get_file_checksum(filename):
+    h = MD5.new()
+    chunk_size = 8192
+    with open(filename, 'rb') as f:
+        while True:
+            chunk = f.read(chunk_size)
+            if len(chunk) == 0:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+</code></pre>
+
+<h2><strong>加密算法</strong></h2>
+
+<p>加密算法使用key把输入的文本变成加密的文本。有两种加密的方式：分块和流。分块处理的单位是固定大小比如8或者16个bytes，流则是一个一个byte。只有知道了解密的<code>key</code>才能对加密的文本进行解密。</p>
+
+<h3><em>分块</em></h3>
+
+<p>DES是分块加密的一种，其处理对象的大小是8个bytes。DES最简单的模式是所谓的<code>ECB( electronic code book)模式</code>，也就是每个block都是独立加密，最后组成整个加密后的文本。</p>
+
+<p><img src="/downloads/images/block_cipher_ebc.png" title="Don't touch me..." alt="ecb" /></p>
+
+<p>使用pycrpto对文本使用<code>DES/ECB</code>加密很简单。假设key是<code>10234567</code>，而我们要加密的文本是<code>abcdefgh</code>，那么：</p>
+
+<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import DES
+&gt;&gt;&gt; des = DES.new('01234567', DES.MODE_ECB)
+&gt;&gt;&gt; text = 'abcdefgh'
+&gt;&gt;&gt; cipher_text = des.encrypt(text)
+&gt;&gt;&gt; cipher_text
+'\xec\xc2\x9e\xd9] a\xd0'
+&gt;&gt;&gt; des.decrypt(cipher_text)
+'abcdefgh'
+</code></pre>
+
+<p>比<code>ECB</code>更健壮的是<code>CFB (Cipher feedback)</code>模式，也就是先组合前面加密的文本和待加密的文本，然后进行加密。</p>
+
+<p><img src="/downloads/images/block_cipher_cfb.png" title="Don't touch me..." alt="cfb" /></p>
+
+<p>下面的例子说明了算法的工作流程：待加密的是<code>abcdefghijklmnop</code>，两倍8bytes。首先生成一个随机的字符串作为初始的<code>iv</code>来生成两个<code>DES</code>对象，一个用来加密一个用来解密。之所以需要这两个对象，是因为<code>feedback</code>值会随着block被加密后变化。</p>
+
+<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import DES
+&gt;&gt;&gt; from Crypto import Random
+&gt;&gt;&gt; iv = Random.get_random_bytes(8)
+&gt;&gt;&gt; des1 = DES.new('01234567', DES.MODE_CFB, iv)
+&gt;&gt;&gt; des2 = DES.new('01234567', DES.MODE_CFB, iv)
+&gt;&gt;&gt; text = 'abcdefghijklmnop'
+&gt;&gt;&gt; cipher_text = des1.encrypt(text)
+&gt;&gt;&gt; cipher_text
+"?\\\x8e\x86\xeb\xab\x8b\x97'\xa1W\xde\x89!\xc3d"
+&gt;&gt;&gt; des2.decrypt(cipher_text)
+'abcdefghijklmnop'
+</code></pre>
+
+<h3><em>流</em></h3>
+
+<p>这些算法基于一个个bytes，所以block的大小总是1 byte。pycrypto提供了两个这样的算法：<code>ARC4</code> 和 <code>XOR</code>。这种基于流的算法只有一种模式：<code>ECB</code>。</p>
+
+<p>下面是一个<code>ARC4</code>的算法，使用了key <code>01234567</code>:</p>
+
+<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import ARC4
+&gt;&gt;&gt; obj1 = ARC4.new('01234567')
+&gt;&gt;&gt; obj2 = ARC4.new('01234567')
+&gt;&gt;&gt; text = 'abcdefghijklmnop'
+&gt;&gt;&gt; cipher_text = obj1.encrypt(text)
+&gt;&gt;&gt; cipher_text
+'\xf0\xb7\x90{#ABXY9\xd06\x9f\xc0\x8c '
+&gt;&gt;&gt; obj2.decrypt(cipher_text)
+'abcdefghijklmnop'
+</code></pre>
+
+<h3><strong>应用程序</strong></h3>
+
+<p>在程序里面我们常常使用DES3对文件进行加密解密操作。一般来说操作对象是文件时，总是分成一个个chunck来处理以免占用太多内存。如果读入的chunck少于16bytes，就需要扩展它才能进行加密。</p>
+
+<pre><code class="python">import os
+from Crypto.Cipher import DES3
+
+def encrypt_file(in_filename, out_filename, chunk_size, key, iv):
+    des3 = DES3.new(key, DES3.MODE_CFB, iv)
+
+    with open(in_filename, 'r') as in_file:
+        with open(out_filename, 'w') as out_file:
+            while True:
+                chunk = in_file.read(chunk_size)
+                if len(chunk) == 0:
+                    break
+                elif len(chunk) % 16 != 0:
+                    chunk += ' ' * (16 - len(chunk) % 16)
+                out_file.write(des3.encrypt(chunk))
+
+def decrypt_file(in_filename, out_filename, chunk_size, key, iv):
+    des3 = DES3.new(key, DES3.MODE_CFB, iv)
+
+    with open(in_filename, 'r') as in_file:
+        with open(out_filename, 'w') as out_file:
+            while True:
+                chunk = in_file.read(chunk_size)
+                if len(chunk) == 0:
+                    break
+                out_file.write(des3.decrypt(chunk))
+</code></pre>
+
+<p>有了上面定义的这两个函数我们可以这样使用它们：</p>
+
+<pre><code class="python">from Crypto import Random
+iv = Random.get_random_bytes(8)
+with open('to_enc.txt', 'r') as f:
+    print 'to_enc.txt: %s' % f.read()
+encrypt_file('to_enc.txt', 'to_enc.enc', 8192, key, iv)
+with open('to_enc.enc', 'r') as f:
+    print 'to_enc.enc: %s' % f.read()
+decrypt_file('to_enc.enc', 'to_enc.dec', 8192, key, iv)
+with open('to_enc.dec', 'r') as f:
+    print 'to_enc.dec: %s' % f.read()
+</code></pre>
+
+<p>程序的输出如下：</p>
+
+<pre><code class="bash">to_enc.txt: this content needs to be encrypted.
+
+to_enc.enc: ??~?E??.??]!=)??"t?
+                                JpDw???R?UN0?=??R?UN0?}0r?FV9
+to_enc.dec: this content needs to be encrypted.
+</code></pre>
+
+<h2><strong>Public-key algorithms</strong></h2>
+
+<p>上面提到的加密算法的一大问题是双方都需要知道key。而<code>public-key算法</code>提供了两个key，一个用来加密，一个用来解密。</p>
+
+<p><img src="/downloads/images/public_private_key.png" title="Don't touch me..." alt="ecb" /></p>
+
+<h3><strong>public/private key</strong></h3>
+
+<p>使用pycrpto很容易就可以生成一对<code>private/public key</code>，生成key的时候必须规定key的长度，越长越安全。除开长度，还需要设定生成key的方法。下面是一个使用RSA生成1024bit长度key的过程：</p>
+
+<pre><code class="python">&gt;&gt;&gt; from Crypto.PublicKey import RSA
+&gt;&gt;&gt; from Crypto import Random
+&gt;&gt;&gt; random_generator = Random.new().read
+&gt;&gt;&gt; key = RSA.generate(1024, random_generator)
+&gt;&gt;&gt; key
+&lt;_RSAobj @0x7f60cf1b57e8 n(1024),e,d,p,q,u,private&gt;
+</code></pre>
+
+<p>key对象有一系列的方法：
+- <code>can_encrypt()</code> 返回是否能用key来加密数据
+- <code>can_sign()</code> 返回是否能用key来进行签名
+- <code>has_private()</code> 返回是否有private key</p>
+
+<pre><code class="python">&gt;&gt;&gt; key.can_encrypt()
+True
+&gt;&gt;&gt; key.can_sign()
+True
+&gt;&gt;&gt; key.has_private()
+True
+</code></pre>
+
+<h3><strong>加密</strong></h3>
+
+<p>现在我们有了一对key，我们就可以加密一些数据了。加密的时候使用的是公钥: <code>public key</code> ：</p>
+
+<pre><code class="python">&gt;&gt;&gt; public_key = key.publickey()
+&gt;&gt;&gt; enc_data = public_key.encrypt('abcdefgh', 32)
+&gt;&gt;&gt; enc_data
+('\x11\x86\x8b\xfa\x82\xdf\xe3sN ~@\xdbP\x85
+\x93\xe6\xb9\xe9\x95I\xa7\xadQ\x08\xe5\xc8$9\x81K\xa0\xb5\xee\x1e\xb5r
+\x9bH)\xd8\xeb\x03\xf3\x86\xb5\x03\xfd\x97\xe6%\x9e\xf7\x11=\xa1Y&lt;\xdc
+\x94\xf0\x7f7@\x9c\x02suc\xcc\xc2j\x0c\xce\x92\x8d\xdc\x00uL\xd6.
+\x84~/\xed\xd7\xc5\xbe\xd2\x98\xec\xe4\xda\xd1L\rM`\x88\x13V\xe1M\n X
+\xce\x13 \xaf\x10|\x80\x0e\x14\xbc\x14\x1ec\xf6Rs\xbb\x93\x06\xbe',)
+</code></pre>
+
+<h3><strong>解密</strong></h3>
+
+<p>只要有用于解密的私钥(private key)解密是很简单的：</p>
+
+<pre><code class="python">&gt;&gt;&gt; key.decrypt(enc_data)
+'abcdefgh'
+</code></pre>
+
+<h3><strong>签名</strong></h3>
+
+<p>对信息进行签名，可以用来验证信息的作者，让我们相信它的来源。下面这个例子展示了如何先算出信息的hash值，然后送给RSA key的<code>sign()</code>方法。使用其他算法如<code>DSA</code>或者是<code>ElGamal</code>也类似。</p>
+
+<pre><code class="python">&gt;&gt;&gt; from Crypto.Hash import MD5
+&gt;&gt;&gt; from Crypto.PublicKey import RSA
+&gt;&gt;&gt; from Crypto import Random
+&gt;&gt;&gt; key = RSA.generate(1024, random_generator)
+&gt;&gt;&gt; text = 'abcdefgh'
+&gt;&gt;&gt; hash = MD5.new(text).digest()
+&gt;&gt;&gt; hash
+'\xe8\xdc@\x81\xb144\xb4Q\x89\xa7 \xb7{h\x18'
+&gt;&gt;&gt; signature = key.sign(hash, '')
+&gt;&gt;&gt; signature
+(1549358700992033008647390368952919655009213441715588267926189797
+14352832388210003027089995136141364041133696073722879839526120115
+25996986614087200336035744524518268136542404418603981729787438986
+50177007820700181992412437228386361134849096112920177007759309019
+6400328917297225219942913552938646767912958849053L,)
+</code></pre>
+
+<h3><strong>验证</strong></h3>
+
+<p>只要有公钥，验证信息就很简单了。未加密的文本和签名一起被发送给接收方。接收方计算hash值然后调用公钥的<code>verify()</code>方法来进行验证：</p>
+
+<pre><code class="python">&gt;&gt;&gt; text = 'abcdefgh'
+&gt;&gt;&gt; hash = MD5.new(text).digest()
+&gt;&gt;&gt; public_key.verify(hash, signature)
+True
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

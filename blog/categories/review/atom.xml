@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Review | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/review/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[如何review产品的UX设计]]></title>
+    <link href="http://lenciel.cn/2014/05/what-to-ask-about-design/"/>
+    <updated>2014-05-12T22:45:33+08:00</updated>
+    <id>http://lenciel.cn/2014/05/what-to-ask-about-design</id>
+    <content type="html"><![CDATA[<p>产品设计中UX设计是很重要的一方面，毕竟是拿来见人的嘛。像我这样的工程师怎么去构思自己产品的UX设计或者是review别人的设计呢？当然还是工程师的思维方式了：</p>
+
+<ul>
+<li> 它外在的形式是什么？</li>
+<li> 它内在的表达是什么？</li>
+<li> 它的外在形式和内在表达一致吗？</li>
+<li> 作为观者，我自己感觉如何？我能接收到它传达的东西吗？我能够被它激发起使用的兴趣吗？</li>
+<li> 有了兴趣，接下来该怎么点击，怎么拖动，怎么操作是明显的吗？</li>
+<li> 有没有过度的设计？有没有可以砍掉的地方？有没有做太多假设？有没有缺失的地方？</li>
+<li> 今后如果功能上有这样那样的扩展，是很容易加上去的吗？</li>
+</ul>
+
+
+<p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.cn/">我心中的好设计</a>。</p>
+]]></content>
+  </entry>
+  
+</feed>

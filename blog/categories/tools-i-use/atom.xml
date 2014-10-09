@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Update Android Sdk With Shadowsocks Proxy]]></title>
+    <link href="http://lenciel.cn/2014/09/update-android-sdk-with-proxy/"/>
+    <updated>2014-09-02T02:30:35+08:00</updated>
+    <id>http://lenciel.cn/2014/09/update-android-sdk-with-proxy</id>
+    <content type="html"><![CDATA[<p>博格坎普说，我们android项目的build挂了。</p>
+
+<p>去Jenkins看了一下，日志里面的错误是：</p>
+
+<pre><code>[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build
+Creating properties on demand (a.k.a. dynamic properties) has been deprecated and is scheduled to be removed in Gradle 2.0. Please read http://gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html for information on the replacement for dynamic properties.
+Deprecated dynamic property: "buildName" on "ProductFlavorDsl_Decorated{name=main, minSdkVersion=null, targetSdkVersion=null, renderscriptTargetApi=-1, renderscriptSupportMode=null, renderscriptNdkMode=null, versionCode=-1, versionName=null, applicationId=null, testApplicationId=null, testInstrumentationRunner=null, testHandleProfiling=null, testFunctionalTest=null, signingConfig=null, resConfig=null}", value: "1.0.97".
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':app'.
+&gt; Could not resolve all dependencies for configuration ':app:_debugCompile'.
+   &gt; Could not find com.android.support:appcompat-v7:20.0.0.
+     Required by:
+         android:app:unspecified
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.s
+</code></pre>
+
+<p>这其实在天朝是蛮常见的现象，因为<code>dl-ssl.google.com</code>被封了，所以你总是会因为下面的错误无法更新Android的SDK：</p>
+
+<pre><code class="bash">Failed connect to dl-ssl.google.com:443;
+</code></pre>
+
+<h2>Jenkins服务器配置代理</h2>
+
+<p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
+
+<p>安装shadowsocks的pythohn client:</p>
+
+<pre><code class="bash">$ pip install shadowsocks
+
+Downloading/unpacking shadowsocks
+  Running setup.py egg_info for package shadowsocks
+
+    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+
+Installing collected packages: shadowsocks
+  Running setup.py install for shadowsocks
+
+    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+
+    Installing sslocal script to /usr/local/bin
+    Installing ssserver script to /usr/local/bin
+Successfully installed shadowsocks
+Cleaning up...
+</code></pre>
+
+<p>可以看到安装完之后有两个可执行文件，运行其中的<code>sslocal</code>就可以启动shadowsocks的客户端了：</p>
+
+<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -h
+usage: sslocal [-h] -s SERVER_ADDR [-p SERVER_PORT]
+               [-b LOCAL_ADDR] [-l LOCAL_PORT] -k PASSWORD [-m METHOD]
+               [-t TIMEOUT] [-c CONFIG] [--fast-open] [-v] [-q]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SERVER_ADDR        server address
+  -p SERVER_PORT        server port, default: 8388
+  -b LOCAL_ADDR         local binding address, default: 127.0.0.1
+  -l LOCAL_PORT         local port, default: 1080
+  -k PASSWORD           password
+  -m METHOD             encryption method, default: aes-256-cfb
+  -t TIMEOUT            timeout in seconds, default: 300
+  -c CONFIG             path to config file
+  --fast-open           use TCP_FASTOPEN, requires Linux 3.7+
+  -v, -vv               verbose mode
+  -q, -qq               quiet mode, only show warnings/errors
+
+Online help: &lt;https://github.com/clowwindy/shadowsocks&gt;
+</code></pre>
+
+<p>最简单的办法就是新建一个配置文件：</p>
+
+<p><code>javascript ~/.shadowconfig
+{
+    "server":"my_server_ip",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"barfoo!",
+    "timeout":600,
+    "method":"table"
+}
+</code></p>
+
+<p>记得在防火墙打开你配置的本地端口，然后运行下面的命令：</p>
+
+<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -c ~/.shadowconfig
+INFO: loading config from /root/.shadowconfig
+shadowsocks 2.1.0
+2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
+</code></pre>
+
+<h2>命令行更新android sdk</h2>
+
+<p>先配置java命令使用的代理，然后
+从命令行更新android sdk。只需要到tools目录下面去跑(<code>-u</code>是不显示GUI，<code>-s</code>是指定不使用ssl链接)：</p>
+
+<pre><code class="bash">$ export _JAVA_OPTIONS="-DsocksProxyHost=127.0.0.1"
+$ android update sdk -u -s --all
+</code></pre>
+
+<p>注意<code>socksProxyHost</code>的默认端口就是1080，如果你使用了其他端口不能只配ip。</p>
+
+<p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
+
+<h2>When shit happens</h2>
+
+<p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
+
+<pre><code class="bash">2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+</code></pre>
+
+<p>因为本座平时上网也是在用Google VM上的这个代理，没理由这么慢。所以就怀疑那个74.125.237.1的地址是被谁在<code>/etc/hosts</code>里面给配了固定ip。打开一看果然有：</p>
+
+<pre><code class="bash">dl-ssl.google.com 74.125.237.1
+</code></pre>
+
+<p>估计是之前配置的基友搜索到了类似<a href="http://www.programering.com/a/MjM4YTMwATA.html">这样的文章</a>。这也是为什么我从来不用也不推荐别人用修改hosts文件的方法来翻墙的原因：它们总是在过期。</p>
+
+<p>Last but not the least, Fuck you, GFW.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How Complex Your Python Project Is?]]></title>
+    <link href="http://lenciel.cn/2014/08/how-complex-your-python-project-is/"/>
+    <updated>2014-08-31T21:04:47+08:00</updated>
+    <id>http://lenciel.cn/2014/08/how-complex-your-python-project-is</id>
+    <content type="html"><![CDATA[<p>最近诸事不顺，却也理所应当。</p>
+
+<p>晚间时段迷上写字和画画，大概是因为之前看<a href="http://www.imdb.com/title/tt0460740/">《Cashback》</a>印象太深刻，觉得这些是美好遗失前力挽狂澜的技艺。</p>
+
+<p>除开纸上涂鸦，还用机器画了不少鸡零狗碎的东西：我想用python画点儿T恤图案，印出来送给大家，给大伙儿同时也给自己打打气。</p>
+
+<p>一开始看中了基于<a href="http://www.graphviz.org/">Graphviz</a>的<a href="http://furius.ca/snakefood/">Snakefood</a>。</p>
+
+<p>最开始接触Graphviz是因为<a href="https://github.com/django-extensions/django-extensions">django-extensions</a>项目用它来画django model的<a href="https://code.djangoproject.com/wiki/DjangoGraphviz">关系图</a>。我们用它冒充ER图，拿去跟那些喜欢看文档但其实又不专业的官僚客户们交差。</p>
+
+<p>Snakefood更进一步，通过分析你的代码依赖，从而得出你代码的“复杂度”。</p>
+
+<p>“复杂度”其实是用“代码行数”衡量码农工作效力被普遍吐槽之后，大公司发明出来折腾工程师的诸多metrics里面还算有点儿用的一个：至少你可以让要接手的人看看这项目大概是个什么规模，以及，大概要挠破几寸头皮才能看懂。</p>
+
+<p>当然，Snakefood这种基于文件依赖的复杂度分析其实不算特别靠谱，这可不是什么<a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic complexity</a>，更像是开飞机的时候边排查“事故征兆”边驾驶的辅助工具。作者自己是这么说的：</p>
+
+<p><blockquote><p>Producing pretty graphs is fun, but I found the most leverage of it when I try to make my code simpler, I generate the graph and inspect unexpected dependencies and try to refactor my code to simply the dependency graph as much as possible.</p><footer><strong>Martin Blais</strong></footer></blockquote></p>
+
+<p>下面是本座心目中永远的&#8221;优雅Python代码第一名&#8221;<a href="http://docs.python-requests.org/en/latest/">Requests</a>的分析结果：</p>
+
+<p><img src="/downloads/images/2014_08/requests.png" title="requests dependencies" alt="requests" /></p>
+
+<p>再来看看<a href="https://github.com/django/django">Django</a>的最新版分析结果：</p>
+
+<p><img src="/downloads/images/2014_08/django.png" title="django dependencies" alt="django" /></p>
+
+<p>下面是本座最近撸完的一个项目，印到衣服上感觉还好吧：
+<img src="/downloads/images/2014_08/yawp.png" title="yawp dependencies" alt="yawp" /></p>
+
+<h2>结论</h2>
+
+<p>首先，本座挺喜欢Snakefood那种Unix范儿的：所有的命令都可以给其他命令来一管，比如：</p>
+
+<pre><code class="bash">    sfood ./src | sfood-graph -p | dot -Tps | pstopdf -i -o ./1.pdf
+</code></pre>
+
+<p>其次，本座开始计划是给每个人生成一个他们自己写的模块的依赖图，印到衣服上让大家自己穿。但试了之前几个项目之后，Hmmmm&hellip;有的同学大概是不会愿意的吧&hellip;</p>
+
+<p>最后，T恤计划也没这么就打住：后来又发现了<a href="http://nodebox.net/">nodebox</a>这种真正是拿来搞艺术的玩意儿，于是要生成一点儿敢往自己胸口放的东西变得方便多了，过两天如果公司没有倒闭，就把东西放出来让大家看看。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac上使用Suite Fusion管理字体]]></title>
+    <link href="http://lenciel.cn/2014/07/manage-fonts-on-your-mac/"/>
+    <updated>2014-07-26T11:36:48+08:00</updated>
+    <id>http://lenciel.cn/2014/07/manage-fonts-on-your-mac</id>
+    <content type="html"><![CDATA[<p>对于从事设计工作的人员，难免要和字体打交道：因为<a href="http://lenciel.cn/2013/08/buttericks-practical-typography/">设计主要就是Typography的设计</a>，而Typography的基础就是字体。</p>
+
+<p>随着完成的项目越来越多，机器上的字体也就慢慢多起来，如何快速的找到自己想要的字体变成了问题。特别是大多数设计软件里，字体选择的界面都是一个下拉框：如果你有几百个字体加载到系统，几乎每次选择字体都是一场灾难。</p>
+
+<p>这种情况下，难免会希望：</p>
+
+<ul>
+<li>对于特定的项目，能够选择特定的字体库</li>
+<li>对于特定的文档类型，能够选择特定的字体库</li>
+</ul>
+
+
+<p>使用Suite Fusion管理字体就可以到达这两个目的。</p>
+
+<h2>Mac上的字体集和安装路径</h2>
+
+<p>过去在Windows平台上工作的时候，字体都是放在一个地方的，而在Mac下面字体主要是下面三部分字体集组成：</p>
+
+<ul>
+<li>System：位于<code>/System/Library/Fonts</code>， 是系统的字体库，所有登录的用户都可以使用，最好不要随便改动</li>
+<li>Local：位于 <code>/Library/Fonts</code>，和System字体一样也是所有登录的用户都可以使用的。只是它们基本不是随系统安装，而是其他软件装上去的，比如MS Word等等</li>
+<li>User：位于 <code>~/Library/Fonts</code>，仅对当前登录的用户可用，可以是第三方软件安装的时候安装的（如果你选择了只对当前用户可用），也可以是用户自己安装的字体</li>
+</ul>
+
+
+<h2>启用Suite Fusion的Font Vault</h2>
+
+<p>Suite Fusion提供了一个可以自己定义路径的Font Vault。然后你如果在<code>Preferences</code>里面把<code>Copy added fonts into the vault</code>勾上，那么所有添加到Suite Fusion的字体都会被放在一个地方。这样的好处是管理方便：保证字体没有重复，并且很容易备份。</p>
+
+<p>一旦你的字体都在Font Vault里面了，就可以使用Suitcase Fusion删除原来放在各个地方的字体了。在字体清理好之后，你就可以根据不同的项目或者是文档类型建立Set，根据需要来激活它们。</p>
+
+<h2>添加字体和创建字体库</h2>
+
+<p>只需要使用快捷键&#8221;Cmd+L&#8221;就可以添加字体到字体库。如果默认的字体库不符合你的要求还可以自己新建。添加字体的过程中，SF会扫描字体，提取字体信息，检测是否有错（注意，Suite Fusion不支持orphan outline和orphan bitmap字体）。</p>
+
+<p>并且，如果你本来是用目录来组织字体的，Suite Fusion在支持顶级目录导入，再自动以子目录名创建相应的字体库。</p>
+
+<p>整理字体的界面可以参考下面的截图：</p>
+
+<p><img src="/downloads/images/2014_07/suite_fusion_5.png" title="Don't touch me..." alt="suite fusion 5" /></p>
+
+<p>建立的这些字体库可以根据你打开的文档类型来进行激活和去激活。并且Suite Fusion提供了很多常见设计软件（比如Photoshop、Sketch等）的插件，让你直接在这些软件里面操作字体库。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Retina屏幕上的最佳编程字体]]></title>
+    <link href="http://lenciel.cn/2014/07/font-for-programming/"/>
+    <updated>2014-07-13T18:45:27+08:00</updated>
+    <id>http://lenciel.cn/2014/07/font-for-programming</id>
+    <content type="html"><![CDATA[<p>关于编程使用什么样的字体比较好是一个由来已久的话题 <a href="" title="[Anonymous pro programming font](http://hivelogic.com/articles/anonymous-pro-programming-monospace-font).">^1</a> <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，但其实在不同分辨率和操作系统的屏幕上，字体的表现也不一样，所以并不应该有一统天下的字体。比如Retina的屏幕上，字体越细滑看起来似乎就好（当然这也是个体感觉），所以本座最近把所有的开发环境默认字体都换成了<a href="http://mplus-fonts.sourceforge.jp/">M+</a>。</p>
+
+<p>除开字体给人的感觉很细腻之外，M+还满足了本座心中好字体的几大标准。</p>
+
+<h2>窄</h2>
+
+<p><img src="/downloads/images/2014_07/fonts_comparision.png" title="Don't touch me..." alt="fonts comparision" /></p>
+
+<p>可以看到，它比大多数的等宽字体都要窄。这样在本座13寸的笔记本屏幕上，也能在显示80个字符宽度的标线的同时，完整看到最少两个水平分割的编辑区。</p>
+
+<p><img src="/downloads/images/2014_07/pycharm_split.png" title="Don't touch me..." alt="pycharm split" /></p>
+
+<p>当然，如果你对码农们为什么需要显示一根80个字符宽度的标线有疑问：这一方面是<a href="http://programmers.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width">处女座程序员对历史的坚持</a>，另一方面，如果你经常写出很长的语句，也意味着你的代码质量有问题。</p>
+
+<h2>全</h2>
+
+<p>除开基本的字符，M+因为是出自日本设计师的关系，字符很全。</p>
+
+<p><img src="/downloads/images/2014_07/fonts_map.png" title="Don't touch me..." alt="fonts map" /></p>
+
+<h2>清</h2>
+
+<p>对程序员来说，清楚的字体主要是指：</p>
+
+<ul>
+<li>要能很方便的区别开大写的字母<code>O</code>和数字<code>0</code></li>
+<li>要能很方便的区别开数字<code>1</code>，大写的<code>I</code>和小写的<code>l</code></li>
+<li>要能很方便的区别开<code>.</code>和IDE显示的Whitespace</li>
+</ul>
+
+
+<p>M+在这方面也是非常棒的：</p>
+
+<p><img src="/downloads/images/2014_07/fonts_clear.png" title="Don't touch me..." alt="fonts clear" /></p>
+
+<p>因为是开源字体，M+是可以自由下载和使用的。但因为你在中国，可能访问不了Sourceforge，不如下载<a href="http://pan.baidu.com/s/1gdgk6VT">我分享的zip包</a>吧，lol。</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="http://www.slant.co/topics/67/~what-are-the-best-programming-fonts">What are the best programming fonts</a>.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac上自启动autossh]]></title>
+    <link href="http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
+    <updated>2014-07-11T20:14:20+08:00</updated>
+    <id>http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
+    <content type="html"><![CDATA[<p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
+
+<p><div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
+<noscript><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;autossh.lenciel&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;/opt/boxen/homebrew/bin/autossh&lt;/string&gt;
+    &lt;string&gt;-M&lt;/string&gt;
+    &lt;string&gt;20000&lt;/string&gt;
+    &lt;string&gt;-f&lt;/string&gt;
+    &lt;string&gt;-i&lt;/string&gt;
+    &lt;string&gt;~/.ssh/fuckgfw&lt;/string&gt;
+    &lt;string&gt;-N&lt;/string&gt;
+    &lt;string&gt;-L&lt;/string&gt;
+    &lt;string&gt;0.0.0.0:3189:localhost:31280&lt;/string&gt;
+    &lt;string&gt;remotehost&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;WorkingDirectory&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/&lt;/string&gt;
+  &lt;key&gt;StandardErrorPath&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/log/autossh/autossh.log&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Thoughts | @Lenciel]]></title>
+  <link href="http://lenciel.cn/blog/categories/thoughts/atom.xml" rel="self"/>
+  <link href="http://lenciel.cn/"/>
+  <updated>2014-10-09T13:06:51+08:00</updated>
+  <id>http://lenciel.cn/</id>
+  <author>
+    <name><![CDATA[Lenciel Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[应用开发能火多久?]]></title>
+    <link href="http://lenciel.cn/2014/04/why-made-apps/"/>
+    <updated>2014-04-09T15:07:57+08:00</updated>
+    <id>http://lenciel.cn/2014/04/why-made-apps</id>
+    <content type="html"><![CDATA[<p>不管是从日常生活里面的观察和感受，还是查看统计数据，都很容易发现人们在移动设备上停留的时间已经逐渐超过了在PC上停留的时间。当然拐点是不是如下图所示就在今年业界有些争议，但是拐点已经要来了是没有人再怀疑了。</p>
+
+<p><img src="/downloads/images/2014_04/comscore_mobile_users_desktop_users_2014.jpg" title="Don't touch me..." alt="mobile vs desktop" /></p>
+
+<p>而移动设备取代PC机成为最主要的入口之后，就意味着谁占领了移动设备，谁就拥有未来。同样不管是从切身体会还是数据都不难知道，和PC上各种网站（包括各种浏览器+插件提供的服务）占据统治地位不同，在移动平台上，应用程序获得了全面的胜利。</p>
+
+<p><img src="/downloads/images/2014_04/apps_dominate_hires.png" title="Don't touch me..." alt="mobile apps vs website" /></p>
+
+<p>移动客户端上网站和App相比所处的劣势会越来越严重。无论是我们自己公司还是行业内其他人，都知道做移动互联网就是要做应用才行。所以你看手机网页上和游戏里，各种弹窗、各种广告、各种骚扰短信，都是指向某个应用的下载链接。</p>
+
+<p>这也是为什么那么多财大气粗的实体官方的网站在移动客户端上看起来就跟狗屎一样：他们的老板们的逻辑和开发者一样，那些网站没什么人在手机上看，只要我的应用、我的微信公众号看起来好就行了。</p>
+
+<p>这么一来，最好的开发和设计人员都去做应用了，大量的钱也都烧在应用推广上去了。</p>
+
+<p>最终我们手机上的浏览器几乎被闲置了，打开它主要是为了：</p>
+
+<ul>
+<li>搜索</li>
+<li>下载一个应用</li>
+<li>从一些sns程序里面点开某个链接</li>
+</ul>
+
+
+<p>而且，就第三项用处来看，越来越多的sns程序，比如微信，微博等，都是直接在自己内嵌的webview里面打开链接，根本不会使用系统安装的浏览器。</p>
+
+<p>从长远看这种应用一骑绝尘网站无人问津的状况还是对整个生态有很大的风险：</p>
+
+<ul>
+<li>看看有线电视发展到后面是什么样：大寡头们有更好的设备，更强大的制作班底，更多的明星，控制了整个行业。这种状况下，用户打开电视能看到什么样的节目几乎没得选，小团队要靠创新来出头也变得非常困难</li>
+<li>应用主要在少数几个主流应用商店发行，比如Google和Apple的。意味着Google和Apple不仅仅要抽水，还要对应用内容，应用怎么推广，甚至应用用什么语言开发进行控制。</li>
+</ul>
+
+
+<p>比如Apple。在PhoneGap最开始出来的时候，所有用这个hybrid framework开发的应用都被Apple强制封杀，理由居然是“不使用native library开发的应用不像一个应用”。再比如最近，它直接发了一个policy就让所有跟BT币有关的应用下架了。</p>
+
+<p>感觉在移动平台上会上演类似PC上的历史，首先会有Apple和Google这样提供OS的企业通过应用这个渠道来做成大山头。然后生态系统对其他参与者越来越艰辛，于是会有很多企业尝试破冰，比如通过开发功能强大的浏览器形成新的渠道，来脱离寡头们的控制。最终，移动平台上的浏览器肯定也会像现在PC上的浏览器一样强大，成为各种服务的入口。</p>
+
+<p>而且，这个过程肯定会比PC上要快很多。首先，大家都已经被教育过一次了，大腾讯大百度们做自己的浏览器不是做着玩的；更重要的是，Web发展到今天这个地步，开放性已经有些脱离技术，变成了社会生活中的一种意识形态。一旦移动网络资费和速度真正给力，肯定会有揭竿而起的。即使大如Google和Apple，也很难再像当年MS那样hold住全场了。那个时候，很多Myriad这样的做中间件的公司，又会春风得意了吧。</p>
+
+<p>当然，最近这些年肯定还是应用开发热火的时候，小伙伴们，过时不候，放手干吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Done List Instead of to Do List]]></title>
+    <link href="http://lenciel.cn/2013/03/use-done-list-rather-than-todo-list/"/>
+    <updated>2013-03-15T21:25:00+08:00</updated>
+    <id>http://lenciel.cn/2013/03/use-done-list-rather-than-todo-list</id>
+    <content type="html"><![CDATA[<p><img src="/downloads/images/nerd_sniping.png" title="Don't touch me..." alt="nerd sniping" /></p>
+
+<h2><strong>起</strong></h2>
+
+<p><a href="http://xkcd.com/730/" target="_blank">xkcd</a>一直是本座最喜欢的网站（嗯哼）。上面这幅图说了一个很有趣的现象，正好最近深有体会，就来这边吐槽一下。整个经过是：</p>
+
+<p>大前天回到家感觉不算太忙，本座就开始家姐布置的家庭作业：做一个用于心理学测试的游戏。需求简单来说就是：</p>
+
+<ul>
+<li>游戏开始后轮转播放图片、视频或者音频 （媒体库要容易换，播放的切换间隙也要能配置）</li>
+<li>被试通过操控手中的手柄表达心理的反应，由程序转成可统计的数据（比如看到美女图按同时按下AB）</li>
+<li>程序得到的数据能够很容易的被统计，统计结果能够很优雅的呈现出来</li>
+</ul>
+
+
+<p>为了让这个事情变得更有趣，本座在需求确定之后决定：</p>
+
+<ol>
+<li>用帅气的<a href="http://www.nintendo.co.uk/NOE/en_GB/systems/accessories_1243.html" target="_blank" class="broken_link">Wii Remote</a>来让被试表达自己（想想美女图片一出就甩或者是撸一下WiiRemote有多实在）</li>
+<li>用<a href="http://www.pygame.org/news.html" target="_blank">pyGame</a>来写这个游戏（早就想学习pyGame了）</li>
+<li>把统计数据的输出作为一个用<a href="http://www.r-project.org/" target="_blank">R语言</a>实现的统计绘图的界面的输入</li>
+</ol>
+
+
+<p>接着就开始第一项。当程序把 <code>Wii Remote</code> 的蓝牙信号正确的转换成标准的手柄信号的时候，一看已经挺晚了，本座就只好把后面两个放在了 <code>todo list</code> 上。接着这两天都很忙这些东西就继续的呆在 <code>todo list</code> 。</p>
+
+<p>然后今天又找到时间，本座就开始用 <code>pyGame</code> 写游戏本身部分，但突然觉得vim下面自动补全很烂，就开始google合适的插件。花了10分钟左右发觉不少人说 <code>pydict</code> 好，本座就又花了15分钟左右去配置。然后看着chrome里面为了搜索插件弹出的一堆tab突然本座发现：</p>
+
+<p>经过了4天，本座把Wii Remote用蓝牙连到PC输出手柄信号，本座有了一个不错的vim下开发python的环境，本座还学习了一点儿R。唯一没有开始的就是，嗯，还没有开始写那个游戏。</p>
+
+<h2><strong>承</strong></h2>
+
+<p>你的情况可能具体细节和我不一样，但是结果估计都是南辕北辙：你是网页设计师，在需要画 <code>wireframe</code> 的时候花了一大把时间去看搜索出来的新鲜的、华丽的 <code>CSS3</code> 效果；你上淘宝买手机结果研究移动电源用了4个小时；你想学怎么养花结果因为选盆子下面水漏的形状耽误了。</p>
+
+<p>这种情况之所以对你的效率有很大的伤害是因为：</p>
+
+<ol>
+<li>你认为你是在完成自己 <code>todo list</code> 上的东西，所以你觉得自己是在“进展中”而不是“瞎逛”。</li>
+<li>你认为的进展给你带来了更多 <code>todo list</code> 上的东西，而且有些确实对原来的目标是无益的。</li>
+</ol>
+
+
+<p>人的精力是有限的，如果你长期处于这种状况（太正常了，如果你是玩电脑的话），可就要小心了。</p>
+
+<h2><strong>转</strong></h2>
+
+<p>其实这种发散的工作方式并不是完全错误的。其实在我们这个行业，这种“总想追求更好”的想法，是整个Agile的基础。Facebook在自己的员工的邮件<a href="http://blogs.wsj.com/deals/2012/02/01/mark-zuckerbergs-letter-from-the-facebook-filing/" target="_blank">里面</a>写到：</p>
+
+<blockquote><p>The Hacker Way is an approach to building that involves continuous improvement and iteration. Hackers believe that something can always be better, and that nothing is ever complete. They just have to go fix it — often in the face of people who say it’s impossible or are content with the status quo.</p></blockquote>
+
+<p>从本座自己的感觉而言，做事循规蹈矩的同事，完成一般难度的任务时，效率确实很高。但是那种真正非常困难的问题，常常是被喜欢“瞎逛”的人解决的。这当然也没什么奇怪的，所谓闭门造的车，出门就只能合辙。Richard Hamming也<a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank">说</a>：</p>
+
+<blockquote><p>I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don&#8217;t know quite about what problems are worth working on … He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. ….</p></blockquote>
+
+<h2><strong>合</strong></h2>
+
+<p>不能闭门造车，又需要有固定的输出值，怎么办？今天本座是这么办的：</p>
+
+<ol>
+<li>早上起来把今天最重要的事情从<a href="https://astrid.com/home" target="_blank">todo list</a>里面选出来。</li>
+<li>完成这些事情的过程中遇到任何有趣的东西或者想法，存到<a href="http://delicious.com/" target="_blank">delicious</a>或者<a href="http://www.evernote.com/" target="_blank">evernote</a>里面。</li>
+<li>使用<a href="https://idonethis.com" target="_blank">Done list</a>而不是todo list来标记自己今天的活动。</li>
+</ol>
+
+
+<p>结果是今天3点钟就完成了所有重要的事情，能够来安心的写一篇blog，看起来是个不错的办法。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[洛带，洛带]]></title>
+    <link href="http://lenciel.cn/2010/05/luo-dai-tour/"/>
+    <updated>2010-05-24T12:23:00+08:00</updated>
+    <id>http://lenciel.cn/2010/05/luo-dai-tour</id>
+    <content type="html"><![CDATA[<p><img src="/downloads/images/beautiful_loser.png" title="Don't touch me..." alt="" /></p>
+
+<p>周末开车去了趟洛带古镇。倒不是专为了枇杷，更多是解闷。和偶像派坐在一条有大树遮盖的巷子，就着一口有水藻覆盖的池塘，点两杯冰糖过量的柠檬水，大眼瞪小眼的回忆童年、青春、挨揍、被追。太阳下去，微风上来，买两斤鲜枇杷，剥出天下、百姓、出世、入球。灯光亮起来的时候，吃伤心凉粉，砍公社烧鹅，再探讨为什么我们一个美又白，一个丑又黑，但千百人中，我们好了。</p>
+
+<p>夜幕洒下来的时候，街面上的工商、公安、城管、街道、环卫和小贩、地痞、流氓、小偷并肩走了，银器、木器、兵器和珠光宝气收了，会馆、饭馆、照相馆和殡仪馆歇了。我以为属于古镇最好的时候要来了。这里没记事本没打印机、没CFR没DPD，到处是眼神迟缓而放空的老年人，像文学女青年一般忧郁得让人动心。</p>
+
+<p>可惜这个时候古镇的年轻人就出现了，在白天只能步行的石板路上，飙着他们的电动车。他们大概是不愿加入引车卖浆者流的，因为他们可是非主流。所以白天不露面，晚上才出来展示他们的机车、音乐和纹身。那些纹身，就好像古镇墙壁上的那些壁画一般，既有些年久失修的粗糙，却又带着些五彩缤纷的固执。</p>
+
+<p>没了，好不容易找到的看一个时辰风月，写两个时辰雅俗，颂三个时辰歌赋的那份缓慢劲儿又不见了。什么时候医生已经不去挨个辨认百草，武士也不再琢磨打通任督二脉了，于是，真正的医生和武士也都随风飘散。什么时候地球平了，东土不再意淫西域，西域也不再崇拜东土了，于是，再没有人会在陌生的地方去修馆，去建镇，收拾心情，思考人生。</p>
+
+<p>我们现在的一切都太赶，其实就是因为太丰盛。《诗经》、《道德经》、《四十二章经》收起来了，《股经》、《彩经》、《致富经》流行了。“言语巧偷鹦鹉舌，文章分得凤凰毛”的苏小小薛涛柳如们才能当名妓的时候过了，洗干净自己的泥腿子就能去给客人洗身子的日子来了。没鸡鸡的司马迁唱古人不见我的时候过了，有鸡鸡的小男人唱着歌选超级女生的日子来了。</p>
+
+<p>九球落袋，打完收工……Let&rsquo;s go home.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自己]]></title>
+    <link href="http://lenciel.cn/2008/06/himself/"/>
+    <updated>2008-06-01T23:10:00+08:00</updated>
+    <id>http://lenciel.cn/2008/06/himself</id>
+    <content type="html"><![CDATA[<p><img src="/downloads/images/love_affair.png" title="Don't touch me..." alt="Our love" /></p>
+
+<p>他想，让一切都慢下来。<br/>
+太阳把阳光，忘在屋子里。<br/>
+那把切过西瓜的菜刀，<br/>
+斜靠在墙上，像丢失已久的月光宝盒，<br/>
+精神奕奕。<br/>
+那些被灰尘压得翻不开的书页，<br/>
+里面写的，是他自己。</p>
+
+<p>她说，我要走了。<br/>
+那好，我送你。<br/>
+他爱她的娇横，一如美丽，<br/>
+便也服从起，德高望重的距离。<br/>
+汽车静止的开来，<br/>
+在疯狂奔跑的，是他自己。</p>
+
+<p>在没有她的房间，<br/>
+找她的痕迹。<br/>
+床单的皱褶里，<br/>
+和西瓜皮上新鲜的齿印。<br/>
+电视上那些地震的灾民，<br/>
+在安详地活着，<br/>
+而开始落泪的，却是他自己。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小城事故]]></title>
+    <link href="http://lenciel.cn/2006/02/thoughts-in-guanghan/"/>
+    <updated>2006-02-11T00:03:35+08:00</updated>
+    <id>http://lenciel.cn/2006/02/thoughts-in-guanghan</id>
+    <content type="html"><![CDATA[<p>昨天收到牛的短信，买不到车票，只好去查机票，一起倒霉的还有xyer。在被窝里面突然有些感慨，已经高贵得不是人类的牛魔王，乳沟深得可以压苹果汁的牛会长，因为居住在一个普通的小城市，还是会被一张火车票憋死。当然，我不是来幸灾乐祸的，因为我也生活在一个小城市里。</p>
+
+<p>生活在小城是一件舒适的事情。每年放假匆匆往回赶，除了因为这里有我的父母恋人和朋友，也因为小城生活的那份轻松与率真。社会这个六度空间被降维到三度，所有的人都是朋友或者朋友的朋友。城市的每个角落，遍布着我们匆忙长大的痕迹。</p>
+
+<p>每次回家免不了初中高中的朋友聚会。昔日的流氓少年们大都已经进入工作岗位，每次都谈起自己的单位、前途，当然，还有自己的女人。这次和荷尔蒙.胡喝酒的时候他说心爱的小薇在龙泉工作，准备马上过去陪她。“我其实不愿意过去，不过总得有个人牺牲一下，开心就好。”小城表面的慵懒和乏善可呈背后，总是充满着这样的豪气。突然觉得小薇是个真正幸福的女孩：两人之间这样的体谅和宽容，只不过需要一些人性最初的一些善意，而面对现实种种，反而常常变成了一种难以寻求的诗意。虽然有时小城的豪气伴着一点土气，一点掩饰不住的面子情绪，但还是让我感到如沐春风。</p>
+
+<p>然而我不知道，小城还能撑多久。看小贱猪的过年经历，发现自己的也仅仅是略好一点而已。倒退十多年，在全家围着炉子烤脐橙吃的时候，在父亲在厨房里面烧制平时吃不到的大菜的时候，在拿压岁钱放鞭炮的时候，那弥漫在空气中的喜气洋洋，如今只剩十二点的满城硝烟，而这城，也是于回忆中相比面目全非的。主持人难免在这个时候欢呼“中华盛世”，我却觉得连烟火般短暂的绚丽也觉察不到。生活水平的提高让我们欲求减弱，似乎并不能完全解释我们心中的失落。</p>
+
+<p>当我们的父母逐渐老去，当我和老弟拥有自己的家庭，我们和这座城市的联系将趋于虚无。作为计划生育后的一代人，我十分幸运的拥有一个兄弟，然而整个社会的个体化，会使我们只是通过网络、电话联系，并有一年或者几年一次的团聚。这样的预言是悲哀的，但是又无可避免。消费主义的思想和独生子女的现实将把中国的各个城市砸成碎片，并把这个民族的功利主义和私利化趋向无限放大。几年之前，看到日本韩国街头的奇装异服时，我觉得一切还离中国很远。但看看现在的十几岁的少年，我明白也许东亚这种只有所谓的“传统文化”而没有宗教信念支撑的国家，所有的传统文化在消费产生的美好幻觉前都会不堪一击。</p>
+
+<p>也许，我还能在这里说这些，仅仅是因为我还没有开始工作吧。学《科学社会主义》的时候，听到Benjamin I. Schwartz关于现代社会的浮士德/普罗米修斯精神（Faustian-Promethean spirit），找出来放在这里，等自己十年之后，经过生活的打磨来看：</p>
+
+<p><blockquote><p>全方位开发人的潜在能量（energy）,用以无止境地控制﹑主宰包括自然界和人类社会在内的整个外在世界﹐从而几乎完全忽视了人类内心世界的调控﹐特别是精神﹑道德品质的提升。横决天下的动力﹑自我肯定﹑积极行动﹑无限扩张是这种精神最珍视的价值。 其强势形式可以将其它价值包括真﹑善﹑美﹑自由﹑平等﹑民主统统边缘化﹐视之为达成上述价值的工具。它的恶性发展则不仅导致天人关系断裂﹐精神价值源头枯 竭﹐而且造成纯粹的物质享乐主义泛滥﹐自我喂养的消费主义失控。浮士德精神一旦和社会达尔文主义与某种民族主义的思想情感相结合﹐更造成个人﹑集团﹑民族 国家之间为争夺财富﹑权力﹑荣誉而进行你死我活的惨烈搏杀。</p></blockquote></p>
+]]></content>
+  </entry>
+  
+</feed>
