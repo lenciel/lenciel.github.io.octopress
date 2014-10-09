@@ -1,0 +1,3 @@
+[submodule ".themes/lenciel"]
+	path = .themes/lenciel
+	url = git@github.com:lenciel/octopress-theme-lenciel.git

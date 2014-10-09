@@ -1,0 +1,17 @@
+---
+layout: post
+title: "T-shirt Testing"
+date: 2014-09-03 01:04:48 +0800
+comments: true
+categories: 
+
+- rants
+
+---
+
+感受一下，哪个印出来比较好看呢...
+
+
+![Vhost threshold](/downloads/images/2014_09/logo1.png "Don't touch me...")
+![Vhost threshold](/downloads/images/2014_09/logo2.png "Don't touch me...")
+![Vhost threshold](/downloads/images/2014_09/logo3.png "Don't touch me...")
