@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-10-09T13:06:51+08:00</updated>
+  <updated>2014-10-09T13:57:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Test]]></title>
-    <link href="http://lenciel.cn/2014/10/test/"/>
-    <updated>2014-10-08T22:43:41+08:00</updated>
-    <id>http://lenciel.cn/2014/10/test</id>
-    <content type="html"><![CDATA[<p>The one thing you never Oh, maybe.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[聚散有期]]></title>
@@ -1864,6 +1855,62 @@
 
 
 <p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.cn/">我心中的好设计</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[请输入密码]]></title>
+    <link href="http://lenciel.cn/2014/05/better-password-form-field/"/>
+    <updated>2014-05-04T09:33:43+08:00</updated>
+    <id>http://lenciel.cn/2014/05/better-password-form-field</id>
+    <content type="html"><![CDATA[<p>午饭之前的这点儿垃圾时间闲着也是闲着，大多数网站让用户输入密码都做得不够温柔。什么样是温柔呢？不打扰就是温柔&hellip;</p>
+
+<p>  <link rel="stylesheet" href="http://lenciel.cn/downloads/static/css/flip_animations.css">
+  <link rel="stylesheet" href="http://lenciel.cn/downloads/static/css/better_password_form_field.css"></p>
+
+<div id='better-password-container'>
+    <div class="top"></div>
+    <div class="middle">
+      <div class="left"></div>
+      <div class="middle">
+        <div id="form-container">
+
+          <div id="all-done">谢谢</div>
+
+          <form id="verify-new-password">
+            <label for="verify-password">请再次输入你的密码</label>
+            <input placeholder="请再次输入你的密码" type="password" id="verify-password" name="password-to-verify" />
+            <ul>
+              <li id="matches-password">输入正确</li>
+            </ul>
+
+            <input type="submit" id="verify-password-submit" value="确认" disabled="disabled">
+            <button id="go-back">返回</button>
+          </form>
+
+          <form id="new-password">
+            <label for="password">请输入密码</label>
+            <input placeholder="请输入密码" type="password" id="password" name="password" />
+            <ul>
+              <li id="eight-plus">最少8位</li>
+              <li id="uppercase">必须包含大写字母</li>
+              <li id="lowercase">必须包含小写字母</li>
+              <li id="numbers">必须包含数字</li>
+              <li id="punctuation">必须包含符号</li>
+            </ul>
+
+            <input type="submit" id="password-submit" value="下一步" disabled="disabled">
+          </form>
+
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+    <div class="bottom"></div>
+  </div>
+
+
+<p>  <script src="http://lenciel.cn/downloads/static/js/better_password_form_field.js"></script></p>
 ]]></content>
   </entry>
   

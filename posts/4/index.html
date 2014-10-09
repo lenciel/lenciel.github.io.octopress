@@ -9,8 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;! &hellip;">
+  <meta name="description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,16 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/4" />
-<meta property="og:description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;! &hellip;" />
+<meta property="og:description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;! &hellip;" />
+<meta itemprop="description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -101,73 +98,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/07/fuck-the-gfw-with-ssh-tunnel/">Mac上自启动autossh</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-11T20:14:20+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:14 pm</span></time>
-        
-           | <a href="/2014/07/fuck-the-gfw-with-ssh-tunnel/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
-
-<div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
-<noscript><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
-&lt;plist version=&quot;1.0&quot;&gt;
-&lt;dict&gt;
-  &lt;key&gt;KeepAlive&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;Label&lt;/key&gt;
-  &lt;string&gt;autossh.lenciel&lt;/string&gt;
-  &lt;key&gt;ProgramArguments&lt;/key&gt;
-  &lt;array&gt;
-    &lt;string&gt;/opt/boxen/homebrew/bin/autossh&lt;/string&gt;
-    &lt;string&gt;-M&lt;/string&gt;
-    &lt;string&gt;20000&lt;/string&gt;
-    &lt;string&gt;-f&lt;/string&gt;
-    &lt;string&gt;-i&lt;/string&gt;
-    &lt;string&gt;~/.ssh/fuckgfw&lt;/string&gt;
-    &lt;string&gt;-N&lt;/string&gt;
-    &lt;string&gt;-L&lt;/string&gt;
-    &lt;string&gt;0.0.0.0:3189:localhost:31280&lt;/string&gt;
-    &lt;string&gt;remotehost&lt;/string&gt;
-  &lt;/array&gt;
-  &lt;key&gt;RunAtLoad&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;WorkingDirectory&lt;/key&gt;
-  &lt;string&gt;/opt/boxen/&lt;/string&gt;
-  &lt;key&gt;StandardErrorPath&lt;/key&gt;
-  &lt;string&gt;/opt/boxen/log/autossh/autossh.log&lt;/string&gt;
-&lt;/dict&gt;
-&lt;/plist&gt;
-</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -380,6 +310,251 @@
 <p>另外，词典的样式其实是用css定义的，就在每个字典文件的Contetns目录，比如：<code>~/Library/Dictionaries/dictd_www.dict.org_web1913.dictionary/Contents/DefaultStyle.css</code>。如果你不满意字典出来的样子，可以自定义格式。</p>
 
 <p>最后，这些词典其实都是linux上著名的国产软件<a href="http://en.wikipedia.org/wiki/StarDict">stardict</a>的文件格式（写到这里，又想起stardict的作者<a href="http://www.huzheng.org/aboutme.php">胡正</a>），所以要在<a href="https://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">手机上使用</a>也是很容易的事情。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/05/fix-gist-style-in-octopress/">Octopress里插入带中文Gist的问题和解决</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-17T13:00:38+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:00 pm</span></time>
+        
+           | <a href="/2014/05/fix-gist-style-in-octopress/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
+
+<p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:</p>
+
+<div class="highlight"><pre><code class="text">{% gist gist_id [filename] %}
+</code></pre></div>
+
+
+<p>比如<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
+
+<div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}
+</code></pre></div>
+
+
+<p>当然之所以说理论上，是因为首先Octopress的markdown插件对unicode的支持<a href="http://tokkonopapa.github.io/blog/2013/02/23/octopress-toc/">是有bug</a>的。所以直接插入带中文的gist在build的时候会看到<code>Liquid Exception</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt;&gt;&gt; Compass is watching <span class="k">for</span> changes. Press Ctrl-C to Stop.
+</span><span class='line'>Liquid Exception: incompatible character encodings: UTF-8 and ASCII-8BIT in 2014-05-16-web-development-skill-set-and-reading-list.markdown
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>解决起来也很简单，只需要在<code>lib/jekyll/converters/markdown.rb</code>里面强制设定encoding就可以了：</p>
+
+<figure class='code'><figcaption><span>lib/jekyll/converters/markdown.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -120,7 +120,7 @@ def convert(content)</span>
+</span><span class='line'>           rd = RDiscount.new(content, *@rdiscount_extensions)
+</span><span class='line'>           html = rd.to_html
+</span><span class='line'>           if rd.generate_toc and html.include?(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;])
+</span><span class='line'><span class="gd">-            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content)</span>
+</span><span class='line'><span class="gi">+            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content.force_encoding(&#39;utf-8&#39;))</span>
+</span><span class='line'>           end
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>接下来就是render出来的效果，样子丑到让人无法直视：</p>
+
+<p><img src="/downloads/images/2014_05/gist_render_output_orig.jpg" title="Don't touch me..." alt="original gist render output" /></p>
+
+<p>大概看了一下Octopress的文档，原来代码片断的样式（包括gist的渲染样式）都在<a href="https://github.com/imathis/octopress/blob/master/.themes/classic/sass/partials/_syntax.scss">_syntax.scss</a>里面。这个文件2012年就没有更新过了，但是github的gist输出在2013年有过变化，所以就有些不匹配了。</p>
+
+<p>打开自己的模板，大概调了一下这个sass，主要是和其他的代码高亮一致：</p>
+
+<p><img src="/downloads/images/2014_05/gist_render_output.jpg" title="Don't touch me..." alt="current gist render output" /></p>
+
+<p>调整的地方见<a href="https://gist.github.com/lenciel/ecc8b3805ed346727abe">这里</a>:</p>
+
+<figure class='code'><figcaption><span>_sass/partials/_syntax.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/46501e4:sass/partials/_syntax.scss b/02b0441:sass/partials/_syntax.scss</span>
+</span><span class='line'><span class="gh">index 137d475..5465286 100644</span>
+</span><span class='line'><span class="gd">--- a/46501e4:sass/partials/_syntax.scss</span>
+</span><span class='line'><span class="gi">+++ b/02b0441:sass/partials/_syntax.scss</span>
+</span><span class='line'><span class="gu">@@ -22,10 +22,6 @@</span>
+</span><span class='line'>   @include border-radius(0);
+</span><span class='line'> }
+</span><span class='line'>
+</span><span class='line'><span class="gd">-.line-data {</span>
+</span><span class='line'><span class="gd">-   font-size: 13px;</span>
+</span><span class='line'><span class="gd">-}</span>
+</span><span class='line'><span class="gd">-</span>
+</span><span class='line'> figure.code, .gist-file, pre {
+</span><span class='line'>   @include box-shadow(rgba(#000, .06) 0 0 10px);
+</span><span class='line'>   .highlight pre { @include box-shadow(none); }
+</span><span class='line'><span class="gu">@@ -43,10 +39,8 @@ html .gist .gist-file {</span>
+</span><span class='line'>     margin-bottom: 0;
+</span><span class='line'>   }
+</span><span class='line'>   .gist-syntax {
+</span><span class='line'><span class="gd">-    background: #01222d !important;</span>
+</span><span class='line'><span class="gd">-    color: #d5dee2 !important;</span>
+</span><span class='line'><span class="gd">-    padding: 0 2em;</span>
+</span><span class='line'>     border-bottom: 0 !important;
+</span><span class='line'><span class="gi">+    background: none !important;</span>
+</span><span class='line'>     .gist-highlight {
+</span><span class='line'>       background: $base03 !important;
+</span><span class='line'>     }
+</span><span class='line'><span class="gu">@@ -57,17 +51,15 @@ html .gist .gist-file {</span>
+</span><span class='line'>   }
+</span><span class='line'>   .gist-meta {
+</span><span class='line'>    padding: .6em 0.8em;
+</span><span class='line'><span class="gi">+   border: 1px solid lighten($base02, 2) !important;</span>
+</span><span class='line'><span class="gi">+   color: $base01;</span>
+</span><span class='line'>    font-size: .7em !important;
+</span><span class='line'>    @if $solarized == light {
+</span><span class='line'><span class="gd">-     color: $base01;</span>
+</span><span class='line'><span class="gd">-     border: 1px solid lighten($base02, 2) !important;</span>
+</span><span class='line'>      background: lighten($base03, 2) $noise-bg;
+</span><span class='line'>      border: 1px solid $pre-border !important;
+</span><span class='line'>      border-top: 1px solid lighten($base03, 2) !important;
+</span><span class='line'>    } @else {
+</span><span class='line'><span class="gd">-     background: #01222d $noise-bg;</span>
+</span><span class='line'><span class="gd">-     text-shadow: none !important;</span>
+</span><span class='line'><span class="gd">-     color: #d5dee2;</span>
+</span><span class='line'><span class="gi">+     background: $base02 $noise-bg;</span>
+</span><span class='line'>    }
+</span><span class='line'>    @extend .sans;
+</span><span class='line'>    line-height: 1.5em;
+</span><span class='line'><span class="gu">@@ -77,7 +69,7 @@ html .gist .gist-file {</span>
+</span><span class='line'>       &amp;:hover { color: $base1 !important; }
+</span><span class='line'>     }
+</span><span class='line'>     a[href*=&#39;#file&#39;] {
+</span><span class='line'><span class="gd">-      position: absolute; top: 0; left:0; right:0px;</span>
+</span><span class='line'><span class="gi">+      position: absolute; top: 0; left:0; right:-10px;</span>
+</span><span class='line'>       color: #474747 !important;
+</span><span class='line'>       @extend .code-title;
+</span><span class='line'>       &amp;:hover { color: $link-color !important; }
+</span><span class='line'><span class="gu">@@ -221,7 +213,7 @@ pre, .highlight, .gist-highlight {</span>
+</span><span class='line'>   &amp;::-webkit-scrollbar-thumb:horizontal { background: $solar-scroll-thumb;  -webkit-border-radius: 4px; border-radius: 4px }
+</span><span class='line'> }
+</span><span class='line'>
+</span><span class='line'><span class="gd">-.highlight code {</span>
+</span><span class='line'><span class="gi">+.highlight code { </span>
+</span><span class='line'>   @extend .pre-code; background: #000;
+</span><span class='line'> }
+</span><span class='line'> figure.code {
+</span><span class='line'><span class="gu">@@ -267,11 +259,3 @@ figure.code {</span>
+</span><span class='line'>   text-shadow: #cbcccc 0 1px 0;
+</span><span class='line'>   padding-left: 3em;
+</span><span class='line'> }
+</span><span class='line'><span class="gd">-</span>
+</span><span class='line'><span class="gd">-.gist-file {</span>
+</span><span class='line'><span class="gd">-  font-size:.8em !important;</span>
+</span><span class='line'><span class="gd">-}</span>
+</span><span class='line'><span class="gd">-</span>
+</span><span class='line'><span class="gd">-table.lines{</span>
+</span><span class='line'><span class="gd">-  width: 100%;</span>
+</span><span class='line'><span class="gd">-}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
   
   

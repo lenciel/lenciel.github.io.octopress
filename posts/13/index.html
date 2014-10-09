@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="Raspberry Pi的默认提供了HDMI接口，遇到手边显示器比较老并且电视机也比较老就不好办。 如果直接买一根HDMI转VGA的线，直接连上去很可能是黑屏，这是因为默认的配置文件不支持这种连接方式，需要修改配置文件。 需要修改的是 /boot/config.txt里面的几个配置值， &hellip;">
+  <meta name="description" content="因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。 服务器 到了服务器组你会发现原来有各种各样的服务器， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/13" />
-<meta property="og:description" content="Raspberry Pi的默认提供了HDMI接口，遇到手边显示器比较老并且电视机也比较老就不好办。 如果直接买一根HDMI转VGA的线，直接连上去很可能是黑屏，这是因为默认的配置文件不支持这种连接方式，需要修改配置文件。 需要修改的是 /boot/config.txt里面的几个配置值， &hellip;" />
+<meta property="og:description" content="因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。 服务器 到了服务器组你会发现原来有各种各样的服务器， &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="Raspberry Pi的默认提供了HDMI接口，遇到手边显示器比较老并且电视机也比较老就不好办。 如果直接买一根HDMI转VGA的线，直接连上去很可能是黑屏，这是因为默认的配置文件不支持这种连接方式，需要修改配置文件。 需要修改的是 /boot/config.txt里面的几个配置值， &hellip;" />
+<meta itemprop="description" content="因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。 服务器 到了服务器组你会发现原来有各种各样的服务器， &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,54 +98,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/">Raspberry Pi上使用HDMI转接VGA线</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-20T15:19:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:19 pm</span></time>
-        
-           | <a href="/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.raspberrypi.org/%E2%80%8E">Raspberry Pi</a>的默认提供了HDMI接口，遇到手边显示器比较老并且电视机也比较老就不好办。</p>
-
-<p>如果直接买一根<a href="http://item.jd.com/674899.html">HDMI转VGA的线</a>，直接连上去很可能是黑屏，这是因为默认的配置文件不支持这种连接方式，需要修改配置文件。</p>
-
-<p>需要修改的是 <code>/boot/config.txt</code>里面的几个配置值，具体的讨论<a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=76&amp;t=33477">在这里</a>：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>disable_overscan=1
-</span><span class='line'>hdmi_group=2
-</span><span class='line'>hdmi_mode=35
-</span><span class='line'>hdmi_drive=2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修改完毕之后重新启动就可以看到画面了。</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -990,6 +942,60 @@
 </span><span class='line'><span class="bp">True</span>
 </span></code></pre></td></tr></table></div></figure>
 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/07/stop-specific-zsh-shell-auto-correct/">关掉Zsh对指定命令的自动纠错</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-07-23T14:47:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>2:47 pm</span></time>
+        
+           | <a href="/2013/07/stop-specific-zsh-shell-auto-correct/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/07/stop-specific-zsh-shell-auto-correct/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>工作机器切换到Mac之后我一直在自用并在团队中推广 <a href="https://github.com/lenciel/oh-my-zsh"><code>oh-my-zsh</code></a>。99%的时间本座对它是如此满意，除开有的时候它的服务太主动了一些。</p>
+
+<p>比如今天在用<code>curl</code>试用一个接口的时候，我测试用的payload放在一个<code>payload.json</code>文件里面，所以命令是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -H "Content-Type: application/json" -X POST -d @payload.json  http://xxx.xxx.xxx/xxx/StartServiceServlet</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后它就一直提示：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>zsh: correct '@payload.json' to 'payload.json' [nyae]?</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一，直，提，示。</p>
+
+<p>跑到代码里面去看了一下，要关掉这种自动纠错的提示可以配置 <code>~/.oh-my-zsh/lib/correction.zsh</code>：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias curl='nocorrect curl'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>整个世界清静了&hellip;</p>
 </div>
   
   

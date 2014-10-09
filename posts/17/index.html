@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;">
+  <meta name="description" content="如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架Boxen，趁着新笔记本需要起轿，尝试了一把。 Boxen框架简介 Boxen基于大红大紫的Puppet，但和后者目前主要侧重于服务器的Privision不同， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/17" />
-<meta property="og:description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta property="og:description" content="如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架Boxen，趁着新笔记本需要起轿，尝试了一把。 Boxen框架简介 Boxen基于大红大紫的Puppet，但和后者目前主要侧重于服务器的Privision不同， &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta itemprop="description" content="如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架Boxen，趁着新笔记本需要起轿，尝试了一把。 Boxen框架简介 Boxen基于大红大紫的Puppet，但和后者目前主要侧重于服务器的Privision不同， &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,252 +98,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/04/first-steps-on-a-new-server/">First Steps on a New Server</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-04-04T08:44:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:44 am</span></time>
-        
-           | <a href="/2013/04/first-steps-on-a-new-server/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/04/first-steps-on-a-new-server/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。</p>
-
-<p>因此，一个简单而有效的标准流程是非常必要的。ZooM团队的服务器都会配置两个固定的帐号： <code>root</code> 和 <code>deploy</code> 。 <code>deploy</code>  这个用户具有 <code>sudo</code> 的权限。开发人员使用deploy但是不通过用户名密码登录而是用 <code>public key</code> 。这样一来，只需要保证所有机器的 <code>authorized_keys</code> 文件同步即可。后面要做的改进是：</p>
-
-<ul>
-<li>在所有机器禁止通过 root 账号进行ssh</li>
-<li>在所有机器上限制可以ssh的IP范围</li>
-</ul>
-
-
-<p>这样的实施方案对 <code>authorized_keys</code> 的保密性和正确性要求是很高的，但是在没有专门IT的时候，对我们这样的小团队基本是够用的。下面是详细的步骤：</p>
-
-<p>我们拿到的第一台机器是Ubuntu的，因为 <code>Gitlab</code> 只有Debian的版本。后面的机器大多会是CentOS，所以使用的命令可能会稍微有调整，但是意思是不变的。</p>
-
-<h2>更换root密码</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>passwd
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可以很长很复杂（反正也不需要记得），保存在某个地方在你忘记 <code>sudo</code> 密码或者是不能正常 <code>ssh</code> 的时候能找出来用就可以了。</p>
-
-<h2>更新系统</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get update
-</span><span class='line'>apt-get upgrade
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>安装Fail2ban</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install fail2ban
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Fail2ban是一个用来监控登录尝试的 <code>daemon</code> ，可以有效侦测和防止可疑行为的发生。这个工具文档很全，而且出厂配置就很齐全，几乎不需要定制就能投入使用了。</p>
-
-<h2>添加deploy用户</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>useradd deploy
-</span><span class='line'>mkdir /home/deploy
-</span><span class='line'>mkdir /home/deploy/.ssh
-</span><span class='line'>chmod <span class="m">700</span> /home/deploy/.ssh
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>配置 <code>public key</code> </h2>
-
-<p>使用密码的日子已经慢慢过时了，这方面Github很有<a href="https://help.github.com/categories/56/articles">贡献</a>。只需要：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /home/deploy/.ssh/authorized_keys
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>把 <code>id_rsa.pub</code> 的内容拷贝进去。然后：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>chmod <span class="m">400</span> /home/deploy/.ssh/authorized_keys
-</span><span class='line'>chown deploy:deploy /home/deploy -R
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>当然你也可以使用 <code>id_rsa.pub</code> 之外的key，然后在本地的 <code>~/.ssh/config</code> 里面对 <code>IdentityFile</code> 做指定。具体方式可以查看 <code>~/.ssh/config</code>的说明。</p>
-
-<h2>测试deploy用户并赋予 <code>Sudo</code> 权限</h2>
-
-<p>先测试deploy是否能够正常登录，然后使用 <code>root</code> 账号设置密码：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>passwd deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这是团队要用来 <code>sudo</code> 的账号，所以要弄得有意义好记一点儿。接下来：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>visudo
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注释掉所以已经存在的用户、用户组权限，然后加上：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root    <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
-</span><span class='line'>deploy  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>锁定SSH</h2>
-
-<p>设置ssh，禁止使用密码ssh，禁止使用 <code>root</code> 账号ssh。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /etc/ssh/sshd_config
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>添加下面的设置：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>PermitRootLogin no
-</span><span class='line'>PasswordAuthentication no
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如果有需要还可以限定可以ssh的ip地址：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>AllowUsers deploy@<span class="o">(</span>your-ip<span class="o">)</span> deploy@<span class="o">(</span>another-ip-if-any<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>重启ssh：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>service ssh restart
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>设置防火墙</h2>
-
-<p>Ubuntu提供了 <code>ufw</code>，所以只需要：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ufw allow from <span class="o">{</span>your-ip<span class="o">}</span> to any port 22
-</span><span class='line'>ufw allow 80
-</span><span class='line'>ufw allow 443
-</span><span class='line'>ufw <span class="nb">enable</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>打开自动安全更新</h2>
-
-<p>虽然很多习惯好的服务器使用者会知道运行<code>apt-get update/upgrade</code> 但是如果服务器很多，总会有一些不那么被经常登录的机器，系统会比较陈旧。特别是做负载均衡的机器，可能很少有人登录。为了保证所有的机器都有足够的安全性需要打开自动更新（作为习惯控制一切的开发人员，自动更新总是一件让我很抗拒的事情，但是安全漏洞更让人抗拒）：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install unattended-upgrades
-</span><span class='line'>vim /etc/apt/apt.conf.d/10periodic
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在文件里面修改成：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>APT::Periodic::Update-Package-Lists <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::Download-Upgradeable-Packages <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::AutocleanInterval <span class="s2">&quot;7&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::Unattended-Upgrade <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>接着修改：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /etc/apt/apt.conf.d/50unattended-upgrades
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修改文件成：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Unattended-Upgrade::Allowed-Origins <span class="o">{</span>
-</span><span class='line'>    <span class="s2">&quot;Ubuntu lucid-security&quot;</span><span class="p">;</span>
-</span><span class='line'>    //<span class="s2">&quot;Ubuntu lucid-updates&quot;</span><span class="p">;</span> 只更新安全更新
-</span><span class='line'><span class="o">}</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>安装Logwatch</h2>
-
-<p>Logwatch是一个监控你的日志并发送邮件通知的daemon。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install logwatch
-</span><span class='line'>vim /etc/cron.daily/00logwatch
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在文件中添加：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/sbin/logwatch --output mail --mailto lenciel@gmail.com --detail high
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>What&rsquo;s Next</h2>
-
-<ul>
-<li>使用Puppet自动化这些配置</li>
-<li>在基础的配置上，把一个fresh的机器如果配置成各种形态的（Django/Web/Database/LoadBalance/&hellip;)</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -731,6 +485,234 @@
 <p>所以说Google Reader这种服务的倒掉，在短期内当然是巨大的损失。不过这样一来，似乎又唤醒了一个行业沉睡多年的创造力。看看<a href="http://inside.flipboard.com/2013/03/14/weve-got-your-rss-covered-save-your-google-reader-feeds-now/">Flipboard</a>、<a href="http://feedly.com/">Feedly</a>、<a href="http://feedafever.com/">Fever</a>、<a href="http://www.newsblur.com/">Newsblur</a>的反应你就会觉得，说不定会有比Google Reader更好的服务被孵化出来。</p>
 
 <p>因为，我实在是不觉得那些乱七八糟的SNS能代替一个干干净净的阅读器。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/blog-with-octopress-and-github-pages/">Blog With Octopress and Github Pages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-03-10T22:15:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:15 pm</span></time>
+        
+           | <a href="/2013/03/blog-with-octopress-and-github-pages/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/03/blog-with-octopress-and-github-pages/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不知不觉，写blog好像从有电脑的人都要干的事情变成很小众的活动了。除了人到了一定年纪都会不愿意开口讲话之外，本座觉得还有个很大的原因就是：要找一个靠谱的blog服务商是非常麻烦的。岂止是是blog服务商，在天朝使用大多数web服务都很吊诡地只有两个选择：</p>
+
+<ul>
+<li>没有被墙但很糟的；</li>
+<li>很不错但被墙了的；</li>
+</ul>
+
+
+<p>所以虽然知道<a href="http://github.com">Github</a>可以免费host任何静态页面很久了，眼看着<a href="http://octopress.org/">Octopress</a>也日益成熟，但一直都下定决心去试：谁知道哪天Github又被墙了呢？</p>
+
+<p>不过，在最近自己的职业生涯发生了不小的变化，在可预见的未来，肯定要做很多跟code有关的笔记。<a href="http://lenciel.cn">现在的blog</a>系统是wordpress，虽然非常好用，但是比起markdown来说，写起code来速度就差太多了。所以今天下定决心试了一把Octopress+Github Pages，效果非常满意，特别记录一下过程，像大家做个推荐。</p>
+
+<h2>Jekyll&amp;Octopress</h2>
+
+<p><a href="http://octopress.org/">Octopress</a>是在<a href="https://github.com/mojombo/jekyll">Jekyll</a>基础上进行的开发。<a href="https://github.com/mojombo/jekyll">Jekyll</a>作为Ruby开发的静态页面blog系统，吸引本座的地方在于：</p>
+
+<ul>
+<li><strong>静态页面</strong>：由于Jekyll生成的都是静态页面，意味着这些页面可以在任何地方被host，比如Github Pages，Google Drive甚至是Dropbox都可以作为选择（当然它们也基本是被墙的）。</li>
+<li><strong>Markdown</strong>：Jekyll的日志因为是用Markdown写的，相比传统的Blog系统如Wordpress而言，一方面在写的时候可以用你顺手的编辑器，另一方面储存和版本管理也方便得多。</li>
+<li><strong>代码插入方便美观</strong>：Octopress对日志中嵌入代码提供了<a href="http://octopress.org/docs/blogging/code/">各种方便</a>。</li>
+</ul>
+
+
+<h2>Mac下的安装设置过程</h2>
+
+<h3>Xcode</h3>
+
+<ul>
+<li>升级Xcode</li>
+<li>启动Xcode，在Preferences里面选择下载</li>
+<li>安装&#8221;Command Line Tools&#8221;</li>
+</ul>
+
+
+<h3>Homebrew</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew update
+</span><span class='line'>brew outdated<span class="p">|</span>xargs brew install
+</span><span class='line'>brew tap homebrew/dupes
+</span><span class='line'>brew install apple-gcc42 git
+</span><span class='line'>brew upgrade
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>rbenv</h3>
+
+<p>首先如果你本来是用rvm，需要删除：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rvm</span> <span class="n">implode</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后安装rbenv以及Ruby1.9.3-p194:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install rbenv
+</span><span class='line'>brew install ruby-build
+</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>
+</span><span class='line'>rbenv install 1.9.3-p194
+</span><span class='line'>rbenv global 1.9.3-p194
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装完毕之后需要在你的环境变量中做一些设置，比如本座用的是oh-my-zsh，就需要在<code>~/.zshrc</code>里面加上：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;$HOME/.rbenv/bin:$PATH&quot;</span>
+</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>
+</span><span class='line'><span class="c"># required for https://github.com/imathis/octopress/issues/144</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">LC_CTYPE</span><span class="o">=</span>en_US.UTF-8
+</span><span class='line'><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意在环境变量设置完毕之后，最好把<code>$PATH</code>打出来看看，确保没有其他版本的Ruby被启用了，特别要注意<code>/Users/***/.gem/ruby/***/bin</code>这样的路径。</p>
+
+<h2>安装Octopress</h2>
+
+<p>首选在Github上创建一个repo来放blog，命名规则是username.github.com（比如本座的就是lenciel.github.com）。</p>
+
+<p>然后在本地建立一个repo把octopress弄下来：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/imathis/octopress.git lenciel.github.com
+</span><span class='line'><span class="nb">cd </span>lenciel.github.com
+</span><span class='line'>ruby --version <span class="c"># should read ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin12.2.0]</span>
+</span><span class='line'>gem install bundler
+</span><span class='line'>rbenv rehash
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后部署到刚才申请的repo上面去。虽然<a href="http://pages.github.com/">Github Pages</a>自己有个废柴说明页面，但是看完之后一般你是不知道如何算是部署成功的。好在Octopress已经内建了交互式的配置和部署的命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">setup_github_pages</span>
+</span><span class='line'><span class="c1"># Example repo url: git@github.com:lenciel/lenciel.github.com</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">install</span>
+</span><span class='line'><span class="n">rake</span> <span class="n">generate</span> <span class="o">&amp;&amp;</span> <span class="n">rake</span> <span class="n">deploy</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后你需要调整一下<code>.git/config</code>文件把自己的项目设置成新的origin：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="n">core</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">repositoryformatversion</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">filemode</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>  <span class="n">bare</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">logallrefupdates</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>  <span class="n">ignorecase</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'><span class="o">[</span><span class="n">remote</span> <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">fetch</span> <span class="o">=</span> <span class="o">+</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/*</span><span class="ss">:refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">origin</span><span class="o">/*</span>
+</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="n">git</span><span class="vi">@github</span><span class="o">.</span><span class="n">com</span><span class="ss">:lenciel</span><span class="o">/</span><span class="n">lenciel</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span>
+</span><span class='line'><span class="o">[</span><span class="n">remote</span> <span class="s2">&quot;octopress&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="ss">git</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">imathis</span><span class="o">/</span><span class="n">octopress</span><span class="o">.</span><span class="n">git</span>
+</span><span class='line'>  <span class="n">fetch</span> <span class="o">=</span> <span class="o">+</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/*</span><span class="ss">:refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">octopress</span><span class="o">/*</span>
+</span><span class='line'><span class="o">[</span><span class="n">branch</span> <span class="s2">&quot;master&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">remote</span> <span class="o">=</span> <span class="n">origin</span>
+</span><span class='line'>  <span class="n">merge</span> <span class="o">=</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">master</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样一来，你就即可以从<code>octopress/master</code>取到更新，又可以往<code>origin/master</code>去push自己最新的日志了。</p>
+
+<h2>使用Octopress</h2>
+
+<h3>新建文章</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="p">\</span><span class="o">[</span><span class="s2">&quot;Blog with Octopress and Github Pages&quot;</span><span class="p">\</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里要注意使用zsh的时候，对<code>[]</code>要转义成<code>\[\]</code>不然会报错。</p>
+
+<h3>编辑文章</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">subl</span> <span class="n">source</span><span class="o">/</span><span class="n">_posts</span><span class="o">/</span><span class="mi">2013</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">blog</span><span class="o">-</span><span class="n">with</span><span class="o">-</span><span class="n">octopress</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">github</span><span class="o">-</span><span class="n">pages</span><span class="o">.</span><span class="n">markdown</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>subl是本座在mac上使用的编辑器<code>Sublime Text 2</code>的命令行命令，它的markdown插件<code>Markdown Editing</code>和<code>OmniMarkupPreview</code>非常好用。</p>
+
+<h4>Markdown Editing</h4>
+
+<p><a href="http://ttscoff.github.com/MarkdownEditing/">Markdown Editing</a>对语法高亮，粘贴超链接，样式化，加footnote等都做了很好的支持：</p>
+
+<p><img src="/downloads/images/sublime_with_markdown_editing.png" title="Don't touch me..." alt="Sublime with Markdown Editing" /></p>
+
+<h4>OmniMarkupPreview</h4>
+
+<p>OmniMarkupPreview支持<code>Cmd+Alt+O</code>在你指定的浏览器里面预览并且动态刷新你正在编辑的Markup文档。这样你就可以不用不停的<code>rake preview</code>了。</p>
+
+<h3>更多</h3>
+
+<ul>
+<li><a href="http://octopress.org/docs/">Octopress官方文档</a></li>
+<li><a href="http://daringfireball.net/projects/markdown/">Markdown语法ref</a></li>
+<li><a href="https://github.com/imathis/octopress/issues/701#issuecomment-7664070">如何使用repo里面的图片</a></li>
+</ul>
+
 </div>
   
   
