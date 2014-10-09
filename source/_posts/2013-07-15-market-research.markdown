@@ -8,11 +8,6 @@ categories:
 - course
 ---
 
-* TOC
-{:toc}
-
-## Table Of Contents
-
 #### **点子，执行力和市场**
 
 Quora上有一个著名的[问答](http://www.quora.com/Startup-Advice-and-Strategy/As-first-time-entrepreneurs-what-part-of-the-process-are-people-often-completely-blind-to/answer/Mike-Sellers)，Mike Sellers的答案里面有一部分在江湖上流传很广：

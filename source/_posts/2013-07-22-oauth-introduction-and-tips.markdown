@@ -9,11 +9,6 @@ categories:
 - toturials
 ---
 
-* TOC
-{:toc}
-
-# Table Of Contents
-
 ## Terminology / Reference
 
 * Signed / Signature

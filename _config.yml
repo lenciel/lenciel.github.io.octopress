@@ -30,17 +30,23 @@ sidebar: collapse
 root: /
 #permalink: /blog/:year/:month/:day/:title/
 permalink: /:year/:month/:title/
+encoding: utf-8
 source: source
 destination: public
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
+# markdown: kramdown
+# kramdown:
+#     auto_ids: true
 markdown: rdiscount
 rdiscount:
   extensions:
     - autolink
     - footnotes
     - smart
+    - generate_toc
+  toc_token: "{:toc}"
 highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 4          # Posts per page on the blog index
