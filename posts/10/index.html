@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content=" "I guess I’ve still got a lot of healing to do."Owen Wilson The Darjeeling Limited(2007) ">
+  <meta name="description" content="Mac平台上，如果我们在Finder里面查看文件，有一个不太容易被察觉的方式是使用Quick Look：选中文件的情况下按空格键或者是Cmd+Y。速度快，疗效好，唯一的缺点就是有很多文件格式支持不佳，比如没有扩展名的config文件，比如各种markdown，比如图片等等。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/10" />
-<meta property="og:description" content=" "I guess I’ve still got a lot of healing to do."Owen Wilson The Darjeeling Limited(2007) " />
+<meta property="og:description" content="Mac平台上，如果我们在Finder里面查看文件，有一个不太容易被察觉的方式是使用Quick Look：选中文件的情况下按空格键或者是Cmd+Y。速度快，疗效好，唯一的缺点就是有很多文件格式支持不佳，比如没有扩展名的config文件，比如各种markdown，比如图片等等。 &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content=" "I guess I’ve still got a lot of healing to do."Owen Wilson The Darjeeling Limited(2007) " />
+<meta itemprop="description" content="Mac平台上，如果我们在Finder里面查看文件，有一个不太容易被察觉的方式是使用Quick Look：选中文件的情况下按空格键或者是Cmd+Y。速度快，疗效好，唯一的缺点就是有很多文件格式支持不佳，比如没有扩展名的config文件，比如各种markdown，比如图片等等。 &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,6 +98,40 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/12/quick-look-on-mac/">Quick Look on Mac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-14T15:34:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:34 pm</span></time>
+        
+           | <a href="/2013/12/quick-look-on-mac/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/12/quick-look-on-mac/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac平台上，如果我们在Finder里面查看文件，有一个不太容易被察觉的方式是使用<a href="http://en.wikipedia.org/wiki/Quick_Look">Quick Look</a>：选中文件的情况下按<code>空格键</code>或者是<code>Cmd+Y</code>。速度快，疗效好，唯一的缺点就是有很多文件格式支持不佳，比如没有扩展名的config文件，比如各种markdown，比如图片等等。</p>
+
+<p>最近在Github上看到一个<a href="https://github.com/sindresorhus/quick-look-plugins">Quick Look插件集中营</a>，非常不错的精选集，推荐也在用Quick Look的小伙伴们试试。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -282,58 +316,6 @@
 </span><span class='line'>sudo python ez_setup.py
 </span><span class='line'>sudo easy_install -U pip
 </span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/10/pip-download-cache/">打开pip的download Cache</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-10-17T13:25:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:25 pm</span></time>
-        
-           | <a href="/2013/10/pip-download-cache/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/10/pip-download-cache/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Python的标准库实在是<a href="http://lenciel.cn/2013/10/recharging-the-python-standard-library/">不够用</a>，所以一个很常见的情况是我们需要在每个项目使用的<code>virtualenv</code>里面都安装一些常用的库。</p>
-
-<p>为了加速安装的过程，有两个小窍门。</p>
-
-<p>一个是使用国内的源，比如<a href="http://www.v2ex.com/">v2ex</a>提供的。只需要新建或者编辑<code>~/.pip/pip.conf</code>，加入一行：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[global]
-</span><span class='line'>index-url = http://pypi.v2ex.com/simple
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>另一个就是打开pip的<code>download cache</code>，这样可以避免pip每次都去下载相同的东西。只需要在<code>.bashrc</code>或者是<code>.zshrc</code>里面加入一行：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>export PIP_DOWNLOAD_CACHE=$HOME/.pip-download-cache
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 </div>
   
