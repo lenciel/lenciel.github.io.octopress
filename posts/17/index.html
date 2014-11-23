@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;">
+  <meta name="description" content="最近NSA相关话题很火。很多IT从业者都知道，HTTPS可以保护用户敏感的数据，但是说起HTTPS 到底 是如何工作的，其实心里并不清楚。 使用HTTPS之后，数据是如何被保护的？Client和Server之间如果有人在hacking，HTTPS建立的连接凭什么就是安全的？什么是安全证书？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/17" />
-<meta property="og:description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta property="og:description" content="最近NSA相关话题很火。很多IT从业者都知道，HTTPS可以保护用户敏感的数据，但是说起HTTPS 到底 是如何工作的，其实心里并不清楚。 使用HTTPS之后，数据是如何被保护的？Client和Server之间如果有人在hacking，HTTPS建立的连接凭什么就是安全的？什么是安全证书？ &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta itemprop="description" content="最近NSA相关话题很火。很多IT从业者都知道，HTTPS可以保护用户敏感的数据，但是说起HTTPS 到底 是如何工作的，其实心里并不清楚。 使用HTTPS之后，数据是如何被保护的？Client和Server之间如果有人在hacking，HTTPS建立的连接凭什么就是安全的？什么是安全证书？ &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -104,7 +104,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2013/04/first-steps-on-a-new-server/">First Steps on a New Server</a></h1>
+      <h1 class="entry-title"><a href="/2013/09/https-what/">HTTPS WHAT?</a></h1>
     
     
       <p class="meta">
@@ -113,240 +113,246 @@
 
 
 
-<time class='entry-date' datetime='2013-04-04T08:44:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:44 am</span></time>
+<time class='entry-date' datetime='2013-09-10T13:28:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:28 pm</span></time>
         
-           | <a href="/2013/04/first-steps-on-a-new-server/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/04/first-steps-on-a-new-server/">Comments</a>
+           | <a href="/2013/09/https-what/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/09/https-what/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。</p>
+  <div class="entry-content"><p>最近NSA相关话题很火。很多IT从业者都知道，HTTPS可以保护用户敏感的数据，但是说起HTTPS <em>到底</em> 是如何工作的，其实心里并不清楚。</p>
 
-<p>因此，一个简单而有效的标准流程是非常必要的。ZooM团队的服务器都会配置两个固定的帐号： <code>root</code> 和 <code>deploy</code> 。 <code>deploy</code>  这个用户具有 <code>sudo</code> 的权限。开发人员使用deploy但是不通过用户名密码登录而是用 <code>public key</code> 。这样一来，只需要保证所有机器的 <code>authorized_keys</code> 文件同步即可。后面要做的改进是：</p>
+<p>使用HTTPS之后，数据是如何被保护的？Client和Server之间如果有人在hacking，HTTPS建立的连接凭什么就是安全的？什么是安全证书？为什么有时候我们需要付钱才能买到一个？</p>
+
+<a name="A.Series.of.Tubes"></a>
+<h3>A Series of Tubes</h3>
+
+<p>当你访问网页的时候，你发出的请求其实要翻越各种网关走很长的路，这一路上都可能有妖魔鬼怪在等着搞你，的数据。</p>
+
+<p><img src="/downloads/images/series_of_tubes.png" title="Don't touch me…" alt="A series of tubes" /></p>
+
+<p>一般我们访问网页的时候，请求使用的是HTTP，也就是Client和Server之间的数据是明文传送的。<a href="http://security.stackexchange.com/a/18861/4327">HTTP没有使用任何加密的原因有很多</a>:</p>
 
 <ul>
-<li>在所有机器禁止通过 root 账号进行ssh</li>
-<li>在所有机器上限制可以ssh的IP范围</li>
+<li>加密会消耗更多的计算能力</li>
+<li>加密会消耗更多的带宽</li>
+<li>加密破坏了Cache</li>
 </ul>
 
 
-<p>这样的实施方案对 <code>authorized_keys</code> 的保密性和正确性要求是很高的，但是在没有专门IT的时候，对我们这样的小团队基本是够用的。下面是详细的步骤：</p>
+<p>当然，还有一个很多开发组织羞于承认的原因，加密增加了开发的难度。但是，只要是负责任的Web应用开发者，都不会让你的密码等关键信息以明文的方式传来传去。</p>
 
-<p>我们拿到的第一台机器是Ubuntu的，因为 <code>Gitlab</code> 只有Debian的版本。后面的机器大多会是CentOS，所以使用的命令可能会稍微有调整，但是意思是不变的。</p>
+<a name="Transport.Layer.Security..TLS."></a>
+<h3>Transport Layer Security (TLS)</h3>
 
-<a name="L......root......"></a>
-<h2>更换root密码</h2>
+<p>TLS作为SSL的前驱协议，常常被用来实现对HTTP连接的加密（比如用来实现HTTPS）。TLS是传输层的，因此在<a href="http://en.wikipedia.org/wiki/OSI_model#Examples">OSI模型</a>里面比HTTP更底层，换句话说，在HTTP连接之前，先要进行TLS连接的建立。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>passwd
-</span></code></pre></td></tr></table></div></figure>
+<p>TLS是一种混合型的加密系统，也就是说它使用了多种加密技术体系，比如：</p>
 
+<blockquote><p><strong>Public Key Cryptography</strong></p>
 
-<p>可以很长很复杂（反正也不需要记得），保存在某个地方在你忘记 <code>sudo</code> 密码或者是不能正常 <code>ssh</code> 的时候能找出来用就可以了。</p>
+<p><strong>Symmetric Key Cryptography</strong></p></blockquote>
 
-<a name="L............"></a>
-<h2>更新系统</h2>
+<a name="Public.Key.Encryption"></a>
+<h3>Public Key Encryption</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get update
-</span><span class='line'>apt-get upgrade
-</span></code></pre></td></tr></table></div></figure>
+<p><code>Public Key Encryption</code>使用公钥私钥进行加密解密：通信中的各方都有一对公钥私钥。明文信息用公钥加密成密文，密文用私钥解密成明文。</p>
 
+<p>这种加密系统理想之处在于，在一个公开的没有加密的连接中，可以迅速地为之前互不相干的通信双方建立起一个加密了的连接。</p>
 
-<a name="L......Fail2ban"></a>
-<h2>安装Fail2ban</h2>
+<p>当一条消息被加密成密文之后，<strong>只能使用</strong>加密用的公钥对应的私钥才能解密。这些钥匙的命名也体现了它们的使用场景：公钥可以被公开，但是私钥一定要收好。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install fail2ban
-</span></code></pre></td></tr></table></div></figure>
+<p>以CS架构的系统为例，Client和Server都可以使用自己的私钥，只要在session中双方都认可所谓的<code>shared secret key</code>。这样即使有人监听了Client和Server之间的通信，他也没法知道Client或者Server的私钥，同时也不知道session的密钥。</p>
 
+<p>这是怎么做到的? 数学!</p>
 
-<p>Fail2ban是一个用来监控登录尝试的 <code>daemon</code> ，可以有效侦测和防止可疑行为的发生。这个工具文档很全，而且出厂配置就很齐全，几乎不需要定制就能投入使用了。</p>
+<a name="Diffie-Hellman"></a>
+<h4>Diffie-Hellman</h4>
 
-<a name="L......deploy......"></a>
-<h2>添加deploy用户</h2>
+<p>这种交换通常使用所谓的<a href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman密钥交换流程</a>。这套流程主要是让Client和Server之间生成一个<code>shared secret key</code>。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>useradd deploy
-</span><span class='line'>mkdir /home/deploy
-</span><span class='line'>mkdir /home/deploy/.ssh
-</span><span class='line'>chmod <span class="m">700</span> /home/deploy/.ssh
-</span></code></pre></td></tr></table></div></figure>
+<p>假设Alice和Bob在做DH交换（不是Desperate Housewife），他们会先明文共享一个 <code>root</code>值 (一般是2、3或者5这样的整数)和一个大质数 (300%2B位整数)。</p>
 
+<p>如前所述，Alice和Bob还有自己的私钥(100%2B位的整数)，他们不能告诉对方私钥，而是通过双方共享的<code>root</code>和大质数计算出一个<code>mixture</code>：</p>
 
-<a name="L........code.public.key..code.."></a>
-<h2>配置 <code>public key</code> </h2>
+<blockquote><p>Alice的mixture = (root的Alice私钥值次方) % 大质数
+Bob的mixture   = (root的Bob私钥值次方) % 大质数</p></blockquote>
 
-<p>使用密码的日子已经慢慢过时了，这方面Github很有<a href="https://help.github.com/categories/56/articles">贡献</a>。只需要：</p>
+<p>注意这里的%是模运算</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /home/deploy/.ssh/authorized_keys
-</span></code></pre></td></tr></table></div></figure>
+<p>计算出<code>mixture</code>之后，Alice和Bob就把这个结果发送给对方，然后继续如下的计算：</p>
 
+<blockquote><p>Alice这边：(Bob的mixture的Alice私钥值次方) % 大质数
+Bob这边：(Alice的Bob私钥值次方) % 大质数</p></blockquote>
 
-<p>把 <code>id_rsa.pub</code> 的内容拷贝进去。然后：</p>
+<p>这样在Bob和Alice两边独立计算，但得出的结果却是一致的：这就是<code>shared secret</code>了。可以看到这个流程的设计非常注意信息的保护：整个过程中双方没有交换自己的私钥，最后得到的<code>shared secret</code>也没在网络上发送。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>chmod <span class="m">400</span> /home/deploy/.ssh/authorized_keys
-</span><span class='line'>chown deploy:deploy /home/deploy -R
-</span></code></pre></td></tr></table></div></figure>
+<p>对数学计算不感冒的同学，下面这张Wikipedia的配图非常直观：</p>
 
+<p><img src="http://blog.hartleybrody.com/wp-content/uploads/2013/07/Diffie-Hellman_Key_Exchange.png" alt="Diffie-Hellman Key Exchange" /></p>
 
-<p>当然你也可以使用 <code>id_rsa.pub</code> 之外的key，然后在本地的 <code>~/.ssh/config</code> 里面对 <code>IdentityFile</code> 做指定。具体方式可以查看 <code>~/.ssh/config</code>的说明。</p>
+<p>从图里可以看到，双方一开始共享的黄色，在最后生成了共享的褐色，而这期间交换的只有被称为<code>mixture</code>的中间产物：即使有人监听并拿到，也无所谓。</p>
 
-<a name="L......deploy.................code.Sudo..code........"></a>
-<h2>测试deploy用户并赋予 <code>Sudo</code> 权限</h2>
+<a name="Symmetric.Key.Encryption"></a>
+<h3>Symmetric Key Encryption</h3>
 
-<p>先测试deploy是否能够正常登录，然后使用 <code>root</code> 账号设置密码：</p>
+<p>前面说的这种流程每个session只用在初始化连接的时候发生一次。一旦生成了<code>shared secret</code>，Client和Server之间就可以使用<a href="http://en.wikipedia.org/wiki/Symmetric-key_cryptography">symmetric-key加密系统</a>了。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>passwd deploy
-</span></code></pre></td></tr></table></div></figure>
+<p>这种使用<code>shared secret</code>的加密通信会涉及一系列的<a href="http://en.wikipedia.org/wiki/Cipher_suite">cipher suite</a>，也就是一系列的加密算法。</p>
 
+<a name="L......"></a>
+<h3>认证</h3>
 
-<p>这是团队要用来 <code>sudo</code> 的账号，所以要弄得有意义好记一点儿。接下来：</p>
+<p>Diffie-Hellman密钥交换流程没有解决认证的问题。这就好比我们拿起电话跟朋友打过去，先进行了DH交换，这样这次通话是其他人没法破解的。但是如果其实对方根本就不是朋友，那么还是白加密了。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>visudo
-</span></code></pre></td></tr></table></div></figure>
+<p>为了解决认证的问题，我们需要 <a href="http://en.wikipedia.org/wiki/Public_key_infrastructure">Public Key Infrastructure</a> 来确保对方是我们要通信的对象。这些infrastructure用来创建，管理，发放和注销签名证书：没错，就是你花钱买了才能让你的网站可以使用HTTPS的可恶的证书。</p>
 
+<p>证书是什么东西？为什么它可以让通信更安全？</p>
 
-<p>注释掉所以已经存在的用户、用户组权限，然后加上：</p>
+<a name="L......"></a>
+<h3>证书</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root    <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
-</span><span class='line'>deploy  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
-</span></code></pre></td></tr></table></div></figure>
+<p>粗略地说，证书就是一个使用数字签名把机器的公钥和身份进行绑定的文件，来防止有人把自己的公钥亮出来冒充他人身份。在实际操作中，身份主要是通过域名来体现。</p>
 
+<p>大多数的web浏览器都会检查证书有没有使用可信的<code>Certificate Authority</code>或者说<code>CA</code>授权的签名。CA在授权之前，会进行人工检查，看证书申请者是否:</p>
 
-<a name="L......SSH"></a>
-<h2>锁定SSH</h2>
+<ol>
+<li> 实际存在的人或者组织</li>
+<li> 对自己声称的身份，比如域名，有所有权</li>
+</ol>
 
-<p>设置ssh，禁止使用密码ssh，禁止使用 <code>root</code> 账号ssh。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /etc/ssh/sshd_config
-</span></code></pre></td></tr></table></div></figure>
+<p>一旦授权签名，就说明认定证书所有者的身份和它提供的公钥是绑定的。</p>
 
+<p>我们的浏览器都会添加一堆可信的CA证书，而如果访问的服务器不能返回可信的CA证书，浏览器就会提示用户。换句话说，即使一个恶意网站生成了绑定自己机器公钥的证书声称自己是facebook.com，因为这个证书不是可信CA的，浏览器也不会相信它。</p>
 
-<p>添加下面的设置：</p>
+<p><strong>增强型证书</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>PermitRootLogin no
-</span><span class='line'>PasswordAuthentication no
-</span></code></pre></td></tr></table></div></figure>
+<p>除开一般的<code>X.509</code>证书，还有一种<a href="http://en.wikipedia.org/wiki/Extended_validation">增强型证书</a>提供一种更强的身份校验。</p>
 
+<p>要申请这种证书CA会进行更细致的检查，比如要求提供使用域名的账单等。一旦使用了这种证书，在有的浏览器工具栏上可以看到站点是绿色的。</p>
 
-<p>如果有需要还可以限定可以ssh的ip地址：</p>
+<p><strong>一个服务器多个站点</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>AllowUsers deploy@<span class="o">(</span>your-ip<span class="o">)</span> deploy@<span class="o">(</span>another-ip-if-any<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>一般如果多个网站使用同一个服务器来部署会使用<code>named virtual hosts</code>。但由于TLS握手发生在HTTP连接建立之前，所以可能会造出 <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security#Support_for_name-based_virtual_servers">问题</a>。</p>
 
+<p>因此如果你的网站需要HTTPS，空间提供者都会要求你租用独立IP的服务器。</p>
 
-<p>重启ssh：</p>
+<p>—</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>service ssh restart
-</span></code></pre></td></tr></table></div></figure>
+<p>最后，Wikipedia是研究这种东西的好去处, 也可以看看 <a href="https://www.coursera.org/course/crypto">Coursera的这个课程</a> 。</p>
+</div>
+  
+  
 
 
-<a name="L..............."></a>
-<h2>设置防火墙</h2>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/secret-love/">Secret Love</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p>Ubuntu提供了 <code>ufw</code>，所以只需要：</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ufw allow from <span class="o">{</span>your-ip<span class="o">}</span> to any port 22
-</span><span class='line'>ufw allow 80
-</span><span class='line'>ufw allow 443
-</span><span class='line'>ufw <span class="nb">enable</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<a name="L........................"></a>
-<h2>打开自动安全更新</h2>
+<time class='entry-date' datetime='2013-08-26T21:59:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:59 pm</span></time>
+        
+           | <a href="/2013/08/secret-love/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/secret-love/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-<p>虽然很多习惯好的服务器使用者会知道运行<code>apt-get update/upgrade</code> 但是如果服务器很多，总会有一些不那么被经常登录的机器，系统会比较陈旧。特别是做负载均衡的机器，可能很少有人登录。为了保证所有的机器都有足够的安全性需要打开自动更新（作为习惯控制一切的开发人员，自动更新总是一件让我很抗拒的事情，但是安全漏洞更让人抗拒）：</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install unattended-upgrades
-</span><span class='line'>vim /etc/apt/apt.conf.d/10periodic
-</span></code></pre></td></tr></table></div></figure>
+  <div class="entry-content"><p><img src="/downloads/images/secret_love.gif" title="Don't touch me..." alt="Secret Love" /></p>
 
+<blockquote><p>&#8220;I think we’re just gonna have to be secretly in love with each other and leave it at that, Ritchie.&#8221;</p><footer><strong>Gwyneth Paltrow</strong> <cite><a href='http://www.imdb.com/title/tt0265666/'>The Royal Tenenbaums(2001)</a></cite></footer></blockquote>
 
-<p>在文件里面修改成：</p>
+</div>
+  
+  
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>APT::Periodic::Update-Package-Lists <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::Download-Upgradeable-Packages <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::AutocleanInterval <span class="s2">&quot;7&quot;</span><span class="p">;</span>
-</span><span class='line'>APT::Periodic::Unattended-Upgrade <span class="s2">&quot;1&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/buttericks-practical-typography/">Butterick的实用字体设计</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p>接着修改：</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>vim /etc/apt/apt.conf.d/50unattended-upgrades
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>修改文件成：</p>
+<time class='entry-date' datetime='2013-08-26T11:11:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:11 am</span></time>
+        
+           | <a href="/2013/08/buttericks-practical-typography/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/buttericks-practical-typography/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Unattended-Upgrade::Allowed-Origins <span class="o">{</span>
-</span><span class='line'>    <span class="s2">&quot;Ubuntu lucid-security&quot;</span><span class="p">;</span>
-</span><span class='line'>    //<span class="s2">&quot;Ubuntu lucid-updates&quot;</span><span class="p">;</span> 只更新安全更新
-</span><span class='line'><span class="o">}</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
 
+  <div class="entry-content"><p>最近和一个朋友聊天，他说最近几年大概是Flat流行网页上除开字就没别的了，字体设计被各种强调。</p>
 
-<a name="L......Logwatch"></a>
-<h2>安装Logwatch</h2>
+<p>这位老大在上海经营自己的网页设计公司，但是大家够熟，本座就冒着班门弄斧的危险纠正了他一嘴：很多年前，<a href="http://www.theverge.com/2012/7/24/3177332/ia-oliver-reichenstein-writer-interview-good-design-is-invisible">Oliver Reichenstein</a>就说过&#8221;<a href="http://ia.net/blog/the-web-is-all-about-typography-period/">Web设计95%是字体设计</a>&ldquo;了。而且这种观点还一直被<a href="http://www.smashingmagazine.com/2012/07/24/one-more-time-typography-is-the-foundation-of-web-design/">反复强调</a>。</p>
 
-<p>Logwatch是一个监控你的日志并发送邮件通知的daemon。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install logwatch
-</span><span class='line'>vim /etc/cron.daily/00logwatch
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在文件中添加：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/sbin/logwatch --output mail --mailto lenciel@gmail.com --detail high
-</span></code></pre></td></tr></table></div></figure>
-
-
-<a name="What.s.Next"></a>
-<h2>What&rsquo;s Next</h2>
+<p>当然，设计师的世界里面可能这些都没有问题。但是现实是，设计师设计的Web只是Web中的%0.5，世界上还有大量的网页是被朋友这种小公司，甚至是程序员们自己设计出来的。而且，网页上可选的中文字体先天可选项就很少，所以字体设计或者说<code>Typography</code>虽然如此重要，其实主要是靠下面两个途径解决的：</p>
 
 <ul>
-<li>使用Puppet自动化这些配置</li>
-<li>在基础的配置上，把一个fresh的机器如果配置成各种形态的（Django/Web/Database/LoadBalance/&hellip;)</li>
+<li>研究开源的template</li>
+<li>看淘宝、百度这些大站的设定</li>
+</ul>
+
+
+<p>但是借鉴得再多，不花时间总结，还是难成系统。最近看到一本Butterick的<a href="http://practicaltypography.com/typography-in-ten-minutes.html">好书</a>，对字体设计的原则做了一番高度归纳，并且声称：</p>
+
+<blockquote><p>this is a bold claim, but i stand be­hind it: if you learn and fol­low these five ty­pog­ra­phy rules, you will be a bet­ter ty­pog­ra­ph­er than 95% of pro­fes­sion­al writ­ers and 70% of pro­fes­sion­al de­sign­ers. (The rest of this book will raise you to the 99th per­centile in both categories.)</p></blockquote>
+
+
+<p>归纳出来的原则共有5条：</p>
+
+<ul>
+<li><p>文档的字体设计主要取决于你<code>body</code>部分的设计。所以在任何一个项目里面，先把<code>body</code>部分弄好看了再花时间去看别的地方。</p>
+
+<p> 而<code>body</code>部分好看与否，主要取决于下面的四个方面：</p></li>
+<li><p><code>point size</code>是指字体的大小。在印刷品中，最舒适的是10–12个point，而网页上则是15–25个pixels。不是每个font在指定的<code>point size</code>下大小都是一致的，所以有的适合需要对究竟用多大进行调整。</p></li>
+<li><p><code>line spacing</code>是垂直方向上行间距。它的合理取值是字体的<code>point size</code>的120–145%。在文字处理器中不要用比值定行距，因为单行距太窄，1½又太松了。­在网页上用CSS的<code>line-height</code>来控制.</p></li>
+<li><p><code>line length</code>是水平方向上文字块的宽度，它的合理取值是­­平均每行45–90个字，为了方便你可以用小写字母表来占位，一般来说2-3个排列是合适的：</p>
+
+<pre><code class="`"> abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd
+</code></pre>
+
+<p> 在印刷品中，这一般意味着page的margin比传统的1个inch宽。
+ 在网页上，这主要是控制text block不要在页面上溢出。</p></li>
+<li><p>最后是字体的选择。可能对一般设计者最简单高效的方法是停止使用系统自带的那些免费字体，购买专业字体设计公司的作品：这些专业的字体设计优良，而且通常也不贵。</p>
+
+<p>即使你不愿意付费，试试在免费字体里面找找看，比如Google提供的字体。实在不行，至少不要用Times New Roman或者Arial了：这是懒惰的人才会不假思索考虑的字体。</p></li>
+</ul>
+
+
+<p>很有兴趣知道，中文设计圈子里面有没有类似的准则被归纳出来，毕竟12px宋体一统江湖这么多年了。简单Google之后看起来是没有什么变化的：</p>
+
+<ul>
+<li><a href="http://www.zhihu.com/question/19680724">网页常用字体有哪些 - 知乎</a></li>
+<li><a href="http://www.zhihu.com/question/20404847">中文的网页用什么字体最合适 - 知乎</a></li>
 </ul>
 
 </div>
@@ -361,7 +367,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2013/03/boxen-introduction/">Boxen Introduction</a></h1>
+      <h1 class="entry-title"><a href="/2013/08/eye-in-the-sky/">Eye in the Sky</a></h1>
     
     
       <p class="meta">
@@ -370,389 +376,20 @@
 
 
 
-<time class='entry-date' datetime='2013-03-31T08:28:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>8:28 am</span></time>
+<time class='entry-date' datetime='2013-08-25T21:50:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:50 pm</span></time>
         
-           | <a href="/2013/03/boxen-introduction/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/boxen-introduction/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架<a href="http://boxen.github.com/">Boxen</a>，趁着新笔记本需要起轿，尝试了一把。</p>
-
-<a name="Boxen............"></a>
-<h2>Boxen框架简介</h2>
-
-<p>Boxen基于大红大紫的<a href="https://puppetlabs.com/">Puppet</a>，但和后者目前主要侧重于服务器的Privision不同，Boxen更主要是用于组织内工作人员使用的机器的配置和管理流程标准化。</p>
-
-<p>配置流程标准化比较好理解：拿到一台机器，敲一个命令就把所有需要的软件装上并且把环境配置好。按Boxen主页上的说法，Github新员工入职后领到电脑后，用Boxen配置环境到开始写代码只需要30分钟。</p>
-
-<p>管理流程标准化听起来比较抽象，你可以想象这么一个场景：如果公司里面所有的机器都是是用Boxen来配置的。当发现Chrome浏览器的Java插件会导致安全问题的时候，IT部门可以push一个禁用Chrome里Java插件的change到boxen repo。所有的员工只需要和repo做一次sync，自己的Chrome里的Java插件就被禁用了。这显然比传统的发邮件要求大家去禁用Chrome浏览器Java插件简单有效。</p>
-
-<p>简单地概括Boxen的思路，就是像对待产品一样对待开发环境。使用包括版本控制，持续集成这些手段，在团队中维护一个开发环境的仓库。如果你想更深入地了解Boxen的设计哲学，可以看看这个slide：<a href="https://speakerdeck.com/wfarr/boxen">BOXEN by Will Farrington</a>。</p>
-
-<a name="L......Boxen"></a>
-<h2>使用Boxen</h2>
-
-<p>首先确保你的初始环境是干净的：</p>
-
-<ul>
-<li>如果你手上是台新机器，它是干净的</li>
-<li><p>如果不是一台新机器，请先备份，然后：</p>
-
-<ul>
-<li>卸载Homebrew</li>
-<li>删除所有的 <code>dotfiles</code> 和 <code>vimfiles</code> ，比如<a href="https://github.com/robbyrussell/oh-my-zsh">Oh my zsh</a>或者<a href="https://github.com/spf13/spf13-vim">spf13 vim</a>等</li>
-<li>删除 <code>.rbenv</code> 或者 <code>.rvm</code> 文件夹</li>
-<li><code>chsh -s /bin/bash</code> 把SHELL改回 <code>bash</code></li>
-</ul>
-</li>
-</ul>
-
-
-<p>接下来就是安装一些必须的软件，比如Git和Xcode的 <code>Command Line Tools</code>。</p>
-
-<a name="Xcode.CLT"></a>
-<h3>Xcode CLT</h3>
-
-<ul>
-<li>升级Xcode</li>
-<li>启动Xcode，在Preferences里面选择下载</li>
-<li>安装&#8221;Command Line Tools&#8221;</li>
-</ul>
-
-
-<p><img src="/downloads/images/xcode_clt.png" title="Don't touch me..." alt="Xcode Command Line Tools" /></p>
-
-<a name="L......FireVault2"></a>
-<h3>打开FireVault2</h3>
-
-<p>Boxen默认会希望硬盘信息是被加密的：</p>
-
-<p><img src="/downloads/images/turn_on_fire_vault.png" title="Don't touch me..." alt="Turn on FireVault2" /></p>
-
-<a name="Fork.our-boxen"></a>
-<h3>Fork our-boxen</h3>
-
-<p><a href="https://github.com/boxen/our-boxen">our-boxen</a>是Boxen提供的基线repo，也是整个Boxen框架里面文档最全的一个repo。</p>
-
-<p>首先按照repo说明中的方式来clone和配置本地repo：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo mkdir -p /opt/boxen
-</span><span class='line'>sudo chown <span class="k">${</span><span class="nv">USER</span><span class="k">}</span>:admin /opt/boxen
-</span><span class='line'>git clone https://github.com/boxen/our-boxen /opt/boxen/repo
-</span><span class='line'><span class="nb">cd</span> /opt/boxen/repo
-</span><span class='line'>git remote rm origin
-</span><span class='line'>git remote add origin
-</span><span class='line'>git push -u origin master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这种clone下来再配置origin的方式类似于fork，区别是fork下来的repo一定是public的，而这样得到的repo可以是private的。可以想象如果你使用boxen来完成对公司电脑的配置，多少都会有一些敏感信息在repo里面，所以private的repo是非常必要的。</p>
-
-<p>接下来在 <code>/opt/boxen/repo</code> 路径下运行 <code>script/boxen</code> 即可完成boxen默认的模块的安装。默认的模块定义在 <code>/opt/boxen/repo/Puppetfile</code> 中：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">github</span> <span class="s2">&quot;dnsmasq&quot;</span><span class="p">,</span>  <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;gcc&quot;</span><span class="p">,</span>      <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>      <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;homebrew&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;hub&quot;</span><span class="p">,</span>      <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;inifile&quot;</span><span class="p">,</span>  <span class="s2">&quot;0.9.0&quot;</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&gt;</span> <span class="s2">&quot;cprice-puppet/puppetlabs-inifile&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;nginx&quot;</span><span class="p">,</span>    <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;nodejs&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;nvm&quot;</span><span class="p">,</span>      <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;ruby&quot;</span><span class="p">,</span>     <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;stdlib&quot;</span><span class="p">,</span>   <span class="s2">&quot;3.0.0&quot;</span><span class="p">,</span> <span class="ss">:repo</span> <span class="o">=&gt;</span> <span class="s2">&quot;puppetlabs/puppetlabs-stdlib&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;sudo&quot;</span><span class="p">,</span>     <span class="s2">&quot;1.0.0&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可以看到Github大量用到 <code>ruby</code> 和 <code>nodejs</code> 。在运行boxen的时候，可能会看到大量的警告信息：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Warning</span><span class="p">:</span> <span class="no">Could</span> <span class="ow">not</span> <span class="n">retrieve</span> <span class="n">fact</span> <span class="n">fqdn</span>
-</span><span class='line'><span class="ss">Warning</span><span class="p">:</span> <span class="no">Host</span> <span class="n">is</span> <span class="n">missing</span> <span class="n">hostname</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="ss">domain</span><span class="p">:</span> <span class="n">suttlemac</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后伴随着 <code>https://rubygems.org</code> 失败。这些主要是因为GFW，你可以使用镜像，比如淘宝的。具体方式可以<a href="http://ruby.taobao.org/">查看这里</a>。</p>
-
-<p>注意你还应该把下面的脚本加到 <code>~/.bashrc</code> 或者 <code>~/.zshrc</code> :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span> -f /opt/boxen/env.sh <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> /opt/boxen/env.sh
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后新开一个shell运行 <code>boxen --env</code>，结果一切正常你的box就配置完毕了。</p>
-
-<a name="L...............box"></a>
-<h2>自定义你的box</h2>
-
-<p>默认安装的内容当然不一定对你的口味，如果你用过Puppet那么自定义Boxen的box是非常简单的。不过埋头开干之前还是可以check一下是不是已经<a href="https://github.com/boxen">有人做好了</a>。这些做好的repo可以直接通过修改配置文件是用，因为Boxen对librarian-puppet做了wrapper，对fetch各种module也做了wrapper。</p>
-
-<p>比如我们要安装Chrome和Skype，打开 <code>/opt/boxen/repo/Puppetfile</code> 并添加两行：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;sudo&quot;</span><span class="p">,</span>     <span class="s2">&quot;1.0.0&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Add new modules</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;skype&quot;</span><span class="p">,</span>    <span class="s2">&quot;1.0.2&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;chrome&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.1.0&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这里安装的module的声明规则是 <code>github "{name}", "{version}"</code>。 其中 <code>name</code> 的取法是在 <code>Puppetfile</code> 里面定义的：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">github</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">options</span> <span class="o">||=</span> <span class="p">{}</span>
-</span><span class='line'>  <span class="n">options</span><span class="o">[</span><span class="ss">:repo</span><span class="o">]</span> <span class="o">||=</span> <span class="s2">&quot;boxen/puppet-</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="n">mod</span> <span class="nb">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="ss">:github_tarball</span> <span class="o">=&gt;</span> <span class="n">options</span><span class="o">[</span><span class="ss">:repo</span><span class="o">]</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>因此<a href="https://github.com/boxen/puppet-skype">puppet-skype</a>对应的就是 <code>skype</code> 。</p>
-
-<p>而 <code>version</code> 则是对应具体repo的tag，比如<a href="https://github.com/boxen/puppet-skype">puppet-skype</a>对应的<a href="https://github.com/boxen/puppet-skype/tags">tag</a>有：</p>
-
-<p><img src="/downloads/images/version_tag.png" title="Don't touch me..." alt="Version and tags" /></p>
-
-<p>如果你的repo不是在github也很简单，只需要指定repo的位置即可。比如如果你自己的Skype是放在Bitbucket上的:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>   <span class="n">mod</span> <span class="s2">&quot;skype&quot;</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s2">&quot;git@bitbucket.org:yourusername/puppet-skype.git&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在 <code>Puppetfile</code> 里面完成的声明主要是让Boxen（实际上是Puppet）知道去哪里找安装和配置文件。要告诉Boxen安装Skype还需要在 <code>manifests/site.pp</code> 里面 <code>include</code> 需要安装的module：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>    <span class="n">node</span> <span class="n">default</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">dnsmasq</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">ruby</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">git</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">hub</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">homebrew</span>
-</span><span class='line'>        <span class="kp">include</span> <span class="n">skype</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>接下来只需要运行 <code>boxen</code> (如果你运行了 <code>boxen --env</code> 命令会在可执行路径里)或者是 <code>boxen --debug</code> (如果你需要更多的verbose信息)，指定的软件就安装上了。</p>
-
-<a name="What.s.Next"></a>
-<h2>What&rsquo;s Next</h2>
-
-<p>目前为止主要是解释了如何使用Boxen来安装一些基本软件。目前本座机器上使用Boxen安装的软件包括：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">github</span> <span class="s2">&quot;ccleaner&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0.1&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;iterm2&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.0.2&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;skype&quot;</span><span class="p">,</span>    <span class="s2">&quot;1.0.2&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;chrome&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.1.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;sublime_text_2&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.1.0&quot;</span>
-</span><span class='line'><span class="n">github</span> <span class="s2">&quot;jumpcut&quot;</span><span class="p">,</span>   <span class="s2">&quot;1.0.0&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>接下来的计划就是建立项目组自己的repo，把诸如输入法、dotfiles、Java开发环境和Django开发环境这些东西的安装和配置都自动化了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/use-done-list-rather-than-todo-list/">Use Done List Instead of to Do List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-03-15T21:25:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:25 pm</span></time>
-        
-           | <a href="/2013/03/use-done-list-rather-than-todo-list/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/use-done-list-rather-than-todo-list/">Comments</a>
+           | <a href="/2013/08/eye-in-the-sky/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/eye-in-the-sky/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><img src="/downloads/images/nerd_sniping.png" title="Don't touch me..." alt="nerd sniping" /></p>
+  <div class="entry-content"><p><img src="/downloads/images/eye_in_the_sky.gif" title="Don't touch me..." alt="Eye in the sky" /></p>
 
-<a name="L.strong......strong."></a>
-<h2><strong>起</strong></h2>
+<blockquote><p>&#8220;And the eye-in-the-sky is watching us all.&#8221;</p><footer><strong>Martin Scorsese</strong> <cite><a href='http://www.imdb.com/title/tt0112641/'>Casino(1995)</a></cite></footer></blockquote>
 
-<p><a href="http://xkcd.com/730/" target="_blank">xkcd</a>一直是本座最喜欢的网站（嗯哼）。上面这幅图说了一个很有趣的现象，正好最近深有体会，就来这边吐槽一下。整个经过是：</p>
-
-<p>大前天回到家感觉不算太忙，本座就开始家姐布置的家庭作业：做一个用于心理学测试的游戏。需求简单来说就是：</p>
-
-<ul>
-<li>游戏开始后轮转播放图片、视频或者音频 （媒体库要容易换，播放的切换间隙也要能配置）</li>
-<li>被试通过操控手中的手柄表达心理的反应，由程序转成可统计的数据（比如看到美女图按同时按下AB）</li>
-<li>程序得到的数据能够很容易的被统计，统计结果能够很优雅的呈现出来</li>
-</ul>
-
-
-<p>为了让这个事情变得更有趣，本座在需求确定之后决定：</p>
-
-<ol>
-<li>用帅气的<a href="http://www.nintendo.co.uk/NOE/en_GB/systems/accessories_1243.html" target="_blank" class="broken_link">Wii Remote</a>来让被试表达自己（想想美女图片一出就甩或者是撸一下WiiRemote有多实在）</li>
-<li>用<a href="http://www.pygame.org/news.html" target="_blank">pyGame</a>来写这个游戏（早就想学习pyGame了）</li>
-<li>把统计数据的输出作为一个用<a href="http://www.r-project.org/" target="_blank">R语言</a>实现的统计绘图的界面的输入</li>
-</ol>
-
-
-<p>接着就开始第一项。当程序把 <code>Wii Remote</code> 的蓝牙信号正确的转换成标准的手柄信号的时候，一看已经挺晚了，本座就只好把后面两个放在了 <code>todo list</code> 上。接着这两天都很忙这些东西就继续的呆在 <code>todo list</code> 。</p>
-
-<p>然后今天又找到时间，本座就开始用 <code>pyGame</code> 写游戏本身部分，但突然觉得vim下面自动补全很烂，就开始google合适的插件。花了10分钟左右发觉不少人说 <code>pydict</code> 好，本座就又花了15分钟左右去配置。然后看着chrome里面为了搜索插件弹出的一堆tab突然本座发现：</p>
-
-<p>经过了4天，本座把Wii Remote用蓝牙连到PC输出手柄信号，本座有了一个不错的vim下开发python的环境，本座还学习了一点儿R。唯一没有开始的就是，嗯，还没有开始写那个游戏。</p>
-
-<a name="L.strong......strong."></a>
-<h2><strong>承</strong></h2>
-
-<p>你的情况可能具体细节和我不一样，但是结果估计都是南辕北辙：你是网页设计师，在需要画 <code>wireframe</code> 的时候花了一大把时间去看搜索出来的新鲜的、华丽的 <code>CSS3</code> 效果；你上淘宝买手机结果研究移动电源用了4个小时；你想学怎么养花结果因为选盆子下面水漏的形状耽误了。</p>
-
-<p>这种情况之所以对你的效率有很大的伤害是因为：</p>
-
-<ol>
-<li>你认为你是在完成自己 <code>todo list</code> 上的东西，所以你觉得自己是在“进展中”而不是“瞎逛”。</li>
-<li>你认为的进展给你带来了更多 <code>todo list</code> 上的东西，而且有些确实对原来的目标是无益的。</li>
-</ol>
-
-
-<p>人的精力是有限的，如果你长期处于这种状况（太正常了，如果你是玩电脑的话），可就要小心了。</p>
-
-<a name="L.strong......strong."></a>
-<h2><strong>转</strong></h2>
-
-<p>其实这种发散的工作方式并不是完全错误的。其实在我们这个行业，这种“总想追求更好”的想法，是整个Agile的基础。Facebook在自己的员工的邮件<a href="http://blogs.wsj.com/deals/2012/02/01/mark-zuckerbergs-letter-from-the-facebook-filing/" target="_blank">里面</a>写到：</p>
-
-<blockquote><p>The Hacker Way is an approach to building that involves continuous improvement and iteration. Hackers believe that something can always be better, and that nothing is ever complete. They just have to go fix it — often in the face of people who say it’s impossible or are content with the status quo.</p></blockquote>
-
-<p>从本座自己的感觉而言，做事循规蹈矩的同事，完成一般难度的任务时，效率确实很高。但是那种真正非常困难的问题，常常是被喜欢“瞎逛”的人解决的。这当然也没什么奇怪的，所谓闭门造的车，出门就只能合辙。Richard Hamming也<a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank">说</a>：</p>
-
-<blockquote><p>I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don&#8217;t know quite about what problems are worth working on … He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. ….</p></blockquote>
-
-<a name="L.strong......strong."></a>
-<h2><strong>合</strong></h2>
-
-<p>不能闭门造车，又需要有固定的输出值，怎么办？今天本座是这么办的：</p>
-
-<ol>
-<li>早上起来把今天最重要的事情从<a href="https://astrid.com/home" target="_blank">todo list</a>里面选出来。</li>
-<li>完成这些事情的过程中遇到任何有趣的东西或者想法，存到<a href="http://delicious.com/" target="_blank">delicious</a>或者<a href="http://www.evernote.com/" target="_blank">evernote</a>里面。</li>
-<li>使用<a href="https://idonethis.com" target="_blank">Done list</a>而不是todo list来标记自己今天的活动。</li>
-</ol>
-
-
-<p>结果是今天3点钟就完成了所有重要的事情，能够来安心的写一篇blog，看起来是个不错的办法。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/the-gone-of-google-reader/">The Gone of Google Reader</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-03-15T21:25:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:25 pm</span></time>
-        
-           | <a href="/2013/03/the-gone-of-google-reader/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/the-gone-of-google-reader/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/google_reader.png" title="Don't touch me..." alt="Google reader is gone" /></p>
-
-<p>Google Reader关掉的消息出来做之后网上的反应其实是很耐人寻味的。</p>
-
-<p>用户们的抱怨声是<a href="http://www.theverge.com/2013/3/14/4105432/google-reader-shuts-down">满坑满谷</a>：的确，它是很多人(包括本座在内)每天都用的工具。相比之下，所有RSS行业的人(如果这个行业还在的话)几乎都在叫好。</p>
-
-<p>跟一个朋友聊起来的时候，他说这就像当年王菲说姐不唱了，歌迷们是一片哀号，而很多唱歌的姑娘却长舒了一口气一样。</p>
-
-<p>不过其实这里面的原因并没有这么简单。一个RSS阅读器虽然算不上多么复杂的软件，但是服务器端做到Google Reader的稳定性和及时性就不容易了。由于Google Reader在这方面的质量一骑绝尘又有开放接口，使得很多其他的RSS阅读器都不再自己同步各个feed来源，而是直接使用Google Reader作为来源，在外面加壳。</p>
-
-<p>这样发展的结果是，实际上市面上就只有一款RSS阅读器和若干皮肤而已。只要看看<a href="http://feedburner.google.com/">feedburner</a>好像出土文物一样的页面就知道这样的发展对这个行业来说是什么样灾难的后果了。</p>
-
-<p>所以说Google Reader这种服务的倒掉，在短期内当然是巨大的损失。不过这样一来，似乎又唤醒了一个行业沉睡多年的创造力。看看<a href="http://inside.flipboard.com/2013/03/14/weve-got-your-rss-covered-save-your-google-reader-feeds-now/">Flipboard</a>、<a href="http://feedly.com/">Feedly</a>、<a href="http://feedafever.com/">Fever</a>、<a href="http://www.newsblur.com/">Newsblur</a>的反应你就会觉得，说不定会有比Google Reader更好的服务被孵化出来。</p>
-
-<p>因为，我实在是不觉得那些乱七八糟的SNS能代替一个干干净净的阅读器。</p>
 </div>
   
   

@@ -9,8 +9,10 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="不知不觉，写blog好像从有电脑的人都要干的事情变成很小众的活动了。除了人到了一定年纪都会不愿意开口讲话之外，本座觉得还有个很大的原因就是：要找一个靠谱的blog服务商是非常麻烦的。岂止是是blog服务商，在天朝使用大多数web服务都很吊诡地只有两个选择： 没有被墙但很糟的；
-很不错但被墙了的； &hellip;">
+  <meta name="description" content="Javascript有一个小陷阱：每个primitive都有自己的constructor，但是这些constructor构造出来的却不是primitive。 以boolean为例，大多数的代码里面用的是primitive值，比如： 1
+2
+var primitiveTrue = true;
+var &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,16 +33,20 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/18" />
-<meta property="og:description" content="不知不觉，写blog好像从有电脑的人都要干的事情变成很小众的活动了。除了人到了一定年纪都会不愿意开口讲话之外，本座觉得还有个很大的原因就是：要找一个靠谱的blog服务商是非常麻烦的。岂止是是blog服务商，在天朝使用大多数web服务都很吊诡地只有两个选择： 没有被墙但很糟的；
-很不错但被墙了的； &hellip;" />
+<meta property="og:description" content="Javascript有一个小陷阱：每个primitive都有自己的constructor，但是这些constructor构造出来的却不是primitive。 以boolean为例，大多数的代码里面用的是primitive值，比如： 1
+2
+var primitiveTrue = true;
+var &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="不知不觉，写blog好像从有电脑的人都要干的事情变成很小众的活动了。除了人到了一定年纪都会不愿意开口讲话之外，本座觉得还有个很大的原因就是：要找一个靠谱的blog服务商是非常麻烦的。岂止是是blog服务商，在天朝使用大多数web服务都很吊诡地只有两个选择： 没有被墙但很糟的；
-很不错但被墙了的； &hellip;" />
+<meta itemprop="description" content="Javascript有一个小陷阱：每个primitive都有自己的constructor，但是这些constructor构造出来的却不是primitive。 以boolean为例，大多数的代码里面用的是primitive值，比如： 1
+2
+var primitiveTrue = true;
+var &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -107,7 +113,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2013/03/blog-with-octopress-and-github-pages/">Blog With Octopress and Github Pages</a></h1>
+      <h1 class="entry-title"><a href="/2013/08/boolean-objects-and-boolean-primitives/">Boolean Objects和Boolean Primitives</a></h1>
     
     
       <p class="meta">
@@ -116,145 +122,46 @@
 
 
 
-<time class='entry-date' datetime='2013-03-10T22:15:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:15 pm</span></time>
+<time class='entry-date' datetime='2013-08-21T11:31:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>11:31 am</span></time>
         
-           | <a href="/2013/03/blog-with-octopress-and-github-pages/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/blog-with-octopress-and-github-pages/">Comments</a>
+           | <a href="/2013/08/boolean-objects-and-boolean-primitives/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/boolean-objects-and-boolean-primitives/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>不知不觉，写blog好像从有电脑的人都要干的事情变成很小众的活动了。除了人到了一定年纪都会不愿意开口讲话之外，本座觉得还有个很大的原因就是：要找一个靠谱的blog服务商是非常麻烦的。岂止是是blog服务商，在天朝使用大多数web服务都很吊诡地只有两个选择：</p>
+  <div class="entry-content"><p>Javascript有一个小陷阱：每个primitive都有自己的constructor，但是这些constructor构造出来的却不是primitive。</p>
 
-<ul>
-<li>没有被墙但很糟的；</li>
-<li>很不错但被墙了的；</li>
-</ul>
-
-
-<p>所以虽然知道<a href="http://github.com">Github</a>可以免费host任何静态页面很久了，眼看着<a href="http://octopress.org/">Octopress</a>也日益成熟，但一直都下定决心去试：谁知道哪天Github又被墙了呢？</p>
-
-<p>不过，在最近自己的职业生涯发生了不小的变化，在可预见的未来，肯定要做很多跟code有关的笔记。<a href="http://lenciel.cn">现在的blog</a>系统是wordpress，虽然非常好用，但是比起markdown来说，写起code来速度就差太多了。所以今天下定决心试了一把Octopress+Github Pages，效果非常满意，特别记录一下过程，像大家做个推荐。</p>
-
-<a name="Jekyll.amp.Octopress"></a>
-<h2>Jekyll&amp;Octopress</h2>
-
-<p><a href="http://octopress.org/">Octopress</a>是在<a href="https://github.com/mojombo/jekyll">Jekyll</a>基础上进行的开发。<a href="https://github.com/mojombo/jekyll">Jekyll</a>作为Ruby开发的静态页面blog系统，吸引本座的地方在于：</p>
-
-<ul>
-<li><strong>静态页面</strong>：由于Jekyll生成的都是静态页面，意味着这些页面可以在任何地方被host，比如Github Pages，Google Drive甚至是Dropbox都可以作为选择（当然它们也基本是被墙的）。</li>
-<li><strong>Markdown</strong>：Jekyll的日志因为是用Markdown写的，相比传统的Blog系统如Wordpress而言，一方面在写的时候可以用你顺手的编辑器，另一方面储存和版本管理也方便得多。</li>
-<li><strong>代码插入方便美观</strong>：Octopress对日志中嵌入代码提供了<a href="http://octopress.org/docs/blogging/code/">各种方便</a>。</li>
-</ul>
-
-
-<a name="Mac........................"></a>
-<h2>Mac下的安装设置过程</h2>
-
-<a name="Xcode"></a>
-<h3>Xcode</h3>
-
-<ul>
-<li>升级Xcode</li>
-<li>启动Xcode，在Preferences里面选择下载</li>
-<li>安装&#8221;Command Line Tools&#8221;</li>
-</ul>
-
-
-<a name="Homebrew"></a>
-<h3>Homebrew</h3>
+<p>以boolean为例，大多数的代码里面用的是primitive值，比如：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew update
-</span><span class='line'>brew outdated<span class="p">|</span>xargs brew install
-</span><span class='line'>brew tap homebrew/dupes
-</span><span class='line'>brew install apple-gcc42 git
-</span><span class='line'>brew upgrade
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">primitiveTrue</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">primitiveFalse</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<a name="rbenv"></a>
-<h3>rbenv</h3>
-
-<p>首先如果你本来是用rvm，需要删除：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rvm</span> <span class="n">implode</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后安装rbenv以及Ruby1.9.3-p194:</p>
+<p>但实际上javascript里面还有Boolean函数，可以返回一个boolean的primitive：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install rbenv
-</span><span class='line'>brew install ruby-build
-</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>
-</span><span class='line'>rbenv install 1.9.3-p194
-</span><span class='line'>rbenv global 1.9.3-p194
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">functionTrue</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">functionFalse</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>安装完毕之后需要在你的环境变量中做一些设置，比如本座用的是oh-my-zsh，就需要在<code>~/.zshrc</code>里面加上：</p>
+<p>不过，上面这个Boolean函数前面如果有<code>new</code>就是一个constructor了：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;$HOME/.rbenv/bin:$PATH&quot;</span>
-</span><span class='line'><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>
-</span><span class='line'><span class="c"># required for https://github.com/imathis/octopress/issues/144</span>
-</span><span class='line'><span class="nb">export </span><span class="nv">LC_CTYPE</span><span class="o">=</span>en_US.UTF-8
-</span><span class='line'><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">constructorTrue</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">constructorFalse</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>注意在环境变量设置完毕之后，最好把<code>$PATH</code>打出来看看，确保没有其他版本的Ruby被启用了，特别要注意<code>/Users/***/.gem/ruby/***/bin</code>这样的路径。</p>
-
-<a name="L......Octopress"></a>
-<h2>安装Octopress</h2>
-
-<p>首选在Github上创建一个repo来放blog，命名规则是username.github.com（比如本座的就是lenciel.github.com）。</p>
-
-<p>然后在本地建立一个repo把octopress弄下来：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/imathis/octopress.git lenciel.github.com
-</span><span class='line'><span class="nb">cd </span>lenciel.github.com
-</span><span class='line'>ruby --version <span class="c"># should read ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-darwin12.2.0]</span>
-</span><span class='line'>gem install bundler
-</span><span class='line'>rbenv rehash
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后部署到刚才申请的repo上面去。虽然<a href="http://pages.github.com/">Github Pages</a>自己有个废柴说明页面，但是看完之后一般你是不知道如何算是部署成功的。好在Octopress已经内建了交互式的配置和部署的命令：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">setup_github_pages</span>
-</span><span class='line'><span class="c1"># Example repo url: git@github.com:lenciel/lenciel.github.com</span>
-</span><span class='line'><span class="n">rake</span> <span class="n">install</span>
-</span><span class='line'><span class="n">rake</span> <span class="n">generate</span> <span class="o">&amp;&amp;</span> <span class="n">rake</span> <span class="n">deploy</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后你需要调整一下<code>.git/config</code>文件把自己的项目设置成新的origin：</p>
+<p>比较tricky的地方在于，上面这种constructor返回的不是primitive，而是对象：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -264,602 +171,349 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="n">core</span><span class="o">]</span>
-</span><span class='line'>  <span class="n">repositoryformatversion</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="n">filemode</span> <span class="o">=</span> <span class="kp">true</span>
-</span><span class='line'>  <span class="n">bare</span> <span class="o">=</span> <span class="kp">false</span>
-</span><span class='line'>  <span class="n">logallrefupdates</span> <span class="o">=</span> <span class="kp">true</span>
-</span><span class='line'>  <span class="n">ignorecase</span> <span class="o">=</span> <span class="kp">true</span>
-</span><span class='line'><span class="o">[</span><span class="n">remote</span> <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
-</span><span class='line'>  <span class="n">fetch</span> <span class="o">=</span> <span class="o">+</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/*</span><span class="ss">:refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">origin</span><span class="o">/*</span>
-</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="n">git</span><span class="vi">@github</span><span class="o">.</span><span class="n">com</span><span class="ss">:lenciel</span><span class="o">/</span><span class="n">lenciel</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span>
-</span><span class='line'><span class="o">[</span><span class="n">remote</span> <span class="s2">&quot;octopress&quot;</span><span class="o">]</span>
-</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="ss">git</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">imathis</span><span class="o">/</span><span class="n">octopress</span><span class="o">.</span><span class="n">git</span>
-</span><span class='line'>  <span class="n">fetch</span> <span class="o">=</span> <span class="o">+</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/*</span><span class="ss">:refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">octopress</span><span class="o">/*</span>
-</span><span class='line'><span class="o">[</span><span class="n">branch</span> <span class="s2">&quot;master&quot;</span><span class="o">]</span>
-</span><span class='line'>  <span class="n">remote</span> <span class="o">=</span> <span class="n">origin</span>
-</span><span class='line'>  <span class="n">merge</span> <span class="o">=</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">master</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Outputs: true</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">primitiveTrue</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Outputs: true</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">functionTrue</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Outputs: Boolean {}</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">constructorTrue</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>这样一来，你就即可以从<code>octopress/master</code>取到更新，又可以往<code>origin/master</code>去push自己最新的日志了。</p>
-
-<a name="L......Octopress"></a>
-<h2>使用Octopress</h2>
-
-<a name="L............"></a>
-<h3>新建文章</h3>
+<p>由于javascript的类型转换比较aggressive，比如你把一个int和string相加，这个int会自动转成string：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">new_post</span><span class="p">\</span><span class="o">[</span><span class="s2">&quot;Blog with Octopress and Github Pages&quot;</span><span class="p">\</span><span class="o">]</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Outputs: &quot;22&quot;</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2&quot;</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>这里要注意使用zsh的时候，对<code>[]</code>要转义成<code>\[\]</code>不然会报错。</p>
-
-<a name="L............"></a>
-<h3>编辑文章</h3>
+<p>所以使用constructor构造对象来作为条件判断的输入其实是比较危险的。因为一个对象被用来做条件判断时，它经常会被转成true：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">subl</span> <span class="n">source</span><span class="o">/</span><span class="n">_posts</span><span class="o">/</span><span class="mi">2013</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">blog</span><span class="o">-</span><span class="n">with</span><span class="o">-</span><span class="n">octopress</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">github</span><span class="o">-</span><span class="n">pages</span><span class="o">.</span><span class="n">markdown</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Outputs: &quot;Objects coerce to true.&quot;</span>
+</span><span class='line'><span class="k">if</span> <span class="p">({})</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Objects coerce to true.&quot;</span><span class="p">);</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>subl是本座在mac上使用的编辑器<code>Sublime Text 2</code>的命令行命令，它的markdown插件<code>Markdown Editing</code>和<code>OmniMarkupPreview</code>非常好用。</p>
+<p>特别的，一个Boolean对象即使内部值是false，也会被强制转换成true：</p>
 
-<a name="Markdown.Editing"></a>
-<h4>Markdown Editing</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Outputs: &quot;My false Boolean object is truthy!&quot;</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">constructorFalse</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My false Boolean object is truthy!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My false Boolean object is falsy!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><a href="http://ttscoff.github.com/MarkdownEditing/">Markdown Editing</a>对语法高亮，粘贴超链接，样式化，加footnote等都做了很好的支持：</p>
 
-<p><img src="/downloads/images/sublime_with_markdown_editing.png" title="Don't touch me..." alt="Sublime with Markdown Editing" /></p>
+<p>如果你实在是要取一个Boolean对象的值需要用<code>valueOf</code>方法：</p>
 
-<a name="OmniMarkupPreview"></a>
-<h4>OmniMarkupPreview</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Outputs: &quot;The value of my false Boolean object is falsy!&quot;</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">constructorFalse</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;The value of my false Boolean object is truthy!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;The value of my false Boolean object is falsy!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>OmniMarkupPreview支持<code>Cmd+Alt+O</code>在你指定的浏览器里面预览并且动态刷新你正在编辑的Markup文档。这样你就可以不用不停的<code>rake preview</code>了。</p>
+
+<p>但是由于Boolean对象这么tricky，这种代码是非常不受欢迎的：事实上JSHint和JSLint这些工具发现你使用了Boolean的constructor就会报一个<code>potential error</code>。</p>
+
+<p>如果你要把一个其他类型的值转成boolean值，也不要用constructor，尽量直接用Boolean函数或者是用两个<code>!</code>操作符：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Two approaches to coercing 0 into false</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">byFunction</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">byNotNot</span> <span class="o">=</span> <span class="o">!!</span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>两种做法都不错，但是如果你看javascript代码比较多会发现后面这种使用更普遍：可能是因为能少打点儿字。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/">Raspberry Pi上使用HDMI转接VGA线</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-20T15:19:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:19 pm</span></time>
+        
+           | <a href="/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/using-raspberry-pi-with-hdmi-to-vga-adapter/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.raspberrypi.org/%E2%80%8E">Raspberry Pi</a>的默认提供了HDMI接口，遇到手边显示器比较老并且电视机也比较老就不好办。</p>
+
+<p>如果直接买一根<a href="http://item.jd.com/674899.html">HDMI转VGA的线</a>，直接连上去很可能是黑屏，这是因为默认的配置文件不支持这种连接方式，需要修改配置文件。</p>
+
+<p>需要修改的是 <code>/boot/config.txt</code>里面的几个配置值，具体的讨论<a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=76&amp;t=33477">在这里</a>：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>disable_overscan=1
+</span><span class='line'>hdmi_group=2
+</span><span class='line'>hdmi_mode=35
+</span><span class='line'>hdmi_drive=2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改完毕之后重新启动就可以看到画面了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/remember-me/">Remember Me</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-17T22:39:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:39 pm</span></time>
+        
+           | <a href="/2013/08/remember-me/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/remember-me/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/downloads/images/remember_me.gif" title="Don't touch me..." alt="Remember Me" /></p>
+
+<blockquote><p>I wonder if it remembers me.</p><footer><strong>Bill Murray</strong> <cite><a href='http://www.imdb.com/title/tt0362270/'>The Life Aquatic With Steve Zissou(2004)</a></cite></footer></blockquote>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/why-you-need-something-like-gunicorn/">uWSGI, Gunincorn, 啥玩意儿?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-01T14:36:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 pm</span></time>
+        
+           | <a href="/2013/08/why-you-need-something-like-gunicorn/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/08/why-you-need-something-like-gunicorn/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>因为nginx等优秀的开源项目，有不少本来不是做服务器的同学也可以写很多服务器端的程序了。但是在聊天中会发现，大家虽然写了不少代码，但是对wsgi是什么，gunicorn是什么，反向代理又是什么并不了解，也就是说对基本概念并没有一个全局的了解。</p>
+
+<a name="L........."></a>
+<h3>服务器</h3>
+
+<p>到了服务器组你会发现原来有各种各样的服务器，那些叫法很多是有历史沉淀的，不需要太深究能对上号就行，因为本来也是乱七八糟的。</p>
+
+<a name="HTTP........."></a>
+<h4>HTTP服务器</h4>
+
+<p>如果网站是HTML/CSS/JS（不包括node.js这种<a href="http://en.wikipedia.org/wiki/Comparison_of_server-side_JavaScript_solutions">SSJS</a>）组成的，那么这是一个静态的网站。</p>
+
+<p>用户访问这个网站的时候，HTTP请求被浏览器发送，经过DNS等被送到网站的服务器。服务器处理HTTP请求，将浏览器能够处理的响应返回给用户的浏览器。所以这个场景下的服务器一般被称为HTTP服务器，常见的有Apache的httpd和Nginx。</p>
+
+<a name="Application........."></a>
+<h4>Application服务器</h4>
+
+<p>如果你的网站是动态的，比如是用Django写的。</p>
+
+<p>那么客户端上来的请求要能够被Djano的Application处理。WSGI就是这样的<a href="http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">一个协议</a>：它是一个Python程序和用户请求之间的接口。WSGI服务器的作用就是接受并分析用户的请求，调用相应的python对象完成对请求的处理，然后返回相应的结果。</p>
+
+<p>WSGI服务器的选择很多，包括uWSGI和gunicorn。它们都可以处理所有的请求，包括确实应该由python对象处理的，也包括不该python对象处理的，比如静态的图像，css，js等文件。所有理论上你可以把整个动态网站都用WSGI服务器承载起来，也就是整个应用完全跑在Application服务器上。</p>
+
+<a name="L..............."></a>
+<h4>代理服务器</h4>
+
+<p>代理无非是A来做B干的事情。在服务器语境下，代理就是一台服务器干另外一台服务器的事情。这个是平常不会有很多人聊到的，多说两句。</p>
+
+<a name="L....................."></a>
+<h5>前向代理服务器</h5>
+
+<p>大多数的代理都是前向代理。假设网络上有三台机器:</p>
+
+<ul>
+<li>X：你的电脑</li>
+<li>Y：代理服务器，proxy.eg.org</li>
+<li>Z：你实际想访问的服务器，www.eg.org</li>
+</ul>
+
+
+<p>没有代理的情况下，访问是 <code>X---&gt;Z</code>，但是在某些情况下，访问者会先让代理服务器从实际放内容的服务器把数据取回来，也就是<code>X---&gt;Y</code>，然后<code>Y----&gt;Z</code>，最后<code>X----&gt;Y</code> 。</p>
+
+<p>这里说的某些情况下典型的包括（作为天朝网民你居然没有领悟我很失望）：</p>
+
+<ol>
+<li>X的网络管理员封了Z</li>
+<li>Z可能是一个臭名昭著的病毒网站：<code>familypostcard2008.com</code>等</li>
+<li>Z可能是一个让你上班精力分散的网站：<code>Facebook.com</code>等</li>
+<li><p>Z可能是一个让你明白真相的网站：Hmmmm</p></li>
+<li><p>Z的网络管理员封了X</p></li>
+<li>Z可能是一个论坛或者blog什么的，X在对它进行扫描</li>
+</ol>
+
+
+<a name="L....................."></a>
+<h5>反向代理服务器</h5>
+
+<p>没有代理的情况下，访问仍然是 <code>X---&gt;Z</code>，但是在某些情况下，Z的管理者决定限制资源被直接访问。用户必须现在Y上做访问，Y再访问Z。整个流程是<code>X---&gt;Y</code>，然后<code>Y----&gt;Z</code>，最后<code>X----&gt;Y</code> 。</p>
+
+<p>没错，细心的你注意到了，前向和反向代理服务器的流程都是<code>X--&gt;Y--&gt;Z</code>。没办法，代理就是这么个意思。它们两者的核心区别在于，用户对反向代理服务器的存在是无感的。换句话说，X不需要做特别的配置甚至不需要察觉Y的存在，就可以使用Y这个反向代理。这种请求方无感而被请求方反过来提供代理服务就是“反向”的意义所在。</p>
+
+<p>使用反向代理的典型场景当然是Z希望所有发给自己特定请求都从Y过一遍：</p>
+
+<ol>
+<li>Z可能是一个超大的网站，每天有全世界各地的用户在访问。于是Z搭建了一个反向代理，把某个地域的用户的访问导入到离他最近的服务器上去处理。没有错，这就是CDN。</li>
+<li>Z可能是一个坏坏的网站。它的拥有者希望把坏坏的数据放到特定的服务器，然后核心数据放到别的服务器。比如黄色网站，一般那些色情的内容放在一些专门的服务器上，即使被查封，也不会对其业务产生决定性的影响。</li>
+</ol>
+
+
+<p>继续我们前面的例子，很快你会发现uWSGI等应用服务器处理静态文件的请求的performance很废材，于是开始寻找直接用nginx来处理静态内容的办法。那么你就需要区分哪些请求是请求的静态页面，哪些是请求的动态内容。</p>
+
+<p>然后你就会发现，原来nginx不止是一个HTTP服务器，它还是一个<a href="http://en.wikipedia.org/wiki/Reverse_proxy">反向代理服务器</a>：它可以把请求重定向到uWSGI或者任何别的服务器，然后把下游服务器的响应集成再返回给用户。于是你就可以配置对静态内容的请求直接在nginx完成，而动态内容的请求发送给uWSGI服务器。</p>
+
+<a name="L....................."></a>
+<h4>负载均衡服务器</h4>
+
+<p>在我自己的心中，负责均衡服务器不过是反向代理的一种（你看CDN我也觉得是反向代理的一种），但是很多地方这种服务器是被拿出来专门讨论的。</p>
+
+<p>随着你的网站访问量不断增大，你用一个nginx集中所有的请求再分发就显得性能不够了。这个时候你可以配置专门用于进行请求分发处理的负载均衡服务器，比如<a href="http://haproxy.1wt.eu/">HAProxy</a>，而负载均衡服务器背后是集群。</p>
+
+<a name="L..............."></a>
+<h4>缓存服务器</h4>
+
+<p>随着网站访问量的继续增大，你的VPS流量又扛不住了。你调查发现有一些多媒体文件被经常请求，这个时候你部署了缓存服务器。</p>
+
+<p>&ldquo;缓存&#8221;这个经常被提到的术语，核心就是把常用的信息放在一个读取成本很低地方(比如内存中或者是虚拟内存中），从而避免每次查找它的时候昂贵的操作。比如HTTP缓存解决的是在服务器上找信息的过程。而Redis或者Memcached这些缓存则是解决在数据库里面找信息的过程。
+面。</p>
+
+<a name="L...........................uwsgi......gunicorn."></a>
+<h3>那，我们为什么需要uwsgi或者gunicorn?</h3>
+
+<p>一句话：因为你需要有东西在服务器上运行Python，但是Python不是处理所有的请求都很强。</p>
+
+<p>那么是选uWSGI还是Gunicorn？我觉得都可以，还是那句老话，不是它们好不好的问题，是你够不够好的问题，毕竟代码都摆在那里的。</p>
+
+<p>不过Gunicorn可以多说几句。它的崛起在我看来是有时代背景的：在过去，我们部署一个应用的时候，几乎总是要分布在多台机器的（比如4台HTTP服务器把动态请求分发到两台Application服务器上，并且它们都访问一个数据库服务器）。但是随着机器的能力在增强，而互联网应用的覆盖面从业务逻辑极其复杂的银行业电信业到了送盒饭选泡面的小行业，越来越多的Application服务器和Web服务器合体了（以django圈子举例，有httpd+mod_wsgi或者Nginx+mod_uwsgi）。而且很多时候这种小应用的数据库也host在同一台机器上。</p>
+
+<p>Gunicorn（从Ruby下面的Unicorn得到的启发）应运而生：依赖Nginx的代理行为，同Nginx进行功能上的分离。由于不需要直接处理用户来的请求（都被Nginx先处理），Gunicorn不需要完成相关的功能，其内部逻辑非常简单：接受从Nginx来的动态请求，处理完之后返回给Nginx，由后者返回给用户。</p>
+
+<p>由于功能定位很明确，Gunicorn得以用纯Python开发：大大缩短了开发时间的同时，性能上也不会很掉链子。同时，它也可以配合Nginx的代理之外的别的Proxy模块工作，其配置也相应比较简单。</p>
+
+<p>配置上的简单，大概是它流行的最大的原因。</p>
+
+<a name="Good.Refs"></a>
+<h3>Good Refs</h3>
+
+<a name="L..........................."></a>
+<h4>正向代理服务器软件</h4>
+
+<ul>
+<li><a href="http://www.jmarshall.com/tools/cgiproxy/">cgi-proxy</a></li>
+<li><a href="http://sourceforge.net/projects/poxy">phproxy</a> (中断了)</li>
+<li><a href="http://www.glype.com/">glype</a></li>
+<li><a href="http://en.cship.org/wiki/Category%3aWebproxy">Internet censorship wiki: List of Web Proxies</a></li>
+</ul>
+
+
+<a name="L..........................."></a>
+<h4>反向代理服务器软件</h4>
+
+<ul>
+<li><a href="http://wiki.apache.org/cocoon/ApacheModProxy">apache mod_proxy</a></li>
+<li><a href="http://www.squid-cache.org/">squid</a></li>
+<li><a href="http://nginx.net/">HAProxy</a></li>
+<li><a href="http://www.danga.com/perlbal/">perlbal</a></li>
+<li><a href="http://portfusion.sf.net/">portfusion</a></li>
+<li><a href="http://www.apsis.ch/pound/">pound</a></li>
+</ul>
+
+
+<a name="TCP................................."></a>
+<h4>TCP上的反向代理服务器软件</h4>
+
+<ul>
+<li><a href="http://www.inlab.de/balance.html">balance</a></li>
+<li><a href="http://www.delegate.org/delegate/nvproxy/">delegate</a></li>
+<li><a href="http://siag.nu/pen/">pen</a></li>
+<li><a href="http://portfusion.sf.net/">portfusion</a></li>
+<li><a href="http://web.archive.org/web/20080113185334/http://plb.sunsite.dk/index.html">pure load balancer</a></li>
+<li><a href="http://pythondirector.sourceforge.net/">python director</a></li>
+</ul>
+
 
 <a name="L......"></a>
-<h3>更多</h3>
+<h4>其他</h4>
 
 <ul>
-<li><a href="http://octopress.org/docs/">Octopress官方文档</a></li>
-<li><a href="http://daringfireball.net/projects/markdown/">Markdown语法ref</a></li>
-<li><a href="https://github.com/imathis/octopress/issues/701#issuecomment-7664070">如何使用repo里面的图片</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Content_Delivery_Network">Wikipedia - Content Delivery Network</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Category%3aReverse_proxy">Wikipedia - Category:Reverse_proxy</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Load_balancing_%28computing%29">Wikipedia - Load Balancing</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Scalability">Wikipedia - Scalability</a></li>
 </ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/02/science-is-not-that-easy/">走进科学</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-02-01T23:40:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>11:40 pm</span></time>
-        
-           | <a href="/2013/02/science-is-not-that-easy/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/02/science-is-not-that-easy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/black_and_white.jpg" title="Don't touch me…" alt="Black and White" /></p>
-
-<p>最近波音787曝出锂电池起火燃烧的<a href="http://finance.sina.com.cn/world/mzjj/20130130/140414451075.shtml">问题</a>。全世界人民，特别是中国人民纷纷摇头叹息：以精密和严谨著称的日本人，现在终归是堕落了。奇怪的是，如果你想稍微深入一点儿去搜索日本制造的锂电池究竟出了什么问题，答案就欠奉了。于是本座花了点儿时间试图去把这事情弄明白。</p>
-
-<p>人类对锂电池最初的开发是在上世纪六十年代。由于在金属中，锂元素有着最小的密度和最大的电负性，故而具有最高的比能量。但由于锂的活性非常强，所以一直都有严重的安全问题没法投产。</p>
-
-<p>80年代开始出现了所谓的“摇椅式锂电池”。其正极为不同类型的含锂化合物，负极则由石墨一类的物质形成层状结构，Li+可填充于其中。在充电时，阴极部分的锂离子离开含锂化合物，透过电解液中的隔膜向阳极移动，并嵌入到阳极的层状结构中；反之在放电时，锂离子在负极脱离，移向正极并结合于正极的化合物之中。与传统锂电池不同的是，被氧化还原的物质不再是Li和Li+，锂离子只是伴随着两极材料本身发生放电而产生的氧化态的变化而反复脱嵌与嵌入，往返于两极之间，故称为“摇椅式”。</p>
-
-<p>这种锂电池要求选用的电解液必须不和锂盐发生反应，并且在相当宽的温度范围内保持液态，所以合适的选择非常少。一开始，普遍使用的是碳酸丙烯酯。不过这种溶剂有很大的缺陷：它会渗透石墨烯，使得电池效率低下，安全性也随之降低。</p>
-
-<p>到了90年代初，Sony的研究人员发现使用碳酸乙烯酯，问题解决了：反应中生成的粘稠的物质正好可以阻碍溶剂本身的分子渗透到石墨烯，同时又不会阻碍锂电子穿透进入石墨烯。于是锂电池正式投入大规模商用。</p>
-
-<p>不过，虽然好死不死的商用了20来年，至今都没人搞明白那粘稠的物质究竟是啥，而从碳酸丙烯酯到碳酸乙烯酯这微小的结构变化为何带来这么巨大的差异。很多论文发表了，很多理论被提出了，有志于此的公司投入了大量人力财力，但似乎，用句四川话来说，“还没有摸到火门”。</p>
-
-<p>本座常常听人说我们处在一个知识大爆炸的年代。但实际上，我们仅仅是处在一个获取知识很容易的时代而已（感谢Google和其他开放的Web service）。在书店里面就可以买到华丽的《时间简史》，打开电脑可以看BBT这种动不动就要来段术语或者方程式的剧，让我们感觉好像过得很”科学“，有时候就会有一种自己很聪明的幻觉。</p>
-
-<p>于是可能我们看到787的新闻时也就会觉得，这帮日本人啊，电池都造不好。写下这篇blog，希望自己记住今天的这份感觉：全世界用来发这条新闻，看这条新闻，尽情评论的人，其实也不知道自己用的笔记本里面锂电池是怎么工作的。这不是什么弦理论，不是地球形成之初的疑问，不需要什么超强的抽象思维能力和高智商。每个人都可以打开电池开始研究，但就是没人知道。</p>
-
-<p>因为科学其实是很枯燥又很寂寞的事情啊。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/ideas-are-easy/">Ideas Are Easy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-01-24T23:50:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:50 pm</span></time>
-        
-           | <a href="/2013/01/ideas-are-easy/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/01/ideas-are-easy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近做的一些事情，让本座有一些感触。昨天恰好看到Daniel Tenner的一篇文章，共鸣了3个来小时。</p>
-
-<p>Daniel的文章主要介绍了<a href="https://twitter.com/pr1001" target="_blank">Peter Robinett</a>关于创业的一些经验分享。其中特别有趣的一点是，为什么有创业想法的人，在遇到那些很愿意创业也很有实力的开发者的时候，常常没法说服他们和自己一起创业。</p>
-
-<p>总结一下本座自己的感受：</p>
-
-<p><strong>1. 创业点子其实很容易有，执行力才是最困难的部分</strong></p>
-
-<p>谁没有动过心要弄出个什么，真正要开始做，做下去，做出来，需要不断的学习，需要克服很多的困难。</p>
-
-<p><strong>2. 在和开发者接触的时候，贡献点子的人常常严重的低估开发的工作量和复杂度</strong></p>
-
-<p>贡献点子的人急着要可以理解，被投资人催，被做出来的兴奋驱使，被害怕别人先做出来的恐惧压迫。但是如果不正视开发需要的工作量，开发者很可能会有道不同不相与为谋的感觉，可能就会闪退。</p>
-
-<p><strong>3. 如果不是付费开发，而是提供后期收益分成，必须要求开发者对创业点子及其商业模式有极强的信心</strong></p>
-
-<p>如果不能得到开发者的认同，想要用较低的甚至是0的开发费用让对方加进来，Hmmmmm….</p>
-
-<p><strong>4. 为有点子的人把东西做出来，对开发者来说比一般的拿钱干活有风险一些</strong></p>
-
-<p>优秀的开发人员并不一定擅长所有事情，特别是沟通。我接触过大多数优秀的开发人员讨厌客户（他们说，这帮把需求改来改去的土鳖），讨厌开会（他们说，这是浪费我的时间)，讨厌文档（敏捷带来的一大好处就是可以大大方方的告诉管理人员哥不写文档）。理想的情况下，贡献点子的人需要懂技术，能够先把自己的点子咀嚼一遍，分割成细化的需求，帮开发人员把商务上的一些事情处理完毕等等。</p>
-
-<p>一般的开发人员就比优秀的开发人员讨厌更多的事情。他们一般只负责“开发”部分，如果需要他们涉足开发外的其他领域（甚至是测试、部署或者维护），他们都会感到不适。原因呢，不得不说，大多数时候是因为他们不会。要知道，很多在公司里面很牛的开发人员，牛的都是自己所在的领域而已。</p>
-
-<p><strong>5. 创业点子大多数都是不现实的，做过几个的开发者往往已经能看破这点</strong></p>
-
-<p>这个黄金一般的机会，在他们眼里不是机会，那再怎么说都没有用了。不过如果你咨询的是优秀而且靠谱的开发者，被拒绝后可以回去仔细想想他说的原因，大多数时候他们说的都是有道理的。</p>
-
-<p><strong>6. 技术很好又很愿意创业的人，很多都有自己的点子了</strong></p>
-
-<p>这还用说吗，请参考1. 点子其实很容易有，如果你发现他的点子比你的还好，很多时候你要做的事情就是踹他一脚，让他真正开始做起来。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/how-to-define-viewport-for-mobile/">How to Define Viewport for Mobile</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-08-09T22:39:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:39 pm</span></time>
-        
-           | <a href="/2012/08/how-to-define-viewport-for-mobile/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2012/08/how-to-define-viewport-for-mobile/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><a name="L.strong.........................CSS........strong."></a>
-<h4><strong>概念：设备像素和CSS像素</strong></h4>
-
-<p>首先要明白CSS像素和设备像素之间的区别。</p>
-
-<p>设备像素是定义了我们使用的设备的分辨率，一般来说可以通过<code>screen.width/height</code>来得到。</p>
-
-<p>如果我们在浏览器里面创建一个<code>width:128px</code>的元素，而我们的屏幕是1024px宽，那么在浏览器最大化的时候，浏览器的宽度应该是这个元素的八倍（大概八倍，暂时忽略那些tricky的bits）。</p>
-
-<p>如果用户使用滚轮放大或者缩小页面(Zooming)，那么这个关系就会变化。一般来说，现在的浏览器对Zomming的实现都是通过伸缩像素，也就是当用户Zoom到200%的时候，你的<code>128px</code>宽的元素宽度并不会变成<code>256px</code>，而是每个像素的宽度翻倍了：这个元素还是<code>128px</code>的宽度，但是占据了256个设备像素。</p>
-
-<p>也就是说，zoom到200%其实会让一个CSS像素从一个设备像素变成四个设备像素的大小（长宽各翻一倍，面积就变成了4倍）。</p>
-
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 原始(zoom 100%)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 开始放大(zoom in)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 开始缩小(zoom out)</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_100" border="0" alt="csspixels_100" src="/downloads/images/2012_08/csspixels_100.gif" width="208" height="208" />&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_in" border="0" alt="csspixels_in" src="/downloads/images/2012_08/csspixels_in.gif" width="208" height="208" />&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_out" border="0" alt="csspixels_out" src="/downloads/images/2012_08/csspixels_out.gif" width="208" height="208" /></p>
-
-<p>从这里可以看出，我们在使用css像素值在css文件里面定义宽度时，不需要考虑设备像素，因为在zoom的时候css像素值是不变的。用户在缩放的时候，浏览器负责放大缩小那些元素，但是整个layout是不变的。</p>
-
-<a name="L.strong...............strong."></a>
-<h4><strong>屏幕大小</strong></h4>
-
-<p><code>screen.width</code>和<code>screen.height</code>可以获取用户屏幕的尺寸。获得的尺寸值的单位是设备像素，换句话说，它们是不变的(可以看成是显示器的硬件指标，而不随浏览器窗口缩放而变化)。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_screen" border="0" alt="desktop_screen" src="/downloads/images/2012_08/desktop_screen.jpg" width="604" height="379" /></p>
-
-<p>一般来说，用户的屏幕大小对我们是无用的信息。很少有人使用它（除开统计站点访问信息时）。</p>
-
-<a name="L.strong...............strong."></a>
-<h4><strong>窗口大小</strong></h4>
-
-<a name=""></a>
-<h4></h4>
-
-<p>窗口大小表示了当前你的CSS layout可以占用的空间大小。可以通过<code>window.innerWidth</code>和<code>window.innerHeight</code>来获取它们。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_inner" border="0" alt="desktop_inner" src="/downloads/images/2012_08/desktop_inner.jpg" width="604" height="379" /></p>
-
-<p>很显然，窗口大小的单位是CSS像素值。当用户用滚轮放大缩小自己的窗口大小的时候，<code>window.innerWidth/Height</code>会相应的变化，这样你就知道自己的layout有多大空间可用了。</p>
-
-<p>注意：Opera是一个例外，它的<code>window.innerWidth/Height</code>不会因为缩放变化，而是取的设备像素值。这点对于桌面操作系统上的应用很讨厌，但是就像后面会说到的，对于手机来说很关键。</p>
-
-<a name="L.strong.Scrolling.offset..strong."></a>
-<h4><strong>Scrolling offset</strong></h4>
-
-<p><code>window.pageXOffset/pageYOffset</code>代表了当前的document在横向和纵向上的偏移量。这样你就知道用户scroll了多少内容。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_page" border="0" alt="desktop_page" src="/downloads/images/2012_08/desktop_page.jpg" width="604" height="519" /></p>
-
-<p>这些值也是CSS像素，理论上，当用户做缩放的时候，<code>window.pageXOffset/pageYOffset</code>也会变化。但是实际上，浏览器一般会在用户缩放的时候保证置顶的元素不变，所以在缩放的时候，一般来说这两个值基本是不变的。</p>
-
-<a name="L.strong..........Viewport..strong."></a>
-<h4><strong>概念：Viewport</strong></h4>
-
-<p><code>Viewport</code>的主要作用是限定<code>&lt;html&gt;</code>元素，也就是整个页面的最高级元素的大小。这样说比较含糊，我们来看一个详尽的例子：假设你有一个页面，侧栏的宽度是10%。在你缩放浏览器窗口大小的时候，这个侧边栏也会自动缩放。这是如果实现的？</p>
-
-<p>技术上讲，按照设置，侧边栏会自动占据自己的父元素（这里我们可以假设是<code>&lt;body&gt;</code>）宽度的10%。那么<code>&lt;body&gt;</code>的宽度呢？又会取它的父元素<code>&lt;html&gt;</code>的宽度的100%——因为理论上所有的HTML的block-level元素都会自动取父元素宽度的100%（有些例外情况，我们这里忽略它们）。</p>
-
-<p>那么<code>&lt;html&gt;</code>的宽度是怎么来的呢？所有的网页开发者都默认它就是浏览器的宽度。的确如此——在桌面浏览器上就是这样。实际上，就像我们已经提到过的，<html>的宽度是viewport限定的。在桌面上它就是整个浏览器窗口的宽度，而在手机上则要复杂得多。</p>
-
-<a name="L.strong..................strong."></a>
-<h4><strong>手机浏览器</strong></h4>
-
-<p>手机一个显而易见的特点就是屏幕小。如果我们原封不动的使用为桌面版浏览器开发的网站的文件，就会发现它们在手机浏览器上面目全非。但是大多数网站开发者是没有精力给手机用户专门维护另外一个网站的。因此手机浏览器制造商尽可能的通过技术手段让网站在手机上和在桌面浏览器里看起来“差不多”。</p>
-
-<a name="L.strong.......viewports..strong."></a>
-<h4><strong>两个viewports</strong></h4>
-
-<p>既然手机浏览器的viewport比较小，没法呈现所有css定义的元素，那么解决这个问题的办法就很明显了：扩大手机上的viewport。最终，手机浏览器通过<code>visual viewport</code>和<code>layout viewport</code>的合作来解决问题。</p>
-
-<p>George在Stack Overflow上<a href="http://stackoverflow.com/questions/6333927/difference-between-visual-viewport-and-layout-viewport" target="_blank">解释</a>说：</p>
-
-<p>layout viewport就像一个不改变大小和形状的大的图片。想象一下你透过一个小窗口去看这个大的图片，因为窗框的遮挡，你只能看到大图片的一部分。这部分就是visual viewport。你可以改变自己和这个窗口的位置（其实就是缩放），你也可以把窗口横放或者竖放，但是大图片本身（layout viewport）是不会改变的。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_visualviewport" border="0" alt="mobile_visualviewport" src="/downloads/images/2012_08/mobile_visualviewport.jpg" width="404" height="549" /></p>
-
-<p>要注意，CSS layout，特别是用百分比定义的layout，都是用layout viewport来算的，一般来说比visual viewport要宽很多。</p>
-
-<p>因此，起始阶段<html>会占据整个layout viewport的宽度，你用CSS定义的元素的尺寸会比手机屏幕的尺寸要宽，这主要是要模拟网站在手机浏览器上的表现。</p>
-
-<p>那么layout viewport究竟有多宽？这个要看具体的手机浏览器。Safari的iPhone版为980px，Opera是850px，Android的Webkit是800px，而IE是974px。还有一些其他的浏览器除开特别的宽度之外有特别的行为，比如Symbian上的Webkit会尽量保持layout viewport和visual viewport相同。当layout viewport超过了850px的时候，两者才会变得不同。</p>
-
-<a name="L.strong.........strong."></a>
-<h4><strong>缩放</strong></h4>
-
-<p>很明显，visual和layout两种viewport都使用了CSS像素，但是layout viewport是不会因为缩放操作变化的，而visual viewport会。很多的移动设备上的浏览器，在默认情况下都是以完全zoom-out的尺寸来显示页面的——结合前面的对两种viewport的简介，你可以认为这种时候你是把头伸到窗口(visual viewport)外在看窗外那副大图片(layout viewport)，这种情况下两个viewport也是相等的（没有被窗框遮住的部分）。</p>
-
-<p>因此，layout viewport的宽和高等于在完全zoom-out的情况下screen上最大可显示的CSS像素值大小。因此在随后用户如果zoom-in了这个值是不会变化的。</p>
-
-<p>下面的图表示了这个变化：在刚开始打开一个页面的时候，处于完全zoom-out的状态，layout viewport的值等于visual viewport的值。随后，当用户zoom-in（放大页面）时，每个CSS像素变成数倍于设备像素，而整个layout viewport的值不变（这样才保证你为页面定义的CSS长宽有意义），于是layout viewport的物理范围扩大了不少。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_viewportzoomedout" border="0" alt="mobile_viewportzoomedout" src="/downloads/images/2012_08/mobile_viewportzoomedout.jpg" width="240" height="418" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_layoutviewport" border="0" alt="mobile_layoutviewport" src="/downloads/images/2012_08/mobile_layoutviewport.jpg" width="304" height="413" /></p>
-
-<p>另外要注意的就是layout viewport的宽度是保持不变的。也就是说在默认情况下，竖屏转横屏的时候，虽然visual viewport变化了，但是浏览器会自动的zoom-in一些来使得layout viewport和visual viewport仍然相等。这种情况下，layout viewport的高度会变小，但是，对于web开发者而言，最重要的是宽度能保持不变。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_viewportzoomedout" border="0" alt="mobile_viewportzoomedout" src="/downloads/images/2012_08/mobile_viewportzoomedout.jpg" width="240" height="418" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_layoutviewport_la" border="0" alt="mobile_layoutviewport_la" src="/downloads/images/2012_08/mobile_layoutviewport_la.jpg" width="362" height="298" /></p>
-
-<a name="L.strong.......layout.viewport..strong."></a>
-<h4><strong>测量layout viewport</strong></h4>
-
-<p><code>document.documentElement.clientWidth/Height</code>得到的是layout viewport的数值。并且，如前所述，横竖屏转换时，只会影响Height不会影响Width取值。</p>
-
-<blockquote><p><strong>document.documentElement.clientWidht/Height</strong>：</p>
-
-<ul>
-<li>Layout viewport</li>
-<li>使用CSS像素值为单位</li>
-<li>支持Opera、iPhone、Android、Symbian、Bolt、MicroB、Skyfire和Obigo</li>
-<li><p>有一些问题：</p></li>
-<li><p><div>
-  Samsung的Webkit的viewport只有当显式指定了<meta viewport>的时候才有效，否则返回的是<html>元素的长宽
-</div></p></li>
-<li><p><div>
-  Firefox返回的是以设备像素值为单位的结果
-</div></p></li>
-<li><p><div>
-  IE返回1024&#215;768，正确的信息要通过<code>document.body.clientWidth/Height</code>获取
-</div></p></li>
-</ul>
-</blockquote>
-
-<a name="L.strong.......visual.viewport..strong."></a>
-<h4><strong>测量visual viewport</strong></h4>
-
-<p><code>window.innerHeight/Width</code>返回的是visual viewport。很显然，当用户缩放的时候，这两个值会变化，因为有更多或者更少的CSS像素适配到屏幕可见的部分中。</p>
-
-<blockquote><p><strong>window.innerHeight/Width</strong>：</p>
-
-<ul>
-<li>visual viewport</li>
-<li>使用CSS像素值为单位</li>
-<li>支持iPhone、Symbian、BlackBerry</li>
-<li><p>有一些问题：</p></li>
-<li><p><div>
-  Samsung的Webkit返回的是layout viewport的取值只有当显式指定了<meta viewport>的时候才有效，否则返回的是<html>元素的长宽
-</div></p></li>
-<li><p><div>
-  Firefox和Opera返回的是以设备像素值为单位的结果
-</div></p></li>
-<li><p><div>
-  IE不支持，正确的信息要通过<code>document.documentElement.offsetWidth/Height</code>获取
-</div></p></li>
-<li><p><div>
-  其他的如Iris、Skyfire或者Obigo是有返回值到乱来的
-</div></p></li>
-</ul>
-</blockquote>
-
-<a name="L.strong.....................strong."></a>
-<h4><strong>手机屏幕大小</strong></h4>
-
-<p>前面提到过，在桌面系统，screen.width/hieght返回屏幕的大小，但是和桌面系统一样，开发者都不关心这个值：因为物理上屏幕多大并不重要，我们更关心多少个CSS像素能弄进这个屏幕。</p>
-
-<a name="L.strong..html.........strong."></a>
-<h4><strong><html>元素</strong></h4>
-
-<p>通过<code>document.documentElement.offsetWidth/Height</code>可以获取<code>&lt;html&gt;</code>元素的CSS像素单位的尺寸。</p>
-
-<a name="L.strong...............strong."></a>
-<h4><strong>缩放比例</strong></h4>
-
-<p>当screen.width和window.innerWidth在你工作的平台都得到了正确实现的时候，两者相除就可以得到缩放的比例大小。</p>
-
-<a name="L.strong.Media.query..strong."></a>
-<h4><strong>Media query</strong></h4>
-
-<p>Media query的思想就是定义只在页面大于，等于或者是小于一定尺寸的时候，才被执行的CSS规则。比如：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span><span class="nc">.sidebar</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@media</span> <span class="nt">all</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="o">//</span> <span class="nt">styles</span> <span class="nt">assigned</span> <span class="nt">when</span> <span class="nt">width</span> <span class="nt">is</span> <span class="nt">smaller</span> <span class="nt">than</span> <span class="nt">400px</span><span class="o">;</span>
-</span><span class='line'>    <span class="nt">div</span><span class="nc">.sidebar</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>规则指定了当宽度小于400px的时候sidebar是100px，其余时候是300px。</p>
-
-<p>需要注意的是在定义media query的时候可以用两套长宽：css里的width/height表示的是documentElement. clientWidth/Height取值，也就是viewport，单位是css像素。css里的device-width/height表示的是screen.width/height，单位是物理像素。</p>
-
-<p>那么使用哪种值来定义media query甚至用不用它都是让人疑惑的问题。比如你用device-width的话 ，其实效果和使用<meta viewport>来定义是类似的。但是用width，仅仅是一个模糊的像素宽度，更加缺乏在各种设备上具体效果的准确预期。目前来看，用media query应该能比较正确的区分运行环境是桌面，手机还是平板，但是并不太能细致到是那款平板或者是什么手机。</p>
-
-<a name="L.strong.Meta.viewport..strong."></a>
-<h4><strong>Meta viewport</strong></h4>
-
-<p>终于可以来讨论<meta name="viewport">了。这个最早是Apple的一个扩展，但是现在已经被各种浏览器抄去了。它主要的作用是用来重定义layout viewport的大小。</p>
-
-<p>我们通过实例来解释：假设你开发了一个网站，没有写css，因此所有的元素没有width属性。打开页面的时候，它们会默认zoom-out到最大，看起来像这样：</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_none" border="0" alt="mq_none" src="/downloads/images/2012_08/mq_none.jpg" width="258" height="455" /></p>
-
-<p>用户肯定会zoom-in，这时因为很多浏览器会保持每个元素的宽度仍然是100%的layout viewport，因此，很多文字就撑到visual viewport外面去了变得不可见了(Android原生的Webkit在这种情况下会自动调整text-containing元素的宽度来适配屏幕宽度）。</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_none_zoomed" border="0" alt="mq_none_zoomed" src="/downloads/images/2012_08/mq_none_zoomed.jpg" width="336" height="406" /></p>
-
-<p>为了避免这种情况，你可能会加上html {width:320px}的css规则。这样<html>的宽度，也就是大多数未定义宽度的元素继承到的宽度，是320px。这样的规则可以解决用户zoom-in放大页面之后溢出的问题，但是当用户刚打开页面的时候，大概又会看的下图的效果(因为300个CSS像素值在完全zoom-out的情况下是很窄的）：</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_html300" border="0" alt="mq_html300" src="/downloads/images/2012_08/mq_html300.jpg" width="254" height="445" /></p>
-
-<p>为了解决这种初始和用户缩放之后的不和谐，Apple定义了一个新的meta值。你可以用</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">meta</span> <span class="nt">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="nt">content</span><span class="o">=</span><span class="s2">&quot;width=320&quot;</span><span class="o">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>来确定<code>layout viewport</code>的宽度。这样在初始的时候，整个页面看起来仍然是非常正确的：</p>
-
-<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_yes" border="0" alt="mq_yes" src="/downloads/images/2012_08/mq_yes.jpg" width="254" height="448" /></p>
-
-<p>meta中定义的layout viewport宽度甚至可以是device-width，也就是以设备像素值标定的<code>screen.width</code>取值。但是这里有一个陷阱，就是有时候正式的<code>screen.width</code>的取值并不是真的有实际意义，因为像素值可能太高。比如Nexus One的屏幕宽度是480px，但是Google的工程师觉得用<code>device-width</code>来定义<code>viewport</code>就让<code>layout viewport</code>取值480px太宽了，于是它们让device-width的返回值打了个2/3的折扣，只有320px，和iphone一致。这样一来，<code>device-width</code>的取值又有点儿CSS像素值的意思了。这种resolution标称的像素值和<code>device-width</code>的返回值之间的关系被称为<code>CSS pixel density</code>。</p>
-
-<table border="3" cellspacing="0" cellpadding="2" width="772">
-  <tr>
-    <td valign="top" width="158">
-      <strong>Device</strong>
-    </td>
-    
-    <td valign="top" width="170">
-      <strong>resolution (px)</strong>
-    </td>
-    
-    <td valign="top" width="442">
-      <strong>device-width/ device-height (px)</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      iPhone
-    </td>
-    
-    <td valign="top" width="170">
-      320 x 480
-    </td>
-    
-    <td valign="top" width="442">
-      320 x 480, portrait/landscape mode
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      iPhone 4
-    </td>
-    
-    <td valign="top" width="170">
-      640 x 960
-    </td>
-    
-    <td valign="top" width="442">
-      <p>
-        320 x 480, in both portrait and landscape mode
-      
-      
-      <p>
-        CSS pixel density&#160; = 2
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      iPad 1 and 2
-    </td>
-    
-    <td valign="top" width="170">
-      768 x 1024
-    </td>
-    
-    <td valign="top" width="442">
-      768 x 1024, portrait/landscape mode
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      new iPad
-    </td>
-    
-    <td valign="top" width="170">
-      1536 x 2048
-    </td>
-    
-    <td valign="top" width="442">
-      <p>
-        768 x 1024, portrait/landscape mode
-      
-      
-      <p>
-        CSS pixel density = 2
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      Samsung Galaxy S I and II
-    </td>
-    
-    <td valign="top" width="170">
-      480 x 800
-    </td>
-    
-    <td valign="top" width="442">
-      <p>
-        320 x 533, portrait mode
-      
-      
-      <p>
-        CSS pixel density = 1.5
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      Samsung Galaxy S III
-    </td>
-    
-    <td valign="top" width="170">
-      720 x 1280
-    </td>
-    
-    <td valign="top" width="442">
-      360? x 640?, portrait mode
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      HTC Evo 3D
-    </td>
-    
-    <td valign="top" width="170">
-      540 x 960
-    </td>
-    
-    <td valign="top" width="442">
-      <p>
-        360 x 640, portrait mode
-      
-      
-      <p>
-        CSS pixel density = 1.5
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td valign="top" width="158">
-      Amazon Kindle Fire
-    </td>
-    
-    <td valign="top" width="170">
-      1024 x 600
-    </td>
-    
-    <td valign="top" width="442">
-      1024 x 600, landscape mode
-    </td>
-  </tr>
-</table>
-
-
 
 </div>
   

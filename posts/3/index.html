@@ -9,7 +9,8 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="Django 1.7已经发布一段时间了，基本上这个版本最主要的改动就是加入了migrations。 在过去，几乎所有的Django项目都是用South来处理数据变更的。而在Django1.7版本，South的作者Andrew Godwin把migrations加到了Django Core里面。 &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +31,16 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/3" />
-<meta property="og:description" content="Django 1.7已经发布一段时间了，基本上这个版本最主要的改动就是加入了migrations。 在过去，几乎所有的Django项目都是用South来处理数据变更的。而在Django1.7版本，South的作者Andrew Godwin把migrations加到了Django Core里面。 &hellip;" />
+<meta property="og:description" content="
+" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="Django 1.7已经发布一段时间了，基本上这个版本最主要的改动就是加入了migrations。 在过去，几乎所有的Django项目都是用South来处理数据变更的。而在Django1.7版本，South的作者Andrew Godwin把migrations加到了Django Core里面。 &hellip;" />
+<meta itemprop="description" content="
+" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,6 +101,285 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/08/shadowsocks-on-google-compute-engine/">Shadowsocks on Google Compute Engine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-17T21:55:44+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:55 pm</span></time>
+        
+           | <a href="/2014/08/shadowsocks-on-google-compute-engine/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/08/shadowsocks-on-google-compute-engine/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/08/django-1-dot-7-migrations-part-2/">Data Migration in Django 1.7 (2)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-11T03:59:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:59 am</span></time>
+        
+           | <a href="/2014/08/django-1-dot-7-migrations-part-2/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/08/django-1-dot-7-migrations-part-2/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在应用开发的过程中，我们会遇到migration主要分为：</p>
+
+<ol>
+<li>Schema Migrations：数据库schema的变化，也就是我们前面<a href="http://lenciel.cn/2014/08/django-1-dot-7-migrations/">讨论的内容</a></li>
+<li>Data Migrations：数据的变化，比如需要批量变更数据或者备份在其他地方的历史数据</li>
+</ol>
+
+
+<p>第二种是没法敲几条命令让Django自动帮你完成其他的事情的，而是需要手动使用<code>RunPython</code>，这里具体说一下做法。</p>
+
+<p>还是以之前的那个项目来作为例子，我们首先创建一个migration file：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>python manage.py makemigrations --empty ts_data
+</span><span class='line'>
+</span><span class='line'>Migrations <span class="k">for</span> ts_data:
+</span><span class='line'>  0003_auto_20140811_0110.py:
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>它的内容如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># -*- coding: utf-8 -*-</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">migrations</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">(</span><span class="s">&#39;ts_data&#39;</span><span class="p">,</span> <span class="s">&#39;0002_auto_20140805_1525&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们在里面加入一个<code>RunPython</code>的部分，来导入数据：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># -*- coding: utf-8 -*-</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">migrations</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">ts_data.models</span> <span class="kn">import</span> <span class="n">PingPongPrice</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="n">schema_editor</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">PingPongPrice</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span><span class="mo">07</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+</span><span class='line'>         <span class="n">price</span><span class="o">=</span><span class="mf">12.00</span><span class="p">,</span>
+</span><span class='line'>         <span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">PingPongPrice</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span><span class="mo">01</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span>
+</span><span class='line'>         <span class="n">price</span><span class="o">=</span><span class="mf">8.00</span><span class="p">,</span>
+</span><span class='line'>         <span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Migration</span><span class="p">(</span><span class="n">migrations</span><span class="o">.</span><span class="n">Migration</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">(</span><span class="s">&#39;ts_data&#39;</span><span class="p">,</span> <span class="s">&#39;0002_auto_20140805_1525&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span><span class="n">migrations</span><span class="o">.</span><span class="n">RunPython</span><span class="p">(</span><span class="n">load_data</span><span class="p">)]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你觉得：咦，这样导入数据不是有点儿像用<code>syncdb</code>然后导入<code>fixture</code>么？的确，从效果上它们是一样的，个人觉得，对于测试环境我们可以继续使用fixture来保存mock的测试数据，然后使用<code>loaddata</code>命令手动加载测试数据。对生产环境使用migration来导入数据更好，和使用<code>loaddata</code>命令来导入fixture相比，它不需要手动操作，并且由于是通过<code>RunPython</code>来进行，实际上可以对数据进行各种需要的处理。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/08/how-to-beat-the-penguin/">如何不正确的殴打企鹅</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-09T20:32:58+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:32 pm</span></time>
+        
+           | <a href="/2014/08/how-to-beat-the-penguin/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/08/how-to-beat-the-penguin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天在微信朋友圈里面看了20来条这游戏的成绩分享，还有的群开始讨论心得。打开链接一看，原来是当年那个小范围流行了一下的<a href="https://www.google.com/search?q=Penguin+Ball&amp;oq=Penguin+Ball&amp;aqs=chrome..69i57j69i60.972j0j4&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8">Penguin Ball</a>嘛（我记得后来有些人开始玩那个<a href="http://www.bloody-penguin.com/">血腥版</a>，正常人就慢慢不玩这游戏了）。</p>
+
+<p>不过，链接指向的那山寨游戏虽然没有再用flash，但是对手势事件的处理有问题（他们还是挺<a href="http://game.2sky.cn/js/52/index.js">大方的</a>），所以确实还蛮难的：我打了五六次，最好成绩6000多一点。</p>
+
+<p>然后，那个页面除开嵌入了一个“教你如何调情”的广告之外，一直在不停的要你分享，分享，分享&hellip;&hellip;</p>
+
+<p>那我就分享嘛~~~</p>
+
+<p>去看了一下微信的分享是怎么弄出去的，原来有个非官方的叫<code>WeixinJSBridge</code>的东西：只要是通过微信应用内置的Webview打开的网页就可以调用到一组特别的接口，比如分享链接到朋友圈或者发送链接给朋友。这两个接口的参数非常类似：</p>
+
+<ul>
+<li>分享链接消息里面的title image的url</li>
+<li>title image的宽度和高度</li>
+<li>标题</li>
+<li>描述</li>
+<li>链接指向的url</li>
+<li>微信APPID</li>
+</ul>
+
+
+<p>分享出来的链接，以这个“打企鹅”的游戏为例，是长成下面这样子的一条链接消息：</p>
+
+<p><img src="/downloads/images/2014_08/wechat_share_msg.jpg" title="Don't touch me..." alt="Wechat Message" /></p>
+
+<p>所以，要伪装一个“打企鹅”的高分数链接就只需要找到title image的url和链接指向的url（因为标题和描述照着编就是了）。</p>
+
+<p>本座觉得，那么山寨的游戏作者，肯定是把所有的东西都放在页面上的吧，于是用Chrome打开了那个页面，果然没有被拒绝（一般来说，给微信浏览的页面至少应该根据访问上报的user-agent等参数判断它是不是移动设备浏览的，如果不是应该reject），并且源码里面我想要的都在（所以比较敏感的js什么的minify一下会好一些）：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="kd">var</span> <span class="nx">mebtnopenurl</span> <span class="o">=</span> <span class="s1">&#39;http://game.2sky.cn/game/&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">rankurl</span> <span class="o">=</span> <span class="nx">mebtnopenurl</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">dataForWeixin</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s2">&quot;appId&quot;</span><span class="o">:</span> <span class="s2">&quot;wx60c8c12f639f3ef4&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;imgUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://game.2sky.cn/vapp/52/3.jpg&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://bingkafei.hnsdcpa.com/game/52/&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;tTitle&quot;</span><span class="o">:</span> <span class="s2">&quot;打企鹅-6e游戏&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;tContent&quot;</span><span class="o">:</span> <span class="s2">&quot;打企鹅-6e游戏&quot;</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">appId</span> <span class="o">=</span> <span class="s2">&quot;wx8820cdf5db680ffa&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;http://weiapp.552200.com/game/&quot;</span><span class="o">+</span><span class="nx">_con</span><span class="p">[</span><span class="s2">&quot;num&quot;</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">function</span> <span class="nx">dp_share</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span><span class="s2">&quot;你简直霸气侧漏，把企鹅击飞出&quot;</span><span class="o">+</span><span class="nx">myData</span><span class="p">.</span><span class="nx">scoreName</span><span class="o">+</span><span class="s2">&quot;，谁还能超越我？&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;share&quot;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">tTitle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当然，拿到这些了之后，也不是马上一句：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">WeixinJSBridge</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s1">&#39;shareTimeline&#39;</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="nx">callback</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就能把你装神弄鬼消息分享出去的。前面说了，微信那边还是会检查整个事情是不是发生在微信内置的webview里面。但是，要绕开也不是那么麻烦，你懂的&hellip;</p>
+
+<p>总体感觉微信的这api还是挺扯的，本来可以作为身份校验的appid其实填不填也无所谓，所以朋友圈里面的链接点起来还是谨慎一点儿吧，骚年们。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -507,235 +789,6 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/07/innovation-company/">中国式创新</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-27T15:26:01+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:26 pm</span></time>
-        
-           | <a href="/2014/07/innovation-company/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/07/innovation-company/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天看到一则新闻，百度要做<a href="http://www.36kr.com/p/214107.html">无人驾驶汽车</a>了。</p>
-
-<p>这要换做几年前，本座可能还要看一下评论或者搜一下新闻来源，现在基本上看看这标题也大概能猜到是怎么个事情了。以技术创新为核心竞争力的互联网行业，在中国是“BAT”这样的三家公司领跑：</p>
-
-<ul>
-<li>百度主要是<a href="http://food.hebei.com.cn/system/2013/03/13/012627507.shtml">卖假药</a>的</li>
-<li>腾讯主要是卖游戏的</li>
-<li>阿里主要是卖假货的</li>
-</ul>
-
-
-<p>虽然作为从业人员，一开始的时候本座会对这种状况感觉有些黯然。 但不得不承认，这几个大佬们就算做得不错的了：你总不会希望360、人人这样的公司来做老大吧？</p>
-
-<p>不过，有一个公司，是无论如何本座都很难去忍受的，那就是最近发布了新一代手机的小米。I don&rsquo;t wanna be an ass hole, so I&rsquo;ll let you decide&hellip;</p>
-
-<p>这是当年米3手机宣传册上的图标和苹果的Aperture应用的图标</p>
-
-<p><img src="/downloads/images/2014_07/xiaoxi_icon_mac_icon.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>这是小米盒子和Apple TV盒子</p>
-
-<p><img src="/downloads/images/2014_07/xiao_tv_mac_tv.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>这是小米零售店和苹果零售店 (除开装潢，小米居然一样有蓝衣genius)</p>
-
-<p><img src="/downloads/images/2014_07/xiaomi_mac_shop.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>这是小米的平板系列和苹果的5c系列</p>
-
-<p><img src="/downloads/images/2014_07/xiaomi_pad_mac_phone.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>这是小米的路由器和苹果的触摸板</p>
-
-<p><img src="/downloads/images/2014_07/xiaomi_router_mac_pad.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>这是最新款小米4手机和苹果5s手机</p>
-
-<p><img src="/downloads/images/2014_07/xiaomi_mac_new_phone.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>当然，发布会上有一张图让本座明白雷布斯内心有多么强大，所以抄抄产品外观算得了什么&hellip;</p>
-
-<p><img src="/downloads/images/2014_07/xiaomi_mac_presentation.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>你当然可以说，这是人家雷布斯的“苹果”情怀嘛。是啊是啊，不知道什么时候开始，“情怀”这个词居然变成了无能的解药。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/07/manage-fonts-on-your-mac/">Mac上使用Suite Fusion管理字体</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-26T11:36:48+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:36 am</span></time>
-        
-           | <a href="/2014/07/manage-fonts-on-your-mac/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/07/manage-fonts-on-your-mac/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>对于从事设计工作的人员，难免要和字体打交道：因为<a href="http://lenciel.cn/2013/08/buttericks-practical-typography/">设计主要就是Typography的设计</a>，而Typography的基础就是字体。</p>
-
-<p>随着完成的项目越来越多，机器上的字体也就慢慢多起来，如何快速的找到自己想要的字体变成了问题。特别是大多数设计软件里，字体选择的界面都是一个下拉框：如果你有几百个字体加载到系统，几乎每次选择字体都是一场灾难。</p>
-
-<p>这种情况下，难免会希望：</p>
-
-<ul>
-<li>对于特定的项目，能够选择特定的字体库</li>
-<li>对于特定的文档类型，能够选择特定的字体库</li>
-</ul>
-
-
-<p>使用Suite Fusion管理字体就可以到达这两个目的。</p>
-
-<a name="Mac.............................."></a>
-<h2>Mac上的字体集和安装路径</h2>
-
-<p>过去在Windows平台上工作的时候，字体都是放在一个地方的，而在Mac下面字体主要是下面三部分字体集组成：</p>
-
-<ul>
-<li>System：位于<code>/System/Library/Fonts</code>， 是系统的字体库，所有登录的用户都可以使用，最好不要随便改动</li>
-<li>Local：位于 <code>/Library/Fonts</code>，和System字体一样也是所有登录的用户都可以使用的。只是它们基本不是随系统安装，而是其他软件装上去的，比如MS Word等等</li>
-<li>User：位于 <code>~/Library/Fonts</code>，仅对当前登录的用户可用，可以是第三方软件安装的时候安装的（如果你选择了只对当前用户可用），也可以是用户自己安装的字体</li>
-</ul>
-
-
-<a name="L......Suite.Fusion...Font.Vault"></a>
-<h2>启用Suite Fusion的Font Vault</h2>
-
-<p>Suite Fusion提供了一个可以自己定义路径的Font Vault。然后你如果在<code>Preferences</code>里面把<code>Copy added fonts into the vault</code>勾上，那么所有添加到Suite Fusion的字体都会被放在一个地方。这样的好处是管理方便：保证字体没有重复，并且很容易备份。</p>
-
-<p>一旦你的字体都在Font Vault里面了，就可以使用Suitcase Fusion删除原来放在各个地方的字体了。在字体清理好之后，你就可以根据不同的项目或者是文档类型建立Set，根据需要来激活它们。</p>
-
-<a name="L.............................."></a>
-<h2>添加字体和创建字体库</h2>
-
-<p>只需要使用快捷键&#8221;Cmd+L&#8221;就可以添加字体到字体库。如果默认的字体库不符合你的要求还可以自己新建。添加字体的过程中，SF会扫描字体，提取字体信息，检测是否有错（注意，Suite Fusion不支持orphan outline和orphan bitmap字体）。</p>
-
-<p>并且，如果你本来是用目录来组织字体的，Suite Fusion在支持顶级目录导入，再自动以子目录名创建相应的字体库。</p>
-
-<p>整理字体的界面可以参考下面的截图：</p>
-
-<p><img src="/downloads/images/2014_07/suite_fusion_5.png" title="Don't touch me..." alt="suite fusion 5" /></p>
-
-<p>建立的这些字体库可以根据你打开的文档类型来进行激活和去激活。并且Suite Fusion提供了很多常见设计软件（比如Photoshop、Sketch等）的插件，让你直接在这些软件里面操作字体库。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/07/font-for-programming/">Retina屏幕上的最佳编程字体</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-13T18:45:27+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:45 pm</span></time>
-        
-           | <a href="/2014/07/font-for-programming/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/07/font-for-programming/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>关于编程使用什么样的字体比较好是一个由来已久的话题 <a href="" title="[Anonymous pro programming font](http://hivelogic.com/articles/anonymous-pro-programming-monospace-font).">^1</a> <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，但其实在不同分辨率和操作系统的屏幕上，字体的表现也不一样，所以并不应该有一统天下的字体。比如Retina的屏幕上，字体越细滑看起来似乎就好（当然这也是个体感觉），所以本座最近把所有的开发环境默认字体都换成了<a href="http://mplus-fonts.sourceforge.jp/">M+</a>。</p>
-
-<p>除开字体给人的感觉很细腻之外，M+还满足了本座心中好字体的几大标准。</p>
-
-<a name="L..."></a>
-<h2>窄</h2>
-
-<p><img src="/downloads/images/2014_07/fonts_comparision.png" title="Don't touch me..." alt="fonts comparision" /></p>
-
-<p>可以看到，它比大多数的等宽字体都要窄。这样在本座13寸的笔记本屏幕上，也能在显示80个字符宽度的标线的同时，完整看到最少两个水平分割的编辑区。</p>
-
-<p><img src="/downloads/images/2014_07/pycharm_split.png" title="Don't touch me..." alt="pycharm split" /></p>
-
-<p>当然，如果你对码农们为什么需要显示一根80个字符宽度的标线有疑问：这一方面是<a href="http://programmers.stackexchange.com/questions/148677/why-is-80-characters-the-standard-limit-for-code-width">处女座程序员对历史的坚持</a>，另一方面，如果你经常写出很长的语句，也意味着你的代码质量有问题。</p>
-
-<a name="L..."></a>
-<h2>全</h2>
-
-<p>除开基本的字符，M+因为是出自日本设计师的关系，字符很全。</p>
-
-<p><img src="/downloads/images/2014_07/fonts_map.png" title="Don't touch me..." alt="fonts map" /></p>
-
-<a name="L..."></a>
-<h2>清</h2>
-
-<p>对程序员来说，清楚的字体主要是指：</p>
-
-<ul>
-<li>要能很方便的区别开大写的字母<code>O</code>和数字<code>0</code></li>
-<li>要能很方便的区别开数字<code>1</code>，大写的<code>I</code>和小写的<code>l</code></li>
-<li>要能很方便的区别开<code>.</code>和IDE显示的Whitespace</li>
-</ul>
-
-
-<p>M+在这方面也是非常棒的：</p>
-
-<p><img src="/downloads/images/2014_07/fonts_clear.png" title="Don't touch me..." alt="fonts clear" /></p>
-
-<p>因为是开源字体，M+是可以自由下载和使用的。但因为你在中国，可能访问不了Sourceforge，不如下载<a href="http://pan.baidu.com/s/1gdgk6VT">我分享的zip包</a>吧，lol。</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p><a href="http://www.slant.co/topics/67/~what-are-the-best-programming-fonts">What are the best programming fonts</a>.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-</ol>
-</div>
 
 </div>
   

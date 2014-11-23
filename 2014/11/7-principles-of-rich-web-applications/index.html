@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Web应用开发的七项原则 - @Lenciel</title>
+  <meta name="author" content="Lenciel Li">
+
+  
+  <meta name="description" content="这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。 Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如服务器端甚至是微控制器。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lenciel.cn/2014/11/7-principles-of-rich-web-applications">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/libs/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/github/lenciel" rel="alternate" title="@Lenciel" type="application/atom+xml">
+  <meta property="og:title" content="Web应用开发的七项原则" /><meta itemprop="name" content="Web应用开发的七项原则" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lenciel.cn/2014/11/7-principles-of-rich-web-applications" />
+<meta property="og:description" content="这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。 Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如服务器端甚至是微控制器。 &hellip;" />
+
+<meta property="og:site_name" content="http://lenciel.cn" />
+<meta property="article:author" content="http://lenciel.cn">
+<meta property="article:published_time" content="2014-11-17 22:30:42 +0800" />
+
+<meta property="article:section" content="" />
+<meta itemprop="description" content="这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。 Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如服务器端甚至是微控制器。 &hellip;" />
+
+
+<!-- Combine multiple fonts into one request -->
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic|Patua+One|Yanone+Kaffeesatz" rel="stylesheet" type="text/css">
+
+
+  <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2f0a0a00f439ab96a80a199638ef8594' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-175991-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">@Lenciel</a></h1>
+  
+    <h2>Thoughts and Rants.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/github/lenciel" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lenciel.cn" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/"><i class="icon-home"></i>Home</a></li>
+  <li><a href="/blog/archives"><i class="icon-book-alt"></i>Archives</a><span class="divider"></span></li>
+  <li><a href="/about"><i class="icon-user"></i>About</a><span class="divider"></span></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Web应用开发的七项原则</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-17T22:30:42+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:30 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。</p>
+
+<p>Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如<a href="http://nodejs.org/">服务器端</a>甚至是<a href="https://tessel.io/">微控制器</a>。在斯坦福这样的声望卓越的大学里面，它也已经被选为计算机科学<a href="http://web.stanford.edu/class/cs101/">入门课程</a>的教学语言。 </p>
+
+<p>即便如此，它在web开发中究竟应该扮演什么样的角色或者说负责哪方面的作用，仍然是个迷：即便对于很多框架和类库的作者而言也是如此：</p>
+
+<ul>
+<li>JavaScript应该被用来替代像<code>history</code>，<code>navigation</code>和<code>page rendering</code> 这样的浏览器函数么？</li>
+<li>后端是不是到头了？是不是根本就不该在后端渲染HTML了？</li>
+<li>Single Page Applications (SPAs) 是不是代表着未来的趋势?</li>
+<li>JS是否应该用来 <em>增强</em> 页面在网站的渲染效果，但 <em>渲染</em> 页面还是应该在web应用里面做?</li>
+<li>是否应该使用像PJAX或者TurboLinks这样的技术?</li>
+<li>一个网站和一个web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?</li>
+</ul>
+
+
+<p>下面就是我试着回答这些问题做的一些分析。我分析的方式是通过用户体验(UX)，特别是如何最小化用户拿到他们感兴趣的 <em>数据</em> 的时间，作为分析的切入点，来验证对Javascript的 <em>各种</em> 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。</p>
+
+<ol>
+<li> <a href="#server-rendered-pages-are-not-optional">Server渲染页面仍然是必须的</a></li>
+<li> <a href="#react-to-data-changes">对用户输入立刻响应</a></li>
+<li> <a href="#act-immediately-on-user-input">数据变更时的应对</a></li>
+<li> <a href="#control-the-data-exchange-with-the-server">控制与服务器的数据交互</a></li>
+<li> <a href="#dont-break-history-enhance-it">不要搞乱history，增强它</a></li>
+<li> <a href="#push-code-updates">Push更新</a></li>
+<li> <a href="#predict-behavior">行为预测</a></li>
+</ol>
+
+
+<a name="L1..Server...............................a.name..server-rendered-pages-are-not-optional....a."></a>
+<h2>1. Server渲染页面仍然是必须的<a name="server-rendered-pages-are-not-optional"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>服务器端渲染与SEO无关，它主要的考虑是性能：需要考虑的包括不在服务器渲染的话，请求脚本、页面样式、页面资源和API请求造成的额外的开销，以及考虑在HTTP2.0里加入的<code>PUSH of resources</code></em>.</p>
+
+<p>首先需要指出，在业界有一种错误的二分法：&#8221;server-rendered apps&#8221; 和 &ldquo;single-page apps&#8221;的对立。如果我们的目标是用户体验和性能的最优化，那么选择其中任何一个而抛弃另一个都是错误的决定。原因其实很明显：整个互联网用于传输页面的介质，有一个理论上可计算的速度局限。关于这点，Stuart Cheshire有个著名的文献 (或者说是吐槽？)，<a href="http://rescomp.stanford.edu/~cheshire/rants/Latency.html">“It’s the latency, stupid”</a> :</p>
+
+<blockquote><p>The distance from Stanford to Boston is 4320km.<br/>The speed of light in vacuum is 300 x 10^6 m/s.<br/>The speed of light in fibre is roughly 66% of the speed of light in vacuum.<br/>The speed of light in fibre is 300 x 10^6 m/s * 0.66 = 200 x 10^6 m/s.<br/>The one-way delay to Boston is 4320 km / 200 x 10^6 m/s = 21.6ms.<br/>The round-trip time to Boston and back is 43.2ms.<br/>The current ping time from Stanford to Boston over today’s Internet is about 85ms (…)<br/>So: the hardware of the Internet can currently achieve within a factor of two of the speed of light.</p></blockquote>
+
+
+<p>这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：理论上两个海岸间最少也需要 <strong>50ms</strong> 才能完成通信。</p>
+
+<p>换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。</p>
+
+<p>这一点在Javascript驱动的Web应用流行起来之后显得尤为明显。这些应用一般<code>&lt;body&gt;</code>标签内什么东西都没有，只有<code>&lt;script&gt;</code>和<code>&lt;link&gt;</code>标签，被称为&#8221;Single Page Applications&#8221;或者&#8221;SPA&#8221;。就像它的名字所暗示的一样，服务器返回时一直在重用同一个页面，其他的页面内容都是在客户端被处理和渲染的。</p>
+
+<p>考虑下面的这个场景：用户在浏览器上访问<code>http://app.com/orders/</code>，如果这是一个传统的网页，那么在后台处理这个请求的时，就会带回重要的 <em>信息</em> ，用来完成页面的显示：比如，从数据库里面查询出订单，然后把它们的数据放在请求的返回里面。但如果这是一个SPA，那么第一次可能会立刻返回一个包含<code>&lt;script&gt;</code>标签的空页面，然后再跑一趟才能拿回用来渲染页面的内容和数据。</p>
+
+<p><img src="/downloads/images/2014_11/spa_code_breakdown.png" title="SPA code breakdown" alt="SPA code breakdown" />
+图1. 服务器端发送的SPA的每个页面组成结构分析</p>
+
+<p>目前大多数的开发者都大方接受了这个额外的 <em>网络传输过程</em> 是因为他们确信这只发生一次：后面反正是有cache的。也就是说，大家形成了这么一个共识，既然整个代码包一旦加载一次，就可以不用再请求其他的脚本和资源就完成对绝大多数的用户交互（包括跳转到应用的其他页面）的处理，那么这个开销就是可以接受的。</p>
+
+<p>但实际上，虽然有cache，脚本解析和执行的时间仍然会带来性能上的下降。<a href="http://modernweb.com/2014/03/10/is-jquery-too-big-for-mobile/">“Is jQuery Too Big For Mobile?”</a> 这篇文章就探讨了即便是加载一个jQuery库，就会花去一些浏览器数百毫秒的时间。</p>
+
+<p>更糟糕的是，和以前网速慢那种图片慢慢加载的效果不同，如果是脚本正在加载，用户什么都看不到：在整个页面被渲染出来之前，只能显示空白的页面。</p>
+
+<p>最重要的是，目前互联网数据传输主要的协议TCP <em>建立</em> 比较慢。</p>
+
+<p>首先，我们知道，一个TCP连接先需要握手。如果处于安全考虑使用了SSL，就还需要额外的两个来回（客户端重用了session的话，也需要一个额外的来回）。这些流程完毕之后，服务器才能开始往客户端发送数据。换句话说，再小的代码包实际上也需要几个来回才能完成传输，这就让前面描述的问题变得更加糟糕。</p>
+
+<p>其次，TCP协议里面有一个流控机制，被称为 <code>slow start</code>，也就是在连接建立过程中逐渐增加传输的分段(<code>segments</code>)大小，入下图所示：</p>
+
+<p><img src="/downloads/images/2014_11/tcp_segments_chart.png" title="TCP segments chart" alt="TCP segments chart" />
+图1. 服务器端在TCP连接的不同阶段能够发送的分段大小(KB)</p>
+
+<p>这对SPA有两个很大的影响：</p>
+
+<ol>
+<li><p> 文件比较大的脚本，花在下载上的时间比你想象中的要长得多。Google的Ilya Grigorik在他的专著<a href="http://chimera.labs.oreilly.com/books/1230000000545/ch02.html#thats_four_rou">“High Performance Browser Networking”</a> 里面说过，“4个来回(…)和数百毫秒的延迟都花在从服务器下载64KB的文件到客户端上了”，从前面的图也可以看到，基本是比较高速的网络连接，比如伦敦和纽约之间，一个TCP连接要达到最大速度，也需要花上大概225ms。</p></li>
+<li><p> 因为前面说的延迟对首个页面访问也是有效的，所以你让什么数据最先被传输就显得非常重要了。Paul Irish在他的演讲<a href="https://docs.google.com/presentation/d/1MtDBNTH1g7CZzhwlJ1raEJagA8qM3uoV7ta6i66bO2M/present#slide=id.g3eb97ca8f_10">“Delivering the Goods”</a>给出的结论是，一个Web应用最开始的 <strong>14kb</strong> 数据是最重要的。</p></li>
+</ol>
+
+
+<p>在足够短的时间窗内完成内容传输（哪怕只是呈现基本的没有数据的layout）的网站，就是响应良好的。这也是为什么对于很多习惯了在服务器端处理数据的软件开发者觉得Javascript很多时候根本没必要用，或者是在很有限的情况下用用就行了。当这些开发者使用的是配置良好的服务器和数据库，又有CDN来做部署和分发时，他们这种感觉会非常明显。</p>
+
+<p>但是，服务器在辅助和加速页面内容的分发和渲染中应该被怎么使用，也是需要根据每个应用场景仔细分析的，绝对不是“把整个页面交给服务器渲染吧”那么简单的事情。在一些情况下，如果页面上的内容对用户并不是非看不可的，就可以不放在第一个响应中返回，而是让客户端在后面的操作中到服务器去取。</p>
+
+<p>比如，有的应用会先把一个&#8221;壳&#8221;页面返回给客户端，然后在这个页面上并发的请求多个部分的数据。这样即使在后台连接速度较慢的情况下，仍然能够有较好的响应速度。还有的应用会把 “<a href="http://www.feedthebot.com/pagespeed/prioritize-visible-content.html">浏览器里面的第一个整屏</a>” 显示的页面做预渲染。</p>
+
+<p>服务器能够根据当前处理的<code>session</code>，用户和URL对脚本和样式文件进行分类也是很重要的。举例来说，用来对订单进行分类的脚本，对于<code>/orders</code>这个URL显然是重要的，而处理&#8221;首选项&#8221;的逻辑的脚本就不那么重要。再比如说，我们可以对CSS样式表进行分类，比如区分“结构性的样式”和“皮肤和模板的样式”等。前面这类很可能对Javascript的正确运行是必须的，因此需要 <em>阻塞</em> 的方式加载， 后面这类则可以用异步的方式加载。</p>
+
+<p>到目前为止，在服务器端处理一部分或者所有的页面，仍然是避免过多客户端与服务器的交互的主要手段。<a href="http://danlec.com/blog/stackoverflow-in-4096-bytes">StackOverflow in 4096 bytes</a>很不错地展示了如何降低和服务器的来回交互次数。作为概念验证的SPA，它理论上可以做到在握手后的第一个TCP连接中完成加载！当然，要做到这些，它使用了<a href="http://www.chromium.org/spdy/link-headers-and-server-hint">SPDY 或者 HTTP/2 server push</a>，因此可以在一个hop里面传输所有客户端可以缓存的代码。</p>
+
+<p><img src="/downloads/images/2014_11/st4k.png" title="StackOverflow clone in 4096 bytes" alt="StackOverflow clone in 4096 bytes" />
+图3. 使用了内链CSS和JS技术的<code>Stackoverflow in 4096 bytes</code></p>
+
+<p>如果我们有一个足够灵活的系统，可以在浏览器和服务器直接共享渲染页面的代码（比如双方都是js），并且提供工具增量的加载脚本和样式，那么 <em>网站</em> 和 <em>Web应用</em> 就可以合一而不再是两个模棱两可难以区分的词了：它们本身就有一样的UX要素。比如一个博客页面和一个复杂的CRM，都有URL，都需要跳转，都展示数据，本质上并没有太大不同。即便是像数据表格这样复杂的东西，传统上主要是客户端提供的功能来完成对数据的处理，但也首先需要给用户展示那些需要他处理的数据 。降低客户端和服务器交互的次数，对实现我们说的这样的系统非常重要。</p>
+
+<p>在我看来，我们看到的大量系统上采用了这样那样性能上的权宜之策，是因为整个技术栈的复杂度在不断累加。Javascript和CSS这样的技术是被逐渐加入到系统的，它们的风靡又花了一段时间。尽管有人希望在协议上做出改进，来增强性能（比如SPDY或者QUIC），但应用层显然才是最需要改进的地方。</p>
+
+<p>要理解速度的重要性，去重温一下WWW和HTML创立之初的一些讨论是非常有用的。特别是在1997年提议在HTML里加入<code>img</code>这个标签的时候，Marc Andreessen在<a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0260.html">下面这个邮件thread</a>里反复强调了提供信息的速度有多么重要： </p>
+
+<blockquote><p>“If a document has to be pieced together on the fly, it could get arbitrarily complex, and even if that were limited, we’d certainly start experiencing major hits on performance for documents structured in this way. This essentially throws the **single-hop principle of WWW** out the door (well, IMG does that too, but for a very specific reason and in a very limited sense) — are we sure we want to do that?”</p></blockquote>
+
+
+<a name="L2..............................a.name..act-immediately-on-user-input....a."></a>
+<h2>2. 对用户输入立刻响应<a name="act-immediately-on-user-input"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>我们可以使用JavaScript来掩盖网络的延迟，把它作为设计原则，就可以在你自己的应用里面去掉绝大多数的<code>spinner</code>或者<code>loading</code>。使用PJAX和TurboLink的话，你就会失去了这些改善用户速度体验的机会。</em>.</p>
+
+<p>TBA</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-11-17T22:30:42+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:30 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  <!-- JiaThis Button BEGIN -->
+  <!--<div class="jiathis_style_24x24">
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"></a>
+    <a class="jiathis_button_tqq"></a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_renren"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>&#8211;>
+  <!-- JiaThis Button END -->
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/11/correct-django-site-name-in-sentry/" title="Previous Post: Correct Django Site Name During DB Migration">&laquo; Correct Django Site Name During DB Migration</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a>
+<span class="theme-version">Copyright &copy; 2014 - Lenciel Li</span>
+  <section class="contruction-wrap">
+    <div class="contruction"></div>
+  </section>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'lencielgithub';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://lenciel.cn/2014/11/7-principles-of-rich-web-applications/';
+        var disqus_url = 'http://lenciel.cn/2014/11/7-principles-of-rich-web-applications/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

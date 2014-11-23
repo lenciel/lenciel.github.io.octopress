@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-11-03T10:14:29+08:00</updated>
+  <updated>2014-11-24T01:47:39+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web应用开发的七项原则]]></title>
+    <link href="http://lenciel.cn/2014/11/7-principles-of-rich-web-applications/"/>
+    <updated>2014-11-17T22:30:42+08:00</updated>
+    <id>http://lenciel.cn/2014/11/7-principles-of-rich-web-applications</id>
+    <content type="html"><![CDATA[<p>这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。</p>
+
+<p>Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如<a href="http://nodejs.org/">服务器端</a>甚至是<a href="https://tessel.io/">微控制器</a>。在斯坦福这样的声望卓越的大学里面，它也已经被选为计算机科学<a href="http://web.stanford.edu/class/cs101/">入门课程</a>的教学语言。 </p>
+
+<p>即便如此，它在web开发中究竟应该扮演什么样的角色或者说负责哪方面的作用，仍然是个迷：即便对于很多框架和类库的作者而言也是如此：</p>
+
+<ul>
+<li>JavaScript应该被用来替代像<code>history</code>，<code>navigation</code>和<code>page rendering</code> 这样的浏览器函数么？</li>
+<li>后端是不是到头了？是不是根本就不该在后端渲染HTML了？</li>
+<li>Single Page Applications (SPAs) 是不是代表着未来的趋势?</li>
+<li>JS是否应该用来 <em>增强</em> 页面在网站的渲染效果，但 <em>渲染</em> 页面还是应该在web应用里面做?</li>
+<li>是否应该使用像PJAX或者TurboLinks这样的技术?</li>
+<li>一个网站和一个web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?</li>
+</ul>
+
+
+<p>下面就是我试着回答这些问题做的一些分析。我分析的方式是通过用户体验(UX)，特别是如何最小化用户拿到他们感兴趣的 <em>数据</em> 的时间，作为分析的切入点，来验证对Javascript的 <em>各种</em> 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。</p>
+
+<ol>
+<li> <a href="#server-rendered-pages-are-not-optional">Server渲染页面仍然是必须的</a></li>
+<li> <a href="#react-to-data-changes">对用户输入立刻响应</a></li>
+<li> <a href="#act-immediately-on-user-input">数据变更时的应对</a></li>
+<li> <a href="#control-the-data-exchange-with-the-server">控制与服务器的数据交互</a></li>
+<li> <a href="#dont-break-history-enhance-it">不要搞乱history，增强它</a></li>
+<li> <a href="#push-code-updates">Push更新</a></li>
+<li> <a href="#predict-behavior">行为预测</a></li>
+</ol>
+
+
+<a name="L1..Server...............................a.name..server-rendered-pages-are-not-optional....a."></a>
+<h2>1. Server渲染页面仍然是必须的<a name="server-rendered-pages-are-not-optional"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>服务器端渲染与SEO无关，它主要的考虑是性能：需要考虑的包括不在服务器渲染的话，请求脚本、页面样式、页面资源和API请求造成的额外的开销，以及考虑在HTTP2.0里加入的<code>PUSH of resources</code></em>.</p>
+
+<p>首先需要指出，在业界有一种错误的二分法：&#8221;server-rendered apps&#8221; 和 &ldquo;single-page apps&#8221;的对立。如果我们的目标是用户体验和性能的最优化，那么选择其中任何一个而抛弃另一个都是错误的决定。原因其实很明显：整个互联网用于传输页面的介质，有一个理论上可计算的速度局限。关于这点，Stuart Cheshire有个著名的文献 (或者说是吐槽？)，<a href="http://rescomp.stanford.edu/~cheshire/rants/Latency.html">“It’s the latency, stupid”</a> :</p>
+
+<blockquote><p>The distance from Stanford to Boston is 4320km.<br/>The speed of light in vacuum is 300 x 10^6 m/s.<br/>The speed of light in fibre is roughly 66% of the speed of light in vacuum.<br/>The speed of light in fibre is 300 x 10^6 m/s * 0.66 = 200 x 10^6 m/s.<br/>The one-way delay to Boston is 4320 km / 200 x 10^6 m/s = 21.6ms.<br/>The round-trip time to Boston and back is 43.2ms.<br/>The current ping time from Stanford to Boston over today’s Internet is about 85ms (…)<br/>So: the hardware of the Internet can currently achieve within a factor of two of the speed of light.</p></blockquote>
+
+
+<p>这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：理论上两个海岸间最少也需要 <strong>50ms</strong> 才能完成通信。</p>
+
+<p>换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。</p>
+
+<p>这一点在Javascript驱动的Web应用流行起来之后显得尤为明显。这些应用一般<code>&lt;body&gt;</code>标签内什么东西都没有，只有<code>&lt;script&gt;</code>和<code>&lt;link&gt;</code>标签，被称为&#8221;Single Page Applications&#8221;或者&#8221;SPA&#8221;。就像它的名字所暗示的一样，服务器返回时一直在重用同一个页面，其他的页面内容都是在客户端被处理和渲染的。</p>
+
+<p>考虑下面的这个场景：用户在浏览器上访问<code>http://app.com/orders/</code>，如果这是一个传统的网页，那么在后台处理这个请求的时，就会带回重要的 <em>信息</em> ，用来完成页面的显示：比如，从数据库里面查询出订单，然后把它们的数据放在请求的返回里面。但如果这是一个SPA，那么第一次可能会立刻返回一个包含<code>&lt;script&gt;</code>标签的空页面，然后再跑一趟才能拿回用来渲染页面的内容和数据。</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2014_11/spa_code_breakdown.png" title="SPA code breakdown" alt="SPA code breakdown" />
+图1. 服务器端发送的SPA的每个页面组成结构分析</p>
+
+<p>目前大多数的开发者都大方接受了这个额外的 <em>网络传输过程</em> 是因为他们确信这只发生一次：后面反正是有cache的。也就是说，大家形成了这么一个共识，既然整个代码包一旦加载一次，就可以不用再请求其他的脚本和资源就完成对绝大多数的用户交互（包括跳转到应用的其他页面）的处理，那么这个开销就是可以接受的。</p>
+
+<p>但实际上，虽然有cache，脚本解析和执行的时间仍然会带来性能上的下降。<a href="http://modernweb.com/2014/03/10/is-jquery-too-big-for-mobile/">“Is jQuery Too Big For Mobile?”</a> 这篇文章就探讨了即便是加载一个jQuery库，就会花去一些浏览器数百毫秒的时间。</p>
+
+<p>更糟糕的是，和以前网速慢那种图片慢慢加载的效果不同，如果是脚本正在加载，用户什么都看不到：在整个页面被渲染出来之前，只能显示空白的页面。</p>
+
+<p>最重要的是，目前互联网数据传输主要的协议TCP <em>建立</em> 比较慢。</p>
+
+<p>首先，我们知道，一个TCP连接先需要握手。如果处于安全考虑使用了SSL，就还需要额外的两个来回（客户端重用了session的话，也需要一个额外的来回）。这些流程完毕之后，服务器才能开始往客户端发送数据。换句话说，再小的代码包实际上也需要几个来回才能完成传输，这就让前面描述的问题变得更加糟糕。</p>
+
+<p>其次，TCP协议里面有一个流控机制，被称为 <code>slow start</code>，也就是在连接建立过程中逐渐增加传输的分段(<code>segments</code>)大小，入下图所示：</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2014_11/tcp_segments_chart.png" title="TCP segments chart" alt="TCP segments chart" />
+图1. 服务器端在TCP连接的不同阶段能够发送的分段大小(KB)</p>
+
+<p>这对SPA有两个很大的影响：</p>
+
+<ol>
+<li><p> 文件比较大的脚本，花在下载上的时间比你想象中的要长得多。Google的Ilya Grigorik在他的专著<a href="http://chimera.labs.oreilly.com/books/1230000000545/ch02.html#thats_four_rou">“High Performance Browser Networking”</a> 里面说过，“4个来回(…)和数百毫秒的延迟都花在从服务器下载64KB的文件到客户端上了”，从前面的图也可以看到，基本是比较高速的网络连接，比如伦敦和纽约之间，一个TCP连接要达到最大速度，也需要花上大概225ms。</p></li>
+<li><p> 因为前面说的延迟对首个页面访问也是有效的，所以你让什么数据最先被传输就显得非常重要了。Paul Irish在他的演讲<a href="https://docs.google.com/presentation/d/1MtDBNTH1g7CZzhwlJ1raEJagA8qM3uoV7ta6i66bO2M/present#slide=id.g3eb97ca8f_10">“Delivering the Goods”</a>给出的结论是，一个Web应用最开始的 <strong>14kb</strong> 数据是最重要的。</p></li>
+</ol>
+
+
+<p>在足够短的时间窗内完成内容传输（哪怕只是呈现基本的没有数据的layout）的网站，就是响应良好的。这也是为什么对于很多习惯了在服务器端处理数据的软件开发者觉得Javascript很多时候根本没必要用，或者是在很有限的情况下用用就行了。当这些开发者使用的是配置良好的服务器和数据库，又有CDN来做部署和分发时，他们这种感觉会非常明显。</p>
+
+<p>但是，服务器在辅助和加速页面内容的分发和渲染中应该被怎么使用，也是需要根据每个应用场景仔细分析的，绝对不是“把整个页面交给服务器渲染吧”那么简单的事情。在一些情况下，如果页面上的内容对用户并不是非看不可的，就可以不放在第一个响应中返回，而是让客户端在后面的操作中到服务器去取。</p>
+
+<p>比如，有的应用会先把一个&#8221;壳&#8221;页面返回给客户端，然后在这个页面上并发的请求多个部分的数据。这样即使在后台连接速度较慢的情况下，仍然能够有较好的响应速度。还有的应用会把 “<a href="http://www.feedthebot.com/pagespeed/prioritize-visible-content.html">浏览器里面的第一个整屏</a>” 显示的页面做预渲染。</p>
+
+<p>服务器能够根据当前处理的<code>session</code>，用户和URL对脚本和样式文件进行分类也是很重要的。举例来说，用来对订单进行分类的脚本，对于<code>/orders</code>这个URL显然是重要的，而处理&#8221;首选项&#8221;的逻辑的脚本就不那么重要。再比如说，我们可以对CSS样式表进行分类，比如区分“结构性的样式”和“皮肤和模板的样式”等。前面这类很可能对Javascript的正确运行是必须的，因此需要 <em>阻塞</em> 的方式加载， 后面这类则可以用异步的方式加载。</p>
+
+<p>到目前为止，在服务器端处理一部分或者所有的页面，仍然是避免过多客户端与服务器的交互的主要手段。<a href="http://danlec.com/blog/stackoverflow-in-4096-bytes">StackOverflow in 4096 bytes</a>很不错地展示了如何降低和服务器的来回交互次数。作为概念验证的SPA，它理论上可以做到在握手后的第一个TCP连接中完成加载！当然，要做到这些，它使用了<a href="http://www.chromium.org/spdy/link-headers-and-server-hint">SPDY 或者 HTTP/2 server push</a>，因此可以在一个hop里面传输所有客户端可以缓存的代码。</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2014_11/st4k.png" title="StackOverflow clone in 4096 bytes" alt="StackOverflow clone in 4096 bytes" />
+图3. 使用了内链CSS和JS技术的<code>Stackoverflow in 4096 bytes</code></p>
+
+<p>如果我们有一个足够灵活的系统，可以在浏览器和服务器直接共享渲染页面的代码（比如双方都是js），并且提供工具增量的加载脚本和样式，那么 <em>网站</em> 和 <em>Web应用</em> 就可以合一而不再是两个模棱两可难以区分的词了：它们本身就有一样的UX要素。比如一个博客页面和一个复杂的CRM，都有URL，都需要跳转，都展示数据，本质上并没有太大不同。即便是像数据表格这样复杂的东西，传统上主要是客户端提供的功能来完成对数据的处理，但也首先需要给用户展示那些需要他处理的数据 。降低客户端和服务器交互的次数，对实现我们说的这样的系统非常重要。</p>
+
+<p>在我看来，我们看到的大量系统上采用了这样那样性能上的权宜之策，是因为整个技术栈的复杂度在不断累加。Javascript和CSS这样的技术是被逐渐加入到系统的，它们的风靡又花了一段时间。尽管有人希望在协议上做出改进，来增强性能（比如SPDY或者QUIC），但应用层显然才是最需要改进的地方。</p>
+
+<p>要理解速度的重要性，去重温一下WWW和HTML创立之初的一些讨论是非常有用的。特别是在1997年提议在HTML里加入<code>img</code>这个标签的时候，Marc Andreessen在<a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0260.html">下面这个邮件thread</a>里反复强调了提供信息的速度有多么重要： </p>
+
+<blockquote><p>“If a document has to be pieced together on the fly, it could get arbitrarily complex, and even if that were limited, we’d certainly start experiencing major hits on performance for documents structured in this way. This essentially throws the **single-hop principle of WWW** out the door (well, IMG does that too, but for a very specific reason and in a very limited sense) — are we sure we want to do that?”</p></blockquote>
+
+
+<a name="L2..............................a.name..act-immediately-on-user-input....a."></a>
+<h2>2. 对用户输入立刻响应<a name="act-immediately-on-user-input"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>我们可以使用JavaScript来掩盖网络的延迟，把它作为设计原则，就可以在你自己的应用里面去掉绝大多数的<code>spinner</code>或者<code>loading</code>。使用PJAX和TurboLink的话，你就会失去了这些改善用户速度体验的机会。</em>.</p>
+
+<p>TBA</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Correct Django Site Name During DB Migration]]></title>
@@ -530,6 +639,96 @@
 <p>其次，本座开始计划是给每个人生成一个他们自己写的模块的依赖图，印到衣服上让大家自己穿。但试了之前几个项目之后，Hmmmm&hellip;有的同学大概是不会愿意的吧&hellip;</p>
 
 <p>最后，T恤计划也没这么就打住：后来又发现了<a href="http://nodebox.net/">nodebox</a>这种真正是拿来搞艺术的玩意儿，于是要生成一点儿敢往自己胸口放的东西变得方便多了，过两天如果公司没有倒闭，就把东西放出来让大家看看。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[突然事件]]></title>
+    <link href="http://lenciel.cn/2014/08/but-does-it-flow/"/>
+    <updated>2014-08-21T03:54:13+08:00</updated>
+    <id>http://lenciel.cn/2014/08/but-does-it-flow</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2014_08/just_let_it_go.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>葛明走了之后，我们去火葬场送他。</p>
+
+<p>他在关好门窗的卧室里点燃了一盆木炭，静悄悄走掉了。</p>
+
+<p>最先发现他的是跟他住一起的他母亲。她说，一圈木炭排在火盆里，大头向上，小头向下，整整齐齐。另外，他还专门喝了安眠药，所以没有一般烧炭者因为气促造成的痉挛表情。</p>
+
+<p>这就是他的风格，做什么都计划详实，控制精准，旁人既无法预知，更无法阻挡。</p>
+
+<p>“他不但表情很安详，而且碳氧血红蛋白让他全身都变成了樱桃红色，看起来就像个刚出生那天一样。”</p>
+
+<p>“阿姨，你……”，我听到他妈妈这样说的时候有些不知道该怎么接话。</p>
+
+<p>“别怕，我没疯”，她抹了一把眼泪，“只不过阿姨我退休之前是个法医。”</p>
+
+<p>那天的确有很多眼泪，大家说的最多是，这太突然。</p>
+
+<p>但我觉得不奇怪。的确，葛明是我们中间最幽默的人。不过，活到我这把年纪，已经明白那些让别人发笑的人，不过是把这技能当成保护自己内心世界的硬壳而已。和大多数动不动就要哭死在你面前的朋友相比，他们心门紧锁，难以真正亲近。</p>
+
+<p>即便是像我们这样的关系，他也只说起过几次他的烦恼。</p>
+
+<p>一次是他请我去他家吃饭，说想让我帮忙。</p>
+
+<p>“我在找方便好用的热敷袋。要求很简单，一个人操作起来要很方便，什么部位用起来都很方便，什么时候想用热起来要很方便，还有，不要太丑”。</p>
+
+<p>“最后一个要求表明，你是要送人吧？”</p>
+
+<p>他只是笑，带我去看书房里面满屋子奇形怪状的物件。</p>
+
+<p>“别人都说淘宝上什么都有得卖，但是我买回来试了好多，都没有特别满意的。”</p>
+
+<p>我看了看，基本都还是进口货。</p>
+
+<p>“如果说有热敷袋里的战斗机，那我好像就身处一个军事机场了，所以感觉帮不上什么忙了。”</p>
+
+<p>“我已经大概决定哪几个比较好了，我是要你帮忙把我不要的带走几个。”</p>
+
+<p>后来我听说，葛明给我们这帮人每人送了几个热敷袋。我们现在也不知道，他满意的那些究竟和我们手上的这些有什么不一样。</p>
+
+<p>还有一次，是他叫我出去喝酒。喝到一半，他递给我他的手机，看一个什么“女神男神体重表”。</p>
+
+<p>“你看，我是男神。”</p>
+
+<p>“这谁给你发的？”</p>
+
+<p>“是给我发的最后一条消息。”</p>
+
+<p>“那你为什么不回呢？这不是一个很不错的开始聊天的话题吗？”</p>
+
+<p>“因为是之前答应要发给我这个，但发之前，就说了以后不要再联系了。”</p>
+
+<p>“那就不回了？我以为你的风格是永远最后挂电话，永远回最后一条的。”</p>
+
+<p>“嗯，不回是因为会希望一直没有收到过这个。”</p>
+
+<p>“为什么呢？”</p>
+
+<p>“因为一旦收到，就会有&#8217;我答应你的事情已经办完了从此我们就没有关系了&#8217;的感觉冒出来，就好像我自己站在被封起来的纸箱里面，看到胶条把最后那点儿缝隙盖起来了一样。所以不知道怎么回，也宁愿一直没有收到。”</p>
+
+<p>我最后一次见到他，是在商场碰巧遇见他在挑榨汁机。他拿着说明书，对导购小姐说：</p>
+
+<p>“你看，上面写着：使用后立即清洁，就容易清洁。”</p>
+
+<p>“是的，先生。”</p>
+
+<p>“然后后面几页，它又写着：榨汁后应立即饮用。如果汁液在空气中暴露一段时间，就会变味并失去营养价值。”</p>
+
+<p>“是的，先生。”</p>
+
+<p>“那我每次榨完汁，究竟应该立即去清洗，还是应该立即去饮用果汁呢？”</p>
+
+<p>他问完这个问题，我和导购小姐都笑了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Shadowsocks on Google Compute Engine]]></title>
+    <link href="http://lenciel.cn/2014/08/shadowsocks-on-google-compute-engine/"/>
+    <updated>2014-08-17T21:55:44+08:00</updated>
+    <id>http://lenciel.cn/2014/08/shadowsocks-on-google-compute-engine</id>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -1128,6 +1327,60 @@
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[It's August Now, Boy...]]></title>
+    <link href="http://lenciel.cn/2014/08/before-sunrise/"/>
+    <updated>2014-08-04T23:47:03+08:00</updated>
+    <id>http://lenciel.cn/2014/08/before-sunrise</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2014_08/before_sunrise_1.jpg" title="Don't touch me..." alt="before sunrise1" />
+<img src="http://lenciel.cn/downloads/images/2014_08/before_sunrise_2.jpg" title="Don't touch me..." alt="before sunrise2" /></p>
+
+<blockquote><p>&#8220;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&#8221;</p><footer><strong>Ethan Hawke</strong> <cite><a href='http://www.imdb.com/title/tt0112471/'>Before Sunrise(1995)</a></cite></footer></blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[白日焰火]]></title>
+    <link href="http://lenciel.cn/2014/07/what-did-ocean-say-2/"/>
+    <updated>2014-07-29T01:07:51+08:00</updated>
+    <id>http://lenciel.cn/2014/07/what-did-ocean-say-2</id>
+    <content type="html"><![CDATA[<p><img height="200" width="300" alt="spark" src="http://lenciel.cn/downloads/images/2014_07/Black_Coal_Thin_Ice.jpg" align="left" style="margin:0px 20px;"/> “你不要再来找我了。”文慧这么说的时候，柳徽不敢看她的眼睛。</p>
+
+<p>当然，我们也可以说这是因为文慧身后的工地上高高的塔吊顶端那盏不可一世的探照灯：当时是凌晨一点，那工地又相隔甚远，本来应该是从天而降的灯光变得和视线平行。惨白的光线在茫茫夜色中显得异常刺眼，让人根本不敢看向她所在的方位。</p>
+
+<p>他们常常在夜里聊天，这是有原因的。白天让人们变得循规蹈矩，不敢轻举妄动。放眼望去，每个人的额头上似乎贴上了符咒，世俗的规则在所有人身上发挥着魔法般的控制力，消磨掉生活本该有的神奇之处。无论扮演着紧张呆板，还是飞扬跋扈的角色，一切言谈举止一切思绪梦想，都仿佛在执行预设的程序而已。</p>
+
+<p>只有在夜里，他们才会感觉摆脱了现实的控制，让自己任性地随心游走。</p>
+
+<p>“你说，那盏灯有没有200米远啊？”</p>
+
+<p>“可能有吧，那又怎样？”</p>
+
+<p>“如果，有一个地方离我们很远很远，比如十光年，二十光年。站在那个地方，往我们这里看，过去的十年、二十年就会一幕幕重现的，对吧？”</p>
+
+<p>“啊？”</p>
+
+<p>“就好比，你看，天上这些星星。很多说不定老早就已经挂掉了。只不过是因为和我们隔了几十万光年，我们就以为它还在一闪一闪亮晶晶呢。”</p>
+
+<p>“我现在说的事情，跟这有什么关系？”</p>
+
+<p>“你看，是活着还是已经死掉都可能只是站在哪里看的问题。”</p>
+
+<p>“嗯，继续。”</p>
+
+<p>“对一个时间旅行者来说，没有你们所谓生和死的区别，当然也没有在一起和分开的区别。不光是周围的人，我生活的地点也一直在变，在这里几年，到那里几年。但在这个城市里面，我知道有你，会觉得对它格外熟悉和依恋：那是因为在需要温暖的时候，我知道能躲到你的怀抱里面。据蔡先生说，这就是本地人和旅行者最大的区别。”</p>
+
+<p>柳徽说这些的时候，认真地看着文慧。当然，还是看不清她是什么表情，就只好继续说下去：</p>
+
+<p>“你说不要再见了，那我会听你的话。我只是想让你知道，人肯定是有能够吸引某个特定的人的线，即使没有太多话想聊，也能把对方拉过来。呆呆看着也好，默默守着也罢，就是想感受着有这个人的存在。”</p>
+
+<p>然后，柳徽就慢慢变得透明起来。还没等文慧反应过来，就消失在无边的夜色之中。</p>
+
+<p>这就是为什么女孩儿们从小就被教育千万不要搭理时间旅行者的原因：据说，他们的出现总是显得过于匆忙，好像白日焰火，很快就变得无影无踪。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[中国式创新]]></title>
     <link href="http://lenciel.cn/2014/07/innovation-company/"/>
     <updated>2014-07-27T15:26:01+08:00</updated>
@@ -1441,581 +1694,6 @@
 </ol>
 </div>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Better Dictionary on Mac]]></title>
-    <link href="http://lenciel.cn/2014/05/better-dictionary-on-mac/"/>
-    <updated>2014-05-23T14:02:14+08:00</updated>
-    <id>http://lenciel.cn/2014/05/better-dictionary-on-mac</id>
-    <content type="html"><![CDATA[<p>Mac上很贴心的提供了词典，并且还绑定了快捷键：在任何页面按下&#8221;Ctrl+Cmd+D&#8221;，就会有词义解释的界面弹出。不过内置的<code>New Oxford American Dictionary</code>比较的弱，给人的感觉词条的水准就像《新华字典》一样单薄，所以换成了编了好几十年又修订了好几十年的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E6%B0%8F%E8%AF%8D%E5%85%B8">韦氏词典</a>，两者的差距还是明显的。</p>
-
-<p>这是自带词典对pathos的解释：</p>
-
-<blockquote><p>pathos /ˈpāˌTHäs/, a quality that evokes pity or sadness</p></blockquote>
-
-
-<p>这是《韦氏词典》的：</p>
-
-<blockquote><p>pathos /ˈpāˌTHäs/, n. </p><p>1. The quality or character of those emotions, traits, or experiences which are personal, and therefore restricted and evanescent; transitory and idiosyncratic dispositions or feelings as distinguished from those which are universal and deep-seated in character; — opposed to ethos.</p><p>2. That quality or property of anything which touches the feelings or excites emotions and passions, esp., that which awakens tender emotions, such as pity, sorrow, and the like; contagious warmth of feeling, action, or expression; pathetic quality; as, the pathos of a picture, of a poem, or of a cry.</p></blockquote>
-
-
-<p>安装的方法也挺简单：</p>
-
-<ul>
-<li>如果下载的是<a href="http://pan.baidu.com/s/1o6z67dK#dir/path=%2Fdictionary">这样</a>的<code>dictionary</code>文件，直接拷贝到<code>~/Library/Dictionaries</code></li>
-<li>如果是<a href="http://pan.baidu.com/s/1i35ik7N">这样</a>的raw文件，需要运行DictUnifier应用编译</li>
-</ul>
-
-
-<p>安装完毕运行<code>Dictionary</code>应用，勾选你期望出现的字典和顺序即可，我启用了《朗道英汉词典》、《韦氏词典》和《维基百科》:</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/apple_dict_effect.png" title="Apple Dict" alt="Don't touch me" width="60%"></p>
-
-
-<p>另外，词典的样式其实是用css定义的，就在每个字典文件的Contetns目录，比如：<code>~/Library/Dictionaries/dictd_www.dict.org_web1913.dictionary/Contents/DefaultStyle.css</code>。如果你不满意字典出来的样子，可以自定义格式。</p>
-
-<p>最后，这些词典其实都是linux上著名的国产软件<a href="http://en.wikipedia.org/wiki/StarDict">stardict</a>的文件格式（写到这里，又想起stardict的作者<a href="http://www.huzheng.org/aboutme.php">胡正</a>），所以要在<a href="https://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">手机上使用</a>也是很容易的事情。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress里插入带中文Gist的问题和解决]]></title>
-    <link href="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/"/>
-    <updated>2014-05-17T13:00:38+08:00</updated>
-    <id>http://lenciel.cn/2014/05/fix-gist-style-in-octopress</id>
-    <content type="html"><![CDATA[<p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
-
-<p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:</p>
-
-<div class="highlight"><pre><code class="text">{% gist gist_id [filename] %}
-</code></pre></div>
-
-
-<p>比如<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
-
-<div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}
-</code></pre></div>
-
-
-<p>当然之所以说理论上，是因为首先Octopress的markdown插件对unicode的支持<a href="http://tokkonopapa.github.io/blog/2013/02/23/octopress-toc/">是有bug</a>的。所以直接插入带中文的gist在build的时候会看到<code>Liquid Exception</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt;&gt;&gt; Compass is watching <span class="k">for</span> changes. Press Ctrl-C to Stop.
-</span><span class='line'>Liquid Exception: incompatible character encodings: UTF-8 and ASCII-8BIT in 2014-05-16-web-development-skill-set-and-reading-list.markdown
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>解决起来也很简单，只需要在<code>lib/jekyll/converters/markdown.rb</code>里面强制设定encoding就可以了：</p>
-
-<figure class='code'><figcaption><span>lib/jekyll/converters/markdown.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -120,7 +120,7 @@ def convert(content)</span>
-</span><span class='line'>           rd = RDiscount.new(content, *@rdiscount_extensions)
-</span><span class='line'>           html = rd.to_html
-</span><span class='line'>           if rd.generate_toc and html.include?(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;])
-</span><span class='line'><span class="gd">-            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content)</span>
-</span><span class='line'><span class="gi">+            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content.force_encoding(&#39;utf-8&#39;))</span>
-</span><span class='line'>           end
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>接下来就是render出来的效果，样子丑到让人无法直视：</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/gist_render_output_orig.jpg" title="Don't touch me..." alt="original gist render output" /></p>
-
-<p>大概看了一下Octopress的文档，原来代码片断的样式（包括gist的渲染样式）都在<a href="https://github.com/imathis/octopress/blob/master/.themes/classic/sass/partials/_syntax.scss">_syntax.scss</a>里面。这个文件2012年就没有更新过了，但是github的gist输出在2013年有过变化，所以就有些不匹配了。</p>
-
-<p>打开自己的模板，大概调了一下这个sass，主要是和其他的代码高亮一致：</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/gist_render_output.jpg" title="Don't touch me..." alt="current gist render output" /></p>
-
-<p>调整的地方见<a href="https://gist.github.com/lenciel/ecc8b3805ed346727abe">这里</a>:</p>
-
-<figure class='code'><figcaption><span>_sass/partials/_syntax.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/46501e4:sass/partials/_syntax.scss b/02b0441:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gh">index 137d475..5465286 100644</span>
-</span><span class='line'><span class="gd">--- a/46501e4:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gi">+++ b/02b0441:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gu">@@ -22,10 +22,6 @@</span>
-</span><span class='line'>   @include border-radius(0);
-</span><span class='line'> }
-</span><span class='line'>
-</span><span class='line'><span class="gd">-.line-data {</span>
-</span><span class='line'><span class="gd">-   font-size: 13px;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'> figure.code, .gist-file, pre {
-</span><span class='line'>   @include box-shadow(rgba(#000, .06) 0 0 10px);
-</span><span class='line'>   .highlight pre { @include box-shadow(none); }
-</span><span class='line'><span class="gu">@@ -43,10 +39,8 @@ html .gist .gist-file {</span>
-</span><span class='line'>     margin-bottom: 0;
-</span><span class='line'>   }
-</span><span class='line'>   .gist-syntax {
-</span><span class='line'><span class="gd">-    background: #01222d !important;</span>
-</span><span class='line'><span class="gd">-    color: #d5dee2 !important;</span>
-</span><span class='line'><span class="gd">-    padding: 0 2em;</span>
-</span><span class='line'>     border-bottom: 0 !important;
-</span><span class='line'><span class="gi">+    background: none !important;</span>
-</span><span class='line'>     .gist-highlight {
-</span><span class='line'>       background: $base03 !important;
-</span><span class='line'>     }
-</span><span class='line'><span class="gu">@@ -57,17 +51,15 @@ html .gist .gist-file {</span>
-</span><span class='line'>   }
-</span><span class='line'>   .gist-meta {
-</span><span class='line'>    padding: .6em 0.8em;
-</span><span class='line'><span class="gi">+   border: 1px solid lighten($base02, 2) !important;</span>
-</span><span class='line'><span class="gi">+   color: $base01;</span>
-</span><span class='line'>    font-size: .7em !important;
-</span><span class='line'>    @if $solarized == light {
-</span><span class='line'><span class="gd">-     color: $base01;</span>
-</span><span class='line'><span class="gd">-     border: 1px solid lighten($base02, 2) !important;</span>
-</span><span class='line'>      background: lighten($base03, 2) $noise-bg;
-</span><span class='line'>      border: 1px solid $pre-border !important;
-</span><span class='line'>      border-top: 1px solid lighten($base03, 2) !important;
-</span><span class='line'>    } @else {
-</span><span class='line'><span class="gd">-     background: #01222d $noise-bg;</span>
-</span><span class='line'><span class="gd">-     text-shadow: none !important;</span>
-</span><span class='line'><span class="gd">-     color: #d5dee2;</span>
-</span><span class='line'><span class="gi">+     background: $base02 $noise-bg;</span>
-</span><span class='line'>    }
-</span><span class='line'>    @extend .sans;
-</span><span class='line'>    line-height: 1.5em;
-</span><span class='line'><span class="gu">@@ -77,7 +69,7 @@ html .gist .gist-file {</span>
-</span><span class='line'>       &amp;:hover { color: $base1 !important; }
-</span><span class='line'>     }
-</span><span class='line'>     a[href*=&#39;#file&#39;] {
-</span><span class='line'><span class="gd">-      position: absolute; top: 0; left:0; right:0px;</span>
-</span><span class='line'><span class="gi">+      position: absolute; top: 0; left:0; right:-10px;</span>
-</span><span class='line'>       color: #474747 !important;
-</span><span class='line'>       @extend .code-title;
-</span><span class='line'>       &amp;:hover { color: $link-color !important; }
-</span><span class='line'><span class="gu">@@ -221,7 +213,7 @@ pre, .highlight, .gist-highlight {</span>
-</span><span class='line'>   &amp;::-webkit-scrollbar-thumb:horizontal { background: $solar-scroll-thumb;  -webkit-border-radius: 4px; border-radius: 4px }
-</span><span class='line'> }
-</span><span class='line'>
-</span><span class='line'><span class="gd">-.highlight code {</span>
-</span><span class='line'><span class="gi">+.highlight code { </span>
-</span><span class='line'>   @extend .pre-code; background: #000;
-</span><span class='line'> }
-</span><span class='line'> figure.code {
-</span><span class='line'><span class="gu">@@ -267,11 +259,3 @@ figure.code {</span>
-</span><span class='line'>   text-shadow: #cbcccc 0 1px 0;
-</span><span class='line'>   padding-left: 3em;
-</span><span class='line'> }
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'><span class="gd">-.gist-file {</span>
-</span><span class='line'><span class="gd">-  font-size:.8em !important;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'><span class="gd">-table.lines{</span>
-</span><span class='line'><span class="gd">-  width: 100%;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Web开发知识结构]]></title>
-    <link href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/"/>
-    <updated>2014-05-16T14:28:04+08:00</updated>
-    <id>http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list</id>
-    <content type="html"><![CDATA[<p>这个list保存在了一个专门的<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">Gist里面</a>，方便更新。</p>
-
-<div><script src='https://gist.github.com/637812a7dcbe8341b07b.js?file=web_skill_list.md'></script>
-<noscript><pre><code>## 基础知识
-- 计算机软硬件基础
-- 计算机网络
-- 操作系统
-- 数据结构和算法
-- 设计模式
-- 以及其他各种你应该懂的东西
-
-## 前端开发
-- 前端标准/规范
-    - [HTTP1.1](http://www.w3.org/Protocols/rfc2616/rfc2616.html)
-    - [ECMAScript3/5](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-    - [W3C/DOM/BOM/XHTML/XML/JSON/JSONP](http://www.w3.org/TR/)
-    - [CommonJS Modules](http://wiki.commonjs.org/wiki/Modules/1.0)/[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)
-    - [HTML5](http://www.w3.org/html/wg/drafts/html/master/)/[CSS3](http://www.w3.org/Style/CSS/specs.en.html)
-- 前端库/框架
-    - [jQuery](http://jquery.com/)/[Underscore](http://underscorejs.org/)/[Mootools](http://mootools.net/)/[Prototype.js](http://www.prototypejs.org/)
-    - [YUI3](http://yuilibrary.com/projects/yui3/)/[Dojo](http://dojotoolkit.org/)/[ExtJS](http://www.sencha.com/products/extjs)/[KISSY](http://docs.kissyui.com/)
-    - [Backbone](http://backbonejs.org/)/[KnockoutJS](http://knockoutjs.com/)/[Emberjs](http://emberjs.com/)
-    - [AngularJS](http://angularjs.org/)
-        - [Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk)
-    - [Bootstrap](http://getbootstrap.com/)
-    - [Semantic UI](http://www.semantic-ui.com/)
-    - [Juice UI](http://juiceui.com/)
-    - [Web Atoms](http://webatomsjs.neurospeech.com/)
-- 模板引擎(TBA)
-- 静态站点生成器(TBA)
-- 编程语言
-    - [JavaScript](https://developer.mozilla.org/en-US/docs/JavaScript)/[Node.js](http://nodejs.org/)
-    - [CoffeeScript](http://coffeescript.org/)
-    - [TypeScript](http://www.typescriptlang.org/)        
-    - [HTML](http://www.w3.org/html/)/[HTML5](http://www.w3.org/TR/html5/)
-    - [CSS/CSS3](http://www.w3.org/Style/CSS/)
-- 做图切图
-    - [PhotoShop](http://www.photoshop.com/products/photoshop)/[Paint.net](http://www.getpaint.net/)/[Fireworks](http://www.adobe.com/cn/products/fireworks.html)/[GIMP](http://www.gimp.org/)
-- 代码质量
-    - Coding style
-        - [JSLint](http://www.jslint.com/)/[JSHint](http://www.jshint.com/)/[jscs](https://github.com/mdevils/node-jscs)
-        - [CSSLint](http://csslint.net/)
-        - [Markup Validation Service](http://validator.w3.org/)
-    - 单元测试
-        - [QUnit](http://qunitjs.com/)/[Jasmine](http://pivotal.github.com/jasmine/)/[Jest](http://facebook.github.io/jest/index.html)
-        - [Mocha](http://visionmedia.github.com/mocha/)/[Should](https://github.com/visionmedia/should.js/)/[Chai](http://chaijs.com/)/[Expect](https://github.com/LearnBoost/expect.js/)
-        - [Unit JS](http://unitjs.com/)
-    - 自动化测试
-        - [Selenium WebDriver](http://docs.seleniumhq.org/docs/03_webdriver.jsp)/[Karma Runner](https://github.com/karma-runner/karma)/[Sahi](http://sahi.co.in/)
-        - [phantomjs](http://phantomjs.org/)
-- 性能
-    - [JSPerf](http://jsperf.com/)
-    - [YSlow 35 rules](http://developer.yahoo.com/performance/rules.html)
-    - [PageSpeed](https://developers.google.com/speed/pagespeed/)
-    - [HTTPWatch](http://www.httpwatch.com/)
-    - [DynaTrace's Ajax](http://www.compuware.com/application-performance-management/dynatrace-ajax-download.html)
-    - [高性能JavaScript](http://book.douban.com/subject/5362856/)
-- 部署流程
-    - 压缩合并
-        - [YUI Compressor](http://developer.yahoo.com/yui/compressor/)
-        - [Google Clousure Complier](https://developers.google.com/closure/compiler/)
-        - [UglifyJS](https://github.com/mishoo/UglifyJS)
-        - [CleanCSS](https://github.com/GoalSmashers/clean-css)
-    - 文档输出
-        - [JSDoc](http://code.google.com/p/jsdoc-toolkit/)
-        - [Dox](https://github.com/visionmedia/dox)/[Doxmate](https://github.com/JacksonTian/doxmate)/[Grunt-Doxmate](https://github.com/luozhihua/grunt-doxmate)
-    - 项目构建工具
-        - [make](http://www.gnu.org/software/make/)/[Ant](http://ant.apache.org/)
-        - [GYP](http://code.google.com/p/gyp/)
-        - [Gulp](http://gulpjs.com)
-        - [Grunt](http://gruntjs.com/)
-        - [Yeoman](http://yeoman.io/)
-        - [FIS](http://fis.baidu.com/)
-        - [Mod](https://github.com/modulejs/modjs)
-- 代码组织
-    - 类库模块化
-        - [CommonJS](http://www.commonjs.org/)/AMD
-        - [YUI3模块](http://yuilibrary.com/projects/yui3/)
-    - 业务逻辑模块化
-        - [bower](https://github.com/twitter/bower)/[component](https://github.com/component/component)
-    - 文件加载
-        - [LABjs](http://labjs.com/)
-        - [SeaJS](http://seajs.org/)/[Require.js](http://requirejs.org/)
-    - 模块化预处理器
-        - [Browserify](https://github.com/substack/node-browserify)
-- 安全
-    - [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)/[XSS](http://en.wikipedia.org/wiki/Cross-site_scripting)
-    - ADsafe/Caja/Sandbox
-- 移动Web
-    - HTML5/CSS3
-    - [响应式网页设计](http://zh.wikipedia.org/wiki/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1)
-    - [Zeptojs](http://zeptojs.com/)/[iScroll](http://cubiq.org/iscroll)
-    - V5/[Sencha Touch](http://www.sencha.com/products/touch)
-    - [PhoneGap](http://phonegap.com/)
-    - [jQuery Mobile](http://jquerymobile.com/)
-- 可视化
-    - SVG/Canvas/VML
-    - SVG: [D3](http://d3js.org/)/[Raphaël](http://raphaeljs.com/)/[Snap.svg](http://snapsvg.io/)/[DataV](http://datavlab.org/datavjs/)
-    - Canvas: [CreateJS](http://www.createjs.com/)/[KineticJS](http://kineticjs.com/)
-
-## 后端开发(TBA)
-- 编程语言
-- 网页服务器
-    - [Nginx](http://nginx.org/en/)
-    - [Apache](http://httpd.apache.org/)
-    - [Lighttpd](http://www.lighttpd.net/)
-- 数据库
-    - SQL
-    - [MySQL](http://www.mysql.com/)/[PostgreSQL](http://www.postgresql.org/)/[Oracle](http://www.oracle.com/us/products/database/overview/index.html)
-    - [MongoDB](http://www.mongodb.org/)/[CouchDB](http://couchdb.apache.org/)
-
-## 开发工具
-- 浏览器
-    - IE6/[7](http://www.microsoft.com/en-US/download/details.aspx?id=2)/[8](http://windows.microsoft.com/en-US/internet-explorer/downloads/ie-8)/[9](http://windows.microsoft.com/en-US/internet-explorer/downloads/ie-9/worldwide-languages)/[10](http://windows.microsoft.com/en-US/internet-explorer/ie-10-worldwide-languages)/[11](http://windows.microsoft.com/en-US/internet-explorer/ie-11-worldwide-languages) (Trident)
-    - [Firefox](http://www.mozilla.org/en-US/) (Gecko)
-    - [Chrome](http://www.google.com/chrome)/[Chromium](http://www.chromium.org/) (Blink)
-    - [Safari](http://www.apple.com/safari/) (WebKit)
-    - [Opera](http://www.opera.com/) (Blink)
-- 编辑器和IDE
-    - [VIM](http://www.vim.org/)/[Sublime Text2](http://www.sublimetext.com/)
-    - [Notepad++](http://notepad-plus-plus.org/)/[EditPlus](http://www.editplus.com/)
-    - [WebStorm](http://www.jetbrains.com/webstorm/)
-    - [Emacs](http://www.gnu.org/software/emacs/)  [EmacsWiki](http://emacswiki.org)
-    - [Brackets](http://brackets.io)
-    - [Komodo IDE / Edit](http://www.activestate.com/komodo-edit)
-    - [Eclipse](http://www.eclipse.org/)
-    - [Visual Studio](http://www.visualstudio.com/)
-    - [NetBeans](https://netbeans.org/)
-    - [Cloud9 IDE](http://c9.io/)
-- 调试工具
-    - [Firebug](http://getfirebug.com/)/[Firecookie](https://addons.mozilla.org/en-US/firefox/addon/firecookie/)
-    - [YSlow](http://developer.yahoo.com/yslow/)
-    - [IEDeveloperToolbar](http://www.microsoft.com/en-us/download/details.aspx?id=18359)/[IETester](http://www.my-debugbar.com/wiki/IETester/HomePage)
-    - [Fiddler](http://www.fiddler2.com/fiddler2/)
-    - [Chrome Dev Tools](https://developers.google.com/chrome-developer-tools/)
-    - [Dragonfly](http://www.opera.com/dragonfly/)
-    - [DebugBar](http://www.debugbar.com/)
-    - [Venkman](https://developer.mozilla.org/en-US/docs/Venkman)
-- 版本管理
-    - [Git](git-scm.com/)/[SVN](http://subversion.apache.org/)/[Mercurial](http://mercurial.selenic.com/)
-    - [Github](https://github.com/)/[Bitbucket](https://bitbucket.org/)/[Google Code](http://code.google.com/hosting/)/[Gitorious](https://gitorious.org/)/[GNU Savannah](http://savannah.gnu.org/)/[Launchpad](https://launchpad.net/)/[SourceForge](http://sourceforge.net/)/[Gitlab](http://gitlab.org/)
-    
-## 部署运维(TBA)
-- 代码编译与发布
-- 服务器部署
-- 服务器监控
-- 服务器日志分析
-
-## Softskill(TBA)
-- 知识管理/总结分享
-- 沟通技巧/团队协作
-- 需求管理/PM
-- 交互设计/可用性/可访问性知识
-
-## 书籍推荐(TBA)
-</code></pre></noscript></div>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How Does iBeacons Work]]></title>
-    <link href="http://lenciel.cn/2014/05/how-does-ibeacons-work/"/>
-    <updated>2014-05-14T15:19:59+08:00</updated>
-    <id>http://lenciel.cn/2014/05/how-does-ibeacons-work</id>
-    <content type="html"><![CDATA[<p>iBeacons这个怪怪的单词<a href="https://www.google.com/search?q=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;oq=%E6%9C%80%E8%BF%91%E5%87%BA%E9%95%9C%E7%8E%87%E5%BE%88%E9%AB%98+site%3A36kr.com&amp;aqs=chrome..69i57.5408j0j7&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8#newwindow=1&amp;q=ibeacons+site:36kr.com&amp;safe=off">最近出镜率很高</a>。它可以用的场景很多，考勤打卡，室内导航，各种关联位置的推送以及我们现在还想不到诡异的应用。但虽然满坑满谷的文章介绍如何应用iBeacons，但它工作的原理究竟是什么样的呢？</p>
-
-<a name="Bluetooth.LE"></a>
-<h1>Bluetooth LE</h1>
-
-<p><a href="http://www.bluetooth.com/Pages/Low-Energy.aspx">Bluetooth Low Energy</a>，也就是低功耗蓝牙，经常被缩写成BLE。它其实是2010年颁布的Bluetooth 4.0标准的一部分：说准确点儿就是由Nokia提出的本来叫<code>Wibree</code>的那部分。</p>
-
-<p>话说11年本座给一个银行做押运的系统，需要在Android手机上加外设，让押运员持卡验明正身。当时考察了好些技术，蓝牙，NFC，IC卡&hellip;蓝牙被放弃的原因就是供电太麻烦而4.0低功耗的设备市面上根本就找不到。因为虽然标准是2010年就颁布了，但是4.0的协议向下不兼容，设备更新没有那么快。一晃几年过去了，你还是能看到市面上有三种主要的蓝牙设备型号：</p>
-
-<ul>
-<li>Bluetooth: 仅支持<code>传统</code>蓝牙</li>
-<li>Bluetooth Smart Ready: <code>传统</code>和<code>低功耗</code>通吃的蓝牙</li>
-<li>Bluetooth Smart: 仅支持<code>低功耗</code>蓝牙</li>
-</ul>
-
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/bluetooth_smart_ready_logo.jpg" title="Don't touch me..." alt="bluetooth smart ready logo" /></p>
-
-<p>比较老的设备，以及大部分的汽车，家电等等，是仅支持传统意义上的Bluetooth的。</p>
-
-<p>比较新的手机（iPhone 4S+，Samsung G3+），平板，笔记本等等都已经支持了完整的Bluetooth 4.0，所以都可以算是&#8221;Smart Ready&#8221;的。</p>
-
-<p>Beacons，如前面所述，是仅支持低功耗这部分的标准，所以就是&#8221;Smart&#8221;的。这些设备一般一颗纽扣电池就可以保证它运行2年左右，发射频率和传统蓝牙一样都是2.4GHz-2.4835GHz，在无遮挡的情况下100米内都有信号，但传输速率比传统蓝牙慢：当然，低功耗蓝牙设计的目的也不是用来输送大量的数据。</p>
-
-<a name="BLE......"></a>
-<h1>BLE通信</h1>
-
-<p>BLE通信主要是两种模式：<code>Advertising</code>和<code>Connecting</code>。</p>
-
-<p><code>Advertising</code>是单向的。希望被发现的设备自主发射间隔从20ms到10s不等的数据包出来。发射间隔越短，电池寿命就会越短，但同时也会更快的被找到。数据包的组成为：</p>
-
-<ul>
-<li>1 byte</li>
-<li>4 bytes access adress</li>
-<li>2-39 bytes advertising channel PDU</li>
-<li>3 bytes CRC</li>
-</ul>
-
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/bluetooth_le_packet.png" title="Don't touch me..." alt="bluetooth le packet" /></p>
-
-<p>其中<code>access address</code>在这种模式下是固定的<code>0x8E89BED6</code>。换句话说，<code>Advertising</code>模式就是对外以一个固定的读取地址和固定的时间间隔不断的发送数据。</p>
-
-<p>PDU的2个bytes的头包含了<code>size/type</code>等payload的信息，接着是device的MAC地址，最后是最多31个bytes的实际payload数据。</p>
-
-<p>当一个设备被找到之后，连接可以切换到<code>Connecting</code>模式。这种情况下，设备可以对外提供可读写的服务（被称为GATT profile）。比如一个智能热水器，可以提供一个服务让你读取以及设置出水的温度。</p>
-
-<p>关于<code>Connecting</code>到BLE设备，苹果的教程或者更专业的EE times的介绍都可以看看。但其实beacons没有使用<code>Connecting</code>模式，它只工作在<code>Advertising</code>模式下。</p>
-
-<a name="beacons............BLE"></a>
-<h1>beacons如何使用BLE</h1>
-
-<p>beacons仅仅工作在<code>Advertising</code>模式下。因此，可以说所谓的<code>iBeacons</code>就是iOS下对BLE的<code>Advertising</code>工作模式里数据的定义和封装。</p>
-
-<p>以Estimote的beacon为例，下面是它的PDU数据（使用XCode的<a href="http://stackoverflow.com/questions/5863088/bluetooth-sniffer-preferably-mac-osx">插件</a>可以对蓝牙设备抓包）：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>02 01 06 1A FF 4C 00 02 15 B9 40 7F 30 F5 F8 46 6E AF F9 25 55 6B 57 FE 6D 00 49 00 0A C5</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可以看到整个payload数据是30bytes，非常符合协议最多31bytes的要求。实际上，这份数据的格式的确是苹果<a href="http://stackoverflow.com/questions/18906988/what-is-the-ibeacon-bluetooth-profile">精心设计</a>了的：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>02 01 06 1A FF 4C 00 02 15: iBeacon prefix (fixed)
-</span><span class='line'>B9 40 7F 30 F5 F8 46 6E AF F9 25 55 6B 57 FE 6D: proximity UUID (here: Estimote’s fixed UUID)
-</span><span class='line'>00 49: major
-</span><span class='line'>00 0A: minor
-</span><span class='line'>C5: 2’s complement of measured TX power</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://lenciel.cn/downloads/images/2014_05/bluetooth_le_ibeacon_packet.png" title="Don't touch me..." alt="bluetooth le ibeacon packet" /></p>
-
-<p>换句哈说，如果你想试玩一下iBeacons技术，在买到beacon之前，其实你手边的任何新一点儿的iPhone或者<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">Mac设备都可以拿来作为iBeacon</a>的发射端或者接收端。当然，<a href="http://developer.radiusnetworks.com/2013/10/09/how-to-make-an-ibeacon-out-of-a-raspberry-pi.html">万能的树莓</a>也可以改造成beacon。</p>
-
-<a name="iBeacon............"></a>
-<h1>iBeacon数据格式</h1>
-
-<p><code>02 01 06 1A FF 4C 00 02 15</code>是固定不变的prefix。</p>
-
-<p><code>Proximity UUID</code>用来标识beacon。比如商店里面一批beacon都是用来提供打折活动的推送给顾客，那么这批beacon的Proximity UUID就应该是一样的。</p>
-
-<p><code>Major Number</code> (2 bytes，例子里面是<code>0×0049</code>，也就是73) 是用来对一批beacon进行分组的。比如商店里面的所有的beacon可以配置成相同的<code>Major Number</code>。</p>
-
-<p><code>Minor Number</code> (2 bytes，例子里面是<code>0x000A</code>，也就是10)用来标识单个的beacon。因为商店里面每个beacon都有不同的<code>Minor Number</code>，才能知道顾客是处在什么位置。</p>
-
-<a name="L......"></a>
-<h1>测距</h1>
-
-<p>数据里面的最后一位，<code>TX Power</code>，就是用来表征你离某个beacon的距离的。它测距离主要就是用所谓的RSSI(Received Signal Strength Indication)去算，这个算法在iOS里面是已经集成了的，即便是需要在Android平台上面实现一遍<a href="http://stackoverflow.com/questions/20416218/understanding-ibeacon-distancing">也不是那么的复杂</a>。</p>
-
-<p>另外需要注意的就是，无线信号总会因为障碍物以及其他的信号源更快的衰减。所以测算出来的距离只是一个有大概。</p>
-
-<a name="iOS......"></a>
-<h1>iOS集成</h1>
-
-<p>苹果既然敢在beacon前面加个i当然是做了很多增强的。对应用开发者来说，最主要的就是当用户靠近iBeacons设备的时候，App即使不在前台也可以被唤醒，并发送notification给用户。</p>
-
-<p>需要注意的是，因为beacon是周期性的发送，而手机在进入省电模式的时候探测蓝牙型号也是周期性的。这两个周期很可能会踩到边界，造成在实际应用中，有的手机<a href="http://developer.radiusnetworks.com/2013/11/13/ibeacon-monitoring-in-the-background-and-foreground.html">甚至会需要15分钟</a>左右的时间才能找到beacon。</p>
-
-<p>iOS下详细的应用开发教程可以见<a href="http://www.cocoanetics.com/2013/11/can-you-smell-the-ibeacon/">这里</a>。更多的例子可以参考设备商Estimote的iOS SDK和Android。</p>
-
-<a name="L.................."></a>
-<h1>如何购买设备</h1>
-
-<p>现在整个供货情况还是接不上趟的。我的<a href="http://estimote.com/">Estimote</a>已经订了4个多礼拜了还杳无音讯。因此最快的上手方案仍然是改造你的手机或者用Raspberry Pi自己搭个玩。但是如果你不满足（一般是满足不了的）这种玩法可以试试：</p>
-
-<ul>
-<li>预订<a href="http://estimote.com/">Estimote</a>的beacon: 99刀3个</li>
-<li><a href="http://kontakt.io/">Kontakt</a>的beacon: 99刀4个，279刀10个</li>
-<li><a href="http://www.radiusnetworks.com/">RadiusNetworks</a>的树莓套件: 99刀1个</li>
-<li><a href="http://redbearlab.com/ibeacon/">RedBearLab</a>的Arduino套件： 30刀1个</li>
-<li><a href="http://bleu.io/">Bleu</a>的USB转iBeacon转接头：40刀1个，150刀5个</li>
-</ul>
-
-
-<p>另外，高通也有做自己的解决方案叫<a href="https://www.gimbal.com/">Gimbal</a>，不但提供了Android和iOS两套SDK，价格也很平易近人：5刀一个，值得拥有，:)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[如何review产品的UX设计]]></title>
-    <link href="http://lenciel.cn/2014/05/what-to-ask-about-design/"/>
-    <updated>2014-05-12T22:45:33+08:00</updated>
-    <id>http://lenciel.cn/2014/05/what-to-ask-about-design</id>
-    <content type="html"><![CDATA[<p>产品设计中UX设计是很重要的一方面，毕竟是拿来见人的嘛。像我这样的工程师怎么去构思自己产品的UX设计或者是review别人的设计呢？当然还是工程师的思维方式了：</p>
-
-<ul>
-<li> 它外在的形式是什么？</li>
-<li> 它内在的表达是什么？</li>
-<li> 它的外在形式和内在表达一致吗？</li>
-<li> 作为观者，我自己感觉如何？我能接收到它传达的东西吗？我能够被它激发起使用的兴趣吗？</li>
-<li> 有了兴趣，接下来该怎么点击，怎么拖动，怎么操作是明显的吗？</li>
-<li> 有没有过度的设计？有没有可以砍掉的地方？有没有做太多假设？有没有缺失的地方？</li>
-<li> 今后如果功能上有这样那样的扩展，是很容易加上去的吗？</li>
-</ul>
-
-
-<p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.cn/">我心中的好设计</a>。</p>
 ]]></content>
   </entry>
   

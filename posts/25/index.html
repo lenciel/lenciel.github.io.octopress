@@ -9,10 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="有这么一种理论： 1978/1986年的冠军是阿根廷，1978+1986=3964  
-1974/1990年的冠军是德国，1974+1990=3964   
-1970/1994年的冠军是巴西，1970+1994=3964   
-1966/1998年的冠军是东道主，1966+1998=3964 &hellip;">
+  <meta name="description" content="概念：设备像素和CSS像素 首先要明白CSS像素和设备像素之间的区别。 设备像素是定义了我们使用的设备的分辨率，一般来说可以通过screen.width/height来得到。 如果我们在浏览器里面创建一个width:128px的元素，而我们的屏幕是1024px宽，那么在浏览器最大化的时候， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,20 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/25" />
-<meta property="og:description" content="有这么一种理论： 1978/1986年的冠军是阿根廷，1978+1986=3964  
-1974/1990年的冠军是德国，1974+1990=3964   
-1970/1994年的冠军是巴西，1970+1994=3964   
-1966/1998年的冠军是东道主，1966+1998=3964 &hellip;" />
+<meta property="og:description" content="概念：设备像素和CSS像素 首先要明白CSS像素和设备像素之间的区别。 设备像素是定义了我们使用的设备的分辨率，一般来说可以通过screen.width/height来得到。 如果我们在浏览器里面创建一个width:128px的元素，而我们的屏幕是1024px宽，那么在浏览器最大化的时候， &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="有这么一种理论： 1978/1986年的冠军是阿根廷，1978+1986=3964  
-1974/1990年的冠军是德国，1974+1990=3964   
-1970/1994年的冠军是巴西，1970+1994=3964   
-1966/1998年的冠军是东道主，1966+1998=3964 &hellip;" />
+<meta itemprop="description" content="概念：设备像素和CSS像素 首先要明白CSS像素和设备像素之间的区别。 设备像素是定义了我们使用的设备的分辨率，一般来说可以通过screen.width/height来得到。 如果我们在浏览器里面创建一个width:128px的元素，而我们的屏幕是1024px宽，那么在浏览器最大化的时候， &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -113,7 +104,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/world-cup-2006/">Yeah~世界杯来了</a></h1>
+      <h1 class="entry-title"><a href="/2012/08/how-to-define-viewport-for-mobile/">How to Define Viewport for Mobile</a></h1>
     
     
       <p class="meta">
@@ -122,40 +113,800 @@
 
 
 
-<time class='entry-date' datetime='2006-06-09T01:47:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>1:47 am</span></time>
+<time class='entry-date' datetime='2012-08-09T22:39:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:39 pm</span></time>
         
-           | <a href="/2006/06/world-cup-2006/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2006/06/world-cup-2006/">Comments</a>
+           | <a href="/2012/08/how-to-define-viewport-for-mobile/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2012/08/how-to-define-viewport-for-mobile/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><img style="WIDTH: 168px; HEIGHT: 221px; margin-right: 45px;" alt="world cup 2006" src="/downloads/images/world_cup_2006.png" align="left" border="0" />有这么一种理论：</p>
+  <div class="entry-content"><a name="L.strong.........................CSS........strong."></a>
+<h4><strong>概念：设备像素和CSS像素</strong></h4>
+
+<p>首先要明白CSS像素和设备像素之间的区别。</p>
+
+<p>设备像素是定义了我们使用的设备的分辨率，一般来说可以通过<code>screen.width/height</code>来得到。</p>
+
+<p>如果我们在浏览器里面创建一个<code>width:128px</code>的元素，而我们的屏幕是1024px宽，那么在浏览器最大化的时候，浏览器的宽度应该是这个元素的八倍（大概八倍，暂时忽略那些tricky的bits）。</p>
+
+<p>如果用户使用滚轮放大或者缩小页面(Zooming)，那么这个关系就会变化。一般来说，现在的浏览器对Zomming的实现都是通过伸缩像素，也就是当用户Zoom到200%的时候，你的<code>128px</code>宽的元素宽度并不会变成<code>256px</code>，而是每个像素的宽度翻倍了：这个元素还是<code>128px</code>的宽度，但是占据了256个设备像素。</p>
+
+<p>也就是说，zoom到200%其实会让一个CSS像素从一个设备像素变成四个设备像素的大小（长宽各翻一倍，面积就变成了4倍）。</p>
+
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 原始(zoom 100%)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 开始放大(zoom in)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 开始缩小(zoom out)</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_100" border="0" alt="csspixels_100" src="/downloads/images/2012_08/csspixels_100.gif" width="208" height="208" />&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_in" border="0" alt="csspixels_in" src="/downloads/images/2012_08/csspixels_in.gif" width="208" height="208" />&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="csspixels_out" border="0" alt="csspixels_out" src="/downloads/images/2012_08/csspixels_out.gif" width="208" height="208" /></p>
+
+<p>从这里可以看出，我们在使用css像素值在css文件里面定义宽度时，不需要考虑设备像素，因为在zoom的时候css像素值是不变的。用户在缩放的时候，浏览器负责放大缩小那些元素，但是整个layout是不变的。</p>
+
+<a name="L.strong...............strong."></a>
+<h4><strong>屏幕大小</strong></h4>
+
+<p><code>screen.width</code>和<code>screen.height</code>可以获取用户屏幕的尺寸。获得的尺寸值的单位是设备像素，换句话说，它们是不变的(可以看成是显示器的硬件指标，而不随浏览器窗口缩放而变化)。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_screen" border="0" alt="desktop_screen" src="/downloads/images/2012_08/desktop_screen.jpg" width="604" height="379" /></p>
+
+<p>一般来说，用户的屏幕大小对我们是无用的信息。很少有人使用它（除开统计站点访问信息时）。</p>
+
+<a name="L.strong...............strong."></a>
+<h4><strong>窗口大小</strong></h4>
+
+<a name=""></a>
+<h4></h4>
+
+<p>窗口大小表示了当前你的CSS layout可以占用的空间大小。可以通过<code>window.innerWidth</code>和<code>window.innerHeight</code>来获取它们。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_inner" border="0" alt="desktop_inner" src="/downloads/images/2012_08/desktop_inner.jpg" width="604" height="379" /></p>
+
+<p>很显然，窗口大小的单位是CSS像素值。当用户用滚轮放大缩小自己的窗口大小的时候，<code>window.innerWidth/Height</code>会相应的变化，这样你就知道自己的layout有多大空间可用了。</p>
+
+<p>注意：Opera是一个例外，它的<code>window.innerWidth/Height</code>不会因为缩放变化，而是取的设备像素值。这点对于桌面操作系统上的应用很讨厌，但是就像后面会说到的，对于手机来说很关键。</p>
+
+<a name="L.strong.Scrolling.offset..strong."></a>
+<h4><strong>Scrolling offset</strong></h4>
+
+<p><code>window.pageXOffset/pageYOffset</code>代表了当前的document在横向和纵向上的偏移量。这样你就知道用户scroll了多少内容。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="desktop_page" border="0" alt="desktop_page" src="/downloads/images/2012_08/desktop_page.jpg" width="604" height="519" /></p>
+
+<p>这些值也是CSS像素，理论上，当用户做缩放的时候，<code>window.pageXOffset/pageYOffset</code>也会变化。但是实际上，浏览器一般会在用户缩放的时候保证置顶的元素不变，所以在缩放的时候，一般来说这两个值基本是不变的。</p>
+
+<a name="L.strong..........Viewport..strong."></a>
+<h4><strong>概念：Viewport</strong></h4>
+
+<p><code>Viewport</code>的主要作用是限定<code>&lt;html&gt;</code>元素，也就是整个页面的最高级元素的大小。这样说比较含糊，我们来看一个详尽的例子：假设你有一个页面，侧栏的宽度是10%。在你缩放浏览器窗口大小的时候，这个侧边栏也会自动缩放。这是如果实现的？</p>
+
+<p>技术上讲，按照设置，侧边栏会自动占据自己的父元素（这里我们可以假设是<code>&lt;body&gt;</code>）宽度的10%。那么<code>&lt;body&gt;</code>的宽度呢？又会取它的父元素<code>&lt;html&gt;</code>的宽度的100%——因为理论上所有的HTML的block-level元素都会自动取父元素宽度的100%（有些例外情况，我们这里忽略它们）。</p>
+
+<p>那么<code>&lt;html&gt;</code>的宽度是怎么来的呢？所有的网页开发者都默认它就是浏览器的宽度。的确如此——在桌面浏览器上就是这样。实际上，就像我们已经提到过的，<html>的宽度是viewport限定的。在桌面上它就是整个浏览器窗口的宽度，而在手机上则要复杂得多。</p>
+
+<a name="L.strong..................strong."></a>
+<h4><strong>手机浏览器</strong></h4>
+
+<p>手机一个显而易见的特点就是屏幕小。如果我们原封不动的使用为桌面版浏览器开发的网站的文件，就会发现它们在手机浏览器上面目全非。但是大多数网站开发者是没有精力给手机用户专门维护另外一个网站的。因此手机浏览器制造商尽可能的通过技术手段让网站在手机上和在桌面浏览器里看起来“差不多”。</p>
+
+<a name="L.strong.......viewports..strong."></a>
+<h4><strong>两个viewports</strong></h4>
+
+<p>既然手机浏览器的viewport比较小，没法呈现所有css定义的元素，那么解决这个问题的办法就很明显了：扩大手机上的viewport。最终，手机浏览器通过<code>visual viewport</code>和<code>layout viewport</code>的合作来解决问题。</p>
+
+<p>George在Stack Overflow上<a href="http://stackoverflow.com/questions/6333927/difference-between-visual-viewport-and-layout-viewport" target="_blank">解释</a>说：</p>
+
+<p>layout viewport就像一个不改变大小和形状的大的图片。想象一下你透过一个小窗口去看这个大的图片，因为窗框的遮挡，你只能看到大图片的一部分。这部分就是visual viewport。你可以改变自己和这个窗口的位置（其实就是缩放），你也可以把窗口横放或者竖放，但是大图片本身（layout viewport）是不会改变的。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_visualviewport" border="0" alt="mobile_visualviewport" src="/downloads/images/2012_08/mobile_visualviewport.jpg" width="404" height="549" /></p>
+
+<p>要注意，CSS layout，特别是用百分比定义的layout，都是用layout viewport来算的，一般来说比visual viewport要宽很多。</p>
+
+<p>因此，起始阶段<html>会占据整个layout viewport的宽度，你用CSS定义的元素的尺寸会比手机屏幕的尺寸要宽，这主要是要模拟网站在手机浏览器上的表现。</p>
+
+<p>那么layout viewport究竟有多宽？这个要看具体的手机浏览器。Safari的iPhone版为980px，Opera是850px，Android的Webkit是800px，而IE是974px。还有一些其他的浏览器除开特别的宽度之外有特别的行为，比如Symbian上的Webkit会尽量保持layout viewport和visual viewport相同。当layout viewport超过了850px的时候，两者才会变得不同。</p>
+
+<a name="L.strong.........strong."></a>
+<h4><strong>缩放</strong></h4>
+
+<p>很明显，visual和layout两种viewport都使用了CSS像素，但是layout viewport是不会因为缩放操作变化的，而visual viewport会。很多的移动设备上的浏览器，在默认情况下都是以完全zoom-out的尺寸来显示页面的——结合前面的对两种viewport的简介，你可以认为这种时候你是把头伸到窗口(visual viewport)外在看窗外那副大图片(layout viewport)，这种情况下两个viewport也是相等的（没有被窗框遮住的部分）。</p>
+
+<p>因此，layout viewport的宽和高等于在完全zoom-out的情况下screen上最大可显示的CSS像素值大小。因此在随后用户如果zoom-in了这个值是不会变化的。</p>
+
+<p>下面的图表示了这个变化：在刚开始打开一个页面的时候，处于完全zoom-out的状态，layout viewport的值等于visual viewport的值。随后，当用户zoom-in（放大页面）时，每个CSS像素变成数倍于设备像素，而整个layout viewport的值不变（这样才保证你为页面定义的CSS长宽有意义），于是layout viewport的物理范围扩大了不少。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_viewportzoomedout" border="0" alt="mobile_viewportzoomedout" src="/downloads/images/2012_08/mobile_viewportzoomedout.jpg" width="240" height="418" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_layoutviewport" border="0" alt="mobile_layoutviewport" src="/downloads/images/2012_08/mobile_layoutviewport.jpg" width="304" height="413" /></p>
+
+<p>另外要注意的就是layout viewport的宽度是保持不变的。也就是说在默认情况下，竖屏转横屏的时候，虽然visual viewport变化了，但是浏览器会自动的zoom-in一些来使得layout viewport和visual viewport仍然相等。这种情况下，layout viewport的高度会变小，但是，对于web开发者而言，最重要的是宽度能保持不变。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_viewportzoomedout" border="0" alt="mobile_viewportzoomedout" src="/downloads/images/2012_08/mobile_viewportzoomedout.jpg" width="240" height="418" />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mobile_layoutviewport_la" border="0" alt="mobile_layoutviewport_la" src="/downloads/images/2012_08/mobile_layoutviewport_la.jpg" width="362" height="298" /></p>
+
+<a name="L.strong.......layout.viewport..strong."></a>
+<h4><strong>测量layout viewport</strong></h4>
+
+<p><code>document.documentElement.clientWidth/Height</code>得到的是layout viewport的数值。并且，如前所述，横竖屏转换时，只会影响Height不会影响Width取值。</p>
+
+<blockquote><p><strong>document.documentElement.clientWidht/Height</strong>：</p>
 
 <ul>
-<li>1978/1986年的冠军是阿根廷，<code>1978+1986=3964</code>  </li>
-<li>1974/1990年的冠军是德国，<code>1974+1990=3964</code>   </li>
-<li>1970/1994年的冠军是巴西，<code>1970+1994=3964</code>   </li>
-<li>1966/1998年的冠军是东道主，<code>1966+1998=3964</code>   </li>
-<li>1962/2002年的冠军是巴西，<code>1962+2002=3964</code>   </li>
+<li>Layout viewport</li>
+<li>使用CSS像素值为单位</li>
+<li>支持Opera、iPhone、Android、Symbian、Bolt、MicroB、Skyfire和Obigo</li>
+<li><p>有一些问题：</p></li>
+<li><p><div>
+  Samsung的Webkit的viewport只有当显式指定了<meta viewport>的时候才有效，否则返回的是<html>元素的长宽
+</div></p></li>
+<li><p><div>
+  Firefox返回的是以设备像素值为单位的结果
+</div></p></li>
+<li><p><div>
+  IE返回1024&#215;768，正确的信息要通过<code>document.body.clientWidth/Height</code>获取
+</div></p></li>
+</ul>
+</blockquote>
+
+<a name="L.strong.......visual.viewport..strong."></a>
+<h4><strong>测量visual viewport</strong></h4>
+
+<p><code>window.innerHeight/Width</code>返回的是visual viewport。很显然，当用户缩放的时候，这两个值会变化，因为有更多或者更少的CSS像素适配到屏幕可见的部分中。</p>
+
+<blockquote><p><strong>window.innerHeight/Width</strong>：</p>
+
+<ul>
+<li>visual viewport</li>
+<li>使用CSS像素值为单位</li>
+<li>支持iPhone、Symbian、BlackBerry</li>
+<li><p>有一些问题：</p></li>
+<li><p><div>
+  Samsung的Webkit返回的是layout viewport的取值只有当显式指定了<meta viewport>的时候才有效，否则返回的是<html>元素的长宽
+</div></p></li>
+<li><p><div>
+  Firefox和Opera返回的是以设备像素值为单位的结果
+</div></p></li>
+<li><p><div>
+  IE不支持，正确的信息要通过<code>document.documentElement.offsetWidth/Height</code>获取
+</div></p></li>
+<li><p><div>
+  其他的如Iris、Skyfire或者Obigo是有返回值到乱来的
+</div></p></li>
+</ul>
+</blockquote>
+
+<a name="L.strong.....................strong."></a>
+<h4><strong>手机屏幕大小</strong></h4>
+
+<p>前面提到过，在桌面系统，screen.width/hieght返回屏幕的大小，但是和桌面系统一样，开发者都不关心这个值：因为物理上屏幕多大并不重要，我们更关心多少个CSS像素能弄进这个屏幕。</p>
+
+<a name="L.strong..html.........strong."></a>
+<h4><strong><html>元素</strong></h4>
+
+<p>通过<code>document.documentElement.offsetWidth/Height</code>可以获取<code>&lt;html&gt;</code>元素的CSS像素单位的尺寸。</p>
+
+<a name="L.strong...............strong."></a>
+<h4><strong>缩放比例</strong></h4>
+
+<p>当screen.width和window.innerWidth在你工作的平台都得到了正确实现的时候，两者相除就可以得到缩放的比例大小。</p>
+
+<a name="L.strong.Media.query..strong."></a>
+<h4><strong>Media query</strong></h4>
+
+<p>Media query的思想就是定义只在页面大于，等于或者是小于一定尺寸的时候，才被执行的CSS规则。比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span><span class="nc">.sidebar</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@media</span> <span class="nt">all</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">//</span> <span class="nt">styles</span> <span class="nt">assigned</span> <span class="nt">when</span> <span class="nt">width</span> <span class="nt">is</span> <span class="nt">smaller</span> <span class="nt">than</span> <span class="nt">400px</span><span class="o">;</span>
+</span><span class='line'>    <span class="nt">div</span><span class="nc">.sidebar</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>规则指定了当宽度小于400px的时候sidebar是100px，其余时候是300px。</p>
+
+<p>需要注意的是在定义media query的时候可以用两套长宽：css里的width/height表示的是documentElement. clientWidth/Height取值，也就是viewport，单位是css像素。css里的device-width/height表示的是screen.width/height，单位是物理像素。</p>
+
+<p>那么使用哪种值来定义media query甚至用不用它都是让人疑惑的问题。比如你用device-width的话 ，其实效果和使用<meta viewport>来定义是类似的。但是用width，仅仅是一个模糊的像素宽度，更加缺乏在各种设备上具体效果的准确预期。目前来看，用media query应该能比较正确的区分运行环境是桌面，手机还是平板，但是并不太能细致到是那款平板或者是什么手机。</p>
+
+<a name="L.strong.Meta.viewport..strong."></a>
+<h4><strong>Meta viewport</strong></h4>
+
+<p>终于可以来讨论<meta name="viewport">了。这个最早是Apple的一个扩展，但是现在已经被各种浏览器抄去了。它主要的作用是用来重定义layout viewport的大小。</p>
+
+<p>我们通过实例来解释：假设你开发了一个网站，没有写css，因此所有的元素没有width属性。打开页面的时候，它们会默认zoom-out到最大，看起来像这样：</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_none" border="0" alt="mq_none" src="/downloads/images/2012_08/mq_none.jpg" width="258" height="455" /></p>
+
+<p>用户肯定会zoom-in，这时因为很多浏览器会保持每个元素的宽度仍然是100%的layout viewport，因此，很多文字就撑到visual viewport外面去了变得不可见了(Android原生的Webkit在这种情况下会自动调整text-containing元素的宽度来适配屏幕宽度）。</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_none_zoomed" border="0" alt="mq_none_zoomed" src="/downloads/images/2012_08/mq_none_zoomed.jpg" width="336" height="406" /></p>
+
+<p>为了避免这种情况，你可能会加上html {width:320px}的css规则。这样<html>的宽度，也就是大多数未定义宽度的元素继承到的宽度，是320px。这样的规则可以解决用户zoom-in放大页面之后溢出的问题，但是当用户刚打开页面的时候，大概又会看的下图的效果(因为300个CSS像素值在完全zoom-out的情况下是很窄的）：</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_html300" border="0" alt="mq_html300" src="/downloads/images/2012_08/mq_html300.jpg" width="254" height="445" /></p>
+
+<p>为了解决这种初始和用户缩放之后的不和谐，Apple定义了一个新的meta值。你可以用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">meta</span> <span class="nt">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="nt">content</span><span class="o">=</span><span class="s2">&quot;width=320&quot;</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>来确定<code>layout viewport</code>的宽度。这样在初始的时候，整个页面看起来仍然是非常正确的：</p>
+
+<p><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="mq_yes" border="0" alt="mq_yes" src="/downloads/images/2012_08/mq_yes.jpg" width="254" height="448" /></p>
+
+<p>meta中定义的layout viewport宽度甚至可以是device-width，也就是以设备像素值标定的<code>screen.width</code>取值。但是这里有一个陷阱，就是有时候正式的<code>screen.width</code>的取值并不是真的有实际意义，因为像素值可能太高。比如Nexus One的屏幕宽度是480px，但是Google的工程师觉得用<code>device-width</code>来定义<code>viewport</code>就让<code>layout viewport</code>取值480px太宽了，于是它们让device-width的返回值打了个2/3的折扣，只有320px，和iphone一致。这样一来，<code>device-width</code>的取值又有点儿CSS像素值的意思了。这种resolution标称的像素值和<code>device-width</code>的返回值之间的关系被称为<code>CSS pixel density</code>。</p>
+
+<table border="3" cellspacing="0" cellpadding="2" width="772">
+  <tr>
+    <td valign="top" width="158">
+      <strong>Device</strong>
+    </td>
+    
+    <td valign="top" width="170">
+      <strong>resolution (px)</strong>
+    </td>
+    
+    <td valign="top" width="442">
+      <strong>device-width/ device-height (px)</strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      iPhone
+    </td>
+    
+    <td valign="top" width="170">
+      320 x 480
+    </td>
+    
+    <td valign="top" width="442">
+      320 x 480, portrait/landscape mode
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      iPhone 4
+    </td>
+    
+    <td valign="top" width="170">
+      640 x 960
+    </td>
+    
+    <td valign="top" width="442">
+      <p>
+        320 x 480, in both portrait and landscape mode
+      
+      
+      <p>
+        CSS pixel density&#160; = 2
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      iPad 1 and 2
+    </td>
+    
+    <td valign="top" width="170">
+      768 x 1024
+    </td>
+    
+    <td valign="top" width="442">
+      768 x 1024, portrait/landscape mode
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      new iPad
+    </td>
+    
+    <td valign="top" width="170">
+      1536 x 2048
+    </td>
+    
+    <td valign="top" width="442">
+      <p>
+        768 x 1024, portrait/landscape mode
+      
+      
+      <p>
+        CSS pixel density = 2
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      Samsung Galaxy S I and II
+    </td>
+    
+    <td valign="top" width="170">
+      480 x 800
+    </td>
+    
+    <td valign="top" width="442">
+      <p>
+        320 x 533, portrait mode
+      
+      
+      <p>
+        CSS pixel density = 1.5
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      Samsung Galaxy S III
+    </td>
+    
+    <td valign="top" width="170">
+      720 x 1280
+    </td>
+    
+    <td valign="top" width="442">
+      360? x 640?, portrait mode
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      HTC Evo 3D
+    </td>
+    
+    <td valign="top" width="170">
+      540 x 960
+    </td>
+    
+    <td valign="top" width="442">
+      <p>
+        360 x 640, portrait mode
+      
+      
+      <p>
+        CSS pixel density = 1.5
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="top" width="158">
+      Amazon Kindle Fire
+    </td>
+    
+    <td valign="top" width="170">
+      1024 x 600
+    </td>
+    
+    <td valign="top" width="442">
+      1024 x 600, landscape mode
+    </td>
+  </tr>
+</table>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/get-start-with-python/">Getting Start With Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-05-28T22:15:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:15 pm</span></time>
+        
+           | <a href="/2012/05/get-start-with-python/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2012/05/get-start-with-python/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>刚刚开始使用Python开发的新手，遇到的第一个瓶颈（常常）就是缺乏对整个Python生态系统的理解。大家总是在网上搜索完成这件事或者那件事的“标准做法”，就像我们使用其他编程语言的时候常常需要掌握的一样。</p>
+
+<p>在和几个朋友开始iDVR的开发的时候，我们在内部Wiki上维护过一个Python中常见问题列表。我们的目标是随着项目的不断进步，这个内部的wiki能够变成一个豪华的Q&amp;A索引，但是事实证明项目一忙起来就没有人去写Wiki了。</p>
+
+<p>最近陆续有朋友问一些Python相关的问题，想想其实要用三言两语说清楚并不容易，就决定在那份wiki的基础上自己写一个版本，给那些刚开始使用Python（从来没有编过程的读起来可能没啥帮助）的同学。</p>
+
+<a name="L.strong.Warning..strong."></a>
+<h4><strong>Warning</strong></h4>
+
+<p>Python编程是个大话题，不是这里讨论的内容。如果你没有太多编程经验，应该先去看一点儿Python的<a href="http://learnpythonthehardway.org/" target="_blank">入门书籍</a>。</p>
+
+<p>另外，这片文章是基于Windows（最好是Win7 32bit）操作系统。潮人请不要问为啥不是Mac或者Linux，因为本座主要用的机器（包括码这篇Blog）都是用Win7 32bit。不过除开环境搭建，这里提到的大部分概念对其他系统都是适用的。</p>
+
+<p>如果你有环境搭建上的问题，最靠谱的提问的地方不是CSDN或者百度知道，是<a href="http://stackoverflow.com/" target="_blank">Stack Overflow</a>。</p>
+
+<a name="L............"></a>
+<h2>版本选择</h2>
+
+<p>本座在某软件公司面试的时候别人看到简历上有Python就问，Python3用过吗？本座老实回答没有，结果面试官就停下他正在笔记本上google的微操，在脸上流露出一丝嘲讽…</p>
+
+<p>不过，除了Python这门语言本身的开发者，大多数像本座这种使用Python的人，都没有紧跟Python3的步伐。Python3（或者叫Py3K）是一个大多数我熟悉的包，框架和工具都还没有完备支持的版本（在未来的数年本座也看不到希望）。如果不是想研究Python3的新特性或者具体实现，个人觉得初学的开发者使用2.7.x是最安全的版本（本座还在用进M公司就装好的2.6版本）。</p>
+
+<p>如果你比较熟悉Python但是不确定该不该升级到Python3，不妨先去观赏一下<a href="http://python3wos.appspot.com/">Python 3 Wall of Shame</a> (墙外，你们懂的)。</p>
+
+<a name="VM......"></a>
+<h2>VM选择</h2>
+
+<p>Python是<a href="http://zh.wikipedia.org/zh-hk/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80" target="_blank">脚本语言</a>，因此需要VM。CPython是最主流的选择，也被当成其他VM实现时的参考。其他常见的还有用Python实现的<a href="http://pypy.org/">PyPy</a>，用Java实现的<a href="http://www.jython.org/">Jython</a> 以及用Microsoft .Net CLR实现的<a href="http://ironpython.net/">IronPython</a>。如果你不是非常非常确定你自己要选用别的，就安装CPython吧。</p>
+
+<p>换句话说，前面这堆关于VM和版本选择的建议在你看来不知所云，你需要的就是<a href="http://www.python.org/getit/" target="_blank">CPython 2.7.x版本</a>。</p>
+
+<a name="Python......"></a>
+<h2>Python安装</h2>
+
+<p>下载之后的.exe安装文件安装的时候有一个地方需要注意：如果你是在Vista/Win7这样的C盘权限控制异常严格的操作系统，最好用右键“Run as administrator”。这点也适用于你下载到的被其他人编译成exe发布的Python package。嗯，什么是package？</p>
+
+<a name="L......Package"></a>
+<h2>理解Package</h2>
+
+<p>Python没有一个内置的package管理体系。实际上Python下面一个package是什么也是一个很“不具体”的概念。就像前面提到的，Python下面的代码是以module为单位存在的。每个module既可以是一个只有一个函数的文件，也可以是一个包含了一个或者多个子module的目录。而module和package之间的区别是非常模糊的，每个module都可以被认为是一个package。</p>
+
+<p>和所有的编程环境一样，在Python下面有一些函数和类是全局可见的（<code>str</code>，<code>len</code>，<code>Exception</code>等等），而另外一些需要通过<code>import</code>语句导入，比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">dirname</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里<code>import</code>被调用的时候，Python是从哪里把这些module导入的呢？其实，在你安装Python的时候，module的导入路径已经被自动设置过了。这个过程的具体实现是跟你运行的平台相关的，你可以通过<code>sys.path</code>来查看被设置的路径究竟是什么。比如本座的是：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span><span class="s1">&#39;&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\demjson-1.4-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\anyjson-0.2.5-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\pmw-1.3.2-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\paramiko-1.7.6-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\treewidgets-1.0a1-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\mechanize-0.2.3-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\pylint-0.22.0-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\logilab_astng-0.21.0-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\logilab_common-0.53.0-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\unittest2-0.5.1-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\virtualenv-1.5.1-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_staticfiles-0.3.2-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_attachments-0.3dev-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_ajax_validation-0.1.4-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_email_confirmation-0.2.dev4-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\distribute-0.6.10-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_timezones-0.2.dev1-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django-1.3-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\ \Python26\\lib\\site-packages\\rbtools-0.3.2-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\django_debug_toolbar-0.8.4-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\suds-0.4-py2.6.egg&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Windows\\system32\\python26.zip&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\DLLs&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\plat-win&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\lib-tk&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\PIL&#39;</span>,
+</span><span class='line'><span class="s1">&#39;C:\\Python26\\lib\\site-packages\\wx-2.8-msw-unicode&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Python在导入的module的时候，是按照这个列表“自顶向下，见好就收”的方式运作的。也就是说如果你正好机器上有两个路径下面安装了同样名称的module，先被搜索到的那个就会被导入。有的时候，你确信自己受到了这种机制的干扰，也可以通过下面的办法来hack回来：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(,</span> <span class="s">&#39;path</span><span class="se">\\</span><span class="s">to</span><span class="se">\\</span><span class="s">your</span><span class="se">\\</span><span class="s">packages&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>进行一段时间的Python开发过后你总是会有很多的包，于是这个办法你会觉得非常的方便。但是，请结合后面的内容默默记住，不到万不得已，不要这样hack。</p>
+
+<a name="L.strong.The.PYTHONPATH..strong."></a>
+<h5><strong>The PYTHONPATH</strong></h5>
+
+<p><code>PYTHONPATH</code>是一个环境变量（可以win+break到高级设置里面去设置），可以简单的理解它就是Windows下面的<code>PATH</code>变量，不过只是对Python可见而已。在很多Python的教程里面，会说所有你想要让Python搜索module的路径，都应该加到这个变量对应的列表里面。</p>
+
+<p>其实前面提到过，在Python安装的时候搜索路径已经被自动设置过一次。所以<code>PYTHONPATH</code>这个变量并不是必须加的。而且，作为开发环境满坑满谷的程序员，我们都喜欢把Path里面搞得干干净净的（比如本座干活都习惯在bat里面先设置相关的路径再起相应的Eclipse）。这种一启动就load一堆的办法，自己喜欢也可以用，但是更推荐后面会说的<code>virtualenv</code>。</p>
+
+<a name="L.strong..........package..strong."></a>
+<h5><strong>第三方package</strong></h5>
+
+<p>首先，入门之后要开始正经干活，你总是需要安装一些第三方的Package。安装的办法有：</p>
+
+<ol>
+<li>下载别人编译好的Windows的版本exe</li>
+<li>使用<code>pip</code>或者<code>easy_install</code></li>
+<li>自己从代码安装</li>
+</ol>
+
+
+<p>三种办法干的事情都是类似的：下载package的依赖包，编译（需要的话）和拷贝目标文件到一个默认的第三方Package路径。那么，哪里去找安装需要的文件呢？一般来说：</p>
+
+<ol>
+<li>Google</li>
+<li><a href="http://pypi.python.org/pypi">Python Package Index(or PyPI)</a></li>
+<li>各种开源的代码库(<a href="https://launchpad.net/">Launchpad</a>/<a href="http://github.com/">GitHub</a>/<a href="https://bitbucket.org/">BitBucket</a>）</li>
+</ol>
+
+
+<a name="L.strong.........................exe..strong."></a>
+<h5><strong>安装别人编译好的exe</strong></h5>
+
+<p>注意下载的时候看清别人编译是在32还是64bit的Windows，Python的版本和你用的一致不一致。运行exe的时候注意右键Run as Administrator。就这么简单。</p>
+
+<a name="L.strong.......pip..strong."></a>
+<h5><strong>使用pip</strong></h5>
+
+<p><code>easy_install</code>已经慢慢失宠了，主要介绍一下它的替代品：<code>pip</code>。</p>
+
+<p><code>pip</code>是用来安装和管理Python Package的工具。它不是随Python默认安装的，因此需要额外安装。安装完毕之后我们就可以在命令行里面调用它来管理package了。比如你要安装<code>pygame</code>这个package，只需要：</p>
+
+<div class="wp_syntax">
+  <div class="code">
+    <pre class="python" style="font-family:monospace;">pip install pygame</pre>
+  </div>
+</div>
+
+
+<p>而如果你想删除它的话，则运行：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip uninstall pygame
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>pip</code>默认会按照你指定的名字，搜索和安装最新的stable版本的包。但我们常常需要安装某个特定版本的包，这个时候需要你在命令行里面指定：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install <span class="nv">pygame</span><span class="o">==</span>version_number
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你安装的版本不对，可以通过<code>upgrade</code>命令升级/降级到指定版本：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install <span class="nv">pygame</span><span class="o">==</span>version_number –upgrade
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>由于Python高度依赖开源团体，很多最新的package都没有在PyPI上面，我们常常需要从代码库直接安装package。在<code>pip</code>下面可以直接</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install git+http://somedomain.com/path/to/git-repo#egg<span class="o">=</span>packagename
+</span><span class='line'><span class="nv">$ </span>pip install hg+http://somedomain.com/path/to/hg-repo#egg<span class="o">=</span>packagename
+</span><span class='line'><span class="nv">$ </span>pip install svn+http://somedomain.com/path/to/svn-repo#egg<span class="o">=</span>packagename
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当然，前提是git/hg/svn这些工具你都安装好了并且在命令行里面能够执行。</p>
+
+<p>上面这些<code>egg</code>是什么蛋呢？你可以认为它们就是Package源代码和一些metadata打成的压缩包。<code>pip</code>会读取<code>egg</code>里面的<code>setup.py</code>文件，然后安装<code>egg</code>到你的文件系统。</p>
+
+<a name="L.strong....Python..............strong."></a>
+<h5><strong>从Python源码安装</strong></h5>
+
+<p>从源代码安装虽然是最复杂的，但是也没那么复杂。把你下载的源代码解压之后，找到<code>setup.py</code>所在的路径，然后运行下面的命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>python setup.py install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也许你觉得这样也挺容易的，为啥要去用<code>pip</code>？因为：</p>
+
+<ul>
+<li>省去你上网找源代码，解压，安装这些动作</li>
+<li>更重要的是，<code>pip</code>不但装，而且管。你可以升级和降级一个Package。</li>
 </ul>
 
 
-<p>以此类推可得2006年的世界杯冠军应该是：</p>
+<a name="L.strong......................package..strong."></a>
+<h5><strong>安装需要编译的package</strong></h5>
 
-<p><code>3964-2006=1958年的冠军=巴西</code>     </p>
+<p>这种一般是因为Package里面有c/cpp的代码。如果你能找到别人编译好的exe文件或者用<code>pip</code>，最好不要自己折腾。只有非常非常罕见的情况下你需要自己编译，过程中一般来说都会需要用<code>cygwin</code>之类的东西，在前面几次你可以多看看每个Package的<code>readme</code>关于编译的说明。</p>
 
-<p>同时可以得到一个推论：   </p>
+<a name="L............"></a>
+<h2>开发环境</h2>
 
-<p>中国队获得世界杯冠军的时候最早应该是<code>3964-0=3964年</code>  </p>
+<a name="L.strong.virtualenv..strong."></a>
+<h5><strong>virtualenv</strong></h5>
 
-<p>上面那条理论看起来很神奇，但本座认为这是因为世界杯四年一次加上夺冠的队伍非常有限造成的。在我看来，这届世界杯巴西队的阵容有些头重脚轻，在埃德米尔森受伤离队之后更是要打折扣（虽然他本来就不是主力）。不过，还是蛮希望这支聚集大量进攻天才的球队奉献一些精彩比赛。   </p>
+<p><code>virtualenv</code>无疑是当前Python开发者心中“必知必会”类的工具了。<code>virtualenv</code>主要就是提供一个“独立的”Python开发环境。为什么需要“独立”的开发环境？在不知道<code>virtualenv</code>之前Python包满坑满谷的本座自然是有很多槽可以吐，不过最好的答案是<code>virtualenv</code>的文档里面说的：</p>
 
-<p>对于世界杯，Annie King同学有些牢骚，觉得世界杯是“球迷的节日”，而她有些意兴阑珊。甚至还有人说，世界杯的一个月，就是女人对男人最不满的一个月。其实经过最近两届世界杯，World Cup赛事的终极地位，已经在本座等一干球迷中，慢慢让位给欧洲杯。并不是E Cup比W Cup听起来更真实可行，实在是因为世界杯的精彩程度有所欠缺。特别是上届世界杯，商业炒作因为中国队的出线被推到极致，比赛却是历届世界杯的最低谷。   </p>
+<blockquote><p>The basic problem being addressed is one of dependencies and versions, and indirectly permissions. Imagine you have an application that needs version 1 of LibFoo, but another application requires version 2. How can you use both these applications? If you install everything into /usr/lib/python2.7/site-packages (or whatever your platform’s standard location is), it’s easy to end up in a situation where you unintentionally upgrade an application that shouldn’t be upgraded.</p></blockquote>
 
-<p>希望这次世界杯，场外因素尽量少，多点经典比赛，多点美妙镜头。为了不孤零零的看球，我已经和Turbulence谈妥，准备在他那里借宿一个月。</p>
+
+<p>简单来说，就是每个工程使用自己独立的<code>virtualenv</code>进行开发，所有该工程需要依赖的Package都安装在这个<code>virutalenv</code>里面。<code>virutalenv</code>的安装同样是使用<code>pip</code>：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install virtualenv
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后就可以建立属于自己项目的开发环境：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>D:<span class="se">\L</span>enciel<span class="se">\T</span>emp mkdir my_project_env
+</span><span class='line'>
+</span><span class='line'>D:<span class="se">\L</span>enciel<span class="se">\T</span>emp<span class="se">\v</span>irtualenv --distribute my_project_env
+</span><span class='line'>
+</span><span class='line'>  New python executable in my_project_env<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe
+</span><span class='line'>  Installing distribute.................done.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>建立的目录下面会自动的安装好<code>pip</code>等工具：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-my_project_env
+</span><span class='line'>  <span class="p">|</span>-- Scripts <span class="c"># -- Python解释器的拷贝/pip脚本/activiate脚本/deactivate脚本等</span>
+</span><span class='line'>  <span class="p">|</span>-- Lib     <span class="c"># -- 所有库（包括激活后使用pip安装的库都会放在这里</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在命令行执行activate脚本就可以激活你新建的环境。环境被激活后，主要通过下面两个功能保持独立完整性：</p>
+
+<ol>
+<li>当你在被激活的环境里面使用<code>pip</code>安装一个Package的时候，它只会被安装在这个工作目录下面</li>
+<li>当你<code>import</code>的时候，会先从工作目录下面去搜索，然后才会搜索系统目录下的</li>
+</ol>
+
+
+<p>需要注意的是，在系统目录下面安装的包，对所有的<code>virtualenv</code>建立的环境都是可见的。如果你不想在你建立的<code>virtualenv</code>里面看到这些包，可以使用<code>--no-site-packages</code>参数建立开发环境：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>virtualenv my_project_venv --no-site-packages
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="L..............."></a>
+<h2>其他的工具</h2>
+
+<a name="L.strong............strong."></a>
+<h5><strong>编辑器</strong></h5>
+
+<p>在不同的项目里面本座用过Vim/Sublime text 2/Eclipse+PyDev/PyCharm。现在Vim和PyCharm用得比较多一点，PyDev一直有一些诡异的问题。比如那个“<a href="https://www.google.com.hk/search?num=30&hl=en&newwindow=1&c2coff=1&safe=strict&site=&source=hp&q=Unresolved+import+pydev&btnK=Google+Search&qscrl=1" target="_blank">Unresolved import</a>”从一开始到现在都好像没有被真正解决过。</p>
+
+<a name="L.strong...............strong."></a>
+<h5><strong>编码规范</strong></h5>
+
+<p><a href="http://www.python.org/dev/peps/pep-0008/">PEP 0008</a>推荐了非常完整的一套编码规范，目的就是让全世界编写Python脚本的同学们用相同的方式去对齐代码，命名变量、类和函数。每个严肃的Pythoner都应该认真的学习和理解这些规范，并且贯彻执行。</p>
+
+<a name="L.strong.Python...........strong."></a>
+<h5><strong>Python标准库</strong></h5>
+
+<p>Python的标准库提供了相当完备的功能。就像Java的工程师需要熟悉系统自带的API文档一样，了解标准库的用法是非常有好处的。另外，这些标准库都是很好的范例，特别是在支持跨平台使用这方面。</p>
+
+<p>官方文档在<a href="http://docs.python.org/library/" target="_blank">这里</a>。</p>
+
+<a name="L......"></a>
+<h2>嗯哼</h2>
+
+<p>前面列了不少东西，只是希望给新手一个上路指引。Python下面有用的工具，有趣的包很多很多。随着你学习和应用这门语言，不断深入它，你会自己慢慢发觉那些你自己最需要/愿意熟悉的部分。</p>
+
+<p>Python的另外一大财富就是它的开源社区，条件成熟的时候，你也应该参与到这样的开发活动里面去。</p>
+
+<p>最后是每个Pythoner都津津乐道的Zen Of Python送给刚开始学习的朋友。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">this</span>
+</span><span class='line'><span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
+</span><span class='line'><span class="n">Explicit</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">implicit</span><span class="o">.</span>
+</span><span class='line'><span class="n">Simple</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="nb">complex</span><span class="o">.</span>
+</span><span class='line'><span class="n">Complex</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">complicated</span><span class="o">.</span>
+</span><span class='line'><span class="n">Flat</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">nested</span><span class="o">.</span>
+</span><span class='line'><span class="n">Sparse</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">dense</span><span class="o">.</span>
+</span><span class='line'><span class="n">Readability</span> <span class="n">counts</span><span class="o">.</span>
+</span><span class='line'><span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s">&#39;t special enough to break the rules.</span>
+</span><span class='line'><span class="n">Although</span> <span class="n">practicality</span> <span class="n">beats</span> <span class="n">purity</span><span class="o">.</span>
+</span><span class='line'><span class="n">Errors</span> <span class="n">should</span> <span class="n">never</span> <span class="k">pass</span> <span class="n">silently</span><span class="o">.</span>
+</span><span class='line'><span class="n">Unless</span> <span class="n">explicitly</span> <span class="n">silenced</span><span class="o">.</span>
+</span><span class='line'><span class="n">In</span> <span class="n">the</span> <span class="n">face</span> <span class="n">of</span> <span class="n">ambiguity</span><span class="p">,</span> <span class="n">refuse</span> <span class="n">the</span> <span class="n">temptation</span> <span class="n">to</span> <span class="n">guess</span><span class="o">.</span>
+</span><span class='line'><span class="n">There</span> <span class="n">should</span> <span class="n">be</span> <span class="n">one</span><span class="o">--</span> <span class="ow">and</span> <span class="n">preferably</span> <span class="n">only</span> <span class="n">one</span> <span class="o">--</span><span class="n">obvious</span> <span class="n">way</span> <span class="n">to</span> <span class="n">do</span> <span class="n">it</span><span class="o">.</span>
+</span><span class='line'><span class="n">Although</span> <span class="n">that</span> <span class="n">way</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">obvious</span> <span class="n">at</span> <span class="n">first</span> <span class="n">unless</span> <span class="n">you</span><span class="s">&#39;re Dutch.</span>
+</span><span class='line'><span class="n">Now</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">never</span><span class="o">.</span>
+</span><span class='line'><span class="n">Although</span> <span class="n">never</span> <span class="ow">is</span> <span class="n">often</span> <span class="n">better</span> <span class="n">than</span> <span class="o">*</span><span class="n">right</span><span class="o">*</span> <span class="n">now</span><span class="o">.</span>
+</span><span class='line'><span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">hard</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span><span class="s">&#39;s a bad idea.</span>
+</span><span class='line'><span class="n">If</span> <span class="n">the</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span><span class="o">.</span>
+</span><span class='line'><span class="n">Namespaces</span> <span class="n">are</span> <span class="n">one</span> <span class="n">honking</span> <span class="n">great</span> <span class="n">idea</span> <span class="o">--</span> <span class="n">let</span><span class="s">&#39;s do more of those!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Happy Pythoning…!!</p>
 </div>
   
   
@@ -168,7 +919,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/03/the-reality-is-cruel/">现实种种</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/integration-of-proguard-and-maven-in-android-projects/">Android开发中使用ProGuard</a></h1>
     
     
       <p class="meta">
@@ -177,125 +928,360 @@
 
 
 
-<time class='entry-date' datetime='2006-03-16T09:53:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>9:53 am</span></time>
+<time class='entry-date' datetime='2012-02-27T22:46:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:46 pm</span></time>
         
-           | <a href="/2006/03/the-reality-is-cruel/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2006/03/the-reality-is-cruel/">Comments</a>
+           | <a href="/2012/02/integration-of-proguard-and-maven-in-android-projects/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2012/02/integration-of-proguard-and-maven-in-android-projects/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><img height="320" alt="block" src="/downloads/images/2006_03/reality.png" width="178" align="left" style="margin:5px"/>  三月的西湖岸边，一棵柳树因为虫害，正在走向死亡。</p>
+  <div class="entry-content"><p>今天被同事问到怎么在release版本里面所有的日志都去掉的时候，竟然只能回忆起用<code>ProGuard</code>做过这个，完全忘记怎么做的了，特立此存照。文章里面使用的例子放在<a class="network" href="https://github.com/lenciel/AMP" rel="me"><img src="/downloads/images/github_button.png" alt="" width="16" height="16" /> Android-Maven-ProGuard-Sample-App</a>。</p>
 
-<p>早上八点钟的时候，B站在窗口。他好像看到很多东西，但都没有看进心里去。他只是感到户外温暖热烈，“那是阳光。”B心想。然后他将手伸出了窗台，手上竟然是一遍冷漠的感觉。仔细一看，原来窗外飘落着春天忧愁的眼泪。B心里微微一怔，手指开始有些颤抖。绵绵细雨造成的地上起伏不定的斑驳，让他无端地想象出某一条凹凸艰难的路，或许他总有一天会走到这条路上去。</p>
+<a name="ProGuard......"></a>
+<h4>ProGuard简介</h4>
 
-<p>对C来说，这天早晨和别的早晨没有两样，窗外正下着小雨。因为这雨断断续续下了一个多星期，所以在C的印象中，晴天十分遥远，仿佛远在她的童年里。C原本清秀的脸上长着点点雀斑，两只眼睛如同灌满泥浆，没有一丝光泽，两只耳朵却精神抖擞地耸在那里，似乎随时准备接受更多的惨痛消息。</p>
+<p>在移动设备上面开发应用程序，性能是一个很关键的指标。你的老板走过来要你提高性能的时候，你的第一反应有可能是抓起熟悉的工具花几个小时profile自己的应用，找出那些时间都花在哪里了。在使用这么终极的手段之前，千万不要忘记了先试试ProGuard。</p>
 
-<p>H卧床不起已经几日了。他是在儿子B四十五岁生日时病倒的，起先尚能走着去看中医，此后就只能由妻子搀扶，最后便终日卧床。眼看着H一天比一天憔悴下去，作为妻子的心中出现了一张像白纸一样的脸，和五根像白色粉笔一样的手指。她望着窗玻璃上呈爆炸状流动的水珠，水珠的形态令她感到窗玻璃正在四分五裂。这不吉的景物似乎是在暗示着H的命运结局。所以儿子站在窗口的头颅在她眼中恍若一片乌云。此刻，她第一次感到应该将丈夫从那几个精神饱满的中医手中取回，然后交给苍白的瞎子。</p>
+<p>做Android之前就是Java程序员的可能早就已经对ProGuard很熟悉了。简单的来说，ProGuard就是一个Java的class文件处理器，主要的功能类似奥运会口号：</p>
 
-<p>在病倒的那天晚上，H清晰地听到了隔壁K的嘶吼，K是H的孙子，一个刚刚满十八岁的男孩。他的吼声好像西湖湖面上一阵阵的风。随着H病情的日趋严重，K的嘶吼似乎也日趋频繁起来。有一只鸟在雨的远处飞来，H听到了鸟的鸣叫。鸟鸣使H感到十分空洞。然后鸟又飞走了。一条湿漉漉的街道出现在H虚幻的目光里，恍若当年五岁的儿子B留在袖管上那亮晶晶的鼻涕痕迹。年轻的瞎子坐在街边一块大石头上，他知道很多已经发生和即将发生的事，所以他的沉默异常丰富。T驾驶着一辆蓝颜色的卡车急驰而过，溅起的泥浆扑向瞎子和迈着跳蚤似的脚步出现在胡同口的L。为了躲避突如其来的泥浆L不小心滑了一下，嘴里叼的烟掉在了地上，但是L没有摔倒。瞎子却纹丝不动，好像所有一切都在他意料之中。</p>
+<ul>
+<li>让你的程序变得更小更快</li>
+<li>让你的程序变得更难被反向工程</li>
+</ul>
 
-<p>L是H的另外一个孙子。</p>
 
-<p>西湖像一块过期的果冻，在烟雾里拍击着湖岸。H坐在一条小舟之中，在湖面上像一片枯叶似的漂浮，妻子问他干嘛，他说他只是想听听湖水里弦乐的声音。</p>
+<p>尽管ProGuard不是专用于Android开发的，但是在Android的SDK里面已经包括了这个工具，路径是<code>ANDROID_HOME/tools/proguard</code>，文档可以在<a href="http://proguard.sourceforge.net">http://proguard.sourceforge.net</a>看到。</p>
 
-<p>这时候B和C开始争吵，在H听来，这压低的争吵声中似乎有滴滴答答的水声。而在L和K却听到一种筷子被折断的声音。过了一会儿，L对K说：“这倒霉的春雨，下了快一年了。”K说：“是啊，我感觉有一百年了。”</p>
+<p>让程序变得更小更快的好处是不言而喻的。ProGuard通过对bytecode进行优化，优化手段包括去掉无用的代码，去掉内联方法的调用，对类的继承结构进行优化，把所有能加上的<code>final</code>和<code>static</code>加上，以及对算术运算进行<a href="http://en.wikipedia.org/wiki/Peephole_optimization" target="_blank">Peephole optimization</a>等等。</p>
 
-<p>79年的夏天和男孩B女孩C有关。在那个天空明亮的日子里，他们乘坐一辆嘎吱作响的公共汽车，去一个从没有去过的某个地方堕胎。车票是男孩B买的，女孩C一直躲在车站外商量好的地方。脚下飘扬的落叶和尘土，过往的人发出的嗡嗡声都无法改变女孩C此刻像正比例函数一样单调的心情，她偷偷望着车站敞开的小门，目光平静如水。从车站走出来的B脸色却苍白而又憔悴。</p>
+<p>让程序变得更难被反向工程就不一定是每个人都需要的了。一般情况下，对Android的反向工程是把Dalvik的bytecode转换成Java的bytecode，然后使用传统的Java反向工具转成成Java源代码。如果你的项目是开源的，显然也没有必要防止别人反向。但是如果是下面几种情况，你就很可能需要它了：</p>
 
-<p>B往商量好的方向走了过去，十分紧张地左顾右盼之后，他又站住了脚，然后朝那边的女孩C望了一眼。他看到女孩此刻正看着自己，便狠狠地盯了她一眼，可她依旧看着他，目光平静如水。B非常生气地转过脸去。在此后的一段时间里，他一直站在原地，不去看她，因为他总觉得C始终都在看着自己，这个想法使他惊慌失措。后来他确定四周没有熟人，才朝她走去。B看到这个白皙的少年在阳光里走来时十分动人。她内心此而激动，脸上便露出了笑容。然而B走到她身旁后却对她的笑容表示了愤怒，他低声说：“这种时候你还能笑？” C的美丽微笑还未成长便被B摧残了。她有些紧张地望着他，因为他的神色有些凶狠。这种凶狠此刻还在继续下去，他说：“我说过多少次，你不要看我，你要装着不认识我。你为什么看我？真讨厌。”B没有丝毫反抗的表示，只是将目光从他脸上无声地移开，看着地上一片枯黄的树叶，听着B从牙缝里出来的声音。B告诉她：“上车以后你先找到座位坐下，如果没有熟人，我就坐到你身旁。如果有熟人，我就站在车门旁。记住，我们互相不要说话。”B将车票递了过去，C拿住后他就走开了：没有走向候车室，而是走向其他的某个地方。</p>
+<ul>
+<li>你在源文件里面有一些不想被别人看到的信息，如密码等</li>
+<li>你的代码里面有自己或者公司的赖以生存的知识产权</li>
+<li>你的甲方有明确的要求</li>
+<li>你的程序按license等方式收费，你不想被别人把licens检查的部分去掉重新编译个版本</li>
+</ul>
 
-<p>H坐在自己房中开始喋喋不休了。不久他又开始咳嗽，咳嗽的声音很夸张。接着是吐痰的声音。那声音很有弹性。B、C、L、K知道他是将痰吐在卫生纸上观察里面是否有血迹。他们各自想象着H屋内的情景。到了去上班的时候了，B、C决定停止争吵，他们从屋里走出的时候，手里都拿着两把雨伞。L、K兄弟俩这时站起来，接过各自的雨伞后四个人一起走了出去，他们将一起走出那道铁门。像是互不相识一样，他们默默无语一直走着，在巷口分开。</p>
 
-<p>T随母亲走出了家门，两把黑伞在雨中舒展开来。瘦小的母亲走在前面，使T心里涌上一股怜悯之意。这时候K出现在巷口，他似乎已经知道自己每晚嘶吼不止给大院中所有人家都笼罩上了什么，所以脸上的神色与身上那黑色长裤一样阴沉，然而他身边却有着鲜艳的M。T觉得M异常美丽。但是K的目光破坏了T对她的注视，T无法忍受K的目光对自己的搜查。T对K说：“我要去找那个算命的瞎子，我昨天做了个奇怪的梦。”</p>
+<p>ProGuard可以帮助通过对类，方法和成员名称进行混淆，同时通过去掉结构化的信息，如文件名或者行号表等，来使得代码从理论上变得不可被反向工程。</p>
 
-<p>瞎子坐到那条湿漉漉的街道上，绵绵阴雨使他和那条街道一样湿漉漉的。二十多年前，他被遗弃在这个地方，二十多年后，他还坐在这里。就在近旁有一所中学，瞎子坐在这里来就是因为能够听到那些女中学生动人的声音，她们的声音使他感到心中有一股泉水在流淌。他想象着手触摸在女人肌肤上的感觉，就像放在面粉上一样。起先瞎子并不是每天都来这里，只是有一天他听到了M的声音以后，他就天天坐到了这里。那似乎已是很久以前的事了，那时候有好几个女学生的声音从他身旁经过，他在那里面清楚的听到了M的声音。虽然是一句很短的话，但是那声音却像新鲜水果一样，向瞎子飘来时仿佛滴下了几滴甘甜的果汁，在瞎子的心上灌溉出一道难以消失的沟渠。可是最近一些日子瞎子不再听到M的声音了。T和T的母亲向他走来时，他准确地判断出他们的光临。可是M紧接着被K牵着从他身旁走过时，他却并不知道身边走过了他日夜期待的声音。</p>
+<p>如此看来，ProGuard真是美好事物一枚。但是ProGuard也不是随手一点药到病除的，也有一点学习曲线。</p>
 
-<p>在梦中T将卡车开到了一个盘山路的三岔路口，他看到一个往右的路标指着——千岛湖六十公里，卡车便朝右转弯，接下去T突然发现前面有个孩子，离自己只有几米远，他骑着自行车正在往下滑。我已经没有时间刹车了，唯一的办法就是向左或者向右急转弯。可是向左转弯就会撞在山壁上，往右就会冲进入水库，于是T只好将那孩子撞到水库里去了。T看到那孩子惊慌地转过头来看了自己一眼，那双眼睛又黑又亮。直到梦醒之后他仍然记得清清楚楚。那孩子只朝T看了一眼，身体立刻横着抛了起来，他身上的衣服也被风吹得膨胀了，像是一件大人穿的工作服。T听到了一声呼喊：“爸爸！”就这么一声，然后什么也没有了。那声音又尖又响，在山中响了两声，第二声是撞在山壁上的回声，像是从很远的云里飘出来似的。</p>
+<a name="L......ProGuard"></a>
+<h4>启用ProGuard</h4>
 
-<p>“你儿子现在一只脚还在生处，另一只脚却踩进死里了。”</p>
+<p>如果你使用Eclipse的ADT，每个新建的项目都会生成一个<code>proguard.cfg</code>文件在项目的根目录。你对ProGuard的所有设定就是在这个文件里面完成的。要想在项目里面启用Proguard，只需要把同样在项目根目录的<code>default.properties</code>里面加上：</p>
 
-<p>T听到母亲问：”怎样才能抽出那只脚？“</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>proguard.config<span class="o">=</span>proguard.cfg
+</span></code></pre></td></tr></table></div></figure>
 
-<p>“无法抽回了，” 瞎子回答：“只能防止另一只脚也踩进死里。在路上凡遇上身穿红衣的女人，都要立刻将卡车停下来。”T看到母亲的右手插入了口袋，然后取出一百元钱递了过去，放在瞎子的手里。</p>
 
-<p>女孩C在十七年之后，就坐在男孩B的对面。那是他们的寓所。他们的窗帘垂挂在两端，阴影开始在窗台上飘浮，天色渐晚。她坐在窗前的一把椅子里，正在织一条天蓝色的毛衣。坐在C对面的B，曾在79年的夏天与她一起去那个从来没有去过的地方。他们在五岁的时候就相互认识，这种认识经过长途跋涉以后，导致了婚姻的出现。他们的第一次性生活是在十八岁行将结束时完成的。她第一次怀孕也是在那时候。她此刻坐在窗前的姿势已经重复了十七年，因此B看着她的目光怎么还会有激情？多年来，C总是在B眼前晃来晃去，这种晃来晃去使B沮丧无比：他觉得自己最大的错误就是在结婚的前一夜，没有及时意识到C一生都将在自己眼前晃来晃去。十七年以后的B坐在C对面，手里翻着关于导演陈凯歌的报道。凯歌的美妙经历感动了B，他觉得自己没有理由将这种旧报纸似的生活继续下去。 因此B开始说：</p>
+<p>当然，如果你蛋疼到要自己去移动cfg文件的位置，也要记得去改等号后面的部分。然后，在所有的release版本的build里，你的Proguard就已经生效了。对于使用Eclipse的同学来说，release的build就是指通过选择Android Tools>Export Signed/Unsigned Application Package来进行。</p>
 
-<p>“难道你不觉得我已经太熟悉了吗？”</p>
+<p>因为在大多数开发中我们都会使用Ant或者是Maven来对项目进行管理，所以一般不会直接用Eclipse来进行release版本的编译，所以通常我们还要掌握如何在不使用ADT的情况下使用ProGuard。对于Maven而言，可以通过使用Maven Android plugin来完成。同时，由于ProGuard已经完全集成到Android的工具链里面了，所以Android的Ant任务里面也有一个专门的private任务叫做<code>-obfuscate</code>，会把激活并使用ProGuard作为release这个target的一部分，所以使用Ant的话只要一个ant release就可以了。</p>
 
-<p>C始终以一种迷茫的神色望着B。</p>
+<p>当ProGuard执行以后，会产生几个特别重要的文件：</p>
 
-<p>“我们从五岁的时候就认识了，二十多年后我们居然还在一起。我们谁还能指望对方来改变自己呢？”</p>
+<ul>
+<li><code>mapping.txt</code>：保存了混淆后的名字和混淆前名字的对应关系。对于每次release的build，都要记得保存这个文件，要不然如果你收到release版本上报出的defect的时候，就等着哭吧。</li>
+<li><code>seeds.txt</code>：ProGuard找到的你的程序的entrypoint列表。</li>
+<li><code>usage.txt</code>：ProGuard觉得没有用所以移除了的一堆类，域和方法的list。要想学习写作“完美”的ProGuard规则的同学就要经常来这个文件看看自己定下的rule对ProGuard的行为究竟有什么样的影响。如果你有用的类出现在list里面了，说明你削得太猛了，反之亦然。</li>
+</ul>
 
-<p>C在这个时候才表现出一些慌乱。</p>
 
-<p>“你对我来说，早已如一张贴在斑驳老墙上的古旧明星挂历一样一览无余。而我对于你，不也同样如此？”</p>
+<p>需要注意的是这些文件的输出目录。在使用Ant ProGuard target的时候，输出目录是<code>bin/proguard/</code>，但是如果是通过ADT(右键project>Android Tools>Export）的话，输出目录会是<code>proguard/</code>。</p>
 
-<p>C眼泪流下来时B感到自己显得有些愚蠢。但是他仍然继续往下说：</p>
+<p>还有一个常见的困惑就是ProGuard是怎么找到那些需要处理的文件的。一般情况下，ProGuard希望你用<code>-injars</code>或者是<code>-libraryjars</code>来告诉它。但是对Android开发而言，Ant任务和ADT都会自动的查看你的<code>libs</code>，<code>output</code>和项目的<code>classpath</code>目录。</p>
 
-<p>“我们唯一可做的事只剩下回忆过去。可是过多的回忆，使我们的现在像植物园的梅花那样，总在预料之中。”</p>
+<p>从执行过程的日志来看，ProGuard对类文件的操作分为三个步骤：shrink，optimize，obfuscate。每个步骤都是可选的，可以通过使用<code>-dontshrink</code>、<code>-dontoptimize</code>和<code>-dontobfuscate</code>来分别关掉。一般来说，不用因为结果“不如人意”就随意的关掉某个步骤。完整的进行三个步骤，然后不断的改变规则，直到达到最佳效果，是使用ProGuard的最佳方式。</p>
 
-<p>C的眼泪在皱纹中流淌，她脸上的皱纹是在B的目光下成长起来的，B熟悉它们犹如熟悉自己的手掌。</p>
+<a name="L......ProGuard......"></a>
+<h4>编写ProGuard规则</h4>
 
-<p>“在你还没有说话的时候，我就知道你要说什么；我可以在一百个女人的脚步声里，听出你的声音；你不再可以让我从悲伤变得高兴，只会让我从高兴变得悲伤。而我对你来说，不也同样如此？”</p>
+<p>ProGuard和很多工具一样，其强大之处在于选项够多。作为Android开发者使用，首先心里要明白，没有一个唯一的最佳配置规则。在此基础上，去掌握一些对Android程序而言通常是适用的规则。然后，就像在文章里面已经反复强调过的一样，以这些规则为起点，反复的调整你的规则，找出一个对自己的程序最适用的规则。</p>
 
-<p>C停止了织毛衣的动作，开始认真地望着B。</p>
+<p>当然，因为选项太多，ProGuard给初学者的感觉难免是千头万绪，无从下手。因此，我们可以从一个例子程序入手来找到对ProGuard的“感觉”。</p>
 
-<p>“因此我们互相都不可能使对方感到惊喜。我们最多只能给对方一点高兴，而这种高兴在大街上到处都有。”</p>
+<p>这个例子本身没有任何特别之处，<code>MyButton</code>类继承自<code>Button</code>但是没有添加新的方法，可以通过它来观察ProGuard如何对继承结构进行压缩。Click的handler除开显示toast之外也没有特别的功能，可以通过它来观察ProGuard对方法名的混淆。<code>AMPSampleActivity</code>里面还专门有一个没有被调用的方法，可以通过它来观察ProGuard对这种情况的处理。下面是程序的入口Activity的实现：</p>
 
-<p>这时C开口说话了，她说：</p>
+<p>我们期望ProGuard做的事情包括：</p>
 
-<p>“我明白你的意思了。”</p>
+<ul>
+<li>保留<code>AMPSampleActivity</code>类，因为它是我们在XML里面指定的程序入口</li>
+<li>保留<code>StringUtils</code>类和它的<code>repeat</code>方法</li>
+<li>保留<code>myClickHandler</code>方法</li>
+<li>保留<code>MyButton</code>类</li>
+<li>去掉<code>unusedMethod</code></li>
+<li>除开XML里面引用的类（<code>AMPSampleActivity</code>和<code>MyButton</code>），其他的类名都需要被混淆</li>
+<li>除开XML里面引用的方法名（<code>myClickHandler</code>），其他的方法名都要被混淆</li>
+<li>完成一些对Android而言通常适用的优化（下面会仔细展开）</li>
+</ul>
 
-<p>“是吗？”B有些不知道该如何对付C这句话。所以他只能这么说。</p>
 
-<p>C又说：“我明白你的意思了。”</p>
+<p>ProGuard的规则是“白名单”的，也就是说ProGuard只会对你特别指定的类刀下开恩。这也就是说，对任何程序，我们都至少要写一条规则，来保留程序的入口类。因为是Android程序，我们可以这么写：</p>
 
-<p>B看到C的眼泪涌满了脸庞。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>C说：“你是想把我一脚踢开。”</p>
 
-<p>B没有否认，而是说：“这话多难听。”</p>
+<p>这里我们可以看到ProGuard的rule用的语法基本上遵循了Java本身的语法（<code>extends</code>等等），但是它支持使用通配符。规则中的<code>-keep</code>告诉ProGuard不要删除也不要混淆任何从<code>android.app.Activity</code>继承的类。</p>
 
-<p>C又重复道：“你想把我一脚踢开了。”她的眼泪在继续流。</p>
+<p>很简单，不是吗？如果你这个时候运行程序，会看到：</p>
 
-<p>“这话太难听了。”B为了缓和气氛，建议道：</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AMPSampleActivity</span><span class="o">}:</span>
+</span><span class='line'>    <span class="err">➥</span> <span class="n">android</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">InflateException</span><span class="o">:</span> <span class="n">Binary</span> <span class="n">XML</span> <span class="n">file</span> <span class="n">line</span> <span class="err">#</span><span class="mi">6</span><span class="o">:</span> <span class="n">Error</span> <span class="n">inflating</span>
+</span><span class='line'>    <span class="err">➥</span> <span class="kd">class</span> <span class="nc">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">MyButton</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>“让我们共同来回忆一下往事吧。”</p>
 
-<p>“是最后一次一起来回忆吗？”C问。</p>
+<p>为什么在inflate我们自定义的view的时候crash了呢？这是因为自定义的view是在XML里面被用到的，而不是在Java代码里面。因此ProGuard会认为这是没有用的代码而试着删除它。要保证这些自定义的view不被误删，就需要定义如下的规则：</p>
 
-<p>B回避C的问话，继续说：“我们的回忆从什么时候开始呢？”</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keepclasseswithmembers</span> <span class="kd">class</span> <span class="err">* {</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span><span class="n">keepclasseswithmembers</span> <span class="kd">class</span> <span class="err">* {</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">,</span> <span class="kt">int</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>“是最后一次了吧？”C仍然这样问。</p>
 
-<p>“从一九七九年的夏天开始吧。”B说，“我们坐上那辆嘎吱作响的汽车，去四十里以外的那个地方，那个时候我可真是丧魂落魄。”</p>
+<p>这两条规则告诉ProGuard不要对定义了可能被<code>LayoutInflater</code>调用的构造函数的任何类进行优化。我们这里使用了<code>-keepclasseswithmembers</code>而不是<code>-keep</code>。</p>
 
-<p>“你没有丧魂落魄。”C说。</p>
+<p>再次运行，会遇到下面的错误：</p>
 
-<p>“你不用安慰我，我确实是丧魂落魄。”</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">IllegalStateException</span><span class="o">:</span> <span class="n">Could</span> <span class="n">not</span> <span class="n">find</span> <span class="n">a</span> <span class="n">method</span>
+</span><span class='line'>   <span class="err">➥</span> <span class="n">myClickHandler</span><span class="o">(</span><span class="n">View</span><span class="o">)</span> <span class="n">in</span> <span class="n">the</span> <span class="n">activity</span> <span class="kd">class</span> <span class="nc">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AMPSampleActivity</span> <span class="k">for</span> <span class="n">onClick</span> <span class="n">handler</span> <span class="n">on</span>
+</span><span class='line'>   <span class="err">➥</span> <span class="n">view</span> <span class="kd">class</span> <span class="nc">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">MyButton</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>“不，你没有丧魂落魄。”C再次这样说，“我从认识你到现在，你只有一次丧魂落魄。”</p>
 
-<p>B问：“什么时候？”</p>
+<p>去查看<code>usage.txt</code>你会发现<code>myClickHandler</code>又被干掉了。为什么在第一条规则里面我们告诉ProGuard不要动<code>AMPSampleActivity</code>里面的任何东西，还是会有这种情况发生？这是使用<code>-keep</code>的一个常见的误会。我们用<code>-keep</code>告诉ProGuard保留一个类的时候，没有提供任何类的“body”信息的话，ProGuard仅仅会保留这个类的名字。它仍然会对这个类内部的所有东西进行优化和混淆。要保留方法，我们需要这么写：</p>
 
-<p>“现在。”C回答。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">methods</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>当T跳下卡车时，他感到一切都没有发生过。他一眼认出车轮下面的是K，尽管他已经变形，但是仍然保持着阴沉的神色。T是在过路口的时候看到M的，她穿着一件鲜红的上衣，在人群中像一个成熟的苹果一样吸引着T的注意力。当他的视线回到路上的时候，看到一个人影在前面闪了一下，T脑袋里“嗡”的一声，知道发生了什么。他把K从车轮下面拖出来，抱到车上，然后往大院开去。K黑黑的头发在座位上批落下来，支离破碎的手臂随车身的摇晃不停摆动，好像他哥哥L钓鱼时浮在湖面上的浮标。</p>
 
-<p>L每天傍晚都会到西湖边去钓鱼，这个飘着细雨的夜晚也不例外。湖边上只有几只昏暗的路灯，蒙蒙细雨从浅黄色的灯光里潇潇飘落，仿佛是很多萤火虫被谁倾倒下来。好在烟雾弥漫中，黑色的湖水反射着宝石山上的点点光亮，使L发现不远的湖岸上已经坐着两个垂钓的人。那两人紧挨在一起，一个穿着火红的衣服，一个却穿着阴沉的黑。L心里感到很奇怪，在这个阴冷的春天的夜晚，竟然还有一男一女来这里钓鱼。然后他就在往常坐的那块石头上坐了下来，这时候L感到身上正在一阵阵发冷，仿佛从那两个人身上正升起一股冰冷的风向他吹来。L将鱼钩摔入江中以后，偷偷侧过脸去打量那两个人，发现他们总是不一会工夫就同时从江水里钓上来两条鱼，没有鱼的挣扎声也没有湖水的破裂声。接下去他们又同时将钓上来的鱼吃下去。他看到他们的手伸出去抓住了鱼，然后放到了嘴边。鱼的鳞片在黑暗里闪烁着微弱的亮光，然后那些亮光无声无息的消失在他们的嘴边。一辆卡车经过时，借着灯光他看清了那两人手中的鱼竿没有鱼钩和浮标，好像也没有线。他们的脸无法看清，但是穿红色衣服的女人的身影透露着一份熟悉。这时L听到了一只猫嘶叫的声音，声音来到时，那两人一齐跳入了湖中，湖水四溅开来，却没有多大声响，似乎一切如同以往。</p>
+<p>但是这样写显然又太过于慷慨了。下面这条规则会好很多：</p>
 
-<p>T抱着B走进大院的时候，知道了消息的B从某个地方一窜而出。T感到自己左眼被什么东西敲了一下，然后血就像洪水一样在他的脸上泛滥了。当他的右眼看清B手中巨大的铁锤时，手中的K被C一把夺了过去。然后他感到自己的肋骨被狠狠敲开，发出一声腐朽的关门声。倒在地上的T想用手去捂住争先恐后往外逃逸的内脏时，巨大的铁锤向他的右眼袭来。然后他感到自己的头顶被不断的敲打，好像夏日巨大的雨滴打在西湖岸边黑色的淤泥上，发出一串串沉闷的声音。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="o">*(</span><span class="n">android</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">View</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>T死了。</p>
 
-<p>三日以后，L来到湖边钓鱼。前天停止的春雨使得岸边的野花上飞舞着翩翩蝴蝶。湖面上吹拂的风，让他想起K的嘶吼。前天在火化室，几个操作员费了很大力气，才把K粗壮的身体塞进去。一个目光浑浊的操作工在完成工作后忍不住有些得意：“不要看你这么壮，马上你就可以随风飘散。”L听完这句话时，想到那个万籁俱寂的春夜，和U走在湖边。他们从曲苑风荷走到了柳浪闻莺，呼啸的春风使得他们的对话显得缥缈如烟。那天晚上的U像一个天使一样到来然后离去，L学会了改变不能接受的，接受不能改变的，L自己却已经随风飘散。</p>
+<p>这条规则告诉ProGuard，如果一个<code>Activity</code>在<code>shrink</code>阶段没有被去掉，那么就保留那些<code>public</code>的，没有返回值的，传入了<code>android.view.View</code>作为参数的方法。</p>
 
-<p>在离L不远的一棵柳树下，M与瞎子的尸体双双在湖面飘荡。</p>
+<p>可以看到，使用ProGuard存在一个不断调优的过程。他山之石，可以攻玉，已经有很多人使用ProGuard来优化Android程序了，于是也有了一些被普遍采用的规则和选项，我们下面来个简单说明。</p>
 
-<p>那棵柳树因为虫害，还在不可抑止的走向死亡。</p>
+<a name="L....................."></a>
+<h4>常用规则和选项</h4>
+
+<p>前面看到的规则对于例子程序就足够了。但是如果我们的程序使用了<code>Service</code>怎么办？和<code>Activity</code>一样，<code>Service</code>也是在manifest xml里面定义的，因此我们需要对<code>proguard.cfg</code>做一定的扩展。</p>
+
+<p>下面的规则是针对Android程序一般来说都比较有效的。</p>
+
+<p>一般来说，下面的Android framework class都是需要保留的：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Application</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Service</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">BroadcastReceiver</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">ContentProvider</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">backup</span><span class="o">.</span><span class="na">BackupAgentHelper</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">preference</span><span class="o">.</span><span class="na">Preference</span>
+</span><span class='line'><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">vending</span><span class="o">.</span><span class="na">licensing</span><span class="o">.</span><span class="na">ILicensingService</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>虽然你的程序可能一开始没有使用其中的一些类，但是定义好全部这些规则也是有好处的：它可以避免你在使用ProGuard编出的版本crash之后去搞半天才发现有某个类似的规则需要更新但是你忘记了。</p>
+
+<p>第二个有用的规则是保留<code>static</code>的<code>CREATOR</code>域，这个是Android用来parcel对象的。这个域由于是在运行的时候<a href="http://www.google.com.hk/url?sa=t&rct=j&q=introspection&source=web&cd=2&ved=0CDYQFjAB&url=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FIntrospection&ei=_JhDT-6ADIGtiQfF46TMBA&usg=AFQjCNEEE1rrErPfi38AVCPjdN6ri-qROA" target="_blank">Instrospection</a>的，所以ProGuard会认为它是无用的域并把它去掉。下面这条rule可以防止这样的事情发生：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">implements</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Parcelable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">static</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Parcelable$Creator</span> <span class="n">CREATOR</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在程序中如果你调用了native的code，比如你用JNI来调用了c的lib，由于在Java代码里面是一份方法的签名，而没有方法的实现，它必须被链接到native code上。这也就意味着这些函数名不能被ProGuard加以混淆了，不然链接的过程就会失败。下面的规则可以保证ProGuard不去动native的方法名：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keepclasseswithmembernames</span> <span class="kd">class</span> <span class="err">* { </span>
+</span><span class='line'>     <span class="kd">native</span> <span class="n">methods</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们这里使用的<code>-keepclasseswithmembernames</code>是告诉ProGuard，被调用过的方法留着，没有调用过的都去掉。</p>
+
+<p>前面的规则看起来都一目了然。下面这个可能要费解一些：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">enum</span> <span class="o">*</span> <span class="o">{</span>
+</span><span class='line'>     <span class="kd">public</span> <span class="kd">static</span> <span class="o">**[]</span> <span class="n">values</span><span class="o">();</span>
+</span><span class='line'>     <span class="kd">public</span> <span class="kd">static</span> <span class="o">**</span> <span class="n">valueOf</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个规则是让ProGuard不要去动任何<code>Enum</code>的<code>values</code>和<code>valueOf</code>方法。这些方法之所以特殊是因为Java自己是通过发射机制来调用它们的。这可能也是Google<a href="https://developer.android.com/guide/practices/design/performance.html#avoid_enums" target="_blank">不建议使用</a>Java enum的原因吧：它们比<code>final class fields</code>的性能要低不少。如果你已经遵照Google的教诲停止使用<code>Enum</code>，那你也不需要这条规则了，恭喜。</p>
+
+<p>下面来看看常用的选项：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">dontusemixedcaseclassnames</span>
+</span><span class='line'><span class="o">-</span><span class="n">dontskipnonpubliclibraryclasses</span>
+</span><span class='line'><span class="o">-</span><span class="n">dontpreverify</span>
+</span><span class='line'><span class="o">-</span><span class="n">verbose</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一个选项可以避免像Windows这样不区分大小写的操作系统不会因为类似<code>A.class</code>和<code>a.class</code>写到同一个文件里面就驾崩。</p>
+
+<p>第二个选项是因为ProGuard默认不会处理任何非public的类。但是有时候我们会遇到public的类继承自内部的非public的类。所以打开这个选项可以更好的覆盖。</p>
+
+<p>第三个选项是告诉ProGuard不要做<code>preverify</code>（预检验），因为这个只对J2ME或者是Java6的平台有用。</p>
+
+<p>最后一个选项，你们懂的。</p>
+
+<p>前面我们提到过ProGuard有一个优化代码（optimize）的过程。大多数时候ProGuard都会火力全开的对所有的代码做优化。这些优化操作有些时候是相当aggressive的，比如合并类的时候ProGuard会试着既从纵向上合并也从横向上合并，以便得到尽量少的类文件，也就可以得到尽量小的APK。同时它还会试着优化循环和代数运算。默认的ADT生成的ProGuard选项关掉了很多的优化选项：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">optimizations</span> <span class="o">!</span><span class="n">code</span><span class="o">/</span><span class="n">simplification</span><span class="o">/</span><span class="n">arithmetic</span><span class="o">,!</span><span class="n">field</span><span class="o">/*,!</span><span class="n">class</span><span class="o">/</span><span class="n">merging</span><span class="o">/*</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Google并没有提供他们这么配置的依据。我们可以试着先禁用这个选项，看看程序运行起来会不会有问题。如果遇到了问题再试着慢慢的减弱优化，来“探底”。</p>
+
+<p>同时ProGuard的优化是可以“递归”的，也就是优化完的结果可以作为下次优化的输入继续优化。你可以指定它反复进行多少次。但ProGuard如果发现已经没有什么可以优化，会自动停下来，不一定跑到你指定的次数。一般设置成5就够了：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">-</span><span class="n">optimizationpasses</span> <span class="mi">5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="L.........................................."></a>
+<h4>如果处理混淆后版本的错误报告</h4>
+
+<p>如果你发布了混淆的版本，有一个问题你就得面对：用户提交的问题单里面产生自这些类和方法都完全打乱过后的版本。为了展示这种问题，在Demo程序里面专门加了这么一个类：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bomb</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">explode</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">&quot;Boom!&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在onCreate方法里面它会被引爆：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">main</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">String</span> <span class="n">toast</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">repeat</span><span class="o">(</span><span class="s">&quot;Hello ProGuard! &quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">toast</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</span><span class='line'>    <span class="k">new</span> <span class="nf">Bomb</span><span class="o">().</span><span class="na">explode</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你运行程序，就会看到下面的错误：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">RuntimeException</span><span class="o">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">start</span> <span class="n">activity</span> <span class="o">...</span><span class="na">MainActivity</span><span class="o">}:</span>
+</span><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">RuntimeException</span><span class="o">:</span> <span class="n">Boom</span><span class="o">!</span>
+</span><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">RuntimeException</span><span class="o">:</span> <span class="n">Boom</span><span class="o">!</span>
+</span><span class='line'>   <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">lenciel</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">MainActivity</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">Unknown</span> <span class="n">Source</span><span class="o">)</span>
+</span><span class='line'>   <span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Instrumentation</span><span class="o">.</span><span class="na">callActivityOnCreate</span><span class="o">(</span>
+</span><span class='line'>   <span class="err">➥</span> <span class="n">Instrumentation</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1047</span><span class="o">)</span>
+</span><span class='line'>   <span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">ActivityThread</span><span class="o">.</span><span class="na">performLaunchActivity</span><span class="o">(</span>
+</span><span class='line'>   <span class="err">➥</span> <span class="n">ActivityThread</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2627</span><span class="o">)</span>
+</span><span class='line'>   <span class="o">...</span> <span class="mi">11</span> <span class="n">more</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到在错误出现位置的stack trace既没有行号也没有文件名。这是因为相关的信息都被ProGuard优化掉了。如果我们想避免这种情况，就要在<code>proguard.cfg</code>里面加上下面的选项：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-keepattributes SourceFile,LineNumberTable
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>显然，有了行号和文件名，还是解决不了方法被混淆的问题。我们这个例子程序里面方法很少，而<code>onCreate</code>方法因为是<code>Override</code>的，所以ProGuard不会去动它。如果是正式的工程，最好的办法还是用<code>retrace</code>工具来根据<code>mapping.txt</code>还原整个日志。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>retrace proguard/mapping.txt stacktrace.txt
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -308,7 +1294,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/02/movie-review-the-brokeback-mountain/">Lenciel看电影 - 断背山</a></h1>
+      <h1 class="entry-title"><a href="/2012/01/plan-for-2012/">Plan for 2012</a></h1>
     
     
       <p class="meta">
@@ -317,111 +1303,145 @@
 
 
 
-<time class='entry-date' datetime='2006-02-25T19:53:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>7:53 pm</span></time>
+<time class='entry-date' datetime='2012-01-10T11:07:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:07 am</span></time>
         
-           | <a href="/2006/02/movie-review-the-brokeback-mountain/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2006/02/movie-review-the-brokeback-mountain/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/2006_02/brokeback_mountain_1.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>其实在夺魁法事后不久，本座就已经有机会观摩《断背山》了（好吧，你们说叫《断臂山》）。但是由于下定决心要先看小说，拖着拖着就回了学校，却一直没有足够长度的安静时间来看这部“获奖影片”。昨天和阿枯在网上整蛊“每个人心中都有一座断背山”的时候，才下定决心要在周末拿下这块心病。</p>
-
-<p>搜索到原著之后曾经让本座大惊：原来小说很短。半天不到读完后，感觉什么都没有看到。没有冲突的情节，粗俗的对话和细描的景色，比《读者》上任何一篇煽情故事都来得平淡。因为害怕是自己理解能力低下的原因，又赶紧找来中译本重看，结果发现这种平淡的故事，经过翻译之后就更加平淡，除了原著中毫不避讳的性描写来得更加直白易懂。这难免让本座疑心骤起：这也能拍成二个多小时的电影？</p>
-
-<p>结果证明，为了把故事讲到让那些不愿深想的观众也能得到一个完整流畅的体验，李安还是加入了很多小说中没有的交代。但是从总体意境来看，《断背山》从第一秒钟到最后结束，都和原著那种空灵的感觉相当的吻合。剧中几个主角的表演也实在是可圈可点。难怪Annie Proulx对这部片也是赞不绝口。</p>
-
-<p>长得酷似的巴拉克的Heath Ledger一改《<a href="http://www.imdb.com/title/tt0183790/">A Knight&rsquo;s Tale</a>》（记得这部戏全因里面那个游说家）中帅到角色无力的扮相，出演Ennis del Mar，一个家庭不幸，从小缺乏关爱的牛仔。根据本座的自身体验，以这样的背景经历形成角色时而寡言少语时而幽默大方，讲不出情话而且常常有暴力倾向，对生活看得随意而且缺乏家庭责任感的性格，实在是再恰当不过。同时，这种缺乏关爱的人，一旦认定谁是自己所爱，又往往坚定不移难以回头，有相当的豪气。</p>
-
-<p><img height="150" alt="" src="/downloads/images/2006_02/brokeback_mountain_2.jpg" width="108" border="0" twffan="done" />        <img height="153" alt="" src="/downloads/images/2006_02/brokeback_mountain_3.jpg" width="110" border="0" twffan="done" /></p>
-
-<p> Jake Gyllenhaal在此片之前，让本座想得起来的只有那部几年前风光无限的《<a href="http://www.imdb.com/title/tt0319262/">The Day After Tomorrow</a>》中的科学家之子Sam。这次扮的Jack Twist，一出场就祭出和刘烨完全类似的忧郁阴柔的眼神，已经让本座认定他必定是Jack无疑。Jack生活的环境一直较Ennis要富足，从小有亲情，长大有money，然而在内心中却狂野不羁。</p>
-
-<p> <img height="145" alt="" src="/downloads/images/2006_02/brokeback_mountain_4.jpg" width="106" border="0" twffan="done" />        <img height="146" alt="" src="/downloads/images/2006_02/brokeback_mountain_5.jpg" width="107" border="0" twffan="done" /></p>
-
-<p>不得不提的是Penelope Cruz之后最像吉利（谁是吉利？欢迎去电去函咨询康帅）的女演员Anne Hathaway，在《公主日记》里面给人的印象就是出水芙蓉般的纯洁可人。而本片她出场不过五分钟，一对酥胸就喷涌而出，不说戏中她要问Jack “are we too fast”，即便对戏外的本座，也实在是来得太fast了。故事进行中，Lureen Newsome这个外表冷艳内心无助，对Jack深爱并纵容，痛苦都自己扛的，被她演得非常透彻入骨。</p>
-
-<p><img height="160" alt="" src="/downloads/images/2006_02/brokeback_mountain_6.jpg" width="104" border="0" twffan="done" />          <img height="156" alt="" src="/downloads/images/2006_02/brokeback_mountain_7.jpg" width="104" border="0" twffan="done" /></p>
-
-<p>最出彩的一幕就是接Ennis电话的一幕，小说中写Lureen的语调是：</p>
-
-<blockquote><p>&#8220;&#8230;she was polite but the little voice was cold as snow&#8221;<br/>(&#8230;她的声音听起来是很礼貌的，那细细的语调却又冷若冰霜)</p></blockquote>
-
-
-<p></p>
-
-<p>   本座看过之后就很想看看这种东西怎么去演，结果电影中的Lureen那满眼泪痕心如刀割，却着装一丝不苟谈吐丝毫不乱的样子，和DH里Bree发布丧夫消息时何其相似。</p>
-
-<p>讲过甲乙丙丁，让我们回到电影。很多人都说看完之后走到路上或是发动汽车，才突然哭出声来。其实这并不奇怪。Annie Proulx把这段二十年的感情放到省字如金的短篇小说中，那些平淡无奇的场景，朴素到有些粗糙的对话，本来就是留下符号要让读者自己去领悟。这就好比区区几十个字的诗歌，反而常常比长篇大论更容易激发个人异常的感受。</p>
-
-<p>而电影中也没有绚丽的特技和奇特的叙事结构，在表面的平庸之下，有着动人的细腻。李安导演一贯的内敛含蓄风格之外，这部片整齐入心的音乐和美轮美奂的画面这些形式的电影语言之下，各个部分的内容又处处相互照应，使得电影也有了一种原著的深意。比如Jack初次见到Ennis，假装刮胡子其实从倒车镜里观察Ennis。而两人因为工作结束不得不分别的时候，Jack在倒车镜中看着Ennis消失在视线。再比如Ennis几次离开Jack后把心中的郁闷发泄为拳上的暴力（先后打过Jack、墙壁、不认识的司机）。</p>
-
-<p>影片中Jack和Ennis每次相约出游的一幕幕情景，实在是本座的最爱。即便是对着山峦溪流的空镜头，也能让人感觉到情意的流动。那种相伴山水隔绝尘世，两心相惜聚散依依的感觉，实在是本座再熟悉不过，几乎就要击掌朗诵：“逝者如斯，不舍昼夜。”两个人最后一次相聚，Jack那一段台词和小说里面的一字不差：</p>
-
-<blockquote><p>Tell you what, we could a had a good life together, a fuckin real good life. You wouldn&#8217;t do it, Ennis, so what we got now is Brokeback Mountain. Everything built on that. It’s all we got, boy, fuckin all, so I hope you know that if you don&#8217;t never know the rest. Count the damn few times we been together in twenty years. Measure the fuckin short leash you keep me on, then ask me about Mexico and then tell me you’ll kill me for needin it and not hardly never getting it. You got no fuckin idea how bad it gets. I’m not you. I can’t make it on a couple a high-altitude fucks once or twice a year. You’re too much for me, Ennis, you son of a whoreson bitch. I wish I knew how to quit you.</p></blockquote>
-
-
-<p>
-   
-通过这段话，我们就会理解两人由不羁少年变得逐渐沧桑，Jack仍然一有机会就驱车十几个小时只求一聚，并且每次都会试着说服爱人和自己团聚，然而又常常出轨偷腥。而Ennis少年时代目睹同志牛仔被处死的惨状在他内心深处造成的梦魇，却是Jack用再多的柔情也无法扑灭的。最终Ennis还是无法迈出最后一步，只能在懊悔中孤独的承受没有Jack相守的断背山，实在让人唏嘘。</p>
-
-<p>看过片子的很多人都说，Ennis好像开始的时候不是一个同志，即使Jack也不是很Gay（通过Jack喜好牛仔竞技，反抗岳父的几幕也看得出Jack不是一个很母的人），所以很难明白他们心中为什么会有一座断背山。其实《断背山》中由于当地观念限制造成Jack和Ennis无法相守的爱情故事，固然是让人伤感，但还是常见的人间惨剧。<strong>而怀俄明州那壮阔无边的自然风光下，靠凉薄的畜牧业维持的惨淡人生，对人性的折磨和考验其实比感情生活更加严酷。在怀俄明这种彻底边缘化的社会，Jack和Ennis这样的生活几乎没有出路的小人物的命运冲撞，才是这段感情的根源</strong>。</p>
-
-<p>而身处现代社会难以呈现的虚空重压下，我们和怀俄明州的人又有多少不同？放到别无依靠的大山之中，相处就会简单温馨的恋人、朋友、家人和同事，有多少人因为得到后的不珍惜和眼前的利益翻脸？破碎之后，又要多久才明白自己心中那座断背山？</p>
-
-<p><br/></p>
-
-<p>推荐程度：<img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" />
-<br /><br />        <img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /> 不看就死，白活一场 <br /><br />        <img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" />     十分优秀，人生大事<br /><br />        <img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" />        相当凑合，电影佳作 <br /><br />        <img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" /><img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" />          休闲良物，度日好方 <br /><br />        <img border="0" style="border:none;vertical-align: middle;" alt="" twffan="done" src="/downloads/images/smile.gif" />            一看无妨，不看无损</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/02/thoughts-in-guanghan/">小城事故</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2006-02-11T00:03:35+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2006</span></span> <span class='time'>12:03 am</span></time>
-        
-           | <a href="/2006/02/thoughts-in-guanghan/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2006/02/thoughts-in-guanghan/">Comments</a>
+           | <a href="/2012/01/plan-for-2012/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2012/01/plan-for-2012/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>昨天收到牛的短信，买不到车票，只好去查机票，一起倒霉的还有xyer。在被窝里面突然有些感慨，已经高贵得不是人类的牛魔王，乳沟深得可以压苹果汁的牛会长，因为居住在一个普通的小城市，还是会被一张火车票憋死。当然，我不是来幸灾乐祸的，因为我也生活在一个小城市里。</p>
+  <div class="entry-content"><p><img src="/downloads/images/2012_great_view.jpg" title="Don't touch me..." alt="2012 Great View" /></p>
 
-<p>生活在小城是一件舒适的事情。每年放假匆匆往回赶，除了因为这里有我的父母恋人和朋友，也因为小城生活的那份轻松与率真。社会这个六度空间被降维到三度，所有的人都是朋友或者朋友的朋友。城市的每个角落，遍布着我们匆忙长大的痕迹。</p>
+<p>在读过《<a href="http://book.douban.com/subject/3609132/" target="_blank">把时间当作朋友</a>》和<a href="http://matt.might.usesthis.com/" target="_blank">Matt Might</a>的文章之后，回首2011就让人觉得莫名慌张起来。按《<a href="http://book.douban.com/subject/3609132/" target="_blank">把时间当作朋友</a>》这本书里所说，定计划要以周为单位，通过培养自己对时间的控制力，逐步把计划做到月甚至年这样的跨度。本座自觉还算比较能控制自己，所以打算制作一个基本单位为月的计划，下面的十项活动将穿插在这个计划之中：</p>
 
-<p>每次回家免不了初中高中的朋友聚会。昔日的流氓少年们大都已经进入工作岗位，每次都谈起自己的单位、前途，当然，还有自己的女人。这次和荷尔蒙.胡喝酒的时候他说心爱的小薇在龙泉工作，准备马上过去陪她。“我其实不愿意过去，不过总得有个人牺牲一下，开心就好。”小城表面的慵懒和乏善可呈背后，总是充满着这样的豪气。突然觉得小薇是个真正幸福的女孩：两人之间这样的体谅和宽容，只不过需要一些人性最初的一些善意，而面对现实种种，反而常常变成了一种难以寻求的诗意。虽然有时小城的豪气伴着一点土气，一点掩饰不住的面子情绪，但还是让我感到如沐春风。</p>
+<ol>
+<li>一点新知识</li>
+<li>一砣好身体</li>
+<li>一个新玩具</li>
+<li>一批新兴趣</li>
+<li>一门新语言</li>
+<li>一款新软件</li>
+<li>一马新项目</li>
+<li>一把新文艺</li>
+</ol>
 
-<p>然而我不知道，小城还能撑多久。看小贱猪的过年经历，发现自己的也仅仅是略好一点而已。倒退十多年，在全家围着炉子烤脐橙吃的时候，在父亲在厨房里面烧制平时吃不到的大菜的时候，在拿压岁钱放鞭炮的时候，那弥漫在空气中的喜气洋洋，如今只剩十二点的满城硝烟，而这城，也是于回忆中相比面目全非的。主持人难免在这个时候欢呼“中华盛世”，我却觉得连烟火般短暂的绚丽也觉察不到。生活水平的提高让我们欲求减弱，似乎并不能完全解释我们心中的失落。</p>
 
-<p>当我们的父母逐渐老去，当我和老弟拥有自己的家庭，我们和这座城市的联系将趋于虚无。作为计划生育后的一代人，我十分幸运的拥有一个兄弟，然而整个社会的个体化，会使我们只是通过网络、电话联系，并有一年或者几年一次的团聚。这样的预言是悲哀的，但是又无可避免。消费主义的思想和独生子女的现实将把中国的各个城市砸成碎片，并把这个民族的功利主义和私利化趋向无限放大。几年之前，看到日本韩国街头的奇装异服时，我觉得一切还离中国很远。但看看现在的十几岁的少年，我明白也许东亚这种只有所谓的“传统文化”而没有宗教信念支撑的国家，所有的传统文化在消费产生的美好幻觉前都会不堪一击。</p>
+<a name="L.strong..................strong."></a>
+<h4><strong>一点新知识</strong></h4>
 
-<p>也许，我还能在这里说这些，仅仅是因为我还没有开始工作吧。学《科学社会主义》的时候，听到Benjamin I. Schwartz关于现代社会的浮士德/普罗米修斯精神（Faustian-Promethean spirit），找出来放在这里，等自己十年之后，经过生活的打磨来看：</p>
+<p>用进废退，数理化史地生音体美忘记了就算了吧。但半路出家的本座，还有很多基础知识也非常单薄。准备了6本不那么理论的书，争取能用2个月一本的龟速精读：</p>
 
-<blockquote><p>全方位开发人的潜在能量（energy）,用以无止境地控制﹑主宰包括自然界和人类社会在内的整个外在世界﹐从而几乎完全忽视了人类内心世界的调控﹐特别是精神﹑道德品质的提升。横决天下的动力﹑自我肯定﹑积极行动﹑无限扩张是这种精神最珍视的价值。 其强势形式可以将其它价值包括真﹑善﹑美﹑自由﹑平等﹑民主统统边缘化﹐视之为达成上述价值的工具。它的恶性发展则不仅导致天人关系断裂﹐精神价值源头枯 竭﹐而且造成纯粹的物质享乐主义泛滥﹐自我喂养的消费主义失控。浮士德精神一旦和社会达尔文主义与某种民族主义的思想情感相结合﹐更造成个人﹑集团﹑民族 国家之间为争夺财富﹑权力﹑荣誉而进行你死我活的惨烈搏杀。</p></blockquote>
+<ul>
+<li><a href="http://www.amazon.com/Code-Language-Computer-Hardware-Software/dp/0735611319/ref=sr_1_1?ie=UTF8&qid=1326115601&sr=8-1" target="_blank">Code: The Hidden Language of Computer Hardware and Software</a></li>
+<li><a href="http://book.douban.com/subject/4327796/" target="_blank">Continuous Delivery</a></li>
+<li><a href="http://www.amazon.com/dp/0201752840/?tag=stackoverfl08-20" target="_blank">Database Design for Mere Mortals</a></li>
+<li><a href="http://www.amazon.com/Event-Processing-Action-Opher-Etzion/dp/1935182218/ref=sr_1_1?s=books&ie=UTF8&qid=1326115894&sr=1-1" target="_blank">Event Processing in Action</a></li>
+<li><a href="http://www.amazon.com/Art-Concurrency-Monkeys-Parallel-Applications/dp/0596521537/ref=sr_1_1?ie=UTF8&qid=1326115671&sr=8-1" target="_blank">The Art of Concurrency</a></li>
+<li><a href="Designing the Obvious" target="_blank" class="broken_link">Designing the Obvious</a></li>
+</ul>
 
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一砣好身体</strong></h4>
+
+<p>关注自己的健康状况，保持适当的体育锻炼，既是对自己负责，也是对家人负责。2012年体育锻炼方面的发展目标是除开足球之外，要开拓可以和偶像派互动的项目。下面的四个项目，12个月都可以开展，但是可以根据气候的不同，在四个季度各有偏重：</p>
+
+<ul>
+<li>跳绳</li>
+<li>自行车</li>
+<li>跑步</li>
+<li>羽毛球</li>
+</ul>
+
+
+<p>另外，程序员这个职业带来的伤害常常是<a href="http://en.wikipedia.org/wiki/Repetitive_strain_injury" target="_blank">RSI</a>。本座一直有比较严重的脖子疼和曾经越来越严重的肩膀和手腕疼。通过了解RSI，保持良好的姿势以及定时起来活动，比较好的缓解了疼痛。但是用电脑有时候是一屁股下去就不好起来的。让人欣喜的，传说中的<a href="http://www.hermanmiller.com/Products/Aeron-Chairs" target="_blank">Aeron</a>在中国<a href="http://www.hermanmiller.cn/" target="_blank">也能</a>买到了。所以明年还有一个目标：</p>
+
+<ul>
+<li><a href="http://www.hermanmiller.com/Products/Aeron-Chairs" target="_blank">Aeron</a></li>
+</ul>
+
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一个新玩具</strong></h4>
+
+<p>在回成都之后第一年在E公司主要的玩具是那套收星的玩意儿。原来只要大概800块钱左右的成本(DM500和所有的分路器合路器F头都是在这家淘宝店<a href="http://boattv.taobao.com/?spm=1101_lrm.4-Q8vp.2-91JMq" target="_blank">买的</a>），就可以用60CM的锅收<a href="http://www.cnsat.net/134.0.htm" target="_blank">134</a>/<a href="http://www.cnsat.net/138.0.htm" target="_blank">138</a>/146三颗ku星。</p>
+
+<p>接下来移籍M公司，主要的玩具似乎变成了Android。但是后来机缘巧合开始接触了各式各样的监控设备。说实在的从前端的IP化的云台枪机，到DVR，到最后的矩阵上墙，里面还是有很多挺有趣的技术。而且像中国这么大一个工地，到处都要装监控，这里面商机也不小。</p>
+
+<p>明年如果能说动偶像派买个LEGO的<a href="http://mindstorms.lego.com/en-us/Default.aspx" target="_blank">MindStorm</a>当然是最好，如果失败，就入手最近红到爆的<a href="http://www.arduino.cc/" target="_blank">Arduino</a>，话说本座已经堆了很多这方面的书了都没有真正花时间去看过。可是作为控制系的学生，每次看到它们，都有难以抑制的原始冲动。这种东西，一年玩一个就足够了：</p>
+
+<ul>
+<li><a href="http://mindstorms.lego.com/en-us/Default.aspx" target="_blank">MindStorm</a>&#160; or</li>
+<li><a href="http://www.arduino.cc/" target="_blank">Arduino</a></li>
+</ul>
+
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一批新兴趣</strong></h4>
+
+<p>编程的很多道理你不一定只能在编程中学到，因为人类最先进的学习方法是类比。</p>
+
+<p>而且，每天坐在电脑前面的老公在老婆和其他亲属心中的仇恨值是很高的。下面是一批本座觉得有可能进化为兴趣爱好并能够得到偶像派的广泛赞许和普遍接受的备选项目。仍然是均分到各个月份，但每个季度有倾斜的加大某项的比重：</p>
+
+<ul>
+<li>摄影</li>
+<li>画画</li>
+<li>写毛笔字</li>
+<li>厨艺</li>
+</ul>
+
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一门新语言</strong></h4>
+
+<p>程序员之所以被认为是个苦逼的职业，很重要的原因就是技术更新换代很快。去年看完《<a href="http://book.douban.com/subject/4768035/" target="_blank">Seven Languages in Seven Weeks</a>》之后本座就有计划学一下Haskell和Scala，但是去了一趟杭州拿到冰河翻译的<a href="http://book.douban.com/subject/6859720/" target="_blank">新书</a>之后本座把明年的目标换成了下面两个，每个半年：</p>
+
+<ul>
+<li><a href="http://www.apl.jhu.edu/~hall/lisp.html" target="_blank">Lisp</a></li>
+<li><a href="http://www.haskell.org/" target="_blank">Haskell</a></li>
+</ul>
+
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一款新软件</strong></h4>
+
+<p>人的创造力需要反复而大量的的基础知识和实作经验垫底，而基础知识和实作经验往往蕴藏在那些已经被时间验证过的作品里。所以要想拍好电影得看很多好电影，要想写好书得看很多好书，要想写出好软件得用很多好软件。在使用别人的软件时，可以想想如果是自己来写，什么地方做得比它好，什么地方还需要像别人学习。暂定的目标有：</p>
+
+<ul>
+<li><a href="http://www.ispyconnect.com" target="_blank">iSpy</a></li>
+<li><a href="http://c9.io/" target="_blank">Cloud9</a></li>
+<li><a href="http://www.rapidftr.com/" target="_blank">RAPIDFTR</a></li>
+<li><a href="http://www.openstack.org/" target="_blank">OpenStack</a></li>
+</ul>
+
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一马新项目</strong></h4>
+
+<p>写软件谋生的好处是不言而喻的，坏处是如果你老是只为了工资奖金写软件，慢慢的你就会感觉到“无趣”。无趣的根源很多，最主要的无非“人家想用xyz，但是只能用zyx”。其实有<a href="https://github.com/" target="_blank">Github</a>和<a href="https://bitbucket.org/" target="_blank">Bitbucket</a>之后，这些都是借口啊，亲。项目内容暂时保密。</p>
+
+<a name="L.strong..................strong."></a>
+<h4><strong>一把新文艺</strong></h4>
+
+<p>还在读研究生的时候(也是J2EE最红火的时候？)，本座发现一件“奇闻“：<a href="http://www.springsource.org/" target="_blank">Spring</a>的作者Rod Johnson说之所以自己能写出拨乱反正的《<a href="http://book.douban.com/subject/1426848/" target="_blank">Expert One-on-one</a>》和<a href="http://www.springsource.org/" target="_blank">Spring</a>，和他学习过的音乐知识是分不开的。Google了一下，原来他除开有计算机学位还是个音乐学博士。</p>
+
+<p>之后稍微留心就发现，这是一个普遍的现象。比如那个写微积分教材赚的钱就可以建2400w刀豪宅的音乐家<a href="http://www.thestar.com/news/article/933017--the-house-that-math-built" target="_blank">James Stewart</a>，再比如2011年最被关注的去世者<a href="http://en.wikipedia.org/wiki/Steve_Jobs" target="_blank">Steve Jobs</a>。有点儿文艺细胞，能从人性的角度思考，做出的产品往往比纯粹的工程产品要打动人心。</p>
+
+<p>本座挺佩服自己能找出这么一个伟大的理由，得以在新的一年里继续毫无节制的：</p>
+
+<ul>
+<li>看电影</li>
+<li>读小说</li>
+<li>听音乐</li>
+</ul>
+
+
+<p>要顺利贯彻执行计划，总得有个考核标准。打算今后多写一点儿blog记录在案，不然也对不起本座A给酋长的银子啊：</p>
+
+<p><img src="/downloads/images/vhost_threshold.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 </div>
   
   
