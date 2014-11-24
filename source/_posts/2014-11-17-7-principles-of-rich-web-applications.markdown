@@ -4,6 +4,8 @@ title: "Web应用开发的七项原则"
 date: 2014-11-17 22:30:42 +0800
 comments: true
 categories:
+- tips
+- architecture
 ---
 
 这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。

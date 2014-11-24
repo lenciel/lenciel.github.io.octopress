@@ -3,7 +3,7 @@ layout: post
 title: "Correct Django Site Name During DB Migration"
 date: 2014-11-02 16:50:40 +0800
 comments: true
-categories: 
+categories:
 
 - django
 - sentry
@@ -19,7 +19,7 @@ Problem
 
 它可能是在系统发出去的重置密码的邮件里面，可能是在Sentry显示的日志里面，也可能就在你用 `site_name` tag渲染的模板里面。
 
-这个诅咒来自于Django的`[sites framework](https://docs.djangoproject.com/en/1.6/ref/contrib/sites/)`的设计。简单来说，它提供了一个Site对象的`manager`，来**方便**你用一套代码给多个部署环境使用。换句话说，虽然`settings.py`文件里面也有一个`SITE_NAME`，但其实用`Site.objects.get_current().name`或者是模板里面的`site_name`取到的不是那个值，而是数据库`django_site`里面某个`site_id`对应的Site对象的`name`。
+这个诅咒来自于Django的[sites framework](https://docs.djangoproject.com/en/1.6/ref/contrib/sites/)的设计。简单来说，它提供了一个Site对象的`manager`，来**方便**你用一套代码给多个部署环境使用。换句话说，虽然`settings.py`文件里面也有一个`SITE_NAME`，但其实用`Site.objects.get_current().name`或者是模板里面的`site_name`取到的不是那个值，而是数据库`django_site`里面某个`site_id`对应的Site对象的`name`。
 
 而如果你`syncdb`之后没有手工修改过，`Site`的`domain`和`name`都被默认初始化为`example.com`，这就是问题所在了。
 
