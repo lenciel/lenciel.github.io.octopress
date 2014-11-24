@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Django | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/django/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-11-24T02:06:56+08:00</updated>
+  <updated>2014-11-24T11:11:28+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -27,7 +27,7 @@
 
 <p>它可能是在系统发出去的重置密码的邮件里面，可能是在Sentry显示的日志里面，也可能就在你用 <code>site_name</code> tag渲染的模板里面。</p>
 
-<p>这个诅咒来自于Django的<code>[sites framework](https://docs.djangoproject.com/en/1.6/ref/contrib/sites/)</code>的设计。简单来说，它提供了一个Site对象的<code>manager</code>，来<strong>方便</strong>你用一套代码给多个部署环境使用。换句话说，虽然<code>settings.py</code>文件里面也有一个<code>SITE_NAME</code>，但其实用<code>Site.objects.get_current().name</code>或者是模板里面的<code>site_name</code>取到的不是那个值，而是数据库<code>django_site</code>里面某个<code>site_id</code>对应的Site对象的<code>name</code>。</p>
+<p>这个诅咒来自于Django的<a href="https://docs.djangoproject.com/en/1.6/ref/contrib/sites/">sites framework</a>的设计。简单来说，它提供了一个Site对象的<code>manager</code>，来<strong>方便</strong>你用一套代码给多个部署环境使用。换句话说，虽然<code>settings.py</code>文件里面也有一个<code>SITE_NAME</code>，但其实用<code>Site.objects.get_current().name</code>或者是模板里面的<code>site_name</code>取到的不是那个值，而是数据库<code>django_site</code>里面某个<code>site_id</code>对应的Site对象的<code>name</code>。</p>
 
 <p>而如果你<code>syncdb</code>之后没有手工修改过，<code>Site</code>的<code>domain</code>和<code>name</code>都被默认初始化为<code>example.com</code>，这就是问题所在了。</p>
 
