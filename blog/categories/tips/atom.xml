@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-11-25T01:45:02+08:00</updated>
+  <updated>2014-11-25T14:18:47+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -26,15 +26,15 @@
 
 <ul>
 <li>JavaScript应该被用来替代像<code>history</code>，<code>navigation</code>和<code>page rendering</code> 这样的浏览器函数么？</li>
-<li>后端是不是到头了？是不是根本就不该在后端渲染HTML了？</li>
+<li>服务器端开发是不是到头了？是不是根本就不该在服务器端渲染HTML了？</li>
 <li>Single Page Applications (SPAs) 是不是代表着未来的趋势?</li>
-<li>JS是否应该用来 <em>增强</em> 页面在网站的渲染效果，但 <em>渲染</em> 页面还是应该在web应用里面做?</li>
+<li>一个网站和一个Web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?</li>
+<li>在网站上，JS应该用来 <em>增强</em> 页面的效果，而在Web应用中，则被用来 <em>渲染</em> 整个页面?</li>
 <li>是否应该使用像PJAX或者TurboLinks这样的技术?</li>
-<li>一个网站和一个web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?</li>
 </ul>
 
 
-<p>下面就是我试着回答这些问题做的一些分析。我分析的方式是通过用户体验(UX)，特别是如何最小化用户拿到他们感兴趣的 <em>数据</em> 的时间，作为分析的切入点，来验证对Javascript的 <em>各种</em> 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。</p>
+<p>下面就是我试着回答这些问题做的一些分析。我的分析是通过用户体验(UX)层面，特别是如何最小化用户拿到他们感兴趣的 <em>数据</em> 的时间，作为切入点，来验证对Javascript的 <em>各种</em> 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。</p>
 
 <ol>
 <li> <a href="#server-rendered-pages-are-not-optional">Server渲染页面仍然是必须的</a></li>
@@ -56,9 +56,9 @@
 
 <p><blockquote><p>The distance from Stanford to Boston is 4320km.<br/>The speed of light in vacuum is 300 x 10<sup>6</sup> m/s.<br/>The speed of light in fibre is roughly 66% of the speed of light in vacuum.<br/>The speed of light in fibre is 300 x 10<sup>6</sup> m/s * 0.66 = 200 x 10<sup>6</sup> m/s.<br/>The one-way delay to Boston is 4320 km / 200 x 10<sup>6</sup> m/s = 21.6ms.<br/>The round-trip time to Boston and back is 43.2ms.<br/>The current ping time from Stanford to Boston over today’s Internet is about 85ms (…)<br/>So: the hardware of the Internet can currently achieve within a factor of two of the speed of light.</p></blockquote></p>
 
-<p>这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：理论上两个海岸间最少也需要 <strong>50ms</strong> 才能完成通信。</p>
+<p>这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：就算达到了光速，这两个海岸间最少也需要 <strong>50ms</strong> 才能完成通信。</p>
 
-<p>换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。</p>
+<p>换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的速度极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。</p>
 
 <p>这一点在Javascript驱动的Web应用流行起来之后显得尤为明显。这些应用一般<code>&lt;body&gt;</code>标签内什么东西都没有，只有<code>&lt;script&gt;</code>和<code>&lt;link&gt;</code>标签，被称为&#8221;Single Page Applications&#8221;或者&#8221;SPA&#8221;。就像它的名字所暗示的一样，服务器返回时一直在重用同一个页面，其他的页面内容都是在客户端被处理和渲染的。</p>
 
@@ -116,7 +116,51 @@
 
 <p><strong>TL;DR</strong>: <em>我们可以使用JavaScript来掩盖网络的延迟，把它作为设计原则，就可以在你自己的应用里面去掉绝大多数的<code>spinner</code>或者<code>loading</code>。使用PJAX和TurboLink的话，你就会失去了这些改善用户速度体验的机会。</em>.</p>
 
-<p>TBA</p>
+<p>第一个原则里，在描述为什么要尽量减少前端和后端之间数据来回传输的次数时，主要是基于传输速度有理论上限的事实。实际上另一个需要考虑的要素就是网络的质量。我们都知道，当网络连接状况不好时，就会有数据包需要被重传。所以，你觉得应该一个来回就传输完毕的数据，可能实际上要花去好几个。</p>
+
+<p>在这方面，Javascript正好可以帮上忙：通过客户端的代码来驱动UI，人工的构造出零延迟，就可以<em>掩盖网络的延迟</em>，制造一切操作都很顺畅的假象。比如，网页和网页之间是通过超链接，<code>&lt;a&gt;</code>标签，链接在一起的。传统网页上，当一个链接被点击时，浏览器就发送一个可能会耗时很久的请求，然后处理请求并把内容呈现给用户。</p>
+
+<p>但Javascript允许你<strong>立刻响应</strong>（有些地方把这个叫<strong>乐观响应</strong>）：当一个链接或者按钮被点击时，页面立刻做出响应而不需要去访问网络。这方面著名的例子就是Gmail（包括最近Google的新产品Inbox）的&#8221;邮件归档&#8221;功能。当你点击&#8221;归档&#8221;，UI上邮件立刻会被显示为归档状态，而服务器的请求和处理是异步进行的。</p>
+
+<p>再比如，我们处理的是一个表单。也许你觉得一个表单在数据被提交到服务器，处理结果返回之前，不能做太多的事情。但其实当用户完成输入并点击提交的时候，我们就可以开始响应了。甚至有些做到极致的应用，比如Google搜索页面，当用户开始输入的时候，展示搜索结果的页面就已经开始渲染了。</p>
+
+<p><img src="/downloads/images/2014_11/google_homepage.gif" title="Google Homepage" alt="Google Homepage" />
+图4. Google在用户输入搜素关键字时就开始渲染搜索结果页面</p>
+
+<p>这种行为被称为 <em>layout adaptation</em>。 它的思路是当前页面知道操作后状态的页面layout，所以在没有数据填充的情况下，它就可以过渡到下面那个状态的layout。这样的处理是&#8221;乐观&#8221;的，是因为有可能后面那个页面的数据一直没有返回，而这时候页面的layout已经画在那里了。</p>
+
+<p>Google的主页的演进，非常清楚的说明了我们这里强调的第一和第二个原则。</p>
+
+<p>首先，分析访问<code>www.google.com</code>时TCP连接的<a href="https://gist.github.com/guille/3e1b2d7529009370b986">包数据</a>可以看到整个首页的数据都被一次性发出来了。整个交互，包括关闭连接，耗时几十毫秒而已。而且，似乎在Google<a href="http://en.wikipedia.org/wiki/Google#mediaviewer/File:Google1998.png">一开始的版本</a>就做到了这点。</p>
+
+<p>在2004年晚些时候, Google<a href="http://googleblog.blogspot.com/2004/12/ive-got-suggestion.html">标杆性地</a>使用了JavaScript完成<code>输入时动态提示</code>功能（和Gmail一样，也是一个20%创新时间产出的项目），这一功能也启发了很多网站开始大量的使用<a href="http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications/">AJAX</a>:</p>
+
+<p><blockquote><p>Take a look at Google Suggest. Watch the way the suggested terms update as you type, almost instantly with no waiting for pages to reload. Google Suggest and Google Maps are two examples of a new approach to web applications that we at Adaptive Path have been calling Ajax</p></blockquote></p>
+
+<p>到了2010年，Google又<a href="http://googleblog.blogspot.com/2010/09/search-now-faster-than-speed-of-type.html">推出了</a><em>及时搜索</em>，也就是我们前面看到的效果：当用户输入关键字时，整个页面无需刷新就可以展示搜索的结果。</p>
+
+<p>另一个例子是iOS。在很早期的版本，iPhone就要求开发者提供一个<code>default.png</code>图片，用来在应用被加载完成之前显示给用户:</p>
+
+<p><img src="/downloads/images/2014_11/iphone_default_png.png" title="iPhone default" alt="iPhone default" /></p>
+
+<p>图5. iPhone OS强制在应用加载前显示一个default.png</p>
+
+<p>当然，这里OS不是在隐藏网络延迟，而是CPU处理延迟。对于iPhone初期版本来说，这样来弥补硬件的弱点非常重要。当然就和网页上使用提前加载一样，这种手法有可能会崩坏：当加载来的数据和<code>default.png</code>不匹配的时候。Marco Arment在2010年对它可能带来的影响进行了 <a href="http://www.marco.org/2010/11/11/my-default-png-dilemma">透彻的分析</a>。</p>
+
+<p>除开处理表单和输入，Javascript还被大量用于处理<strong>文件上传</strong>。我们可以通过各种前端表现来满足用户上传文件的需求：拖拽，粘贴以及各种file picker。特别是有了<a href="https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications">HTML5的新API</a>之后，我们可以在文件完成传输前就显示它的信息。在Cloudup网站的上传文件中，就使用了类似的实现。从图片中可以看到，在用户选择了文件之后，缩略图就立刻生成并显示在用户界面上了：</p>
+
+<p><img src="/downloads/images/2014_11/cldup_upload.gif" title="Cloudup upload" alt="Cloudup upload" />
+图6. 在上传完成前图片就被显示出来并且加入了虚化效果</p>
+
+<p>上面的方式都是采用前端技术来制造<em>速度的假象</em>，但这种方式其实在很多地方都被证明是有效的。<a href="http://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html">一个例子</a>是在美国休斯顿机场，通过<em>增加</em>到达乘客走到行李提取处的距离，而不是实际上的行李处理速度，就大大的<em>减少</em>了旅客抱怨行李领取太慢的问题。</p>
+
+<p>运用了这种设计原则的应用，使用<code>spinners</code>或者<code>loading</code>提示符来提醒用户页面正在刷新的场景会非常少出现。整个页面的动线，都应该被<em>实际数据</em>来驱动。</p>
+
+<p>当然，立即响应这个原则也不能被滥用。在特定的用户交互场景下，立即响应是有害的：比如用户在注销或者是支付的流程中，我们当然不能让他&#8221;乐观&#8221;的认为没有真正完成的操作已经完成了。但即使在这些场景下，使用<code>spinners</code>或者<code>loading</code>提示符也不应该<strong>被提倡</strong>。 只有在你觉得应该提醒用户这个操作会非常长，你可以去干别的事情时，才应该显示它们。那是多长？在UX设计中经常被引用的<a href="http://www.nngroup.com/articles/response-times-3-important-limits/">Nielsen的研究报告</a>上是这么说的：</p>
+
+<p><blockquote><p>The basic advice regarding response times has been about the same for thirty years Miller 1968; Card et al. 1991:<br/>0.1 second is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.<br/>1.0 second is about the limit for the user’s flow of thought to stay uninterrupted, even though the user will notice the delay.Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.<br/>10 seconds is about the limit for keeping the user’s attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish.</p></blockquote></p>
+
+<p>像PJAX或者TurboLinks这样的技术，则很大程度上完全不具备提前渲染状态迁移后下一个页面的基础layout的能力。只有当服务器端的返回传输到客户端，客户端才能开始响应。</p>
 ]]></content>
   </entry>
   
