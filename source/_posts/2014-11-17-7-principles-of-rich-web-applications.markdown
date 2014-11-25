@@ -19,13 +19,13 @@ Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。�
 即便如此，它在web开发中究竟应该扮演什么样的角色或者说负责哪方面的作用，仍然是个迷：即便对于很多框架和类库的作者而言也是如此：
 
   * JavaScript应该被用来替代像`history`，`navigation`和`page rendering` 这样的浏览器函数么？
-  * 后端是不是到头了？是不是根本就不该在后端渲染HTML了？
+  * 服务器端开发是不是到头了？是不是根本就不该在服务器端渲染HTML了？
   * Single Page Applications (SPAs) 是不是代表着未来的趋势?
-  * JS是否应该用来 _增强_ 页面在网站的渲染效果，但 _渲染_ 页面还是应该在web应用里面做?
+  * 一个网站和一个Web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?
+  * 在网站上，JS应该用来 _增强_ 页面的效果，而在Web应用中，则被用来 _渲染_ 整个页面?
   * 是否应该使用像PJAX或者TurboLinks这样的技术?
-  * 一个网站和一个web应用之间的区别精确的描述起来究竟是什么? 是不是应该就是一个东西?
 
-下面就是我试着回答这些问题做的一些分析。我分析的方式是通过用户体验(UX)，特别是如何最小化用户拿到他们感兴趣的 _数据_ 的时间，作为分析的切入点，来验证对Javascript的 _各种_ 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。
+下面就是我试着回答这些问题做的一些分析。我的分析是通过用户体验(UX)层面，特别是如何最小化用户拿到他们感兴趣的 _数据_ 的时间，作为切入点，来验证对Javascript的 _各种_ 使用方式。我会从网络通信的基础入手，一直说到对未来趋势的预测。
 
   1. [Server渲染页面仍然是必须的](#server-rendered-pages-are-not-optional)
   2. [对用户输入立刻响应](#act-immediately-on-user-input)
@@ -54,9 +54,9 @@ The current ping time from Stanford to Boston over today’s Internet is about 8
 So: the hardware of the Internet can currently achieve within a factor of two of the speed of light.
 {% endblockquote %}
 
-这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：理论上两个海岸间最少也需要 **50ms** 才能完成通信。
+这里提到的从波士顿到斯坦福路上花费的85ms，当然会随着时间的推移不断的改善：如果你现在测试一下说不定已经大大增速了。但需要注意很重要的一点：就算达到了光速，这两个海岸间最少也需要 **50ms** 才能完成通信。
 
-换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。
+换句话说，用户间连接的带宽再怎么显著提高，花在传输路上的延迟总有无法突破的速度极限。所以，在页面上显示信息时减少请求次数，也就是减少信息被传输在路上的次数，对于良好的用户体验和出色的响应速度而言，至关重要。
 
 这一点在Javascript驱动的Web应用流行起来之后显得尤为明显。这些应用一般`<body>`标签内什么东西都没有，只有`<script>`和`<link>`标签，被称为"Single Page Applications"或者"SPA"。就像它的名字所暗示的一样，服务器返回时一直在重用同一个页面，其他的页面内容都是在客户端被处理和渲染的。
 
@@ -131,4 +131,71 @@ So: the hardware of the Internet can currently achieve within a factor of two of
 
 **TL;DR**: _我们可以使用JavaScript来掩盖网络的延迟，把它作为设计原则，就可以在你自己的应用里面去掉绝大多数的`spinner`或者`loading`。使用PJAX和TurboLink的话，你就会失去了这些改善用户速度体验的机会。_.
 
-TBA
+第一个原则里，在描述为什么要尽量减少前端和后端之间数据来回传输的次数时，主要是基于传输速度有理论上限的事实。实际上另一个需要考虑的要素就是网络的质量。我们都知道，当网络连接状况不好时，就会有数据包需要被重传。所以，你觉得应该一个来回就传输完毕的数据，可能实际上要花去好几个。
+
+在这方面，Javascript正好可以帮上忙：通过客户端的代码来驱动UI，人工的构造出零延迟，就可以_掩盖网络的延迟_，制造一切操作都很顺畅的假象。比如，网页和网页之间是通过超链接，`<a>`标签，链接在一起的。传统网页上，当一个链接被点击时，浏览器就发送一个可能会耗时很久的请求，然后处理请求并把内容呈现给用户。
+
+但Javascript允许你**立刻响应**（有些地方把这个叫**乐观响应**）：当一个链接或者按钮被点击时，页面立刻做出响应而不需要去访问网络。这方面著名的例子就是Gmail（包括最近Google的新产品Inbox）的"邮件归档"功能。当你点击"归档"，UI上邮件立刻会被显示为归档状态，而服务器的请求和处理是异步进行的。
+
+再比如，我们处理的是一个表单。也许你觉得一个表单在数据被提交到服务器，处理结果返回之前，不能做太多的事情。但其实当用户完成输入并点击提交的时候，我们就可以开始响应了。甚至有些做到极致的应用，比如Google搜索页面，当用户开始输入的时候，展示搜索结果的页面就已经开始渲染了。
+
+![Google Homepage](/downloads/images/2014_11/google_homepage.gif "Google Homepage")
+图4. Google在用户输入搜素关键字时就开始渲染搜索结果页面
+
+这种行为被称为 _layout adaptation_。 它的思路是当前页面知道操作后状态的页面layout，所以在没有数据填充的情况下，它就可以过渡到下面那个状态的layout。这样的处理是"乐观"的，是因为有可能后面那个页面的数据一直没有返回，而这时候页面的layout已经画在那里了。
+
+Google的主页的演进，非常清楚的说明了我们这里强调的第一和第二个原则。
+
+首先，分析访问`www.google.com`时TCP连接的[包数据][27]可以看到整个首页的数据都被一次性发出来了。整个交互，包括关闭连接，耗时几十毫秒而已。而且，似乎在Google[一开始的版本][28]就做到了这点。
+
+   [27]: https://gist.github.com/guille/3e1b2d7529009370b986
+   [28]: http://en.wikipedia.org/wiki/Google#mediaviewer/File:Google1998.png
+
+在2004年晚些时候, Google[标杆性地][29]使用了JavaScript完成`输入时动态提示`功能（和Gmail一样，也是一个20%创新时间产出的项目），这一功能也启发了很多网站开始大量的使用[AJAX][30]:
+
+   [29]: http://googleblog.blogspot.com/2004/12/ive-got-suggestion.html
+   [30]: http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications/
+
+{% blockquote %}
+Take a look at Google Suggest. Watch the way the suggested terms update as you type, almost instantly with no waiting for pages to reload. Google Suggest and Google Maps are two examples of a new approach to web applications that we at Adaptive Path have been calling Ajax
+{% endblockquote %}
+
+到了2010年，Google又[推出了][32]_及时搜索_，也就是我们前面看到的效果：当用户输入关键字时，整个页面无需刷新就可以展示搜索的结果。
+
+   [32]: http://googleblog.blogspot.com/2010/09/search-now-faster-than-speed-of-type.html
+
+另一个例子是iOS。在很早期的版本，iPhone就要求开发者提供一个`default.png`图片，用来在应用被加载完成之前显示给用户:
+
+![iPhone default](/downloads/images/2014_11/iphone_default_png.png "iPhone default")
+
+图5. iPhone OS强制在应用加载前显示一个default.png
+
+当然，这里OS不是在隐藏网络延迟，而是CPU处理延迟。对于iPhone初期版本来说，这样来弥补硬件的弱点非常重要。当然就和网页上使用提前加载一样，这种手法有可能会崩坏：当加载来的数据和`default.png`不匹配的时候。Marco Arment在2010年对它可能带来的影响进行了 [透彻的分析][34]。
+
+   [34]: http://www.marco.org/2010/11/11/my-default-png-dilemma
+
+除开处理表单和输入，Javascript还被大量用于处理**文件上传**。我们可以通过各种前端表现来满足用户上传文件的需求：拖拽，粘贴以及各种file picker。特别是有了[HTML5的新API][36]之后，我们可以在文件完成传输前就显示它的信息。在Cloudup网站的上传文件中，就使用了类似的实现。从图片中可以看到，在用户选择了文件之后，缩略图就立刻生成并显示在用户界面上了：
+
+   [36]: https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications
+
+![Cloudup upload](/downloads/images/2014_11/cldup_upload.gif "Cloudup upload")
+图6. 在上传完成前图片就被显示出来并且加入了虚化效果
+
+上面的方式都是采用前端技术来制造_速度的假象_，但这种方式其实在很多地方都被证明是有效的。[一个例子][38]是在美国休斯顿机场，通过_增加_到达乘客走到行李提取处的距离，而不是实际上的行李处理速度，就大大的_减少_了旅客抱怨行李领取太慢的问题。
+
+   [38]: http://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html
+
+运用了这种设计原则的应用，使用`spinners`或者`loading`提示符来提醒用户页面正在刷新的场景会非常少出现。整个页面的动线，都应该被_实际数据_来驱动。
+
+当然，立即响应这个原则也不能被滥用。在特定的用户交互场景下，立即响应是有害的：比如用户在注销或者是支付的流程中，我们当然不能让他"乐观"的认为没有真正完成的操作已经完成了。但即使在这些场景下，使用`spinners`或者`loading`提示符也不应该**被提倡**。 只有在你觉得应该提醒用户这个操作会非常长，你可以去干别的事情时，才应该显示它们。那是多长？在UX设计中经常被引用的[Nielsen的研究报告][39]上是这么说的：
+
+   [39]: http://www.nngroup.com/articles/response-times-3-important-limits/
+
+{% blockquote %}
+The basic advice regarding response times has been about the same for thirty years Miller 1968; Card et al. 1991:
+0.1 second is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.
+1.0 second is about the limit for the user’s flow of thought to stay uninterrupted, even though the user will notice the delay.Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.
+10 seconds is about the limit for keeping the user’s attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish.
+{% endblockquote %}
+
+像PJAX或者TurboLinks这样的技术，则很大程度上完全不具备提前渲染状态迁移后下一个页面的基础layout的能力。只有当服务器端的返回传输到客户端，客户端才能开始响应。
