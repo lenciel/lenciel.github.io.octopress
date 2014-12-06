@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-12-06T12:27:25+08:00</updated>
+  <updated>2014-12-06T13:30:18+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -18,7 +18,12 @@
     <link href="http://lenciel.cn/2014/11/7-principles-of-rich-web-applications/"/>
     <updated>2014-11-17T22:30:42+08:00</updated>
     <id>http://lenciel.cn/2014/11/7-principles-of-rich-web-applications</id>
-    <content type="html"><![CDATA[<p>这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。</p>
+    <content type="html"><![CDATA[<p>本文源自Guillermo Rauch的[7 Principles of Rich Web Application][1]，经过他本人授权，我翻译了放在这里。</p>
+
+<pre><code>[1]: http://rauchg.com/2014/7-principles-of-rich-web-applications/
+</code></pre>
+
+<p>这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。</p>
 
 <p>Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如<a href="http://nodejs.org/">服务器端</a>甚至是<a href="https://tessel.io/">微控制器</a>。在斯坦福这样的声望卓越的大学里面，它也已经被选为计算机科学<a href="http://web.stanford.edu/class/cs101/">入门课程</a>的教学语言。 </p>
 
