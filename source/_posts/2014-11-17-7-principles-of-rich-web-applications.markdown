@@ -8,6 +8,10 @@ categories:
 - architecture
 ---
 
+本文源自Guillermo Rauch的[7 Principles of Rich Web Application][1]，经过他本人授权，我翻译了放在这里。
+
+    [1]: http://rauchg.com/2014/7-principles-of-rich-web-applications/
+
 这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。
 
 Javascript毫无疑问早已成为了前端开发人员不可或缺的工具。但现在它的使用范围还在不断扩展到其他的领域，比如[服务器端][3]甚至是[微控制器][4]。在斯坦福这样的声望卓越的大学里面，它也已经被选为计算机科学[入门课程][5]的教学语言。 
