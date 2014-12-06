@@ -10,7 +10,7 @@ categories:
 
 本文源自Guillermo Rauch的[7 Principles of Rich Web Application][1]，经过他本人授权，我翻译了放在这里。
 
-    [1]: http://rauchg.com/2014/7-principles-of-rich-web-applications/
+   [1]: http://rauchg.com/2014/7-principles-of-rich-web-applications/
 
 这篇文章主要介绍构建使用Javascript来控制UI的网站在设计时的7个原则。它们是我作为一名开发人员的经验所得，也是我作为一名互联网资深用户的体会和总结。
 
