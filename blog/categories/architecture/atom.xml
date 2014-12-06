@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Architecture | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/architecture/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-11-25T14:18:47+08:00</updated>
+  <updated>2014-12-06T12:27:25+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -41,8 +41,8 @@
 <li> <a href="#act-immediately-on-user-input">对用户输入立刻响应</a></li>
 <li> <a href="#react-to-data-changes">数据变更时的应对</a></li>
 <li> <a href="#control-the-data-exchange-with-the-server">控制与服务器的数据交互</a></li>
-<li> <a href="#dont-break-history-enhance-it">不要搞乱history，增强它</a></li>
-<li> <a href="#push-code-updates">Push更新</a></li>
+<li> <a href="#dont-break-history-enhance-it">不要破坏history，增强它</a></li>
+<li> <a href="#push-code-updates">推送代码更新</a></li>
 <li> <a href="#predict-behavior">行为预测</a></li>
 </ol>
 
@@ -80,7 +80,7 @@
 <p>其次，TCP协议里面有一个流控机制，被称为 <code>slow start</code>，也就是在连接建立过程中逐渐增加传输的分段(<code>segments</code>)大小，入下图所示：</p>
 
 <p><img src="/downloads/images/2014_11/tcp_segments_chart.png" title="TCP segments chart" alt="TCP segments chart" />
-图1. 服务器端在TCP连接的不同阶段能够发送的分段大小(KB)</p>
+图2. 服务器端在TCP连接的不同阶段能够发送的分段大小(KB)</p>
 
 <p>这对SPA有两个很大的影响：</p>
 
@@ -100,8 +100,9 @@
 
 <p>到目前为止，在服务器端处理一部分或者所有的页面，仍然是避免过多客户端与服务器的交互的主要手段。<a href="http://danlec.com/blog/stackoverflow-in-4096-bytes">StackOverflow in 4096 bytes</a>很不错地展示了如何降低和服务器的来回交互次数。作为概念验证的SPA，它理论上可以做到在握手后的第一个TCP连接中完成加载！当然，要做到这些，它使用了<a href="http://www.chromium.org/spdy/link-headers-and-server-hint">SPDY 或者 HTTP/2 server push</a>，因此可以在一个hop里面传输所有客户端可以缓存的代码。</p>
 
-<p><img src="/downloads/images/2014_11/st4k.png" title="StackOverflow clone in 4096 bytes" alt="StackOverflow clone in 4096 bytes" />
-图3. 使用了内链CSS和JS技术的<code>Stackoverflow in 4096 bytes</code></p>
+<p><img src="/downloads/images/2014_11/st4k.png" title="StackOverflow clone in 4096 bytes" alt="StackOverflow clone in 4096 bytes" /></p>
+
+<p>图3. 使用了内链CSS和JS技术的<code>Stackoverflow in 4096 bytes</code></p>
 
 <p>如果我们有一个足够灵活的系统，可以在浏览器和服务器直接共享渲染页面的代码（比如双方都是js），并且提供工具增量的加载脚本和样式，那么 <em>网站</em> 和 <em>Web应用</em> 就可以合一而不再是两个模棱两可难以区分的词了：它们本身就有一样的UX要素。比如一个博客页面和一个复杂的CRM，都有URL，都需要跳转，都展示数据，本质上并没有太大不同。即便是像数据表格这样复杂的东西，传统上主要是客户端提供的功能来完成对数据的处理，但也首先需要给用户展示那些需要他处理的数据 。降低客户端和服务器交互的次数，对实现我们说的这样的系统非常重要。</p>
 
@@ -124,8 +125,9 @@
 
 <p>再比如，我们处理的是一个表单。也许你觉得一个表单在数据被提交到服务器，处理结果返回之前，不能做太多的事情。但其实当用户完成输入并点击提交的时候，我们就可以开始响应了。甚至有些做到极致的应用，比如Google搜索页面，当用户开始输入的时候，展示搜索结果的页面就已经开始渲染了。</p>
 
-<p><img src="/downloads/images/2014_11/google_homepage.gif" title="Google Homepage" alt="Google Homepage" />
-图4. Google在用户输入搜素关键字时就开始渲染搜索结果页面</p>
+<p><img src="/downloads/images/2014_11/google_homepage.gif" title="Google Homepage" alt="Google Homepage" /></p>
+
+<p>图4. Google在用户输入搜素关键字时就开始渲染搜索结果页面</p>
 
 <p>这种行为被称为 <em>layout adaptation</em>。 它的思路是当前页面知道操作后状态的页面layout，所以在没有数据填充的情况下，它就可以过渡到下面那个状态的layout。这样的处理是&#8221;乐观&#8221;的，是因为有可能后面那个页面的数据一直没有返回，而这时候页面的layout已经画在那里了。</p>
 
@@ -149,8 +151,9 @@
 
 <p>除开处理表单和输入，Javascript还被大量用于处理<strong>文件上传</strong>。我们可以通过各种前端表现来满足用户上传文件的需求：拖拽，粘贴以及各种file picker。特别是有了<a href="https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications">HTML5的新API</a>之后，我们可以在文件完成传输前就显示它的信息。在Cloudup网站的上传文件中，就使用了类似的实现。从图片中可以看到，在用户选择了文件之后，缩略图就立刻生成并显示在用户界面上了：</p>
 
-<p><img src="/downloads/images/2014_11/cldup_upload.gif" title="Cloudup upload" alt="Cloudup upload" />
-图6. 在上传完成前图片就被显示出来并且加入了虚化效果</p>
+<p><img src="/downloads/images/2014_11/cldup_upload.gif" title="Cloudup upload" alt="Cloudup upload" /></p>
+
+<p>图6. 在上传完成前图片就被显示出来并且加入了虚化效果</p>
 
 <p>上面的方式都是采用前端技术来制造<em>速度的假象</em>，但这种方式其实在很多地方都被证明是有效的。<a href="http://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html">一个例子</a>是在美国休斯顿机场，通过<em>增加</em>到达乘客走到行李提取处的距离，而不是实际上的行李处理速度，就大大的<em>减少</em>了旅客抱怨行李领取太慢的问题。</p>
 
@@ -161,6 +164,152 @@
 <p><blockquote><p>The basic advice regarding response times has been about the same for thirty years Miller 1968; Card et al. 1991:<br/>0.1 second is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.<br/>1.0 second is about the limit for the user’s flow of thought to stay uninterrupted, even though the user will notice the delay.Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.<br/>10 seconds is about the limit for keeping the user’s attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish.</p></blockquote></p>
 
 <p>像PJAX或者TurboLinks这样的技术，则很大程度上完全不具备提前渲染状态迁移后下一个页面的基础layout的能力。只有当服务器端的返回传输到客户端，客户端才能开始响应。</p>
+
+<a name="L3...........................a.name..react-to-data-changes....a."></a>
+<h2>3. 数据变更时的应对<a name="react-to-data-changes"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>当服务器的数据变化时，应该主动让用户知道。这样可以使得用户无需经常进行手动的刷新(F5, Cmd+R&hellip;.)，也是一种性能上的改进措施。新的挑战是：(重)连接的管理，状态的一致性问题</em>.</p>
+
+<p>第三个原则就是当数据源(一般是一个或者多个数据库)的数据有变更时，UI要<em>主动响应</em>。</p>
+
+<p>给用户一个当前数据的静态的HTML快照，直到用户刷新页面（传统网页）或者操作页面元素（AJAX）已经逐渐变得过时。你的UI应该是<strong>自刷新</strong>的。当数据节点不断增加，我们设计时需要开始考虑包含手表、电话的各种移动设备和可穿戴设备时，这点尤其重要。</p>
+
+<p>以Facebook初期对newsfeed的实现为例，因为用户都是用PC机在更新状态，把它实现成静态的网页未尝不可：一般来说，人们一天更新一次就差不多了。但现在我们生活在一个人们拍照后可以立刻分享，朋友们可以立刻发表评论的时代，对数据变化的实时响应成为了应用开发的基础需求。这不仅仅是因为我们的应用程序是多用户并发访问的，即便就考虑单用户的场景，实时更新也是很重要的。以用笔记本分享我们手机上的照片的场景为例：</p>
+
+<p><img src="/downloads/images/2014_11/concurrent_data_points.gif" title="Concurrent Data Points" alt="Concurrent Data Points" /></p>
+
+<p>图7. 即便是单个用户操作的场景，更好的响应性也能带来体验的提升</p>
+
+<p>有的数据，比如<strong>Session和登录状态的同步</strong>，在多个页面间应该是非常实时的同步的。这样，当用户打开了多个tab，从其中的任何一个登出，其他的所有页面都应该登出。这点对保护用户的隐私是非常重要的，特别是我们有些设备是多个人在同时使用。</p>
+
+<p><img src="/downloads/images/2014_11/login_sync.gif" title="Login synchronization" alt="Each page reacts to the session and login state" /></p>
+
+<p>图8. 不同的页面间同步登录状态</p>
+
+<p>一旦你的用户习惯了你的应用的数据是自动更新的，那么你就要考虑一个新的需求：<strong>状态一致性</strong>。当客户端收到一个原子的数据更新时，必须考虑即便在断网很长时间之后，也能够正确的完成更新。比如，你的笔记本突然没电了，几天后再打开，应用的数据是不是还正确？</p>
+
+<p><img src="/downloads/images/2014_11/twitter_data_reconciliation.png" title="twitter数据一致性" alt="twitter数据一致性" /></p>
+
+<p>图9. 长时间断线后重连的情况下twitter的页面</p>
+
+<p>是不是能够保持数据的一致性也会影响你的应用在第一条原则上的表现。如果你想对首次请求的数据做优化，必须要考虑如果是断线后重连，那么第一个请求应该首先需要重新建立session。</p>
+
+<a name="L4....................................a.name..control-the-data-exchange-with-the-server....a."></a>
+<h2>4. 控制与服务器的数据交互<a name="control-the-data-exchange-with-the-server"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>接下来主要讨论的是如何精细的控制客户端和服务器之间的交互。注意出错处理，自动重试，在后台同步数据并管理好离线的缓存。</em></p>
+
+<p>在互联网初期，客户端和服务器间的交互还仅仅有下面几种方式:</p>
+
+<ol>
+<li> 点击一个连接，会触发 <code>GET</code> 来获取一个新页面并重新渲染页面</li>
+<li> 提交一个表单，会触发一个 <code>POST</code> 或 <code>GET</code> 并重新渲染页面</li>
+<li> 嵌入一个图片或者对象，会触发一个异步的 <code>GET</code> 并重新渲染页面</li>
+</ol>
+
+
+<p>这个模型以其简洁性显得很具吸引力，但是我们今天要明白服务器和客户端之间的数据交互，学习曲线就陡多了。最大的问题在第二点，如果不能在不刷新页面的情况下提交数据，毫无疑问是一个性能上的弱点。更重要的是，它会使得回退键不可用：</p>
+
+<p><img src="/downloads/images/2014_11/annoy_artifact.png" title="Annoy Artifact" alt="Possibly the most annoying artifact of the old web" /></p>
+
+<p>图10. 老一代网页上最让人讨厌的东西</p>
+
+<p>把网站作为<strong>应用平台</strong> 来考虑，没有Javascript将是不可想象的事情。AJAX单单是在表单信息提交这方面，就让交互体验产生了一次<em>飞跃</em>。我们现在更是有了一堆各式各样的API (<code>XMLHttpRequest</code>, <code>WebSocket</code>, <code>EventSource</code>以及更多其他的) 来更好地更细致的控制数据流。不但可以在用户输入的时候就开始处理用户数据，还能够有机会提供更好的UX体验。其中一个和前面那个原则有关的UX体验上的改进就是显示当前<em>连接状态</em>。如果我们的用户觉得数据是应用自己去刷新不需要他手动操作，那么就应该显示<em>连接中断</em>以及<em>正在重试连接中&hellip;</em>等状态。</p>
+
+<p>当发生连接中断时，最好先把数据存在内存（或者更好的，存到<code>localStorage</code>），以便在网络恢复后重新发送。 就像在<a href="http://jakearchibald.com/2014/using-serviceworker-today/">ServiceWorker</a>的介绍中提到的那样, 可以让Javascript应用在<em>后台运行</em>。</p>
+
+<p>除开断网，当发送数据出现超时或者是错误时，也可以试着<strong>自动重试</strong>，只在确认无法成功了之后，才将问题抛给用户感知。当然，有些特别的错误还是需要额外小心的处理。比如一个<code>403</code>错误，通常说明用户的session过期了。这种情况下就该让用户重新登录，而不是继续重试了。</p>
+
+<p>还要注意使用这种模式时，要屏蔽用户中断数据流的操作。这种操作有两种，第一种也是最明显的一种是用户尝试关闭当前页面，这种情况可以通过<code>beforeunload</code>这个<code>handler</code>来处理。</p>
+
+<p><img src="/downloads/images/2014_11/before_unload_warning.png" title="Before unload warning" alt="The beforeunload browser warning" /></p>
+
+<p>图11. 页面关闭之前弹出警告</p>
+
+<p>另一种（不那么明显的）是那些触发页面转换的操作。比如点击页面上的链接，触发一个新的页面载入。这种时候你可以显示自己的弹出窗口。</p>
+
+<a name="L5..............history.............a.name..dont-break-history-enhance-it....a."></a>
+<h2>5. 不要破坏history，增强它<a name="dont-break-history-enhance-it"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>不使用浏览器来管理URL跳转和history，将带来新的挑战。我们必须保证用户在浏览时，应用的表现符合他的期望。可以自建缓存来提高响应速度。</em></p>
+
+<p>即使不考虑表单的提交，而是设计一个仅有超链接的Web应用，也需要考虑让前进/后退导航变得更可用。比如典型的<code>infinite pagination scenario</code>，也就是应用应该允许用户在页面上随便跳转，它的实现通常需要使用Javascript监听对链接的点击，然后注入数据或者HTML（还有个可选的步骤是调用<code>history.pushState</code>或者是<code>replaceState</code>，但不幸的是很多人都不没有使用它们）。</p>
+
+<p>这就是我使用“破坏”来形容它的原因：在Web被设计之初，这种监听对链接的点击并注入数据的情况，并不在设计图景中，而是每个状态的变迁都需要URL的变化来驱动。但虽然这种既有模式被Javascript“破坏”了，另一方面，通过使用Javascript控制history，也出现了<em>提升</em>的机会。</p>
+
+<p>一种提升的做法是Daniel Pipius提出的所谓<a href="https://medium.com/joys-of-javascript/beyond-pushstate-building-single-page-applications-4353246f4480">Fast Back</a>:</p>
+
+<blockquote><p>回退应该很快；用户默认数据不会有很大的变化，应该能很快回到上个页面。</p></blockquote>
+
+<p>我们可以近似的把回退按钮认为是一个在应用每个页面都可用的按钮，然后使用原则2来设计它：<em>对用户输入立刻响应</em>。这里要考虑的关键就变成了如何缓存前一个页面以便很快能再次渲染出来。接下来你就还可以想想原则3：如何在数据有了变化时，让用户感知到这些变化。</p>
+
+<p>另外，有一些场景下，你没法控制缓存的行为。比如，如果用户在你渲染一个页面的时候跳到第三方网站上去了，然后他按回退键。这个时候就会遇到下面的这个bug：</p>
+
+<p><img src="/downloads/images/2014_11/back_button_bug.gif" title="Back Button Bug" alt="Pressing back incorrectly loads the initial HTML from the pageload" />
+图12. 按回退键时载入了原始页面的HTML而不是刷新后的</p>
+
+<p>另一种破坏性的操作是忽略 <em>scrolling memory</em>。和之前那个问题一样，如果页面没有JS或者其他人工的history管理，多半就不会有这个问题。但局部动态刷新的页面多半就会遇到：我测试了最著名的Javascript驱动的网站，它们的newsfeeds都有<em>scrolling amnesia</em>的问题：</p>
+
+<p><img src="/downloads/images/2014_11/back_button_bug.gif" title="Scrolling Amnesia" alt="Infinite pagination is usually susceptible to scrolling amnesia" /></p>
+
+<p>图13. 滚动失忆问题</p>
+
+<p>最后，要注意哪些状态应该被持久化。比如是不是需要展开显示文章的评论：</p>
+
+<p><img src="/downloads/images/2014_11/back_button_bug.gif" title="Scrolling Amnesia" alt="Infinite pagination is usually susceptible to scrolling amnesia" /></p>
+
+<p>图14. 在操作history来导航时，是否展开显示评论也被持久化了</p>
+
+<p>因为是在应用内使用超链接触发的页面重渲染，用户的期望是回到这页时，他之前展开的评论树仍然是展开的。这个状态其实是<em>瞬态的</em>， 仅仅在history栈上的这页有这个状态。</p>
+
+<a name="L6.....................a.name..push-code-updates....a."></a>
+<h2>6. 推送代码更新<a name="push-code-updates"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>数据自动更新但代码的更新不是自动推送的应用是低效的。要避免API出错，增强性能。使用无状态的DOM来避免重画。</em></p>
+
+<p>让你的应用能够对<em>代码变更</em>进行推送是至关重要的。</p>
+
+<p>首先，这样可以减少出错的可能并增强稳定性。当你的后台接口改变时，客户端的变更是<em>必须的</em>，否则客户端就没法处理服务器来的新格式的数据，或者上报一堆服务器没法理解的旧格式的数据。</p>
+
+<p>考虑到原则3，代码更新的推送还有一个重要的原因：传统的网站，刷新页面一方面是为了加载新的数据，另一方面也常常是为了加载新的代码。一旦你的UI让用户觉得数据是自动刷新的，他们就不会有意识的再去刷新页面。这样仅仅有一套数据推送的机制是不够的，特别是考虑到现今很多应用一个页面要被打开很长的时间。</p>
+
+<p>如果服务器本身有notification通道，那么可以在代码需要更新的时候推送通知给用户。如果没有，可以在客户端请求的HTTP头里面带一个版本号。服务器检查这个版本号，根据情况看要不要拒绝客户端的请求并要求它更新。</p>
+
+<p>有了这些，应用就可以在加载数据或者代码时不再需要用户自主进行页面刷新了。比如，当一个页面<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/User_experience/Using_the_Page_Visibility_API">不可见</a>，表单的输入没有被填写的时候。</p>
+
+<p>但更好的做法是进行所谓的<strong>代码热重载</strong>。 这主要是指整个页面不需要进行重刷，而是特定的<em>模块</em>被替换并重新执行代码逻辑。</p>
+
+<p>在很多已有的代码基础上要实现代码热重载是困难的。但从架构上把<em>行为</em>（代码）和<em>数据</em>（状态）隔离，也是非常值得考虑和探讨的。如果能这样解耦，就能很轻松的进行很多本来复杂的修改。</p>
+
+<p>比如，你的应用需要建立一个事件总线（比如<a href="http://socket.io/">socket.io</a>）。当总线接收到事件时，某个特定的模块就改变自己的行为，比如，根据新的数据状态来产生不同的DOM内容。</p>
+
+<p>理想状态下，我们能够以单个模块的粒度来更新代码。也就是说，仅仅因为要更新代码，没必要断开现有的socket连接。这样理想的代码能够热重载的架构就是<em>模块化</em>的。但是这里带来的挑战是模块的更新不能带来意料之外的副作用，为了实现这点，像<a href="http://facebook.github.io/react/">React</a>这样的优秀的框架被创造出来。当一个模块的代码更新后，它的代码逻辑能够静静地重新运行一次来更新DOM。 这方面的一些解释可以看看Dan Abramov的<a href="http://gaearon.github.io/react-hot-loader/">文章</a>.</p>
+
+<p>从根本上来说，代码热重载可以极大程度上帮助你基于DOM渲染页面。特别是当状态保持在DOM里面，或者是事件响应都是你自己手工创建的时候，更新代码是一个非常复杂的事情。</p>
+
+<a name="L7...............a.name..predict-behavior....a."></a>
+<h2>7. 行为预测<a name="predict-behavior"></a></h2>
+
+<p><strong>TL;DR</strong>: <em>通过行为预测来进一步减少延迟。</em></p>
+
+<p>一个Javascript的应用可以有预测<em>用户输入</em>的机制。</p>
+
+<p>最常见的办法是在数据请求的动作被真正触发之前就进行数据的预获取。比如在用户hover到链接上而不是真正点击链接的时候就开始取数据。</p>
+
+<p>另一个比较复杂的预测用户行为的办法是通过监听用户鼠标的运动，分析它的轨迹来预测它可能会去到的”可以操作元素“，比如是按钮。下面是一个<a href="https://medium.com/@cihadturhan/a-ux-idea-i-know-where-you-are-aiming-3e00d152afb2">jQuery的例子</a>:</p>
+
+<p><img src="/downloads/images/2014_11/behavior_predict.gif" title="I know where you're aiming" alt="jQuery plugin that predicts the mouse trajectory" /></p>
+
+<p>图12. jQuery鼠标运动轨迹预测插件</p>
+
+<a name="L.......a.name..conclusion....a."></a>
+<h2>结论<a name="conclusion"></a></h2>
+
+<p>网络过去和现在都是信息传递最通用的媒介。当我们不断让我们的页面变得更动态时，也要注意在引入新的特性时，能保持历史上确定的一些好的用户体验准则。</p>
+
+<p>互相用超链接集结在一起的页面是各种类型的应用的组成单位。当用户浏览页面时，渐进地加载代码、样式表和标记，可以在保证性能的基础上不牺牲太多的交互性。</p>
+
+<p>Javascript带来了新的契机，一旦被全面采用，将可以在保证最佳的用户体验基础上，构建前所未有的最广阔最开放的应用平台。</p>
 ]]></content>
   </entry>
   
