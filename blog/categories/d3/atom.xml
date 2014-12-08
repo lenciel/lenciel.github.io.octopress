@@ -4,7 +4,7 @@
   <title><![CDATA[Category: D3 | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/d3/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-12-08T19:08:30+08:00</updated>
+  <updated>2014-12-09T00:52:34+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -18,30 +18,7 @@
     <link href="http://lenciel.cn/2014/04/time-to-talk-about-math/"/>
     <updated>2014-04-02T14:30:00+08:00</updated>
     <id>http://lenciel.cn/2014/04/time-to-talk-about-math</id>
-    <content type="html"><![CDATA[<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:source/_posts/2014-04-02-time-to-talk-about-math.markdown</p>
-
-<a name="L..............................:"></a>
-<h1>这篇日志主要是想试试:</h1>
-
-<p>  <title>&lt;![CDATA[Category: d3 | @Lenciel]]&gt;</title>
-  <link href="http://lenciel.cn/blog/categories/d3/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:blog/categories/d3/atom.xml</p>
-
-<a name="L...updated.2014-10-08T21:04:22.08:00..updated."></a>
-<h1>  <updated>2014-10-08T21:04:22+08:00</updated></h1>
-
-<p>  <updated>2014-09-22T03:04:55+08:00</updated></p>
-
-<blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><p>d:source/_posts/2014-04-02-time-to-talk-about-math.markdown
-  <id><a href="http://lenciel.cn/">http://lenciel.cn/</a></id>
-  <author>
-    <name>&lt;![CDATA[Lenciel Li]]&gt;</name></p></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote>
-
-<p>  </author>
-  <generator uri="http://octopress.org/">Octopress</generator></p>
-
-<blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><blockquote><p>parent of a19e16d&hellip; Site updated at 2014-10-08 12:49:21 UTC:blog/categories/d3/atom.xml</p></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote>
+    <content type="html"><![CDATA[<p>这篇日志主要是想试试:</p>
 
 <ul>
 <li>怎么把<code>d3.js</code>和<code>AngularJS</code>集成到<a href="http://lenciel.cn/2013/03/blog-with-octopress-and-github-pages/">octopress</a>，因为<a href="http://vudlab.com/bart/">setosa</a>很酷</li>
