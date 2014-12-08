@@ -3,30 +3,13 @@ layout: post
 title: "勾股定理"
 date: 2014-04-02 14:30
 comments: true
-categories: 
+categories:
 - angular
 - d3
 - octopress
 ---
 
-<<<<<<< HEAD:source/_posts/2014-04-02-time-to-talk-about-math.markdown
 这篇日志主要是想试试:
-=======
-  <title><![CDATA[Category: d3 | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/d3/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-<<<<<<< HEAD:blog/categories/d3/atom.xml
-  <updated>2014-10-08T21:04:22+08:00</updated>
-=======
-  <updated>2014-09-22T03:04:55+08:00</updated>
->>>>>>> d:source/_posts/2014-04-02-time-to-talk-about-math.markdown
-  <id>http://lenciel.cn/</id>
-  <author>
-    <name><![CDATA[Lenciel Li]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
->>>>>>> parent of a19e16d... Site updated at 2014-10-08 12:49:21 UTC:blog/categories/d3/atom.xml
 
 * 怎么把`d3.js`和`AngularJS`集成到[octopress](http://lenciel.cn/2013/03/blog-with-octopress-and-github-pages/)，因为[setosa](http://vudlab.com/bart/)很酷
 * 怎么在某篇日志里面支持specific的js和css
