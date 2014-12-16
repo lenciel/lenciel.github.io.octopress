@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2014-12-15T21:57:40+08:00</updated>
+  <updated>2014-12-16T22:19:29+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Merry Christmas Css Animation]]></title>
+    <link href="http://lenciel.cn/2014/12/lonely-christmas-with-css/"/>
+    <updated>2014-12-16T22:18:49+08:00</updated>
+    <id>http://lenciel.cn/2014/12/lonely-christmas-with-css</id>
+    <content type="html"><![CDATA[<p>昔日一统天下的Flash继续<a href="http://www.36kr.com/p/217821.html">势微</a>，但其实Web上的各种动画效果却越来越多了。今天因为一个产品需求，花了点儿时间看了一下，感觉目前CSS动画和JS动画两大门派势力都不小，之间需要有一个把大家嫁接在一起的东西：不知道<a href="http://w3c.github.io/web-animations/">Web Animation</a>会不会<a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">有机会</a>。</p>
+
+<p>纯CSS的动画实作:</p>
+
+<p><link rel="stylesheet" type="text/css" href="http://lenciel.cn/downloads/static/css/christmas_animation.css" /></p>
+
+<script>
+  function resetSvgText() {
+    $('#id-text-1' ).text($('#id-text-input-1' ).val());
+    $('#id-text-2' ).text($('#id-text-input-2' ).val());
+  }
+$('#id-btn-submit').click(function() {
+  resetSvgText();
+})
+</script>
+
+
+
+
+<div class="form-container">
+  <form class="form-inline" autocomplete="off" onsubmit="return false;">
+    <input id="id-text-input-1" type="text" class="input-text" placeholder="Merry">
+    <input id="id-text-input-2" type="text" class="input-text" placeholder="Christmas"><br/>
+    <input type="submit" onclick="javascript:resetSvgText()" id="id-btn-submit" value="给我点儿颜色看看">
+  </form>
+</div>
+
+
+
+
+<div class="box-container">
+    <svg viewBox="0 0 1400 1000">
+      <symbol id="s-text">
+        <text id="id-text-1" text-anchor="middle"
+              x="50%"
+              y="35%"
+              class="text--line"
+              >
+          Merry
+        </text>
+        <text id="id-text-2" text-anchor="middle"
+              x="50%"
+              y="90%"
+              class="text--line2"
+              >
+          Christmas
+        </text>
+      </symbol>
+
+      <g class="g-ants">
+        <use xlink:href="#s-text"
+          class="text-copy"></use>
+        <use xlink:href="#s-text"
+          class="text-copy"></use>
+        <use xlink:href="#s-text"
+          class="text-copy"></use>
+        <use xlink:href="#s-text"
+          class="text-copy"></use>
+        <use xlink:href="#s-text"
+          class="text-copy"></use>
+      </g>
+    </svg>
+</div>
+
+
+<!-- /container -->
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[突然死亡]]></title>
@@ -1944,50 +2021,6 @@
 <p><a href="http://www.slant.co/topics/67/~what-are-the-best-programming-fonts">What are the best programming fonts</a>.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
 </ol>
 </div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac上自启动autossh]]></title>
-    <link href="http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
-    <updated>2014-07-11T20:14:20+08:00</updated>
-    <id>http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
-    <content type="html"><![CDATA[<p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
-
-<div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
-<noscript><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
-&lt;plist version=&quot;1.0&quot;&gt;
-&lt;dict&gt;
-  &lt;key&gt;KeepAlive&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;Label&lt;/key&gt;
-  &lt;string&gt;autossh.lenciel&lt;/string&gt;
-  &lt;key&gt;ProgramArguments&lt;/key&gt;
-  &lt;array&gt;
-    &lt;string&gt;/opt/boxen/homebrew/bin/autossh&lt;/string&gt;
-    &lt;string&gt;-M&lt;/string&gt;
-    &lt;string&gt;20000&lt;/string&gt;
-    &lt;string&gt;-f&lt;/string&gt;
-    &lt;string&gt;-i&lt;/string&gt;
-    &lt;string&gt;~/.ssh/fuckgfw&lt;/string&gt;
-    &lt;string&gt;-N&lt;/string&gt;
-    &lt;string&gt;-L&lt;/string&gt;
-    &lt;string&gt;0.0.0.0:3189:localhost:31280&lt;/string&gt;
-    &lt;string&gt;remotehost&lt;/string&gt;
-  &lt;/array&gt;
-  &lt;key&gt;RunAtLoad&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;WorkingDirectory&lt;/key&gt;
-  &lt;string&gt;/opt/boxen/&lt;/string&gt;
-  &lt;key&gt;StandardErrorPath&lt;/key&gt;
-  &lt;string&gt;/opt/boxen/log/autossh/autossh.log&lt;/string&gt;
-&lt;/dict&gt;
-&lt;/plist&gt;
-</code></pre></noscript></div>
-
-
 
 ]]></content>
   </entry>

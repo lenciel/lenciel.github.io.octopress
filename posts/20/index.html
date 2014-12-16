@@ -9,7 +9,8 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content=" Yes, we’re men. Men is what we are.Palahniuk Fight Club(1999) ">
+  <meta name="description" content="工作机器切换到Mac之后我一直在自用并在团队中推广 oh-my-zsh。99%的时间本座对它是如此满意，除开有的时候它的服务太主动了一些。 比如今天在用curl试用一个接口的时候，我测试用的payload放在一个payload.json文件里面，所以命令是： 1
+curl -H "Content- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,18 +31,27 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/20" />
-<meta property="og:description" content=" Yes, we’re men. Men is what we are.Palahniuk Fight Club(1999) " />
+<meta property="og:description" content="工作机器切换到Mac之后我一直在自用并在团队中推广 oh-my-zsh。99%的时间本座对它是如此满意，除开有的时候它的服务太主动了一些。 比如今天在用curl试用一个接口的时候，我测试用的payload放在一个payload.json文件里面，所以命令是： 1
+curl -H "Content- &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content=" Yes, we’re men. Men is what we are.Palahniuk Fight Club(1999) " />
+<meta itemprop="description" content="工作机器切换到Mac之后我一直在自用并在团队中推广 oh-my-zsh。99%的时间本座对它是如此满意，除开有的时候它的服务太主动了一些。 比如今天在用curl试用一个接口的时候，我测试用的payload放在一个payload.json文件里面，所以命令是： 1
+curl -H "Content- &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
 <link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic|Patua+One|Yanone+Kaffeesatz" rel="stylesheet" type="text/css">
+
+<script src="/javascripts/libs/fastclick.js"></script>
+<script>
+  FastClick.attach(document.body);
+</script>
+
+
 
 
   <script type="text/javascript">
@@ -98,6 +108,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/07/stop-specific-zsh-shell-auto-correct/">关掉Zsh对指定命令的自动纠错</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-07-23T14:47:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>2:47 pm</span></time>
+        
+           | <a href="/2013/07/stop-specific-zsh-shell-auto-correct/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/07/stop-specific-zsh-shell-auto-correct/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>工作机器切换到Mac之后我一直在自用并在团队中推广 <a href="https://github.com/lenciel/oh-my-zsh"><code>oh-my-zsh</code></a>。99%的时间本座对它是如此满意，除开有的时候它的服务太主动了一些。</p>
+
+<p>比如今天在用<code>curl</code>试用一个接口的时候，我测试用的payload放在一个<code>payload.json</code>文件里面，所以命令是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -H "Content-Type: application/json" -X POST -d @payload.json  http://xxx.xxx.xxx/xxx/StartServiceServlet</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后它就一直提示：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>zsh: correct '@payload.json' to 'payload.json' [nyae]?</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一，直，提，示。</p>
+
+<p>跑到代码里面去看了一下，要关掉这种自动纠错的提示可以配置 <code>~/.oh-my-zsh/lib/correction.zsh</code>：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias curl='nocorrect curl'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>整个世界清静了&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1177,41 +1241,6 @@
 </span><span class='line'><span class="nb">set</span>-window-option -g window-status-current-format <span class="s2">&quot;#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #W #[fg=colour27, bg=colour235]⮀&quot;</span>
 </span><span class='line'><span class="nb">source</span> <span class="s2">&quot;/Users/lenciel/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/07/big-brother/">1984</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-20T01:11:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:11 am</span></time>
-        
-           | <a href="/2013/07/big-brother/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/07/big-brother/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/1984.gif" title="Don't touch me..." alt="1984" /></p>
-
-<blockquote><p>&#8220;From the age of Big Brother, from the age of the Thought Police, from a dead man … greetings.&#8221;</p><footer><strong>George Orwell</strong> <cite>Nineteen Eighty-Four (1984)</cite></footer></blockquote>
 
 </div>
   
