@@ -9,7 +9,22 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="一个朋友最近跟我说，想去把伤口结痂留下的疤痕用液氮处理一下。 这是我第一次听说除开激光这种“极热”之外，还可以在人的身上用这种“极冻”的方式祛疤。 不过，虽然是听起来非常激烈的方式，大概多少也得吃点儿苦头，但能顺利把身上的疤去掉，总是好的。 相比之下，心头的疤就没有那么容易弄掉了：8月28日， &hellip;">
+  <meta name="description" content="博格坎普说，我们android项目的build挂了。 去Jenkins看了一下，日志里面的错误是： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +45,44 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/3" />
-<meta property="og:description" content="一个朋友最近跟我说，想去把伤口结痂留下的疤痕用液氮处理一下。 这是我第一次听说除开激光这种“极热”之外，还可以在人的身上用这种“极冻”的方式祛疤。 不过，虽然是听起来非常激烈的方式，大概多少也得吃点儿苦头，但能顺利把身上的疤去掉，总是好的。 相比之下，心头的疤就没有那么容易弄掉了：8月28日， &hellip;" />
+<meta property="og:description" content="博格坎普说，我们android项目的build挂了。 去Jenkins看了一下，日志里面的错误是： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="一个朋友最近跟我说，想去把伤口结痂留下的疤痕用液氮处理一下。 这是我第一次听说除开激光这种“极热”之外，还可以在人的身上用这种“极冻”的方式祛疤。 不过，虽然是听起来非常激烈的方式，大概多少也得吃点儿苦头，但能顺利把身上的疤去掉，总是好的。 相比之下，心头的疤就没有那么容易弄掉了：8月28日， &hellip;" />
+<meta itemprop="description" content="博格坎普说，我们android项目的build挂了。 去Jenkins看了一下，日志里面的错误是： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -105,6 +150,244 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/09/update-android-sdk-with-proxy/">Update Android Sdk With Shadowsocks Proxy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-02T02:30:35+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:30 am</span></time>
+        
+           | <a href="/2014/09/update-android-sdk-with-proxy/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/09/update-android-sdk-with-proxy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>博格坎普说，我们android项目的build挂了。</p>
+
+<p>去Jenkins看了一下，日志里面的错误是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build
+</span><span class='line'>Creating properties on demand (a.k.a. dynamic properties) has been deprecated and is scheduled to be removed in Gradle 2.0. Please read http://gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html for information on the replacement for dynamic properties.
+</span><span class='line'>Deprecated dynamic property: "buildName" on "ProductFlavorDsl_Decorated{name=main, minSdkVersion=null, targetSdkVersion=null, renderscriptTargetApi=-1, renderscriptSupportMode=null, renderscriptNdkMode=null, versionCode=-1, versionName=null, applicationId=null, testApplicationId=null, testInstrumentationRunner=null, testHandleProfiling=null, testFunctionalTest=null, signingConfig=null, resConfig=null}", value: "1.0.97".
+</span><span class='line'>
+</span><span class='line'>FAILURE: Build failed with an exception.
+</span><span class='line'>
+</span><span class='line'>* What went wrong:
+</span><span class='line'>A problem occurred configuring project ':app'.
+</span><span class='line'>&gt; Could not resolve all dependencies for configuration ':app:_debugCompile'.
+</span><span class='line'>   &gt; Could not find com.android.support:appcompat-v7:20.0.0.
+</span><span class='line'>     Required by:
+</span><span class='line'>         android:app:unspecified
+</span><span class='line'>
+</span><span class='line'>* Try:
+</span><span class='line'>Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这其实在天朝是蛮常见的现象，因为<code>dl-ssl.google.com</code>被封了，所以你总是会因为下面的错误无法更新Android的SDK：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Failed connect to dl-ssl.google.com:443<span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="Jenkins....................."></a>
+<h2>Jenkins服务器配置代理</h2>
+
+<p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
+
+<p>安装shadowsocks的pythohn client:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install shadowsocks
+</span><span class='line'>
+</span><span class='line'>Downloading/unpacking shadowsocks
+</span><span class='line'>  Running setup.py egg_info <span class="k">for</span> package shadowsocks
+</span><span class='line'>
+</span><span class='line'>    warning: manifest_maker: MANIFEST.in, line 1: <span class="s1">&#39;recursive-include&#39;</span> expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+</span><span class='line'>
+</span><span class='line'>Installing collected packages: shadowsocks
+</span><span class='line'>  Running setup.py install <span class="k">for</span> shadowsocks
+</span><span class='line'>
+</span><span class='line'>    warning: manifest_maker: MANIFEST.in, line 1: <span class="s1">&#39;recursive-include&#39;</span> expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
+</span><span class='line'>
+</span><span class='line'>    Installing sslocal script to /usr/local/bin
+</span><span class='line'>    Installing ssserver script to /usr/local/bin
+</span><span class='line'>Successfully installed shadowsocks
+</span><span class='line'>Cleaning up...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到安装完之后有两个可执行文件，运行其中的<code>sslocal</code>就可以启动shadowsocks的客户端了：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@palm4fun-core-1:~/install# sslocal -h
+</span><span class='line'>usage: sslocal <span class="o">[</span>-h<span class="o">]</span> -s SERVER_ADDR <span class="o">[</span>-p SERVER_PORT<span class="o">]</span>
+</span><span class='line'>               <span class="o">[</span>-b LOCAL_ADDR<span class="o">]</span> <span class="o">[</span>-l LOCAL_PORT<span class="o">]</span> -k PASSWORD <span class="o">[</span>-m METHOD<span class="o">]</span>
+</span><span class='line'>               <span class="o">[</span>-t TIMEOUT<span class="o">]</span> <span class="o">[</span>-c CONFIG<span class="o">]</span> <span class="o">[</span>--fast-open<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span> <span class="o">[</span>-q<span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>optional arguments:
+</span><span class='line'>  -h, --help            show this <span class="nb">help </span>message and <span class="nb">exit</span>
+</span><span class='line'>  -s SERVER_ADDR        server address
+</span><span class='line'>  -p SERVER_PORT        server port, default: 8388
+</span><span class='line'>  -b LOCAL_ADDR         <span class="nb">local </span>binding address, default: 127.0.0.1
+</span><span class='line'>  -l LOCAL_PORT         <span class="nb">local </span>port, default: 1080
+</span><span class='line'>  -k PASSWORD           password
+</span><span class='line'>  -m METHOD             encryption method, default: aes-256-cfb
+</span><span class='line'>  -t TIMEOUT            timeout in seconds, default: 300
+</span><span class='line'>  -c CONFIG             path to config file
+</span><span class='line'>  --fast-open           use TCP_FASTOPEN, requires Linux 3.7+
+</span><span class='line'>  -v, -vv               verbose mode
+</span><span class='line'>  -q, -qq               quiet mode, only show warnings/errors
+</span><span class='line'>
+</span><span class='line'>Online <span class="nb">help</span>: &lt;https://github.com/clowwindy/shadowsocks&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最简单的办法就是新建一个配置文件：</p>
+
+<figure class='code'><figcaption><span>~/.shadowconfig</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="s2">&quot;server&quot;</span><span class="o">:</span><span class="s2">&quot;my_server_ip&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;server_port&quot;</span><span class="o">:</span><span class="mi">8388</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;local_port&quot;</span><span class="o">:</span><span class="mi">1080</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="s2">&quot;barfoo!&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;timeout&quot;</span><span class="o">:</span><span class="mi">600</span><span class="p">,</span>
+</span><span class='line'>    <span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="s2">&quot;table&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>记得在防火墙打开你配置的本地端口，然后运行下面的命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@palm4fun-core-1:~/install# sslocal -c ~/.shadowconfig
+</span><span class='line'>INFO: loading config from /root/.shadowconfig
+</span><span class='line'>shadowsocks 2.1.0
+</span><span class='line'>2014-09-02 00:27:53 INFO     starting <span class="nb">local </span>at 127.0.0.1:1080
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="L...............android.sdk"></a>
+<h2>命令行更新android sdk</h2>
+
+<p>先配置java命令使用的代理，然后
+从命令行更新android sdk。只需要到tools目录下面去跑(<code>-u</code>是不显示GUI，<code>-s</code>是指定不使用ssl链接)：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">_JAVA_OPTIONS</span><span class="o">=</span><span class="s2">&quot;-DsocksProxyHost=127.0.0.1&quot;</span>
+</span><span class='line'><span class="nv">$ </span>android update sdk -u -s --all
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意<code>socksProxyHost</code>的默认端口就是1080，如果你使用了其他端口不能只配ip。</p>
+
+<p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
+
+<a name="When.shit.happens"></a>
+<h2>When shit happens</h2>
+
+<p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>2014-09-02 00:27:53 INFO     starting <span class="nb">local </span>at 127.0.0.1:1080
+</span><span class='line'>2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+</span><span class='line'>2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+</span><span class='line'>2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>因为本座平时上网也是在用Google VM上的这个代理，没理由这么慢。所以就怀疑那个74.125.237.1的地址是被谁在<code>/etc/hosts</code>里面给配了固定ip。打开一看果然有：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>dl-ssl.google.com 74.125.237.1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>估计是之前配置的基友搜索到了类似<a href="http://www.programering.com/a/MjM4YTMwATA.html">这样的文章</a>。这也是为什么我从来不用也不推荐别人用修改hosts文件的方法来翻墙的原因：它们总是在过期。</p>
+
+<p>Last but not the least, Fuck you, GFW.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -324,38 +607,6 @@
 <p>“那我每次榨完汁，究竟应该立即去清洗，还是应该立即去饮用果汁呢？”</p>
 
 <p>他问完这个问题，我和导购小姐都笑了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/08/shadowsocks-on-google-compute-engine/">Shadowsocks on Google Compute Engine</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-17T21:55:44+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:55 pm</span></time>
-        
-           | <a href="/2014/08/shadowsocks-on-google-compute-engine/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/08/shadowsocks-on-google-compute-engine/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
   
   
