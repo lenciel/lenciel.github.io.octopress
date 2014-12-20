@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="最近读了张嘉佳的《从你的全世界路过》，其实就是他微博“睡前故事”的合集。 看头一两篇还行，多看几篇就发现这兄弟总是坚持不懈地出现在一段段很难自圆其说的古怪情感里面。出场的男女老少不是彪悍如风就是内向如铁，但都有一个特色就是不问过程不求结果。张兄在每个故事里面就像《红楼梦》里的癞头和尚， &hellip;">
+  <meta name="description" content="最近接连遇到非常tricky的bug。 首先是跟CORS有关的。话说自从google被墙，我们使用了google map或者google font的网站就被客户不停投诉各种打不开。本座只好去找国内可用的CDN，居然发现360的CDN不但有常用的jquery库和fontawsome这些资源， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/7" />
-<meta property="og:description" content="最近读了张嘉佳的《从你的全世界路过》，其实就是他微博“睡前故事”的合集。 看头一两篇还行，多看几篇就发现这兄弟总是坚持不懈地出现在一段段很难自圆其说的古怪情感里面。出场的男女老少不是彪悍如风就是内向如铁，但都有一个特色就是不问过程不求结果。张兄在每个故事里面就像《红楼梦》里的癞头和尚， &hellip;" />
+<meta property="og:description" content="最近接连遇到非常tricky的bug。 首先是跟CORS有关的。话说自从google被墙，我们使用了google map或者google font的网站就被客户不停投诉各种打不开。本座只好去找国内可用的CDN，居然发现360的CDN不但有常用的jquery库和fontawsome这些资源， &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="最近读了张嘉佳的《从你的全世界路过》，其实就是他微博“睡前故事”的合集。 看头一两篇还行，多看几篇就发现这兄弟总是坚持不懈地出现在一段段很难自圆其说的古怪情感里面。出场的男女老少不是彪悍如风就是内向如铁，但都有一个特色就是不问过程不求结果。张兄在每个故事里面就像《红楼梦》里的癞头和尚， &hellip;" />
+<meta itemprop="description" content="最近接连遇到非常tricky的bug。 首先是跟CORS有关的。话说自从google被墙，我们使用了google map或者google font的网站就被客户不停投诉各种打不开。本座只好去找国内可用的CDN，居然发现360的CDN不但有常用的jquery库和fontawsome这些资源， &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -105,6 +105,106 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/06/tricky-bugs/">Tricky Bugs Are Tricky</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-23T13:05:33+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:05 pm</span></time>
+        
+           | <a href="/2014/06/tricky-bugs/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/06/tricky-bugs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近接连遇到非常tricky的bug。</p>
+
+<p>首先是跟<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a>有关的。话说自从google被墙，我们使用了google map或者google font的网站就被客户不停投诉各种打不开。本座只好去找国内可用的CDN，居然发现<a href="http://libs.useso.com/">360的CDN</a>不但有常用的jquery库和fontawsome这些资源，还对google font做了镜像，于是就用了它。</p>
+
+<p>结果用了CDN之后，<a href="fortawesome.github.io/">fontawsome</a>的图标在firefox下显示不正常。curl了一下，发现360的基友们没有正确添加&#8221;Access-Control-Allow-Origin&#8221;的Header：这就使得像Firefox这样的默认不支持CORS的浏览器拒绝加载不在网站自己域名下的CORS资源。</p>
+
+<p>把fontawsome切换到<a href="http://www.staticfile.org/">staticfiles的CDN</a>，问题解决了。</p>
+
+<p>接下来的一个更加tricky，我们的蔡天王在写代码的过程中发现表单被填了怪怪的内容，如下图：</p>
+
+<p><img src="/downloads/images/2014_06/chrome_auto_fill.png" title="Don't touch me..." alt="chrome auto fill" /></p>
+
+<p>他检查了js和html，发现这些值不是我们处理表单的时候填的，WTF？</p>
+
+<p>专治各种疑难杂症的小弟拿到这个bug，首先怀疑的是浏览器那些自动填表的插件，比如<a href="https://lastpass.com/">LastPass</a>，结果用一个禁用了所有插件的Chrome重现了，WTF？</p>
+
+<p>于是我尝试着把<code>form</code>和里面的<code>input</code>声明成<code>autocomplete="off"</code>的，结果仍然能重现，WTFFFF？</p>
+
+<p>但是试过了几下变换表单里面的项的位置发现bug的行为模式是：</p>
+
+<ol>
+<li>password这个input总是会被用户的密码填写</li>
+<li>password上面那个input总是会被用用户的用户名填写（哪怕那个input是别的）</li>
+</ol>
+
+
+<p>于是就感觉是Chrome的password mananger在干坏事了。google了一下，发现<a href="http://www.theregister.co.uk/2014/04/09/chrome_makes_new_password_grab_in_version_34/">这么个消息</a>：</p>
+
+<blockquote><p>Chrome 34 will now offer to remember and fill password fields in the presence of autocomplete=off.” That means that if a website turns off automatic password collection, Chrome will offer to do it anyway if password manager is enabled.</p></blockquote>
+
+
+<p>古德，瓦力瓦力古德。看了如果一个网站你选择了“记住密码”，Chrome的密码管理器就会被这个域名下包含了<code>$('input[name=password]')</code>的表单激活。并且它居然蠢到直接去找<code>password</code>上面一个input来填入用户名，how convenient&hellip;</p>
+
+<p>要fix这种行为只能通过在出事的表单里面加上占位用的<code>input</code>来欺骗浏览器。比如我们是在django里面使用<code>django-crispy-form</code>生成表单，就可以重载它的Layout：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="bp">self</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span>  <span class="n">Layout</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">HTML</span><span class="p">(</span><span class="s">&#39;&lt;input style=&quot;display:none&quot; type=&quot;text&quot; name=&quot;fakeusernameremembered&quot;/&gt;&lt;input style=&quot;display:none&quot; type=&quot;password&quot; name=&quot;fakepasswordremembered&quot;/&gt;&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="s">&#39;name&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;email&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;phone&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&#39;qq&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">InlineCheckboxes</span><span class="p">(</span><span class="s">&#39;user_permissions&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="s">&#39;confirm_password&#39;</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>更多的相关信息（我希望你知道怎么翻墙），可以看看这里<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，或者这里<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，或者这里<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p><a href="https://groups.google.com/a/chromium.org/forum/#!msg/security-dev/wYGThW5WRrE/qiWrKwJ79S4J">PSA: Ignoring autocomplete=&lsquo;off&rsquo; by default for password manager</a>.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p><a href="https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/zhhj7hCip5c">Issue 352347 - chromium - Don&rsquo;t autofill passwords where autocomplete=&lsquo;off&rsquo;</a>.<a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p><a href="https://blog.0xbadc0de.be/archives/124">The war against autocomplete=off: let my browser remember passwords</a>.<a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -252,251 +352,6 @@
   <div class="entry-content"><p><img src="/downloads/images/iwdrm/false_start.gif" title="Don't touch me..." alt="this isn't happiness" /></p>
 
 <blockquote><p>&#8220;Simplicity is comlexity resolved.&#8221;</p><footer><strong>Constantin Brancusi</strong> <cite><a href='http://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i'>Yatzer(1911)</a></cite></footer></blockquote>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/05/fix-gist-style-in-octopress/">Octopress里插入带中文Gist的问题和解决</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-17T13:00:38+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:00 pm</span></time>
-        
-           | <a href="/2014/05/fix-gist-style-in-octopress/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
-
-<p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:</p>
-
-<div class="highlight"><pre><code class="text">{% gist gist_id [filename] %}
-</code></pre></div>
-
-
-<p>比如<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
-
-<div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}
-</code></pre></div>
-
-
-<p>当然之所以说理论上，是因为首先Octopress的markdown插件对unicode的支持<a href="http://tokkonopapa.github.io/blog/2013/02/23/octopress-toc/">是有bug</a>的。所以直接插入带中文的gist在build的时候会看到<code>Liquid Exception</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt;&gt;&gt; Compass is watching <span class="k">for</span> changes. Press Ctrl-C to Stop.
-</span><span class='line'>Liquid Exception: incompatible character encodings: UTF-8 and ASCII-8BIT in 2014-05-16-web-development-skill-set-and-reading-list.markdown
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>解决起来也很简单，只需要在<code>lib/jekyll/converters/markdown.rb</code>里面强制设定encoding就可以了：</p>
-
-<figure class='code'><figcaption><span>lib/jekyll/converters/markdown.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -120,7 +120,7 @@ def convert(content)</span>
-</span><span class='line'>           rd = RDiscount.new(content, *@rdiscount_extensions)
-</span><span class='line'>           html = rd.to_html
-</span><span class='line'>           if rd.generate_toc and html.include?(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;])
-</span><span class='line'><span class="gd">-            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content)</span>
-</span><span class='line'><span class="gi">+            html.gsub!(@config[&#39;rdiscount&#39;][&#39;toc_token&#39;], rd.toc_content.force_encoding(&#39;utf-8&#39;))</span>
-</span><span class='line'>           end
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>接下来就是render出来的效果，样子丑到让人无法直视：</p>
-
-<p><img src="/downloads/images/2014_05/gist_render_output_orig.jpg" title="Don't touch me..." alt="original gist render output" /></p>
-
-<p>大概看了一下Octopress的文档，原来代码片断的样式（包括gist的渲染样式）都在<a href="https://github.com/imathis/octopress/blob/master/.themes/classic/sass/partials/_syntax.scss">_syntax.scss</a>里面。这个文件2012年就没有更新过了，但是github的gist输出在2013年有过变化，所以就有些不匹配了。</p>
-
-<p>打开自己的模板，大概调了一下这个sass，主要是和其他的代码高亮一致：</p>
-
-<p><img src="/downloads/images/2014_05/gist_render_output.jpg" title="Don't touch me..." alt="current gist render output" /></p>
-
-<p>调整的地方见<a href="https://gist.github.com/lenciel/ecc8b3805ed346727abe">这里</a>:</p>
-
-<figure class='code'><figcaption><span>_sass/partials/_syntax.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/46501e4:sass/partials/_syntax.scss b/02b0441:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gh">index 137d475..5465286 100644</span>
-</span><span class='line'><span class="gd">--- a/46501e4:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gi">+++ b/02b0441:sass/partials/_syntax.scss</span>
-</span><span class='line'><span class="gu">@@ -22,10 +22,6 @@</span>
-</span><span class='line'>   @include border-radius(0);
-</span><span class='line'> }
-</span><span class='line'>
-</span><span class='line'><span class="gd">-.line-data {</span>
-</span><span class='line'><span class="gd">-   font-size: 13px;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'> figure.code, .gist-file, pre {
-</span><span class='line'>   @include box-shadow(rgba(#000, .06) 0 0 10px);
-</span><span class='line'>   .highlight pre { @include box-shadow(none); }
-</span><span class='line'><span class="gu">@@ -43,10 +39,8 @@ html .gist .gist-file {</span>
-</span><span class='line'>     margin-bottom: 0;
-</span><span class='line'>   }
-</span><span class='line'>   .gist-syntax {
-</span><span class='line'><span class="gd">-    background: #01222d !important;</span>
-</span><span class='line'><span class="gd">-    color: #d5dee2 !important;</span>
-</span><span class='line'><span class="gd">-    padding: 0 2em;</span>
-</span><span class='line'>     border-bottom: 0 !important;
-</span><span class='line'><span class="gi">+    background: none !important;</span>
-</span><span class='line'>     .gist-highlight {
-</span><span class='line'>       background: $base03 !important;
-</span><span class='line'>     }
-</span><span class='line'><span class="gu">@@ -57,17 +51,15 @@ html .gist .gist-file {</span>
-</span><span class='line'>   }
-</span><span class='line'>   .gist-meta {
-</span><span class='line'>    padding: .6em 0.8em;
-</span><span class='line'><span class="gi">+   border: 1px solid lighten($base02, 2) !important;</span>
-</span><span class='line'><span class="gi">+   color: $base01;</span>
-</span><span class='line'>    font-size: .7em !important;
-</span><span class='line'>    @if $solarized == light {
-</span><span class='line'><span class="gd">-     color: $base01;</span>
-</span><span class='line'><span class="gd">-     border: 1px solid lighten($base02, 2) !important;</span>
-</span><span class='line'>      background: lighten($base03, 2) $noise-bg;
-</span><span class='line'>      border: 1px solid $pre-border !important;
-</span><span class='line'>      border-top: 1px solid lighten($base03, 2) !important;
-</span><span class='line'>    } @else {
-</span><span class='line'><span class="gd">-     background: #01222d $noise-bg;</span>
-</span><span class='line'><span class="gd">-     text-shadow: none !important;</span>
-</span><span class='line'><span class="gd">-     color: #d5dee2;</span>
-</span><span class='line'><span class="gi">+     background: $base02 $noise-bg;</span>
-</span><span class='line'>    }
-</span><span class='line'>    @extend .sans;
-</span><span class='line'>    line-height: 1.5em;
-</span><span class='line'><span class="gu">@@ -77,7 +69,7 @@ html .gist .gist-file {</span>
-</span><span class='line'>       &amp;:hover { color: $base1 !important; }
-</span><span class='line'>     }
-</span><span class='line'>     a[href*=&#39;#file&#39;] {
-</span><span class='line'><span class="gd">-      position: absolute; top: 0; left:0; right:0px;</span>
-</span><span class='line'><span class="gi">+      position: absolute; top: 0; left:0; right:-10px;</span>
-</span><span class='line'>       color: #474747 !important;
-</span><span class='line'>       @extend .code-title;
-</span><span class='line'>       &amp;:hover { color: $link-color !important; }
-</span><span class='line'><span class="gu">@@ -221,7 +213,7 @@ pre, .highlight, .gist-highlight {</span>
-</span><span class='line'>   &amp;::-webkit-scrollbar-thumb:horizontal { background: $solar-scroll-thumb;  -webkit-border-radius: 4px; border-radius: 4px }
-</span><span class='line'> }
-</span><span class='line'>
-</span><span class='line'><span class="gd">-.highlight code {</span>
-</span><span class='line'><span class="gi">+.highlight code { </span>
-</span><span class='line'>   @extend .pre-code; background: #000;
-</span><span class='line'> }
-</span><span class='line'> figure.code {
-</span><span class='line'><span class="gu">@@ -267,11 +259,3 @@ figure.code {</span>
-</span><span class='line'>   text-shadow: #cbcccc 0 1px 0;
-</span><span class='line'>   padding-left: 3em;
-</span><span class='line'> }
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'><span class="gd">-.gist-file {</span>
-</span><span class='line'><span class="gd">-  font-size:.8em !important;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span><span class='line'><span class="gd">-</span>
-</span><span class='line'><span class="gd">-table.lines{</span>
-</span><span class='line'><span class="gd">-  width: 100%;</span>
-</span><span class='line'><span class="gd">-}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
 
