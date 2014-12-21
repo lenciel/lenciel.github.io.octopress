@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://lenciel.cn/2014/12/making-fixture-with-factory-boy-and-faker/</loc>
+    
+    <lastmod>2014-12-20T03:14:59+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://lenciel.cn/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/</loc>
     
     <lastmod>2014-12-18T00:26:32+08:00</lastmod>
@@ -1037,63 +1045,63 @@
   
   <url>
     <loc>http://lenciel.cn/404.html</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/blog/archives/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/docs/unicode-complete/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/about/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/docs/unicode-in-python/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/docs/x2blog-to-wordpress/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/docs/scsi-sata-reliability/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.cn/docs/dive-into-linux-boot/</loc>
-    <lastmod>2014-12-20T15:51:13+08:00</lastmod>
+    <lastmod>2014-12-21T20:22:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
