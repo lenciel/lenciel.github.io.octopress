@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rants | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/rants/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-01-03T16:37:05+08:00</updated>
+  <updated>2015-01-03T17:35:34+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -165,7 +165,46 @@
     <link href="http://lenciel.cn/2014/09/logo-test/"/>
     <updated>2014-09-03T01:04:48+08:00</updated>
     <id>http://lenciel.cn/2014/09/logo-test</id>
-    <content type="html"><![CDATA[<p>感受一下，哪个印出来比较好看呢&hellip;</p>
+    <content type="html"><![CDATA[<p>其实写点儿代码来画件T-Shirt并不难：</p>
+
+<pre><code class="python">colors = ximport( "colors" )
+
+font( "Courier", 100 )
+align( CENTER )
+text_path_line_1 = textpath( "PALM", 0, 200, width = WIDTH)
+text_path_line_2 = textpath( "4FUN", 0, 350, width = WIDTH)
+
+resx = 300
+resy = 80
+rx = 1.0
+ry = 1.5
+dotsize = 4.5
+dx = WIDTH  / float( resx )
+dy = HEIGHT / float( resy )
+
+def draw_text() :
+  nofill()
+  strokewidth( random( 0.2, 2.8 ) )
+  clr = choice( [
+      colors.hex( "#FFBCA4" ),
+      colors.hex( "#FFBCA4" ),
+      colors.hex( "#FF4500" ),
+      colors.hex( "#D93B00" ),
+      colors.hex( "#A72D00" ) ]
+      )
+  clr.a = random( 0.6, 1 )
+  stroke( clr )
+  oval( pointx + random( -rx, rx ), pointy + random( -ry, ry ), size, size )
+
+for x, y in grid( resx, resy ) :
+  size = choice( [ 1, 2, 2, 2, 3, 3, 3, dotsize ] )
+  pointx = x * dx - size
+  pointy = y * dy - size
+  if text_path_line_1.contains( pointx, pointy ) or text_path_line_2.contains( pointx, pointy ) :
+    draw_text()
+</code></pre>
+
+<p>感受一下，哪个印出来比较好看呢&hellip;</p>
 
 <p><img src="/downloads/images/2014_09/logo1.png" title="Don't touch me..." alt="Vhost threshold" />
 <img src="/downloads/images/2014_09/logo2.png" title="Don't touch me..." alt="Vhost threshold" />
