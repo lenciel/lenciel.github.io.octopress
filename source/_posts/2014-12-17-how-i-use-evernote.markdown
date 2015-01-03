@@ -40,7 +40,8 @@ categories:
 
 所以我现在是这么Evernote的。
 
-首先，把Notebook减少到两个，一个是`Inbox`，一个是`Archive`。它们的作用跟我们的邮箱里面的Inbox和Archive是完全一样的
+首先，把Notebook减少到两个，一个是`Inbox`，一个是`Archive`。它们的作用跟我们的邮箱里面的Inbox和Archive是完全一样的。
+
 然后，如果在网上看到觉得还挺有意思的文章，就用Evernote收录到`Inbox`。
 
 注意，收录的时候我都习惯用下面的选项，去掉所有的样式：
