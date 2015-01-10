@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-01-03T17:35:34+08:00</updated>
+  <updated>2015-01-10T17:03:13+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Goodbye Palm4fun, and the Tech Stack Review Part I]]></title>
+    <link href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/"/>
+    <updated>2015-01-04T14:44:23+08:00</updated>
+    <id>http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_01/goodbye_palm4fun.png" title="Don't touch me..." alt="goodbye" /></p>
+
+<p>大概两年前，和Bergkamp、194一次计划外的聊天之后，<strike>出于保护直肠的目的</strike>，本座离开了基友密布的<a href="http://www.myriadgroup.com/">Myriad</a>，作为Palm4fun的联合创始人之一，开始捣鼓着自己创业。</p>
+
+<p>在具体的研发工作方面，我主要是负责服务器端的开发。但因为被冠名CTO，我的工作还包括：</p>
+
+<ul>
+<li>制定研发流程，管理运作研发团队（很幸运，团队都是气味相投的小伙伴并且平均水平很高）</li>
+<li>搭建和维护各种IT系统让大家的工作更加轻松</li>
+<li>对各种项目进行技术选型、风险评估和报价</li>
+<li>培养有palm4fun自己特色的团队文化</li>
+<li>甚至是，设计我们的logo甚至是<a href="http://lenciel.cn/2014/09/logo-test/">T-Shirt</a></li>
+</ul>
+
+
+<p>别误会，并不是和写代码比，我更喜欢做这些事情：我做这些，主要是经过多年的折腾，已经对自己想在什么样的环境里进行软件开发有了自己的体会。所以，我当然愿意花时间和小伙伴们一起，把理想中的工作环境具体到实践。</p>
+
+<p>经过这两年的时间，虽然我们有纯技术团队创业理应遭遇的各种捉襟见肘，但因为整个团队的坚持和付出，在活下来的同时，也完成了一定的技术积累。有一个可喜的现象是，我们自己参与开发孵化的项目，虽然有一些死掉了，但也有一些拿到了几百万的天使投资；而我们作为外包方参与研发的项目，客户都非常认可我们的项目质量和工作方式。很多客户不但和我们确定了长期合作的关系，还积极介绍自己朋友的项目给我们。</p>
+
+<p>新年到来之际，随着我们被<a href="http://www.testbird.com/">Testbird</a>收编，Palm4fun大部分成员即将投入到新公司的各条战线，Palm4fun作为一个组织也就此消亡了。回首这两年，我想说，如果你没有和我一起经历那说了你也不懂我还是不说了&hellip;&hellip;</p>
+
+<p>跨年的时候，茕茕孑立的本座画了张思维导图，主要目的是把过去两年palm4fun的积累整理一下。画出来之后很多朋友希望我分享高清无码图：因为整个图非常大，不太适合在移动设备上看。</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_all.png" title="Don't touch me..." alt="stack_all" /></p>
+
+<p>其实在一开始选择这些的时候，基本上就是从运维支撑和测试部署工具、产品开发和数据管理、基础设施和功能模块以及商业工具四个维度出发，所以就拆成四个部分简单过一遍。特别声明：选择的依据和出发点主要是根据个人喜好，包括自己使用的体验以及眼缘，并没有特别的理由。比如我们用Reviewboard不用Phabricator，完全是因为团队中大多数人已经用习惯了。</p>
+
+<a name="Build.Test.Deploy"></a>
+<h2>Build/Test/Deploy</h2>
+
+<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_devops_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+
+<ul>
+<li>我们没有用Gerrit大体的原因是它太丑了</li>
+<li>Ngrok是做微信接口调试时意外发现的好物</li>
+</ul>
+
+
+<a name="Monitoring"></a>
+<h2>Monitoring</h2>
+
+<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_devops_2.png" title="Don't touch me..." alt="stack_devops_2" /></p>
+
+<ul>
+<li>Sentry帮我们在用户找到我们之前找到了很多问题</li>
+<li>一开始我们用过Nagios，它的设计也很不错，就是界面太&hellip;</li>
+<li>Zabbix帮我们远离主机因为硬盘满了或者内存不够驾崩的场面，但它界面看着仍然古旧，我不是很喜欢</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Making Fixture With Factory Boy and Faker]]></title>
@@ -2324,47 +2381,6 @@ $('#id-btn-submit').click(function() {
 
 <blockquote><p>&#8220;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&#8221;</p><footer><strong>Ethan Hawke</strong> <cite><a href='http://www.imdb.com/title/tt0112471/'>Before Sunrise(1995)</a></cite></footer></blockquote>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[白日焰火]]></title>
-    <link href="http://lenciel.cn/2014/07/what-did-ocean-say-2/"/>
-    <updated>2014-07-29T01:07:51+08:00</updated>
-    <id>http://lenciel.cn/2014/07/what-did-ocean-say-2</id>
-    <content type="html"><![CDATA[<p><img height="200" width="300" alt="spark" src="http://lenciel.cn/downloads/images/2014_07/Black_Coal_Thin_Ice.jpg" align="left" style="margin:0px 20px;"/> “你不要再来找我了。”文慧这么说的时候，柳徽不敢看她的眼睛。</p>
-
-<p>当然，我们也可以说这是因为文慧身后的工地上高高的塔吊顶端那盏不可一世的探照灯：当时是凌晨一点，那工地又相隔甚远，本来应该是从天而降的灯光变得和视线平行。惨白的光线在茫茫夜色中显得异常刺眼，让人根本不敢看向她所在的方位。</p>
-
-<p>他们常常在夜里聊天，这是有原因的。白天让人们变得循规蹈矩，不敢轻举妄动。放眼望去，每个人的额头上似乎贴上了符咒，世俗的规则在所有人身上发挥着魔法般的控制力，消磨掉生活本该有的神奇之处。无论扮演着紧张呆板，还是飞扬跋扈的角色，一切言谈举止一切思绪梦想，都仿佛在执行预设的程序而已。</p>
-
-<p>只有在夜里，他们才会感觉摆脱了现实的控制，让自己任性地随心游走。</p>
-
-<p>“你说，那盏灯有没有200米远啊？”</p>
-
-<p>“可能有吧，那又怎样？”</p>
-
-<p>“如果，有一个地方离我们很远很远，比如十光年，二十光年。站在那个地方，往我们这里看，过去的十年、二十年就会一幕幕重现的，对吧？”</p>
-
-<p>“啊？”</p>
-
-<p>“就好比，你看，天上这些星星。很多说不定老早就已经挂掉了。只不过是因为和我们隔了几十万光年，我们就以为它还在一闪一闪亮晶晶呢。”</p>
-
-<p>“我现在说的事情，跟这有什么关系？”</p>
-
-<p>“你看，是活着还是已经死掉都可能只是站在哪里看的问题。”</p>
-
-<p>“嗯，继续。”</p>
-
-<p>“对一个时间旅行者来说，没有你们所谓生和死的区别，当然也没有在一起和分开的区别。不光是周围的人，我生活的地点也一直在变，在这里几年，到那里几年。但在这个城市里面，我知道有你，会觉得对它格外熟悉和依恋：那是因为在需要温暖的时候，我知道能躲到你的怀抱里面。据蔡先生说，这就是本地人和旅行者最大的区别。”</p>
-
-<p>柳徽说这些的时候，认真地看着文慧。当然，还是看不清她是什么表情，就只好继续说下去：</p>
-
-<p>“你说不要再见了，那我会听你的话。我只是想让你知道，人肯定是有能够吸引某个特定的人的线，即使没有太多话想聊，也能把对方拉过来。呆呆看着也好，默默守着也罢，就是想感受着有这个人的存在。”</p>
-
-<p>然后，柳徽就慢慢变得透明起来。还没等文慧反应过来，就消失在无边的夜色之中。</p>
-
-<p>这就是为什么女孩儿们从小就被教育千万不要搭理时间旅行者的原因：据说，他们的出现总是显得过于匆忙，好像白日焰火，很快就变得无影无踪。</p>
 ]]></content>
   </entry>
   
