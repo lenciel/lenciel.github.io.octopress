@@ -40,7 +40,7 @@ categories:
 
 ![stack_devops_1](/downloads/images/2015_01/p4f_stack_devops_1.png "Don't touch me...")
 
-- 我们没有用Gerrit大体的原因是它太丑了
+- 我们没有用Gerrit或者Phabricator的原因是它们功能太多了
 - Ngrok是做微信接口调试时意外发现的好物
 
 
@@ -50,4 +50,4 @@ categories:
 
 - Sentry帮我们在用户找到我们之前找到了很多问题
 - 一开始我们用过Nagios，它的设计也很不错，就是界面太...
-- Zabbix帮我们远离主机因为硬盘满了或者内存不够驾崩的场面，但它界面看着仍然古旧，我不是很喜欢
+- Zabbix帮我们远离主机因为硬盘满了或者内存不够驾崩的场面
