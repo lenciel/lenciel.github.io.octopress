@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-01-10T17:10:54+08:00</updated>
+  <updated>2015-02-20T14:59:13+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,108 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Palm4fun Tech Stack Review Part II]]></title>
+    <link href="http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others/"/>
+    <updated>2015-02-20T14:11:19+08:00</updated>
+    <id>http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others</id>
+    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
+
+<a name="Application..amp..Data"></a>
+<h2>Application &amp; Data</h2>
+
+<p>和其他几个提供辅助的部分不同，App/Data这部分基本上就是产品本身了。</p>
+
+<a name="Application.Hosting"></a>
+<h3>Application Hosting</h3>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_app_data_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+
+<p>我们在选择云的时候，也有试用过“久负盛名”的几家大的。</p>
+
+<ul>
+<li>阿里因为性价比的原因直接被我忽略了</li>
+<li>AWS显然是成熟度最高的，但是在国内用起来确实比较憋屈，希望他们正式入华后有好转</li>
+<li>Google的Compute Engine和Windows Azure都属于开张不久，前者因为有打折劵最终被我用来做了很久的翻墙代理（但是也因为忘记关VPS收到了巨额账单，好在Google还比较厚道免单了）。后者因为在国内有部署，速度非常不错，但是整体比UCloud还是贵了不少。</li>
+</ul>
+
+
+<p>最终我们选择了UCloud，他们的价钱比较公道，服务也做得非常棒。虽然我们机器并不是很多，但是仍然有24小时随叫随到的服务团队在跟，并且服务团队的技术实力在国内的服务提供商里面也非常突出。</p>
+
+<p>平时还有一些抛弃型的原型我会放到Heroku或者Google App Engine上，因为它们用来部署Django应用非常便捷。</p>
+
+<p>我们大多数项目都只是简单的管理后台，用Apache还是Nginx并没有明显区别。因为Apache在大多数OS自带，所以基本上都是以Apache+uwsgi+supervisor来进行部署。</p>
+
+<a name="Languages..amp..Frameworks"></a>
+<h3>Languages &amp; Frameworks</h3>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_app_data_2.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+
+<p>这张图再画长一倍也不一定能画完，因为这部分特别是Web前端技术的变动实在是太大了。感觉JavaScript社区换框架、方法论、编译工具甚至是VM就像足球运动员换袜子一样勤。</p>
+
+<p>所以我们的策略一直是不绑定到某个具体框架：那样很容易被绑架。从目前来看：</p>
+
+<ul>
+<li>React/Flux最近特别火，由Facebook内部使用并开源（特别是最近推出了React Native）。</li>
+<li>AngularJS，火了很长时间，由Google内部使用并开源。目前两个主要版本变动太大嘴炮很多，可以观望到尘埃落定再考虑深入学习。</li>
+<li>Backbone是非常不错的客户端MVC框架。</li>
+<li>node.js和io.js。目前它们是一样的东西，io.js只是node.js的一个fork（类似于Hudson和Jenkins的关系）。目前可以只学node.js但是得盯着io.js的发展，因为很多原来node.js的主力都在io.js这边。</li>
+<li>npm是Javascript目前最主要的package管理工具。目前你还会听说bower但几乎大家都已经确认这是个愚蠢的idea。另外你还会听说jspm，一个很新的系统，非常不错，值得留意。</li>
+<li>Browserify使得你可以在browser里面直接使用npm的module，而不仅仅是在server端。完全是一次革命，非常好用。</li>
+<li>Gulp和Grunt是build工具（类比Ant/Maven），Gulp更新而且设计上非常成熟，推荐学习和使用Gulp。</li>
+<li>express.js是服务器端JS应用开发需要学习的东西。</li>
+<li>Meteor是设计非常领先的一个全栈的框架（想想Django），整体上非常酷，目前也很流行。如果你想试试自己的学习能力和承受能力，值得一试。</li>
+<li>jQuery之于JavaScript就好比少林寺之于中华武术。每个人都在学，都以为它就可以搞定整个武林，但那是错的。JQuery是用来对DOM做操作的，如果你用它在干别的，你多半错了。</li>
+</ul>
+
+
+<a name="Assets..amp..Media"></a>
+<h3>Assets &amp; Media</h3>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_app_data_3.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+
+<p>这方面没什么好说的，一开始我们用的就是UCloud自带的服务。后面为Testbird开发项目的时候接触到了七牛云。不得不吐槽一下七牛云还处于快速增长期，不论是提供的服务的稳定性，还是文档更新的及时性，都还有很多值得提高的地方。</p>
+
+<a name="Data.Storage"></a>
+<h3>Data Storage</h3>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_app_data_4.png" title="Don't touch me..." alt="stack_app_data_4" /></p>
+
+<p>数据库我们一般本地开发用SQLite，stage和prod服务器用MySQL。之所以没有选择Postgresql是因为它那些很不错的功能我们在项目里面还没有需要，所以就偷懒选择了自己更熟悉的系统。</p>
+
+<a name="Libraries"></a>
+<h3>Libraries</h3>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_app_data_5.png" title="Don't touch me..." alt="stack_app_data_5" /></p>
+
+<p>这张图也是很难画完整的，因为它一直在变。不过我们基本上用ACE封装了一套自己的UI框架，对提高开发效率还是非常有用的。</p>
+
+<a name="Utilities"></a>
+<h2>Utilities</h2>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_utilities.png" title="Don't touch me..." alt="stack_utilities" /></p>
+
+<p>都是些中规中矩的选择，因为好的服务都在国内被封堵得比较彻底，不是吗？</p>
+
+<p>比如统计，百度做得和Google还差几个数量级（你见过实时统计有百度那么不实时的么？），但是在国内因为墙的关系常常还是只能用。</p>
+
+<p>再比如SMS网关，国外有大量的类似<a href="https://www.twilio.com/sms/toll-free">Twilio</a>的优质服务，价格便宜，接口良好，但是&hellip;我们都用亿美。</p>
+
+<p>值得一提的是推送消息服务，因为被百度坑过，我们一开始用了我浙大著名创业公司“个推”，结果质量低得还比较离谱。最后好死不死又换到了百度Push：原因还是因为Google原生的Push被墙。</p>
+
+<a name="Business.Tools"></a>
+<h2>Business Tools</h2>
+
+<p><img src="/downloads/images/2015_01/p4f_stack_business_tools.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+
+<p>其实Trello和Slack这样的工具用好一个就足以撑起一家中等规模的公司了。可惜因为经常被墙，很多不能自己翻墙的同事或者客户用起来倍感艰辛。</p>
+
+<p>整个公司的任务驱动主要还是靠Jira，知识分享和管理主要是靠Confluence。</p>
+
+<p>阿勒！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Goodbye Palm4fun, and the Tech Stack Review Part I]]></title>
@@ -405,143 +507,6 @@ $ ./manage.py graph_models -a -g -o my_project_visualized.png
 <p>最后，在整理Inbox的时候，对每篇文章做一些修修剪剪，给Note加上合适的Tag，然后放到<code>Archive</code>。可以看到，因为tag可以嵌套和展开，要找到自己感兴趣的文章变得容易很多：</p>
 
 <p><img src="/downloads/images/2014_12/evernote_nested_tags.png" title="Evernote Clipper" alt="Evernote Clipper" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Update Android Sdk With Shadowsocks Proxy]]></title>
-    <link href="http://lenciel.cn/2014/09/update-android-sdk-with-proxy/"/>
-    <updated>2014-09-02T02:30:35+08:00</updated>
-    <id>http://lenciel.cn/2014/09/update-android-sdk-with-proxy</id>
-    <content type="html"><![CDATA[<p>博格坎普说，我们android项目的build挂了。</p>
-
-<p>去Jenkins看了一下，日志里面的错误是：</p>
-
-<pre><code>[android] $ /usr/local/share/gradle-1.11/bin/gradle clean build
-Creating properties on demand (a.k.a. dynamic properties) has been deprecated and is scheduled to be removed in Gradle 2.0. Please read http://gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html for information on the replacement for dynamic properties.
-Deprecated dynamic property: "buildName" on "ProductFlavorDsl_Decorated{name=main, minSdkVersion=null, targetSdkVersion=null, renderscriptTargetApi=-1, renderscriptSupportMode=null, renderscriptNdkMode=null, versionCode=-1, versionName=null, applicationId=null, testApplicationId=null, testInstrumentationRunner=null, testHandleProfiling=null, testFunctionalTest=null, signingConfig=null, resConfig=null}", value: "1.0.97".
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-A problem occurred configuring project ':app'.
-&gt; Could not resolve all dependencies for configuration ':app:_debugCompile'.
-   &gt; Could not find com.android.support:appcompat-v7:20.0.0.
-     Required by:
-         android:app:unspecified
-
-* Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.s
-</code></pre>
-
-<p>这其实在天朝是蛮常见的现象，因为<code>dl-ssl.google.com</code>被封了，所以你总是会因为下面的错误无法更新Android的SDK：</p>
-
-<pre><code class="bash">Failed connect to dl-ssl.google.com:443;
-</code></pre>
-
-<a name="Jenkins....................."></a>
-<h2>Jenkins服务器配置代理</h2>
-
-<p>这里之所以选择<a href="http://shadowsocks.org/">shadowsocks</a>，是因为可以用自己在<a href="https://developers.google.com/appengine/">Google的VM</a>上配置的shadowsocks代理服务器（顺便广告一下，Google的VM在做活动，几乎是最高配的机器都不要钱，而且第一跳就在美帝，用来做代理非常爽）。</p>
-
-<p>安装shadowsocks的pythohn client:</p>
-
-<pre><code class="bash">$ pip install shadowsocks
-
-Downloading/unpacking shadowsocks
-  Running setup.py egg_info for package shadowsocks
-
-    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
-
-Installing collected packages: shadowsocks
-  Running setup.py install for shadowsocks
-
-    warning: manifest_maker: MANIFEST.in, line 1: 'recursive-include' expects &lt;dir&gt; &lt;pattern1&gt; &lt;pattern2&gt; ...
-
-    Installing sslocal script to /usr/local/bin
-    Installing ssserver script to /usr/local/bin
-Successfully installed shadowsocks
-Cleaning up...
-</code></pre>
-
-<p>可以看到安装完之后有两个可执行文件，运行其中的<code>sslocal</code>就可以启动shadowsocks的客户端了：</p>
-
-<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -h
-usage: sslocal [-h] -s SERVER_ADDR [-p SERVER_PORT]
-               [-b LOCAL_ADDR] [-l LOCAL_PORT] -k PASSWORD [-m METHOD]
-               [-t TIMEOUT] [-c CONFIG] [--fast-open] [-v] [-q]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -s SERVER_ADDR        server address
-  -p SERVER_PORT        server port, default: 8388
-  -b LOCAL_ADDR         local binding address, default: 127.0.0.1
-  -l LOCAL_PORT         local port, default: 1080
-  -k PASSWORD           password
-  -m METHOD             encryption method, default: aes-256-cfb
-  -t TIMEOUT            timeout in seconds, default: 300
-  -c CONFIG             path to config file
-  --fast-open           use TCP_FASTOPEN, requires Linux 3.7+
-  -v, -vv               verbose mode
-  -q, -qq               quiet mode, only show warnings/errors
-
-Online help: &lt;https://github.com/clowwindy/shadowsocks&gt;
-</code></pre>
-
-<p>最简单的办法就是新建一个配置文件：</p>
-
-<p><code>javascript ~/.shadowconfig
-{
-    "server":"my_server_ip",
-    "server_port":8388,
-    "local_port":1080,
-    "password":"barfoo!",
-    "timeout":600,
-    "method":"table"
-}
-</code></p>
-
-<p>记得在防火墙打开你配置的本地端口，然后运行下面的命令：</p>
-
-<pre><code class="bash">root@palm4fun-core-1:~/install# sslocal -c ~/.shadowconfig
-INFO: loading config from /root/.shadowconfig
-shadowsocks 2.1.0
-2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
-</code></pre>
-
-<a name="L...............android.sdk"></a>
-<h2>命令行更新android sdk</h2>
-
-<p>先配置java命令使用的代理，然后
-从命令行更新android sdk。只需要到tools目录下面去跑(<code>-u</code>是不显示GUI，<code>-s</code>是指定不使用ssl链接)：</p>
-
-<pre><code class="bash">$ export _JAVA_OPTIONS="-DsocksProxyHost=127.0.0.1"
-$ android update sdk -u -s --all
-</code></pre>
-
-<p>注意<code>socksProxyHost</code>的默认端口就是1080，如果你使用了其他端口不能只配ip。</p>
-
-<p>另外，<code>--all</code>是比较猛烈的选项（人家的硬盘就是大，人家的代理就是快嘛），你可以在命令行里面通过filter来安装你需要的东西。</p>
-
-<a name="When.shit.happens"></a>
-<h2>When shit happens</h2>
-
-<p>运行起来之后更新非常慢，可以<code>android</code>命令报timeout，而代理那边打出日志：</p>
-
-<pre><code class="bash">2014-09-02 00:27:53 INFO     starting local at 127.0.0.1:1080
-2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
-2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
-2014-09-02 00:28:04 INFO     connecting 74.125.237.1:80
-</code></pre>
-
-<p>因为本座平时上网也是在用Google VM上的这个代理，没理由这么慢。所以就怀疑那个74.125.237.1的地址是被谁在<code>/etc/hosts</code>里面给配了固定ip。打开一看果然有：</p>
-
-<pre><code class="bash">dl-ssl.google.com 74.125.237.1
-</code></pre>
-
-<p>估计是之前配置的基友搜索到了类似<a href="http://www.programering.com/a/MjM4YTMwATA.html">这样的文章</a>。这也是为什么我从来不用也不推荐别人用修改hosts文件的方法来翻墙的原因：它们总是在过期。</p>
-
-<p>Last but not the least, Fuck you, GFW.</p>
 ]]></content>
   </entry>
   
