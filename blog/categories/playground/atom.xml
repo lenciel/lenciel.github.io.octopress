@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Playground | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/playground/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-02-23T23:24:50+08:00</updated>
+  <updated>2015-02-23T23:28:24+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lenciel.cn/2015/02/i-want-to-show-you-the-world/"/>
     <updated>2015-02-23T21:08:02+08:00</updated>
     <id>http://lenciel.cn/2015/02/i-want-to-show-you-the-world</id>
-    <content type="html"><![CDATA[<p>之前提过有一些机构<a href="http://www.ppgis.net/imagery.htm">开放</a>了卫星云图，可以用GIS信息通过接口去获取。从天上看，地球还是挺美的，很多都可以用来做手机的桌面：</p>
+    <content type="html"><![CDATA[<p>之前提过有一些机构<a href="http://www.ppgis.net/imagery.htm">开放</a>了卫星云图，可以用GIS信息通过接口去获取。从天上看，地球还是挺美的，很多都可以用来做手机的桌面，如果你需要下载无损的版本：<a href="http://pan.baidu.com/s/1sjuiOqx">click</a>，分享码:<code>gdyv</code>：</p>
 
 <p><link rel="stylesheet" type="text/css" href="http://lenciel.cn/downloads/static/css/elasticstack_slider.css" /></p>
 
@@ -70,7 +70,7 @@
 </script>
 
 
-<p>如果你需要下载更完整的版本：<a href="http://pan.baidu.com/s/1sjuiOqx">click</a>，分享码:<code>gdyv</code></p>
+
 ]]></content>
   </entry>
   
