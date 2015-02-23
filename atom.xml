@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-02-22T23:20:47+08:00</updated>
+  <updated>2015-02-23T23:24:50+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Let Me Show You the World]]></title>
+    <link href="http://lenciel.cn/2015/02/i-want-to-show-you-the-world/"/>
+    <updated>2015-02-23T21:08:02+08:00</updated>
+    <id>http://lenciel.cn/2015/02/i-want-to-show-you-the-world</id>
+    <content type="html"><![CDATA[<p>之前提过有一些机构<a href="http://www.ppgis.net/imagery.htm">开放</a>了卫星云图，可以用GIS信息通过接口去获取。从天上看，地球还是挺美的，很多都可以用来做手机的桌面：</p>
+
+<p><link rel="stylesheet" type="text/css" href="http://lenciel.cn/downloads/static/css/elasticstack_slider.css" /></p>
+
+<div class="slider-container">
+    <ul id="elasticstack" class="elasticstack">
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r19961_39_2013.jpg" alt="01"/><h6>Lakes Ounianga - 乍得</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1460_39_2006.jpg" alt="02"/><h6>Barbuda - 安巴</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1585_39_2000.jpg" alt="03"/><h6>Maalhosmadulu Atoll - 马尔代夫</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r4937_39_2012.jpg" alt="04"/><h6>Pleiades Mon Saint Michel - 法国</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r870_39_2002.jpg" alt="05"/><h6>Nazca Lines - 秘鲁</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r950_39_2005.jpg" alt="01"/><h6>Chott El Djerid - 突尼斯</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1315_39_2002.jpg" alt="01"/><h6>Geba River Guinea - 比绍</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1385_39_2006.jpg" alt="01"/><h6>Dasht E Kavir - 伊朗</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1570_39_1995.jpg" alt="01"/><h6>Rub Al Khali - 沙特</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1560_39_2000.jpg" alt="01"/><h6>Namib Desert - 纳米比亚</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1650_39_1986.jpg" alt="01"/><h6>Tchernobyl - 乌克兰</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1675_39_2007.jpg" alt="01"/><h6>Nunavut - 加拿大</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r16692_39_2012.jpg" alt="01"/><h6>Gaborone Bostwana - 意大利</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r495_39_2002.jpg" alt="01"/><h6>Amsterdam - 荷兰</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r16680_39_2012.jpg" alt="01"/><h6>Uluru - 澳大利亚</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1140_39_2007.jpg" alt="01"/><h6>Al Wusta - 阿曼</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1080_39_2006.jpg" alt="01"/><h6>Darfur - 苏丹</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r920_39_2004.jpg" alt="01"/><h6>Taklamakan - 中国</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1580_39_2004.jpg" alt="01"/><h6>Grisons Region - 瑞士</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1660_39_2011.jpg" alt="01"/><h6>Puyehue Volcano - 智利</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1530_39_1999.jpg" alt="01"/><h6>Sahara - 马里</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r34229_39_2013.jpg" alt="01"/><h6>Spitzberg Glacier - 挪威</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r825_39_2006.jpg" alt="01"/><h6>Everglades National Park - 美国</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r20048_39_2013.jpg" alt="01"/><h6>Bissagos - 几内亚</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1400_39_2003.jpg" alt="01"/><h6>Wadi Rum - 约旦</h6></li>
+        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1270_39_2004.jpg" alt="01"/><h6>Laguna Colorada 玻利维亚</h6></li>
+    </ul>
+</div>
+
+
+<!-- /container -->
+
+
+
+
+<script src="http://lenciel.cn/downloads/static/js/draggabilly.pkgd.min.js"></script>
+
+
+<script src="http://lenciel.cn/downloads/static/js/elastiStack.js"></script>
+
+
+<script>
+    new ElastiStack( document.getElementById( 'elasticstack' ) );
+</script>
+
+
+<p>如果你需要下载更完整的版本：<a href="http://pan.baidu.com/s/1sjuiOqx">click</a>，分享码:<code>gdyv</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sam Altman给创业者的建议]]></title>
@@ -2041,91 +2102,6 @@ $('#id-btn-submit').click(function() {
 
 
 <p>如果你觉得：咦，这样导入数据不是有点儿像用<code>syncdb</code>然后导入<code>fixture</code>么？的确，从效果上它们是一样的，个人觉得，对于测试环境我们可以继续使用fixture来保存mock的测试数据，然后使用<code>loaddata</code>命令手动加载测试数据。对生产环境使用migration来导入数据更好，和使用<code>loaddata</code>命令来导入fixture相比，它不需要手动操作，并且由于是通过<code>RunPython</code>来进行，实际上可以对数据进行各种需要的处理。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[如何不正确的殴打企鹅]]></title>
-    <link href="http://lenciel.cn/2014/08/how-to-beat-the-penguin/"/>
-    <updated>2014-08-09T20:32:58+08:00</updated>
-    <id>http://lenciel.cn/2014/08/how-to-beat-the-penguin</id>
-    <content type="html"><![CDATA[<p>今天在微信朋友圈里面看了20来条这游戏的成绩分享，还有的群开始讨论心得。打开链接一看，原来是当年那个小范围流行了一下的<a href="https://www.google.com/search?q=Penguin+Ball&amp;oq=Penguin+Ball&amp;aqs=chrome..69i57j69i60.972j0j4&amp;sourceid=chrome&amp;es_sm=91&amp;ie=UTF-8">Penguin Ball</a>嘛（我记得后来有些人开始玩那个<a href="http://www.bloody-penguin.com/">血腥版</a>，正常人就慢慢不玩这游戏了）。</p>
-
-<p>不过，链接指向的那山寨游戏虽然没有再用flash，但是对手势事件的处理有问题（他们还是挺<a href="http://game.2sky.cn/js/52/index.js">大方的</a>），所以确实还蛮难的：我打了五六次，最好成绩6000多一点。</p>
-
-<p>然后，那个页面除开嵌入了一个“教你如何调情”的广告之外，一直在不停的要你分享，分享，分享&hellip;&hellip;</p>
-
-<p>那我就分享嘛~~~</p>
-
-<p>去看了一下微信的分享是怎么弄出去的，原来有个非官方的叫<code>WeixinJSBridge</code>的东西：只要是通过微信应用内置的Webview打开的网页就可以调用到一组特别的接口，比如分享链接到朋友圈或者发送链接给朋友。这两个接口的参数非常类似：</p>
-
-<ul>
-<li>分享链接消息里面的title image的url</li>
-<li>title image的宽度和高度</li>
-<li>标题</li>
-<li>描述</li>
-<li>链接指向的url</li>
-<li>微信APPID</li>
-</ul>
-
-
-<p>分享出来的链接，以这个“打企鹅”的游戏为例，是长成下面这样子的一条链接消息：</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_08/wechat_share_msg.jpg" title="Don't touch me..." alt="Wechat Message" /></p>
-
-<p>所以，要伪装一个“打企鹅”的高分数链接就只需要找到title image的url和链接指向的url（因为标题和描述照着编就是了）。</p>
-
-<p>本座觉得，那么山寨的游戏作者，肯定是把所有的东西都放在页面上的吧，于是用Chrome打开了那个页面，果然没有被拒绝（一般来说，给微信浏览的页面至少应该根据访问上报的user-agent等参数判断它是不是移动设备浏览的，如果不是应该reject），并且源码里面我想要的都在（所以比较敏感的js什么的minify一下会好一些）：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="kd">var</span> <span class="nx">mebtnopenurl</span> <span class="o">=</span> <span class="s1">&#39;http://game.2sky.cn/game/&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">rankurl</span> <span class="o">=</span> <span class="nx">mebtnopenurl</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">dataForWeixin</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>        <span class="s2">&quot;appId&quot;</span><span class="o">:</span> <span class="s2">&quot;wx60c8c12f639f3ef4&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s2">&quot;imgUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://game.2sky.cn/vapp/52/3.jpg&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://bingkafei.hnsdcpa.com/game/52/&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s2">&quot;tTitle&quot;</span><span class="o">:</span> <span class="s2">&quot;打企鹅-6e游戏&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s2">&quot;tContent&quot;</span><span class="o">:</span> <span class="s2">&quot;打企鹅-6e游戏&quot;</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">appId</span> <span class="o">=</span> <span class="s2">&quot;wx8820cdf5db680ffa&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;http://weiapp.552200.com/game/&quot;</span><span class="o">+</span><span class="nx">_con</span><span class="p">[</span><span class="s2">&quot;num&quot;</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">function</span> <span class="nx">dp_share</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span><span class="s2">&quot;你简直霸气侧漏，把企鹅击飞出&quot;</span><span class="o">+</span><span class="nx">myData</span><span class="p">.</span><span class="nx">scoreName</span><span class="o">+</span><span class="s2">&quot;，谁还能超越我？&quot;</span><span class="p">;</span>
-</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;share&quot;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">dataForWeixin</span><span class="p">.</span><span class="nx">tTitle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>当然，拿到这些了之后，也不是马上一句：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">WeixinJSBridge</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s1">&#39;shareTimeline&#39;</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="nx">callback</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>就能把你装神弄鬼消息分享出去的。前面说了，微信那边还是会检查整个事情是不是发生在微信内置的webview里面。但是，要绕开也不是那么麻烦，你懂的&hellip;</p>
-
-<p>总体感觉微信的这api还是挺扯的，本来可以作为身份校验的appid其实填不填也无所谓，所以朋友圈里面的链接点起来还是谨慎一点儿吧，骚年们。</p>
 ]]></content>
   </entry>
   
