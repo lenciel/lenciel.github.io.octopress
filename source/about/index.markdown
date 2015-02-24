@@ -7,7 +7,7 @@ sharing: true
 footer: true
 ---
 
-<img style="border:none !important;" class="pad" style="border: 1px solid #cccccc; padding: 3px; margin-right: 1em;" title="Lenciel Li" src="../downloads/images/wu_kong.jpg" alt="Lenciel Lei" width="155" height="147" align="left" />Lenciel于2006年从老和山职业技术学院毕业，成为一名程序员。先后在在做基站最好的公司做过基站，做存储最好的公司做过存储。之后为长期垄断偶像派的临幸，并最终将此女据为己有，回到成都扎根。对物质生活悟性一般，勉强能分清鲍鱼和鲤鱼，但对各种精巧的电子产品缺乏足够的抵抗能力。自以为是个好老公，但据说也就敏捷属性比较高，智力和力量都是废柴。
+<img class="pad" style="border: 1px solid #cccccc; padding: 3px; margin-right: 1em;" title="Lenciel Li" src="../downloads/images/wu_kong.jpg" alt="Lenciel Lei" width="155" height="147" align="left" />Lenciel于2006年从老和山职业技术学院毕业，成为一名程序员。先后在在做基站最好的公司做过基站，做存储最好的公司做过存储。之后为长期垄断偶像派的临幸，并最终将此女据为己有，回到成都扎根。对物质生活悟性一般，勉强能分清鲍鱼和鲤鱼，但对各种精巧的电子产品缺乏足够的抵抗能力。自以为是个好老公，但据说也就敏捷属性比较高，智力和力量都是废柴。
 
 Lenciel最大的爱好是足球，从中学到研究生毕业都是校队队员，打过几届飞利浦，运气好的两次还打到全国赛见识了一下贵圈有多乱。虽然生活在天朝，这项爱好显得不那么讲究，但目前仍每周参与，不离不弃。除此之外，Lenciel爱读书，爱看片，爱喝茶，爱睡觉。
 
