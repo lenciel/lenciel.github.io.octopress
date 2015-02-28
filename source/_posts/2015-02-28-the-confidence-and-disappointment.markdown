@@ -13,7 +13,7 @@ I wrote this in English because it is a habbit I have: when I'm frustrated, I wr
 
 It feels safer and warmer because it seems no one will take time to read it carefully when the language is switched.
 
-Today one of our freind told me she decide to resign to brew her drawing skill dedicatedly. She is working with us since Myriad, then Palm4fun, then Testbird. And she is not just a colleague for us, but a talent, honest freind. So I feel kinda upset.
+Today one of our freind told me she decides to resign to brew her drawing skill dedicatedly. She is working with us since Myriad, then Palm4fun, then Testbird. And she is not just a colleague for us, but a talent, honest freind. So I feel kinda upset.
 
 But I know it will happen sooner or later since we join Testbird.
 
