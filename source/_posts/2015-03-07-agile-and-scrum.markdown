@@ -51,8 +51,6 @@ Agile，中文翻译为“敏捷”，是在90年代逐渐引起广泛关注的�
 
 强调面对面沟通，而弱化文档和代码本身在沟通中的作用，造成的一个更严重后果是面对一个问题，大家不仔细思考就开会讨论。结果会上随便放炮，下来各不认账。
 
-<figure style="float: right;width: 250px;height: 267px;margin-bottom: 15px;margin-left: 15px;padding: 5px;border: 1px solid #063452;text-align: center;"><img style="max-width: 100%;max-height: 360px;border:none !important;" src="/downloads/images/2015_03/panda_falls_off_a_tree.gif"><figcaption style="text-align: left;border-top: 1px solid #063452;margin-top: 5px;padding-top: 5px;font-size: 12px;line-height: 10px;font-family:'titillium';">We fat boys are not necessarily Agile.</figcaption></figure>
-
 我在M记做PM的时候，项目组里面有几位韩国同事。因为是远程办公，每天除开代码之外，我们只能通过Skype交流。这里面有个叫Jason的同事，无论分给他什么活，他不但做得飞快，而且还会以[Confluence](https://www.atlassian.com/software/confluence)上一篇甚至几篇洋洋洒洒的文章作为交付。
 
 在回顾那个项目的时候我发现，我和他没有每日站会，没有Sprint结尾的demo，但我们之间的沟通是整个团队里面最高效的：每天查看他提交的代码和文档，我就非常清楚他的进度和问题了。
