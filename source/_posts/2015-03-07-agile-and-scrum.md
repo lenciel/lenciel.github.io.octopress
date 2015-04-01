@@ -35,7 +35,7 @@ Agile，中文翻译为“敏捷”，是在90年代逐渐引起广泛关注的�
 
 当然有适合面对面讨论的部分：比如对关键模块的技术选型，比如对业务流程和需求的澄清。
 
-但进入设计和实现阶段的活动，应该是看得见摸得着版本化可回溯的，所谓"a wireframe is worthy than oen thousand words，a prototype is worth a thousand wireframes"。
+但进入设计和实现阶段的活动，应该是看得见摸得着版本化可回溯的，所谓"a wireframe is worthy than one thousand words，a prototype is worth a thousand wireframes"。
 
 比如下面是一次提交之后Gitlab上提供的查看diff的界面：通过这样的方式review整个改动，比小伙伴坐在自己怀里结对编码要清楚得多（而且小伙伴坐在怀里的时候引发的羞赧常常让你难以把他的错误直接打到他脸上不是么）：
 
