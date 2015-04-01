@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Thoughts | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/thoughts/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-03-30T16:19:46+08:00</updated>
+  <updated>2015-04-01T23:32:04+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Django Is Not That Much MVC]]></title>
+    <title type="html"><![CDATA[Django其实不是MVC]]></title>
     <link href="http://lenciel.cn/2015/03/django-is-not-that-much-mvc/"/>
     <updated>2015-03-30T11:36:24+08:00</updated>
     <id>http://lenciel.cn/2015/03/django-is-not-that-much-mvc</id>

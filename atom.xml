@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-03-30T16:19:46+08:00</updated>
+  <updated>2015-04-01T23:32:04+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Django Is Not That Much MVC]]></title>
+    <title type="html"><![CDATA[Django其实不是MVC]]></title>
     <link href="http://lenciel.cn/2015/03/django-is-not-that-much-mvc/"/>
     <updated>2015-03-30T11:36:24+08:00</updated>
     <id>http://lenciel.cn/2015/03/django-is-not-that-much-mvc</id>
@@ -130,7 +130,7 @@
 
 <p>当然有适合面对面讨论的部分：比如对关键模块的技术选型，比如对业务流程和需求的澄清。</p>
 
-<p>但进入设计和实现阶段的活动，应该是看得见摸得着版本化可回溯的，所谓&#8221;a wireframe is worthy than oen thousand words，a prototype is worth a thousand wireframes&#8221;。</p>
+<p>但进入设计和实现阶段的活动，应该是看得见摸得着版本化可回溯的，所谓&#8221;a wireframe is worthy than one thousand words，a prototype is worth a thousand wireframes&#8221;。</p>
 
 <p>比如下面是一次提交之后Gitlab上提供的查看diff的界面：通过这样的方式review整个改动，比小伙伴坐在自己怀里结对编码要清楚得多（而且小伙伴坐在怀里的时候引发的羞赧常常让你难以把他的错误直接打到他脸上不是么）：</p>
 
