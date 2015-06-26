@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;">
+  <meta name="description" content="在从公司辞职出来的之前，我们对创业的期望是不降低大家的生活质量。我们对自己这么说，对我们拉入伙的兄弟们也这么说。这里的生活质量当然除开收入之外，很大的一方面就是不加班。 但是实际上的情况是：五一之前整个公司度过了一个非常特别的时期：产品团队不停地根据用户的输入，修改产品需求； &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/26" />
-<meta property="og:description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;" />
+<meta property="og:description" content="在从公司辞职出来的之前，我们对创业的期望是不降低大家的生活质量。我们对自己这么说，对我们拉入伙的兄弟们也这么说。这里的生活质量当然除开收入之外，很大的一方面就是不加班。 但是实际上的情况是：五一之前整个公司度过了一个非常特别的时期：产品团队不停地根据用户的输入，修改产品需求； &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;" />
+<meta itemprop="description" content="在从公司辞职出来的之前，我们对创业的期望是不降低大家的生活质量。我们对自己这么说，对我们拉入伙的兄弟们也这么说。这里的生活质量当然除开收入之外，很大的一方面就是不加班。 但是实际上的情况是：五一之前整个公司度过了一个非常特别的时期：产品团队不停地根据用户的输入，修改产品需求； &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -105,6 +105,130 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/05/the-myth-of-productivity/">The Myth of Productivity</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-05-02T01:11:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:11 am</span></time>
+        
+           | <a href="/2013/05/the-myth-of-productivity/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/05/the-myth-of-productivity/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在从公司辞职出来的之前，我们对创业的期望是不降低大家的生活质量。我们对自己这么说，对我们拉入伙的兄弟们也这么说。这里的生活质量当然除开收入之外，很大的一方面就是不加班。</p>
+
+<p>但是实际上的情况是：五一之前整个公司度过了一个非常特别的时期：产品团队不停地根据用户的输入，修改产品需求；服务器端和客户端两个开发组都疯狂加班，彻夜不眠；测试每天没有东西可以测试。</p>
+
+<p>假期我回忆了一下自己参与过的所有的软件项目，大到IBM的存储或者Ericsson的基站，小到自己做着玩的一些prototype，有跨时区的几个团队合作的，也有每天都可以互相抛媚眼的死党一起撸的，它们有一个共同的特点：居然没有一个是能够按照预估的时间交付的。</p>
+
+<p>假期我和一个老一辈无产阶级革命家聊起了这个问题：每次一个项目出现这样那样的情况，不能按时交付，我们都反思、开会、总结，希望下一个项目能吸取所有的经验，不再犯同样的错误。为什么最后的结果还是一样？</p>
+
+<p>他推荐了Daniel Kahneman的<a href="http://vdisk.weibo.com/s/8nUJx">Thinking, Fast and Slow</a>。这是一本心理学著作，探讨了人类认知的很多方面，其中有不少观点挺值得软件开发从业人员思考的，特别是想不明白为什么我们做的estimation永远不准的软件从业人员。</p>
+
+<a name="L................................................................................."></a>
+<h2>原因一：开发软件面向的问题域在你深入之前是不完全可知的</h2>
+
+<p>可以通过编写软件完美解决一个问题的前提是，我们对问题域了解得“足够深入”，以至于我们可以细致而精确地告诉计算机“如何”解决一个问题。</p>
+
+<p>但是矛盾的地方在于，一般我们了解到这个程度的问题，都已经有现成的软件或者是库了。需要我们进行开发的总是来自一些新需求：引入不确定性的那些新需求。</p>
+
+<p>新需求引入的不确定性是多方面的：第三方接口提供者不能按时提供可靠的接口，所以你要自己做适配；选定的数据库服务器之间不能互联互通需要VPS提供商开通3306端口互访。当然，不那么具体但是绝对会遇到的不确定性一般来自客户：产品release了，但是他们发现自己需要的并不他们最开始描述的这个东西，他们要这里那里做一些“小改动”&hellip;</p>
+
+<p>这其实也是历史上钻出来那么多specification文档的原因：有一些管理层希望能通过在文档阶段对需求足够细化来避免不确定性对项目的影响。但结果大家都知道了，细化的文档被整个软件行业唾弃的原因是越来越多的证据说明，如果你掌握的细节足够多，你就该直接去写软件。如果你掌握的细节不够多，那么写文档也没足够细的可能。</p>
+
+<p>有趣的地方在于，无论做工程师的时候大家对估开发时间多么的不屑，一旦到了管理层，你工作的核心就是估开发时间。而且有不少前一个月还在为没有按时delivery睡不着的苦逼工程师，一升到管理层就无比相信自己估的开发时间了。无论项目的实际情况如何，他们都会push整个团队苦干蛮干，这就是另外一个问题了。</p>
+
+<a name="L......................................."></a>
+<h2>原因二：过度自信和效率神话</h2>
+
+<p>这次雅安地震那位预测四川多少多少年不会有大地震的专家又成了笑柄。这当然不是专家第一次或者最后一次因为错误的预测成为笑柄。Kahneman在书里面专门花了一些篇幅写“专家”的预测为什么在大多数情况下是毫无用处的，最核心的三点在于：</p>
+
+<ul>
+<li>事实证明专家的预测常常会出错</li>
+<li>但作出预测的专家会对自己有绝对的自信</li>
+<li>即便后来发现自己的预测是错误的，专家对自己的自信不会减少</li>
+</ul>
+
+
+<p>最后这一点特别有趣。即便事实证明预测是错误的，即便明白只是人类认知中必然可能出现的问题，专家仍然会对自己的预测继续充满自信。原因何在？</p>
+
+<a name="L......I.......II................................."></a>
+<h2>系统I/系统II以及我们是如何做预估的</h2>
+
+<p>在<a href="http://vdisk.weibo.com/s/8nUJx">Thinking, Fast and Slow</a>里面Kahneman的解释了人类其实有两套决策系统：系统II负责谨慎、理性、分析性的思考；系统I复杂快速、基于模式、基于直觉的思考。</p>
+
+<p>重要的是，在进化的过程中，一个主要变化就是系统II慢慢少被使用了：耗时长的系统，仅仅在极其少的必须的情况下被唤醒。但是这里有个显而易见的矛盾是，如果没有经过思考，你怎么知道应该使用系统I还是系统II呢？</p>
+
+<p>这就是做预估的时候总是估不准的根本原因。做预估的时候，因为你是要在没有仔细分析（甚至一般也没用仔细分析的输入）的情况下使用系统I来做出判断。所以你的预估“一个任务需要花多少时间”的时候，其实多半是在根据“这个任务你有多少自信”。</p>
+
+<p>所以，一般来说我们报这个任务我需要3天的时候，其实是因为“这个东西看起来非常简单，而且我十分清楚如何做”。如果报这个任务我需要3个月，则是因为“这个东西看起来很难，我也不知道怎么做，但是我相信我能搞懂是怎么做”。</p>
+
+<a name="L...................................................."></a>
+<h2>避免凭直觉做预估就能得到准确预估吗?</h2>
+
+<p>你看到这里肯定会觉得，为了避免这些虚幻的估计，我们应该通过各种手段使用系统II来通过仔细地分析得到准确的数据。</p>
+
+<p>Bravo！恭喜你发明了“瀑布开发流程”。基本上来说&#8221;在开始编码之前我们先编写文档&#8221;就是为了让你切换到系统II。但是为什么使用瀑布的项目也会失败？</p>
+
+<p>说白了，还是软件开发在初始阶段即使使用系统II也不能做出精确的判断：知道的太少，变化的太多。那么究竟该怎么办？</p>
+
+<a name="L......................................."></a>
+<h2>什么样的预测是比较有效的？</h2>
+
+<p>Kahneman和其他一些专家通过研究，得出了什么时候做预测是比较保险的：</p>
+
+<blockquote><p>“To know whether you can trust a particular intuitive judgment, there are two questions you should ask: Is the environment in which the judgment is made sufficiently regular to enable predictions from the available evidence? The answer is yes for diagnosticians, no for stock pickers. Do the professionals have an adequate opportunity to learn the cues and the regularities?”</p></blockquote>
+
+<p>这里的&#8221;adequate opportunity&#8221;意味着大量的实践经验用于可控的周期内的稳定环境中，并且具备了反馈机制可以随时修正准确度。以此为根据，0-12个小时的task，如果这些task一被建立就能立刻得到执行，那么：</p>
+
+<ul>
+<li>在这么短的时间内，虽然仍然有可能会出现变化，基本环境应该是稳定的</li>
+<li>你可以很快的得到结果并且知道自己估计的准确度</li>
+</ul>
+
+
+<p>在这种情况下，你是尽可能的先利用系统I开始工作，并且通过迅速得到的反馈来修正自己的结果，达到目标。</p>
+
+<a name="L.................."></a>
+<h2>打破效率神话</h2>
+
+<p>创业团队出现过于乐观的估计除开过度自信之外，还有很重要的一个原因是因为相信效率神话。Evernote，AnyDo，OmniFocus等等GTD工具和各种关于同时做n件事情还每件都做好的江湖传说很容易把焦头烂额的创业团队坑进去。接受你不可能做出一个准确的预估然后向客户承诺的事实，转而思考如何在规定时间内最大化的输出对客户有用的价值时，关于效率需要牢记下面的事实：</p>
+
+<ul>
+<li>一天只有24个小时，即使团队的沟通成本很低，仍然需要在使用你们选用的agile工具，开会，互相之间同步信息，迭代和对外汇报等等上花时间；</li>
+<li>人的生活还有各种不确定性，如生病、怀孕、过劳、休假、结婚、家长会、禽流感等等；</li>
+<li>你的系统会有一些非常难以找到root cause的bug需要花你估计的十倍以上的时间才能根除</li>
+<li>你的客户会给你各种乱七八糟的输入并且提出各种来时已晚的需求</li>
+<li><a href="https://medium.com/r/?url=http%3A%2F%2Fwww.inc.com%2Fjessica-stillman%2Fwhy-working-more-than-40-hours-a-week-is-useless.html">一周工作的超过40个小时之后的部分已经被认为是无效的</a></li>
+<li><a href="https://medium.com/r/?url=http%3A%2F%2Flifehacker.com%2F246988%2Fmultitasking-makes-you-less-productive-%2B-take-ten">工作被打断后需要15到20分钟才能恢复</a></li>
+<li><a href="https://medium.com/r/?url=http%3A%2F%2Fwww.kens5.com%2Fnews%2FStudy-Average-worker-spends-60-percent-of-time-cyberloafing-190195401.html">人们上班的时候花了非常多的时间干和工作无关的事情</a></li>
+</ul>
+
+
+<p>接受现实，摒弃对效率神话的膜拜，用心思考在有限的时间内如何最大化的输出对用户有价值的东西，比任何流程、方法论、工具都要重要。这一方面在团队内部倡导了一种科学并且诚实的做事方式，一方面会让你更能分清工作任务和资源的优先级。它最大的好处是让你专心地根据实际的优先级做出判断，把精力放到最关键的事情上去。</p>
+
+<p>这，是对整个团队最重要的事情。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -661,107 +785,6 @@
 
 
 <p>接下来的计划就是建立项目组自己的repo，把诸如输入法、dotfiles、Java开发环境和Django开发环境这些东西的安装和配置都自动化了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/use-done-list-rather-than-todo-list/">Use Done List Instead of to Do List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-03-15T21:25:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:25 pm</span></time>
-        
-           | <a href="/2013/03/use-done-list-rather-than-todo-list/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/use-done-list-rather-than-todo-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/nerd_sniping.png" title="Don't touch me..." alt="nerd sniping" /></p>
-
-<a name="L.strong......strong."></a>
-<h2><strong>起</strong></h2>
-
-<p><a href="http://xkcd.com/730/" target="_blank">xkcd</a>一直是本座最喜欢的网站（嗯哼）。上面这幅图说了一个很有趣的现象，正好最近深有体会，就来这边吐槽一下。整个经过是：</p>
-
-<p>大前天回到家感觉不算太忙，本座就开始家姐布置的家庭作业：做一个用于心理学测试的游戏。需求简单来说就是：</p>
-
-<ul>
-<li>游戏开始后轮转播放图片、视频或者音频 （媒体库要容易换，播放的切换间隙也要能配置）</li>
-<li>被试通过操控手中的手柄表达心理的反应，由程序转成可统计的数据（比如看到美女图按同时按下AB）</li>
-<li>程序得到的数据能够很容易的被统计，统计结果能够很优雅的呈现出来</li>
-</ul>
-
-
-<p>为了让这个事情变得更有趣，本座在需求确定之后决定：</p>
-
-<ol>
-<li>用帅气的<a href="http://www.nintendo.co.uk/NOE/en_GB/systems/accessories_1243.html" target="_blank" class="broken_link">Wii Remote</a>来让被试表达自己（想想美女图片一出就甩或者是撸一下WiiRemote有多实在）</li>
-<li>用<a href="http://www.pygame.org/news.html" target="_blank">pyGame</a>来写这个游戏（早就想学习pyGame了）</li>
-<li>把统计数据的输出作为一个用<a href="http://www.r-project.org/" target="_blank">R语言</a>实现的统计绘图的界面的输入</li>
-</ol>
-
-
-<p>接着就开始第一项。当程序把 <code>Wii Remote</code> 的蓝牙信号正确的转换成标准的手柄信号的时候，一看已经挺晚了，本座就只好把后面两个放在了 <code>todo list</code> 上。接着这两天都很忙这些东西就继续的呆在 <code>todo list</code> 。</p>
-
-<p>然后今天又找到时间，本座就开始用 <code>pyGame</code> 写游戏本身部分，但突然觉得vim下面自动补全很烂，就开始google合适的插件。花了10分钟左右发觉不少人说 <code>pydict</code> 好，本座就又花了15分钟左右去配置。然后看着chrome里面为了搜索插件弹出的一堆tab突然本座发现：</p>
-
-<p>经过了4天，本座把Wii Remote用蓝牙连到PC输出手柄信号，本座有了一个不错的vim下开发python的环境，本座还学习了一点儿R。唯一没有开始的就是，嗯，还没有开始写那个游戏。</p>
-
-<a name="L.strong......strong."></a>
-<h2><strong>承</strong></h2>
-
-<p>你的情况可能具体细节和我不一样，但是结果估计都是南辕北辙：你是网页设计师，在需要画 <code>wireframe</code> 的时候花了一大把时间去看搜索出来的新鲜的、华丽的 <code>CSS3</code> 效果；你上淘宝买手机结果研究移动电源用了4个小时；你想学怎么养花结果因为选盆子下面水漏的形状耽误了。</p>
-
-<p>这种情况之所以对你的效率有很大的伤害是因为：</p>
-
-<ol>
-<li>你认为你是在完成自己 <code>todo list</code> 上的东西，所以你觉得自己是在“进展中”而不是“瞎逛”。</li>
-<li>你认为的进展给你带来了更多 <code>todo list</code> 上的东西，而且有些确实对原来的目标是无益的。</li>
-</ol>
-
-
-<p>人的精力是有限的，如果你长期处于这种状况（太正常了，如果你是玩电脑的话），可就要小心了。</p>
-
-<a name="L.strong......strong."></a>
-<h2><strong>转</strong></h2>
-
-<p>其实这种发散的工作方式并不是完全错误的。其实在我们这个行业，这种“总想追求更好”的想法，是整个Agile的基础。Facebook在自己的员工的邮件<a href="http://blogs.wsj.com/deals/2012/02/01/mark-zuckerbergs-letter-from-the-facebook-filing/" target="_blank">里面</a>写到：</p>
-
-<blockquote><p>The Hacker Way is an approach to building that involves continuous improvement and iteration. Hackers believe that something can always be better, and that nothing is ever complete. They just have to go fix it — often in the face of people who say it’s impossible or are content with the status quo.</p></blockquote>
-
-<p>从本座自己的感觉而言，做事循规蹈矩的同事，完成一般难度的任务时，效率确实很高。但是那种真正非常困难的问题，常常是被喜欢“瞎逛”的人解决的。这当然也没什么奇怪的，所谓闭门造的车，出门就只能合辙。Richard Hamming也<a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html" target="_blank">说</a>：</p>
-
-<blockquote><p>I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don&#8217;t know quite about what problems are worth working on … He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. ….</p></blockquote>
-
-<a name="L.strong......strong."></a>
-<h2><strong>合</strong></h2>
-
-<p>不能闭门造车，又需要有固定的输出值，怎么办？今天本座是这么办的：</p>
-
-<ol>
-<li>早上起来把今天最重要的事情从<a href="https://astrid.com/home" target="_blank">todo list</a>里面选出来。</li>
-<li>完成这些事情的过程中遇到任何有趣的东西或者想法，存到<a href="http://delicious.com/" target="_blank">delicious</a>或者<a href="http://www.evernote.com/" target="_blank">evernote</a>里面。</li>
-<li>使用<a href="https://idonethis.com" target="_blank">Done list</a>而不是todo list来标记自己今天的活动。</li>
-</ol>
-
-
-<p>结果是今天3点钟就完成了所有重要的事情，能够来安心的写一篇blog，看起来是个不错的办法。</p>
 </div>
   
   

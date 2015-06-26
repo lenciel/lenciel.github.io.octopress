@@ -9,7 +9,8 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;">
+  <meta name="description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;! &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +31,16 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/9" />
-<meta property="og:description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;" />
+<meta property="og:description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;! &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。 动态设计，也就是Motion Design或者是Motion Graphic Design其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。 &hellip;" />
+<meta itemprop="description" content="If you know what it is then you know what it is. Let&rsquo;s fuck the GFW. &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;! &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -105,6 +108,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/07/fuck-the-gfw-with-ssh-tunnel/">Mac上自启动autossh</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-11T20:14:20+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:14 pm</span></time>
+        
+           | <a href="/2014/07/fuck-the-gfw-with-ssh-tunnel/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
+
+<div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
+<noscript><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;autossh.lenciel&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;/opt/boxen/homebrew/bin/autossh&lt;/string&gt;
+    &lt;string&gt;-M&lt;/string&gt;
+    &lt;string&gt;20000&lt;/string&gt;
+    &lt;string&gt;-f&lt;/string&gt;
+    &lt;string&gt;-i&lt;/string&gt;
+    &lt;string&gt;~/.ssh/fuckgfw&lt;/string&gt;
+    &lt;string&gt;-N&lt;/string&gt;
+    &lt;string&gt;-L&lt;/string&gt;
+    &lt;string&gt;0.0.0.0:3189:localhost:31280&lt;/string&gt;
+    &lt;string&gt;remotehost&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;WorkingDirectory&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/&lt;/string&gt;
+  &lt;key&gt;StandardErrorPath&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/log/autossh/autossh.log&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -318,65 +388,6 @@
 <p>&ldquo;不知道。&rdquo;</p>
 
 <p>&ldquo;Nothing, they just wave.&rdquo;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/05/better-dictionary-on-mac/">Better Dictionary on Mac</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-23T14:02:14+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:02 pm</span></time>
-        
-           | <a href="/2014/05/better-dictionary-on-mac/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2014/05/better-dictionary-on-mac/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mac上很贴心的提供了词典，并且还绑定了快捷键：在任何页面按下&#8221;Ctrl+Cmd+D&#8221;，就会有词义解释的界面弹出。不过内置的<code>New Oxford American Dictionary</code>比较的弱，给人的感觉词条的水准就像《新华字典》一样单薄，所以换成了编了好几十年又修订了好几十年的<a href="http://zh.wikipedia.org/wiki/%E9%9F%A6%E6%B0%8F%E8%AF%8D%E5%85%B8">韦氏词典</a>，两者的差距还是明显的。</p>
-
-<p>这是自带词典对pathos的解释：</p>
-
-<blockquote><p>pathos /ˈpāˌTHäs/, a quality that evokes pity or sadness</p></blockquote>
-
-
-<p>这是《韦氏词典》的：</p>
-
-<blockquote><p>pathos /ˈpāˌTHäs/, n. </p><p>1. The quality or character of those emotions, traits, or experiences which are personal, and therefore restricted and evanescent; transitory and idiosyncratic dispositions or feelings as distinguished from those which are universal and deep-seated in character; — opposed to ethos.</p><p>2. That quality or property of anything which touches the feelings or excites emotions and passions, esp., that which awakens tender emotions, such as pity, sorrow, and the like; contagious warmth of feeling, action, or expression; pathetic quality; as, the pathos of a picture, of a poem, or of a cry.</p></blockquote>
-
-
-<p>安装的方法也挺简单：</p>
-
-<ul>
-<li>如果下载的是<a href="http://pan.baidu.com/s/1o6z67dK#dir/path=%2Fdictionary">这样</a>的<code>dictionary</code>文件，直接拷贝到<code>~/Library/Dictionaries</code></li>
-<li>如果是<a href="http://pan.baidu.com/s/1i35ik7N">这样</a>的raw文件，需要运行DictUnifier应用编译</li>
-</ul>
-
-
-<p>安装完毕运行<code>Dictionary</code>应用，勾选你期望出现的字典和顺序即可，我启用了《朗道英汉词典》、《韦氏词典》和《维基百科》:</p>
-
-<p><img src="/downloads/images/2014_05/apple_dict_effect.png" title="Apple Dict" alt="Don't touch me" width="60%"></p>
-
-
-<p>另外，词典的样式其实是用css定义的，就在每个字典文件的Contetns目录，比如：<code>~/Library/Dictionaries/dictd_www.dict.org_web1913.dictionary/Contents/DefaultStyle.css</code>。如果你不满意字典出来的样子，可以自定义格式。</p>
-
-<p>最后，这些词典其实都是linux上著名的国产软件<a href="http://en.wikipedia.org/wiki/StarDict">stardict</a>的文件格式（写到这里，又想起stardict的作者<a href="http://www.huzheng.org/aboutme.php">胡正</a>），所以要在<a href="https://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">手机上使用</a>也是很容易的事情。</p>
 </div>
   
   
