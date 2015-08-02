@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Notes | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/notes/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-06-26T16:25:30+08:00</updated>
+  <updated>2015-08-03T01:00:39+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -349,7 +349,7 @@ d = base64.b64encode(k.encrypt(input_str))
 print d
 </code></pre>
 
-<p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度。</p>
+<p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度：下面这些内容主要来自<a href="http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/">这篇文章</a></p>
 
 <a name="L.strong.Hash..strong."></a>
 <h2><strong>Hash</strong></h2>
