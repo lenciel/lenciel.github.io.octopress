@@ -134,7 +134,7 @@ d = base64.b64encode(k.encrypt(input_str))
 print d
 ```
 
-当然，要明白这些算法究竟怎么回事才叫认真负责的态度。
+当然，要明白这些算法究竟怎么回事才叫认真负责的态度：下面这些内容主要来自[这篇文章](http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/)
 
 ## **Hash**
 
