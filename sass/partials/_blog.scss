@@ -20,8 +20,8 @@ article {
     background: $img-border bottom left repeat-x;
     h1 {
       margin: 0;
+      text-shadow: 1px 1px #efefef,2px 2px #828887;
       a { text-decoration: none;
-          text-shadow: 1px 1px #efefef,2px 2px #828887;
         &:hover { text-decoration: none; } }
     }
     p {
@@ -41,8 +41,9 @@ article {
     }
   }
   h2 {
+    text-shadow: 1px 1px #efefef,2px 2px #828887;
     padding-top: 0.8em;
-    background: $img-border top left repeat-x;
+    border-top: 3px dashed #828887;
   }
   .entry-content & h2:first-child, header + h2 { padding-top: 0; }
   h2:first-child, header + h2 { background: none; }
@@ -96,7 +97,7 @@ article {
 }
 article + article {
   .blog-index & {
-    background: $img-border top left repeat-x;
+    border-top: 3px dashed #828887;
   }
 }
 #content .blog-index {
@@ -141,7 +142,7 @@ article + article {
   text-align: center;
   font-size: .95em;
   position: relative;
-  background: $img-border top left repeat-x;
+  border-top: 3px dashed #828887;
   padding: {top: 1.5em; bottom: 1.5em;}
   a {
     text-decoration: none;
