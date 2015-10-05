@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="在软件开发中我们一说到避免过度设计，经常有两个例子会被抬出来，其中一个就是NASA造了昂贵的太空笔，然后俄罗斯用很简单的方案解决问题的故事（另一个大概就是传送带旁边放电风扇的故事）。NASA造笔的故事大概是这样的: 太空竞赛开始的1960年代，NASA面临一大难题，宇航员需要用笔在真空环境下写字 &hellip;">
+  <meta name="description" content="Python的自荐页面About Python上号称自家的标准库是"batteries included"的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包Requests的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/20" />
-<meta property="og:description" content="在软件开发中我们一说到避免过度设计，经常有两个例子会被抬出来，其中一个就是NASA造了昂贵的太空笔，然后俄罗斯用很简单的方案解决问题的故事（另一个大概就是传送带旁边放电风扇的故事）。NASA造笔的故事大概是这样的: 太空竞赛开始的1960年代，NASA面临一大难题，宇航员需要用笔在真空环境下写字 &hellip;" />
+<meta property="og:description" content="Python的自荐页面About Python上号称自家的标准库是"batteries included"的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包Requests的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是： &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="在软件开发中我们一说到避免过度设计，经常有两个例子会被抬出来，其中一个就是NASA造了昂贵的太空笔，然后俄罗斯用很简单的方案解决问题的故事（另一个大概就是传送带旁边放电风扇的故事）。NASA造笔的故事大概是这样的: 太空竞赛开始的1960年代，NASA面临一大难题，宇航员需要用笔在真空环境下写字 &hellip;" />
+<meta itemprop="description" content="Python的自荐页面About Python上号称自家的标准库是"batteries included"的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包Requests的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是： &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,6 +98,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/10/recharging-the-python-standard-library/">给Python标准库充电</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-10-17T12:27:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:27 pm</span></time>
+        
+           | <a href="/2013/10/recharging-the-python-standard-library/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/10/recharging-the-python-standard-library/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Python的自荐页面<a href="http://www.python.org/about/">About Python</a>上号称自家的标准库是&#8221;batteries included&#8221;的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包<a href="http://docs.python-requests.org/en/latest/">Requests</a>的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是：<a href="http://www.leancrew.com/all-this/2012/04/where-modules-go-to-die/">加入标准库就会死翘翘</a>。</p>
+
+<p>再举个例子，我们最近的项目里面都用到了<a href="https://pypi.python.org/pypi/pytz/">pytz</a>。标准库里面的datetime是支持时区的（tzinfo类），但是并没有包含时区信息（tzinfo是抽象类需要自己实现）。遵照前人的经验使用pytz是最好的办法<a href="" title="[如何在datetime转换中保存时区信息](http://stackoverflow.com/questions/14762518/python-datetime-strptime-and-strftime-how-to-preserve-the-timezone-informat).    ">^1</a>。</p>
+
+<p>所以不奇怪的是，几乎所有的Python项目都会引用一堆优秀的第三方库。为了管理这些依赖一般都会用上pip:</p>
+
+<ul>
+<li>在项目里面用pip freeze生成一个<code>requirement.txt</code>文件</li>
+<li>在创建<code>virtualenv</code>的时候使用之前生成的文件安装所有的依赖</li>
+</ul>
+
+
+<p>为了不在每次运行<code>pip install -r requirements.txt</code>的时候都下载一堆依赖，你还可以打开pip的<a href="http://lenciel.cn/2013/10/pip-download-cache/">download cache</a>。如果整个公司在做项目的时候都需要经常使用一些包，甚至可以考虑<a href="https://github.com/wolever/pip2pi">做一个Pypi</a>的库来共享，类似于Maven的Repo。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -323,41 +367,6 @@ Bob这边：(Alice的Bob私钥值次方) % 大质数</p></blockquote>
 <p>—</p>
 
 <p>最后，Wikipedia是研究这种东西的好去处, 也可以看看 <a href="https://www.coursera.org/course/crypto">Coursera的这个课程</a> 。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/08/secret-love/">Secret Love</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-26T21:59:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:59 pm</span></time>
-        
-           | <a href="/2013/08/secret-love/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/08/secret-love/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/secret_love.gif" title="Don't touch me..." alt="Secret Love" /></p>
-
-<blockquote><p>&#8220;I think we’re just gonna have to be secretly in love with each other and leave it at that, Ritchie.&#8221;</p><footer><strong>Gwyneth Paltrow</strong> <cite><a href='http://www.imdb.com/title/tt0265666/'>The Royal Tenenbaums(2001)</a></cite></footer></blockquote>
-
 </div>
   
   
