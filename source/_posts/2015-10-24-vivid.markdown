@@ -6,9 +6,11 @@ comments: true
 categories: 
 ---
 
-<audio controls loop preload autoplay width="800"><source src="/downloads/audio/lxsx.mp3"></audio>
+<audio controls loop preload autoplay width="800"><source src="http://mr3.douban.com/201510250009/e0b3886130a9e29ff2cc037795803fce/view/musicianmp3/mp3/x17190732.mp3"></audio>
 
-每个人的生命中都有一个胖子，我的胖子叫卫豆。
+每个人的生命中都有一个胖子。
+
+我的胖子叫卫豆。
 
 卫豆为什么叫卫豆我已经有些忘了。也许是因为英语课给自己取名叫Vivid，于是大家叫他卫卫豆。但是铅球跳高双料冠军的他感觉AAB的名字太过娘炮，所以我们截取了两位有效位数。
 
