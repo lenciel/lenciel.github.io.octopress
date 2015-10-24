@@ -9,7 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;">
+  <meta name="description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +30,14 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/27" />
-<meta property="og:description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta property="og:description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="一般来说，新开张的小团队不会养专职的运维和部署团队。一般服务器开发的项目组会有人兼职做这部分的事情。刚开始的时候这部分的工作量一般也不大，但是随着租用的服务器越来越多，兼职的人就会发现自己是在打上甘岭战役————坡越来越陡。 因此，一个简单而有效的标准流程是非常必要的。 &hellip;" />
+<meta itemprop="description" content="个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的新版本中新增了 KSReview 功能，比较有用。 举个常见的场景：如果 master 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。 &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,6 +98,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/04/use-kaleidoscope-as-code-review-tool/">Use Kaleidoscope as Code Review Tool</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-14T20:57:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:57 pm</span></time>
+        
+           | <a href="/2013/04/use-kaleidoscope-as-code-review-tool/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/04/use-kaleidoscope-as-code-review-tool/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的<a href="http://kaleidoscopeapp.com/beta">新版本</a>中新增了 <code>KSReview</code> 功能，比较有用。</p>
+
+<p>举个常见的场景：如果 <code>master</code> 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。这个时候lenciel做diff的时候，因为主分支的文件已经发生过变化，那么我们diff的结果哪些是自己的开发分支与主分支的差异哪些是ming引入的，就要靠“人工智能”来肉身体察了。</p>
+
+<p>而 <code>KSReview</code> 会只收集开发者自己的开发分支和主分支之间的差异，过滤掉无关的信息，这样改动就非常清晰了。它的安装方便，只需要在命令行里面敲入：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git config --global alias.ksreview <span class="s1">&#39;!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装完毕之后就可以用下面的命令来做diff了：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git ksreview feature-branch-name-or-sha mainline-branch-name
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -707,52 +755,6 @@
 
 
 <p>结果是今天3点钟就完成了所有重要的事情，能够来安心的写一篇blog，看起来是个不错的办法。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/the-gone-of-google-reader/">The Gone of Google Reader</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-03-15T21:25:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:25 pm</span></time>
-        
-           | <a href="/2013/03/the-gone-of-google-reader/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/03/the-gone-of-google-reader/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/downloads/images/google_reader.png" title="Don't touch me..." alt="Google reader is gone" /></p>
-
-<p>Google Reader关掉的消息出来做之后网上的反应其实是很耐人寻味的。</p>
-
-<p>用户们的抱怨声是<a href="http://www.theverge.com/2013/3/14/4105432/google-reader-shuts-down">满坑满谷</a>：的确，它是很多人(包括本座在内)每天都用的工具。相比之下，所有RSS行业的人(如果这个行业还在的话)几乎都在叫好。</p>
-
-<p>跟一个朋友聊起来的时候，他说这就像当年王菲说姐不唱了，歌迷们是一片哀号，而很多唱歌的姑娘却长舒了一口气一样。</p>
-
-<p>不过其实这里面的原因并没有这么简单。一个RSS阅读器虽然算不上多么复杂的软件，但是服务器端做到Google Reader的稳定性和及时性就不容易了。由于Google Reader在这方面的质量一骑绝尘又有开放接口，使得很多其他的RSS阅读器都不再自己同步各个feed来源，而是直接使用Google Reader作为来源，在外面加壳。</p>
-
-<p>这样发展的结果是，实际上市面上就只有一款RSS阅读器和若干皮肤而已。只要看看<a href="http://feedburner.google.com/">feedburner</a>好像出土文物一样的页面就知道这样的发展对这个行业来说是什么样灾难的后果了。</p>
-
-<p>所以说Google Reader这种服务的倒掉，在短期内当然是巨大的损失。不过这样一来，似乎又唤醒了一个行业沉睡多年的创造力。看看<a href="http://inside.flipboard.com/2013/03/14/weve-got-your-rss-covered-save-your-google-reader-feeds-now/">Flipboard</a>、<a href="http://feedly.com/">Feedly</a>、<a href="http://feedafever.com/">Fever</a>、<a href="http://www.newsblur.com/">Newsblur</a>的反应你就会觉得，说不定会有比Google Reader更好的服务被孵化出来。</p>
-
-<p>因为，我实在是不觉得那些乱七八糟的SNS能代替一个干干净净的阅读器。</p>
 </div>
   
   

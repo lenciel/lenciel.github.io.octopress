@@ -9,8 +9,7 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="看烦了 git log 的白净输出？ 这个看起来如何？ 用起来其实很简单，只需要： 1
-git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt &hellip;">
+  <meta name="description" content="Vagrant最近支持了VMWare，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。 安装VirtualBox VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,16 +30,14 @@ git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgr
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/26" />
-<meta property="og:description" content="看烦了 git log 的白净输出？ 这个看起来如何？ 用起来其实很简单，只需要： 1
-git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt &hellip;" />
+<meta property="og:description" content="Vagrant最近支持了VMWare，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。 安装VirtualBox VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、 &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="看烦了 git log 的白净输出？ 这个看起来如何？ 用起来其实很简单，只需要： 1
-git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt &hellip;" />
+<meta itemprop="description" content="Vagrant最近支持了VMWare，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。 安装VirtualBox VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、 &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -101,6 +98,126 @@ git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgr
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/06/vagrant-on-mac-os-x/">Vagrant for Django I: Basic</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-06-19T15:19:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:19 pm</span></time>
+        
+           | <a href="/2013/06/vagrant-on-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2013/06/vagrant-on-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
+
+<a name="L......VirtualBox"></a>
+<h2>安装VirtualBox</h2>
+
+<p>VirtualBox是Oracle的动态创建、可配置、可移植的轻量虚拟机系统。在Windows、MacOSX、Linux和Solaris上都发行了相应版本。</p>
+
+<p>目前Vagrant支持的是VirtualBox4.0.x、4.1.x和4.2.x版本</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>http://www.virtualbox.org/wiki/Downloads
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="L......Vagrant"></a>
+<h2>安装Vagrant</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>http://downloads.vagrantup.com/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Windows和Mac OS X下面安装完毕后要把 <code>vagrant</code> 命令放到 <code>PATH</code> 下面，而其他系统下面需要把整个 <code>/opt/vagrant/bin</code> 放到PATH下面。
+完成后可以先安装一个32位的ubuntu10.04版本来测试一下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+</span><span class='line'>vagrant init lucid32
+</span><span class='line'>vagrant up
+</span></code></pre></td></tr></table></div></figure>
+
+
+<a name="Vagrant........."></a>
+<h2>Vagrant的好处</h2>
+
+<p>软件开发，特别是Web应用的开发正处于环境异常复杂的年代。为了在开发和实际部署的环境直接做到无缝切换，虚拟化技术被大规模的使用。与此同时，自动的配置管理，如 <code>Chef</code> 或者 <code>Puppet</code> 也在发挥着巨大的作用。Vagrant就是在这些技术的基础上进行了集成，从而完成（虚拟化+自动配置管理）的效果。</p>
+
+<p><em>对个人开发者</em></p>
+
+<p>对于开发者来说要想使用一个开发环境应付所有的开发任务变得非常困难了。每个项目都有自己独特的依赖，如类库，消息队列，数据库，框架等等。每个依赖也常常有版本上的差异。Vagrant提供了方便，可以为每个项目创建独立的开发环境，并且只在项目需要的时候把这些环境运行起来。</p>
+
+<p><em>对项目组</em></p>
+
+<p>同一个项目组的组员理论上都是有相同的开发环境的：同样的依赖，每个依赖都是同样的版本，采用同样的配置等等。但是现实往往不是这样。比如采用了ORM框架的Django，同一个项目组可能有人用着 <code>sqlite3</code> ，有人用 <code>mysql</code> 。而且每个人自己开发环境中服务器的配置也常常是不同的。这种异构的环境往往最终会带来大大小小的麻烦。Vagrant提供了一个方便，让大家都被强制的使用统一的开发环境。</p>
+
+<p><em>对公司</em></p>
+
+<p>如果管理过大型项目，你就知道新人和新设计的引入往往是非常大的考验。大量的环境搭建工作，都可以由Vagrant来代替。并且Vagrant的配置只需要写一次，然后分发给大家用就行了，省掉了大量的时间。</p>
+
+<a name="Vagrant..............."></a>
+<h2>Vagrant可执行文件</h2>
+
+<p>Vagrant安装好之后，主要是通过命令行使用。 <code>vagrant</code> 命令带很多子命令，如 <code>vagrant up</code> ， <code>vagrant ssh</code> ， <code>vagrant package</code> 等等。敲 <code>vagrant</code> 就可以看到有哪些可用的命令。</p>
+
+<a name="Vagrantfile............"></a>
+<h2>Vagrantfile配置文件</h2>
+
+<p><code>Vagrantfile</code> 对于Vagrant就像 <code>Makefile</code> 对Make的作用一样：它被放置在每个Vagrant项目的根目录，用来配置Vagrant以及它创建的虚拟机的行为。一个最简单的配置文件如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Vagrant</span><span class="p">:</span><span class="no">Config</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>     <span class="c1"># setup the box</span>
+</span><span class='line'>     <span class="n">config</span><span class="o">.</span><span class="n">vim</span><span class="o">.</span><span class="n">box</span><span class="o">=</span><span class="s2">&quot;my_box&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到，<code>Vagrantfile</code> 是用标准的Ruby代码写成的。需要注意的是在大版本之间<code>Vagrantfile</code> 是不兼容的。</p>
+
+<a name="L......setup"></a>
+<h2>基本setup</h2>
+
+<p>首选创建项目目录，然后在项目目录中初始化：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir vagrant_guide
+</span><span class='line'><span class="nb">cd </span>vagrant_guide
+</span><span class='line'>vagrant init
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>init命令会创建一个基本的Vagrantfile，暂时先不修改它。下一篇我们来看如何添加Django开发需要的配置以及如果build一个 <code>base box</code> 来给其他人使用。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -354,54 +471,6 @@ git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgr
 <p>接受现实，摒弃对效率神话的膜拜，用心思考在有限的时间内如何最大化的输出对用户有价值的东西，比任何流程、方法论、工具都要重要。这一方面在团队内部倡导了一种科学并且诚实的做事方式，一方面会让你更能分清工作任务和资源的优先级。它最大的好处是让你专心地根据实际的优先级做出判断，把精力放到最关键的事情上去。</p>
 
 <p>这，是对整个团队最重要的事情。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/04/use-kaleidoscope-as-code-review-tool/">Use Kaleidoscope as Code Review Tool</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-04-14T20:57:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:57 pm</span></time>
-        
-           | <a href="/2013/04/use-kaleidoscope-as-code-review-tool/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2013/04/use-kaleidoscope-as-code-review-tool/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>个人觉得Mac上最好用的文件/文件夹比较工具应该就是Kaleidoscope了。在它的<a href="http://kaleidoscopeapp.com/beta">新版本</a>中新增了 <code>KSReview</code> 功能，比较有用。</p>
-
-<p>举个常见的场景：如果 <code>master</code> 分支下有两个人lenciel和ming在做事。如果ming的事情先做完，代码上了master分支。这个时候lenciel做diff的时候，因为主分支的文件已经发生过变化，那么我们diff的结果哪些是自己的开发分支与主分支的差异哪些是ming引入的，就要靠“人工智能”来肉身体察了。</p>
-
-<p>而 <code>KSReview</code> 会只收集开发者自己的开发分支和主分支之间的差异，过滤掉无关的信息，这样改动就非常清晰了。它的安装方便，只需要在命令行里面敲入：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git config --global alias.ksreview <span class="s1">&#39;!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装完毕之后就可以用下面的命令来做diff了：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git ksreview feature-branch-name-or-sha mainline-branch-name
-</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
   
