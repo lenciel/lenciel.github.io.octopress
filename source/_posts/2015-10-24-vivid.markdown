@@ -6,8 +6,6 @@ comments: true
 categories: 
 ---
 
-<audio controls loop preload autoplay><source src="/downloads/audio/lxsx.mp3"></audio>
-
 每个人的生命中都有一个胖子。
 
 我的胖子叫卫豆。
@@ -166,5 +164,6 @@ categories:
 但不管什么时候他们走开了，他们给我们的影响都会一直留在那里。
 
 而正是他们给我们的那些影响，让我们成为了今天的样子。
+
 
 
