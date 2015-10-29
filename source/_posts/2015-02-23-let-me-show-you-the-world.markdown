@@ -44,6 +44,7 @@ categories:
 </div><!-- /container -->
 
 <script src="/downloads/static/js/draggabilly.pkgd.min.js"></script>
+<script src="/downloads/static/js/modernizr.custom.js"></script>
 <script src="/downloads/static/js/elastiStack.js"></script>
 <script>
     new ElastiStack( document.getElementById( 'elasticstack' ) );
