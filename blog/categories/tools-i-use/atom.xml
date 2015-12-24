@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-11-11T15:55:20+08:00</updated>
+  <updated>2015-12-24T16:32:37+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[提取微信语音消息]]></title>
+    <link href="http://lenciel.cn/2015/12/extract-audio-message-from-wechat/"/>
+    <updated>2015-12-24T13:05:21+08:00</updated>
+    <id>http://lenciel.cn/2015/12/extract-audio-message-from-wechat</id>
+    <content type="html"><![CDATA[<a name="Why."></a>
+<h3>Why?</h3>
+
+<p>Why not?</p>
+
+<a name="How."></a>
+<h3>How?</h3>
+
+<a name="L................................."></a>
+<h4>导出原始微信的音频消息</h4>
+
+<ul>
+<li>使用iTunes创建一个不加密备份</li>
+<li>导出备份中的微信应用文件夹（可以使用iExplorer试用版）</li>
+<li>找到你需要转换的音频文件所在文件夹</li>
+</ul>
+
+
+<a name="L......silk3...............mp3"></a>
+<h4>转换silk3编码音频为mp3</h4>
+
+<p>如果你是mac机器，只需要安装ffmpeg（推荐使用homebrew）然后运行脚本：</p>
+
+<pre><code class="python">    python wechat2mp3.py 待转换音频所在文件夹
+</code></pre>
+
+<p>如果你是其他系统，确认你装好了ffmpeg之后，需要<a href="https://github.com/gaozehua/SILKCodec">自己编译SILK解码库</a>。</p>
+
+<a name="Seriously.Why."></a>
+<h3>Seriously Why?</h3>
+
+<p>常温常压下我并不需要导出微信的语音，之所以有这个需求是因为蒙爷在三亚经常用微信跟我们唠嗑：</p>
+
+<p><audio controls loop preload><source src="http://lenciel.cn/downloads/audio/mm_voice.mp3"></audio></p>
+
+<p>听到这样销魂的声音你就算不想保存，也想要转发，对不对？</p>
+
+<p>毕竟作为一名中国人，你已经有8个亲戚群了，对不对？</p>
+
+<p>然后微信奇怪的生态圈构建方式就是，各种封闭。</p>
+
+<p>微信公众号是世间少有的不允许外链的媒体，微信客户端是世间少有的不允许导出聊天记录的聊天工具。</p>
+
+<p>它的想法大概是，你珍贵的瞬间都在我这里（微信专门做了“收藏”这个功能让你把这些片段上传到微信的服务器，打着不让它们丢失的旗号），那你就逃不出我的手掌心了。</p>
+
+<a name="Seriously.How."></a>
+<h3>Seriously How?</h3>
+
+<p>使用iTunes创建一个不加密的备份，然后连接iExplorer，会看到打开iTunes备份的选项：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>打开后在<code>App</code>文件夹下面导出微信文件夹：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>在导出的文件夹下面有个Audio目录，你可以根据语音消息的数量大概确认需要导出的目录（目录是个hash），然后到<code>DB/MM.sqlite</code>下面去打开<code>Chat_[hash]</code>这个表里面，看看消息来确认：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>二进制查看其中的任意一个文件，可以看到是<a href="https://en.wikipedia.org/wiki/SILK">SILK</a>编码的（skype早期版本包括lync都是使用的这种编码方式）：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_4.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>接下来你只需要按照<a href="https://github.com/lenciel/wechat2mp3">repo</a>里面的指导(愿主保佑你是用Mac因为那最简单)来进行文件转换就可以了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Palm4fun Tech Stack Review Part II]]></title>
@@ -453,60 +526,6 @@ $ ./manage.py graph_models -a -g -o my_project_visualized.png
 </code></pre>
 
 <p>然后在Jenkins调用的脚本里面加上<code>make dbv</code>就可以了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How I Use Evernote]]></title>
-    <link href="http://lenciel.cn/2014/12/how-i-use-evernote/"/>
-    <updated>2014-12-17T14:27:39+08:00</updated>
-    <id>http://lenciel.cn/2014/12/how-i-use-evernote</id>
-    <content type="html"><![CDATA[<p>其实之前也分享了一些<a href="http://lenciel.cn/blog/categories/tools-i-use/">自己使用的工具</a>，只是更偏重研发。今天跟另外一个也用Evernote的同事交流了一下我怎么用Evernote，效果还可以，干脆在年关将至的时候分享一下自己日常使用的一些软件。</p>
-
-<p>从Evernote开始。</p>
-
-<p>进入互联网时代，特别是移动互联网时代之后，获取各种信息变得越来越便捷了，如何管理这些纷繁的信息也自热而然成为一个需求。大多数像我一样的老人，一开始是用<a href="https://digg.com/">dig</a>和<a href="https://delicious.com/">delicious</a>这样基于书签的工具。因为在有google和云笔记本这种东西之前，大家都是靠装满了各种书签的&#8221;收藏夹&#8221;过活（年轻人是不能理解重装机器没有备份收藏夹的伤痛的）。</p>
-
-<p>但是这样的系统坏处就是它是&#8221;lazy-loading&#8221;的，你每次需要的时候，需要打开网页（如果你还能想起叫啥并且它们还健在的话）去找原来看到的信息，所以更适合用来做reference的整理。对于你真正希望梳理成自己知识的东西，更好的选择当然是使用所谓的PIM(Personal Information Management)软件。</p>
-
-<p>我2010年开始用Evernote，一直用的是免费版(空间对我来说够了，而且我也没有太多分享的需求)，它的优点包括：</p>
-
-<ul>
-<li>多(liang)种(you)多(bu)样(qi)的记录手段</li>
-<li>丰富灵活的管理方式</li>
-<li>跨平台跨设备云同步</li>
-<li>颜色还真水嫩啊</li>
-</ul>
-
-
-<p>但时间久了，Evernote里面的东西也多了起来。每次要找点儿什么基本上都是靠全文搜索，一直到我读到Michael Hyatt的<a href="http://michaelhyatt.com/evernote-tags.html">这篇文章</a>。</p>
-
-<p>简单来说，大多数人用Evernote都是以&#8221;笔记本(Notebook)&ldquo;为容器来整理Note的。Michael的意思是Notebook和Tag比有这么几个弱点：</p>
-
-<ol>
-<li>Notebook数量有限制（个人版250，企业版5000），Tag可以有100000个</li>
-<li>Notebook和Note是一对一的，Tag和Note是多对一的</li>
-<li>Notebook只能建一级嵌套（基本上就是说可以Group一下），Tag可以无限制多层级嵌套</li>
-</ol>
-
-
-<p>所以他推荐了使用Tag来进行Note的管理。</p>
-
-<p>除此之外他那篇文章里面还有个很重要的概念就是所有的文章先收到一个叫<code>Inbox</code>的Notebook，处理了之后再放到<code>Cabinet</code>里面去。这其实非常像我们使用邮箱：所有的邮件先被邮件系统放到Inbox，然后我们处理了之后打上相应的标签(ToDo, Later, &hellip;)，最后归档。</p>
-
-<p>所以我现在是这么Evernote的。</p>
-
-<p>首先，把Notebook减少到两个，一个是<code>Inbox</code>，一个是<code>Archive</code>。它们的作用跟我们的邮箱里面的Inbox和Archive是完全一样的。</p>
-
-<p>然后，如果在网上看到觉得还挺有意思的文章，就用Evernote收录到<code>Inbox</code>。</p>
-
-<p>注意，收录的时候我都习惯用下面的选项，去掉所有的样式：</p>
-
-<p><img src="/downloads/images/2014_12/evernote_chrome_clipper.png" title="Evernote Clipper" alt="Evernote Clipper" /></p>
-
-<p>最后，在整理Inbox的时候，对每篇文章做一些修修剪剪，给Note加上合适的Tag，然后放到<code>Archive</code>。可以看到，因为tag可以嵌套和展开，要找到自己感兴趣的文章变得容易很多：</p>
-
-<p><img src="/downloads/images/2014_12/evernote_nested_tags.png" title="Evernote Clipper" alt="Evernote Clipper" /></p>
 ]]></content>
   </entry>
   
