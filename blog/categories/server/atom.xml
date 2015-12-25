@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Server | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/server/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2015-12-24T16:32:37+08:00</updated>
+  <updated>2015-12-25T17:18:13+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -214,7 +214,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>那么客户端上来的请求要能够被Djano的Application处理。WSGI就是这样的<a href="http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">一个协议</a>：它是一个Python程序和用户请求之间的接口。WSGI服务器的作用就是接受并分析用户的请求，调用相应的python对象完成对请求的处理，然后返回相应的结果。</p>
 
-<p>WSGI服务器的选择很多，包括uWSGI和gunicorn。它们都可以处理所有的请求，包括确实应该由python对象处理的，也包括不该python对象处理的，比如静态的图像，css，js等文件。所有理论上你可以把整个动态网站都用WSGI服务器承载起来，也就是整个应用完全跑在Application服务器上。</p>
+<p>WSGI服务器的选择很多，包括uWSGI和gunicorn。它们都可以处理所有的请求，包括确实应该由python对象处理的，也包括不该python对象处理的，比如静态的图像，css，js等文件。所以理论上你可以把整个动态网站都用WSGI服务器承载起来，也就是整个应用完全跑在Application服务器上。</p>
 
 <a name="L..............."></a>
 <h4>代理服务器</h4>
@@ -278,8 +278,7 @@ sudo chmod -x /etc/cron.daily/mlocate
 
 <p>随着网站访问量的继续增大，你的VPS流量又扛不住了。你调查发现有一些多媒体文件被经常请求，这个时候你部署了缓存服务器。</p>
 
-<p>&ldquo;缓存&#8221;这个经常被提到的术语，核心就是把常用的信息放在一个读取成本很低地方(比如内存中或者是虚拟内存中），从而避免每次查找它的时候昂贵的操作。比如HTTP缓存解决的是在服务器上找信息的过程。而Redis或者Memcached这些缓存则是解决在数据库里面找信息的过程。
-面。</p>
+<p>&ldquo;缓存&#8221;这个经常被提到的术语，核心就是把常用的信息放在一个读取成本很低地方(比如内存中或者是虚拟内存中），从而避免每次查找它的时候昂贵的操作。比如HTTP缓存解决的是在服务器上找信息的过程，而Redis或者Memcached这些缓存则是解决在数据库里面找信息的过程。</p>
 
 <a name="L...........................uwsgi......gunicorn."></a>
 <h3>那，我们为什么需要uwsgi或者gunicorn?</h3>
