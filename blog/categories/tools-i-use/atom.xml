@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-02-21T20:41:38+08:00</updated>
+  <updated>2016-02-21T20:45:30+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -88,7 +88,7 @@
 
 <p>定义好了自定义搜索引擎以后，你只需要在地址栏里面输入Keyword（panb），然后按<code>Tab</code>键，再输入你需要查找的资源，回车，就可以看到结果了。</p>
 
-<p>具体使用过程请参考下面这个视频：</p>
+<p>具体使用过程请参考下面这个视频（略需要几秒加载）：</p>
 
 <p><video width='640' height='320' preload='none' controls poster=''><source src='href="http://lenciel.cn/downloads/video/chrome_custom_search.mp4">http://lenciel.cn/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
 ]]></content>
