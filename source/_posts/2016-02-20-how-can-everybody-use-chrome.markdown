@@ -75,10 +75,14 @@ Chrome里面你可以这样使用的搜索引擎数量其实是远超你想象�
 https://www.google.com.hk/search?q=%s+site%3Apan.baidu.com
 ```
 
-注意URL这个参数需要做[urlencode](https://docs.oracle.com/javase/7/docs/api/java/net/URLEncoder.html)，所以空格变成了`+`，`site:pan.baidu.com`变成了`site%3Apan.baidu.com`。如果你不知道`urlencode`怎么做，有个简单的办法就是先到Google上完成一次搜索，然后从地址栏上面复制粘贴下来。
+注意URL这个参数需要做[urlencode](https://docs.oracle.com/javase/7/docs/api/java/net/URLEncoder.html)，所以空格变成了`+`，`site:pan.baidu.com`变成了`site%3Apan.baidu.com`。
 
-定义好了以后，你只需要在地址栏里面输入Keyword（panb），然后按`Tab`键，再输入你需要查找的资源，回车，就可以看到结果了：
+如果你不知道`urlencode`怎么做，有个简单的办法就是先到Google上完成一次搜索，然后从地址栏上面复制粘贴下来。
 
-{% video http://lenciel.cn/downloads/video/chrome_custom_search.mp4 640 320 http://lenciel.cn/downloads/images/2016_02/custom_search_engine.png %}
+定义好了以后，你只需要在地址栏里面输入Keyword（panb），然后按`Tab`键，再输入你需要查找的资源，回车，就可以看到结果了。
+
+==具体使用过程请参考下面这个视频==
+
+{% video downloads/video/chrome_custom_search.mp4 640 320 downloads/images/2016_02/chrome_custom_search.png %}
 
 
