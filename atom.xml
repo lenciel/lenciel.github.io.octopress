@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.cn/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-02-13T23:24:09+08:00</updated>
+  <updated>2016-02-21T20:15:41+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[如何使用Chrome自定义搜索]]></title>
+    <link href="http://lenciel.cn/2016/02/how-can-everybody-use-chrome/"/>
+    <updated>2016-02-20T11:53:34+08:00</updated>
+    <id>http://lenciel.cn/2016/02/how-can-everybody-use-chrome</id>
+    <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用&#8221;Google搜索定制化&#8221;+&ldquo;Chrome浏览器快捷搜索入口&#8221;，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
+
+<p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
+
+<a name="Google..............."></a>
+<h3>Google搜索定制化</h3>
+
+<p>google的搜索语法一般用户可能不太知道，但其实对找东西很有用。大家都可以常用的有：</p>
+
+<a name="L.."></a>
+<h4>&ldquo;&rdquo;</h4>
+
+<p>把搜索词放在双引号中，代表完全匹配搜索，也就是说搜索结果返回的页面包含双引号中出现的所有的词，连顺序也必须完全匹配。</p>
+
+<p>比如搜索代码里面的抛出的错误，你直接把错误行扔进去，往往不如加上引号来完全匹配准确。</p>
+
+<a name="filetype"></a>
+<h4>filetype</h4>
+
+<p>用于搜索特定文件格式，比如搜索<code>filetype:pdf</code>，那么就只返回所有包含关键词的pdf文件。</p>
+
+<a name="site"></a>
+<h4>site</h4>
+
+<p>用来搜索某个域名下的所有文件，比如在百度网盘里面搜索名字包含Hadoop的文件，就可以搜索<code>Hadoop site:pan.baidu.com</code>。</p>
+
+<a name="L-"></a>
+<h4>-</h4>
+
+<p>代表搜索不包含减号后面的词的页面。使用这个指令时减号前面必须是空格，减号后面没有空格，紧跟着需要排除的词。</p>
+
+<a name="L."></a>
+<h4>*</h4>
+
+<p>是常用的通配符，也可以用在搜索中，代表任何文字。</p>
+
+<p>熟练掌握并且综合使用上面这些语法，你就可以非常快速地找到你需要的东西了。</p>
+
+<a name="L.............................."></a>
+<h3>浏览器的搜索快捷入口</h3>
+
+<p>Chrome为你提供了快捷方式来使用搜索。按<code>Cmd+L</code>（Windows平台大概是<code>Ctrl+L</code>）进入地址栏，然后输入要搜索的内容，回车，就会使用你的默认搜索引擎进行搜索。</p>
+
+<p>假如你要切换一个搜索引擎，比如你的默认引擎是Google，偶尔你需要用百度来搜索，只需要在地址栏里面先敲<code>baidu</code>，然后按<code>Tab</code>键，然后输入你需要搜索的关键字并回车，就可以了。</p>
+
+<p>Chrome里面你可以这样使用的搜索引擎数量其实是远超你想象的。</p>
+
+<p>在地址栏里面敲入<code>chrome://settings/</code>，然后进入搜索引擎的配置你就可以看到它们：</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2016_02/manage_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<a name="L...................................."></a>
+<h3>自定义搜索的快捷方式创建</h3>
+
+<p>一旦开始使用自定义搜索，你就会发现有些搜索使用频率相当高。</p>
+
+<p>比如之前提到的在百度盘里面搜索某个文件。</p>
+
+<p>再比如在<a href="http://quora.com/">Quora</a>或者<a href="http://zhihu.com">知乎</a>里面搜索包含某个关键字的问答。</p>
+
+<p>再比如在<a href="https://pinboard.com">Pinboard</a>里面搜索你自己收藏的书签。</p>
+
+<p>这个时候你只需要在搜索引擎的配置列表的最下方添加一个自定义的搜索引擎：</p>
+
+<p><img src="http://lenciel.cn/downloads/images/2016_02/custom_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>比如我们添加一个<code>Keyword</code>是<code>panb</code>的搜索引擎，它的URL是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://www.google.com.hk/search?q=%s+site%3Apan.baidu.com</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意URL这个参数需要做<a href="https://docs.oracle.com/javase/7/docs/api/java/net/URLEncoder.html">urlencode</a>，所以空格变成了<code>+</code>，<code>site:pan.baidu.com</code>变成了<code>site%3Apan.baidu.com</code>。如果你不知道<code>urlencode</code>怎么做，有个简单的办法就是先到Google上完成一次搜索，然后从地址栏上面复制粘贴下来。</p>
+
+<p>定义好了以后，你只需要在地址栏里面输入Keyword（panb），然后按<code>Tab</code>键，再输入你需要查找的资源，回车，就可以看到结果了：</p>
+
+<p><video width='640' height='320' preload='none' controls poster='http://lenciel.cn/downloads/images/2016_02/custom_search_engine.png'><source src='http://lenciel.cn/downloads/video/chrome_custom_search.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[记一次成功的过年]]></title>
@@ -1875,84 +1960,6 @@ $('#id-btn-submit').click(function() {
 <p>而肮脏的街灯下，她步履蹒跚的缓慢行走走。但终究渐行渐远，化作一道淡影。</p>
 
 <p>此时此刻，在别的城镇里，应该也有年轻的恋人们在欺骗过黄昏和夜色后，欺骗起自己吧，我关上窗的时候忍不住想。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TLDR是什么?]]></title>
-    <link href="http://lenciel.cn/2014/11/the-stories-of-the-bible-in-tldr-form/"/>
-    <updated>2014-11-24T10:47:31+08:00</updated>
-    <id>http://lenciel.cn/2014/11/the-stories-of-the-bible-in-tldr-form</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2014_11/bible_story.png" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>很多人问什么是<code>TL;DR</code>，其实是<code>Too long, didn't read</code>的缩写，一般用来暗示下面是一段摘要，如果你对这长得要死的文章的细节没兴趣，读读它就可以了。</p>
-
-<p>比如我很喜欢的tumblr站<a href="http://tldrwikipedia.tumblr.com/">TL;DR WIKIPEDIA</a>，其实就是魔鬼辞典好不好。再比如昨天在Reddit上的红贴<a href="http://www.reddit.com/r/Christianity/comments/2mpv2r/the_stories_of_the_bible_in_tldr_form/">圣经故事TLDR版本</a>，读起来也很好玩：</p>
-
-<p><strong>创世纪</strong></p>
-
-<ul>
-<li>上帝：好了，你们俩，不许干那事儿。除开那件事，你们要怎么疯都可以。</li>
-<li>亚当和夏娃：好的。</li>
-<li>撒旦：你们就该干那事儿。</li>
-<li>亚当和夏娃：好的。</li>
-<li>上帝：咋了？</li>
-<li>亚当和夏娃：我们干了那事儿。</li>
-<li>上帝：我嬲&hellip;&hellip;</li>
-</ul>
-
-
-<p><strong>旧约</strong></p>
-
-<ul>
-<li>上帝：你们是我的子民，你们不该干这些事儿。</li>
-<li>人们：我们不会再干了。</li>
-<li>上帝：好样的。</li>
-<li>人们：我们又干了。</li>
-<li>上帝：我嬲&hellip;&hellip;</li>
-</ul>
-
-
-<p><strong>福音</strong></p>
-
-<ul>
-<li>耶稣：我是上帝之子，虽然你们又干了那些事儿，上帝和我依然爱你们也希望你们活下去。但不能再干那些事儿了。</li>
-<li>被治愈的人们：好的！谢谢！</li>
-<li>其他人：我们是从木有见过这厮干那些事儿，但是没人看到的时候，说不定他也在干那些事儿。</li>
-<li>耶稣：我从木有干过那些事儿。</li>
-<li>其他人：我们得审判你。</li>
-<li>彼拉多：你有木有干那事儿。</li>
-<li>耶稣：木有。</li>
-<li>彼拉多：他木有干过。</li>
-<li>其他人：还是杀了算了吧。</li>
-<li>彼拉多：好的。</li>
-<li>耶稣：我嬲&hellip;&hellip;</li>
-</ul>
-
-
-<p><strong>保罗的信件</strong></p>
-
-<ul>
-<li>人们：我们干了那些事儿。</li>
-<li>保罗：耶稣还是爱你们，而且因为你们也爱他，你们必须停止干这些事儿了。</li>
-<li>人们：好的。</li>
-</ul>
-
-
-<p><strong>保罗的信件II</strong></p>
-
-<ul>
-<li>人们：我们又干了那些事儿。</li>
-<li>保罗：我嬲&hellip;&hellip;</li>
-</ul>
-
-
-<p><strong>启示录</strong></p>
-
-<ul>
-<li>约翰：当耶稣复生的时候，就不会再有人干那些事儿了。现在，人们就该开始停止干那些事儿了。</li>
-</ul>
-
 ]]></content>
   </entry>
   

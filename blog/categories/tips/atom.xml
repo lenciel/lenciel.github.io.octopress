@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tips | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-02-13T23:24:09+08:00</updated>
+  <updated>2016-02-21T20:15:41+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[如何使用Chrome自定义搜索]]></title>
+    <link href="http://lenciel.cn/2016/02/how-can-everybody-use-chrome/"/>
+    <updated>2016-02-20T11:53:34+08:00</updated>
+    <id>http://lenciel.cn/2016/02/how-can-everybody-use-chrome</id>
+    <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用&#8221;Google搜索定制化&#8221;+&ldquo;Chrome浏览器快捷搜索入口&#8221;，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
+
+<p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
+
+<a name="Google..............."></a>
+<h3>Google搜索定制化</h3>
+
+<p>google的搜索语法一般用户可能不太知道，但其实对找东西很有用。大家都可以常用的有：</p>
+
+<a name="L.."></a>
+<h4>&ldquo;&rdquo;</h4>
+
+<p>把搜索词放在双引号中，代表完全匹配搜索，也就是说搜索结果返回的页面包含双引号中出现的所有的词，连顺序也必须完全匹配。</p>
+
+<p>比如搜索代码里面的抛出的错误，你直接把错误行扔进去，往往不如加上引号来完全匹配准确。</p>
+
+<a name="filetype"></a>
+<h4>filetype</h4>
+
+<p>用于搜索特定文件格式，比如搜索<code>filetype:pdf</code>，那么就只返回所有包含关键词的pdf文件。</p>
+
+<a name="site"></a>
+<h4>site</h4>
+
+<p>用来搜索某个域名下的所有文件，比如在百度网盘里面搜索名字包含Hadoop的文件，就可以搜索<code>Hadoop site:pan.baidu.com</code>。</p>
+
+<a name="L-"></a>
+<h4>-</h4>
+
+<p>代表搜索不包含减号后面的词的页面。使用这个指令时减号前面必须是空格，减号后面没有空格，紧跟着需要排除的词。</p>
+
+<a name="L."></a>
+<h4>*</h4>
+
+<p>是常用的通配符，也可以用在搜索中，代表任何文字。</p>
+
+<p>熟练掌握并且综合使用上面这些语法，你就可以非常快速地找到你需要的东西了。</p>
+
+<a name="L.............................."></a>
+<h3>浏览器的搜索快捷入口</h3>
+
+<p>Chrome为你提供了快捷方式来使用搜索。按<code>Cmd+L</code>（Windows平台大概是<code>Ctrl+L</code>）进入地址栏，然后输入要搜索的内容，回车，就会使用你的默认搜索引擎进行搜索。</p>
+
+<p>假如你要切换一个搜索引擎，比如你的默认引擎是Google，偶尔你需要用百度来搜索，只需要在地址栏里面先敲<code>baidu</code>，然后按<code>Tab</code>键，然后输入你需要搜索的关键字并回车，就可以了。</p>
+
+<p>Chrome里面你可以这样使用的搜索引擎数量其实是远超你想象的。</p>
+
+<p>在地址栏里面敲入<code>chrome://settings/</code>，然后进入搜索引擎的配置你就可以看到它们：</p>
+
+<p><img src="/downloads/images/2016_02/manage_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<a name="L...................................."></a>
+<h3>自定义搜索的快捷方式创建</h3>
+
+<p>一旦开始使用自定义搜索，你就会发现有些搜索使用频率相当高。</p>
+
+<p>比如之前提到的在百度盘里面搜索某个文件。</p>
+
+<p>再比如在<a href="http://quora.com/">Quora</a>或者<a href="http://zhihu.com">知乎</a>里面搜索包含某个关键字的问答。</p>
+
+<p>再比如在<a href="https://pinboard.com">Pinboard</a>里面搜索你自己收藏的书签。</p>
+
+<p>这个时候你只需要在搜索引擎的配置列表的最下方添加一个自定义的搜索引擎：</p>
+
+<p><img src="/downloads/images/2016_02/custom_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>比如我们添加一个<code>Keyword</code>是<code>panb</code>的搜索引擎，它的URL是：</p>
+
+<pre><code>https://www.google.com.hk/search?q=%s+site%3Apan.baidu.com
+</code></pre>
+
+<p>注意URL这个参数需要做<a href="https://docs.oracle.com/javase/7/docs/api/java/net/URLEncoder.html">urlencode</a>，所以空格变成了<code>+</code>，<code>site:pan.baidu.com</code>变成了<code>site%3Apan.baidu.com</code>。如果你不知道<code>urlencode</code>怎么做，有个简单的办法就是先到Google上完成一次搜索，然后从地址栏上面复制粘贴下来。</p>
+
+<p>定义好了以后，你只需要在地址栏里面输入Keyword（panb），然后按<code>Tab</code>键，再输入你需要查找的资源，回车，就可以看到结果了：</p>
+
+<p><video width='640' height='320' preload='none' controls poster=''><source src='http://lenciel.cn/downloads/video/chrome_custom_search.mp4">http://lenciel.cn/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Integrate schemaSpy With Sphinx Build]]></title>
@@ -574,143 +658,6 @@ $ android update sdk -u -s --all
 <p>另外，词典的样式其实是用css定义的，就在每个字典文件的Contetns目录，比如：<code>~/Library/Dictionaries/dictd_www.dict.org_web1913.dictionary/Contents/DefaultStyle.css</code>。如果你不满意字典出来的样子，可以自定义格式。</p>
 
 <p>最后，这些词典其实都是linux上著名的国产软件<a href="http://en.wikipedia.org/wiki/StarDict">stardict</a>的文件格式（写到这里，又想起stardict的作者<a href="http://www.huzheng.org/aboutme.php">胡正</a>），所以要在<a href="https://itunes.apple.com/us/app/dictionary-universal/id312088272?mt=8">手机上使用</a>也是很容易的事情。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress里插入带中文Gist的问题和解决]]></title>
-    <link href="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/"/>
-    <updated>2014-05-17T13:00:38+08:00</updated>
-    <id>http://lenciel.cn/2014/05/fix-gist-style-in-octopress</id>
-    <content type="html"><![CDATA[<p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
-
-<p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:
-</p>
-
-<div class="highlight"><pre><code class="text">{% gist gist_id [filename] %}
-</code></pre></div>
-
-
-<p></p>
-
-<p>比如<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
-
-<p></p>
-
-<div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}
-</code></pre></div>
-
-
-<p></p>
-
-<p>当然之所以说理论上，是因为首先Octopress的markdown插件对unicode的支持<a href="http://tokkonopapa.github.io/blog/2013/02/23/octopress-toc/">是有bug</a>的。所以直接插入带中文的gist在build的时候会看到<code>Liquid Exception</code>:</p>
-
-<pre><code class="bash">&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
-Liquid Exception: incompatible character encodings: UTF-8 and ASCII-8BIT in 2014-05-16-web-development-skill-set-and-reading-list.markdown
-</code></pre>
-
-<p>解决起来也很简单，只需要在<code>lib/jekyll/converters/markdown.rb</code>里面强制设定encoding就可以了：</p>
-
-<pre><code class="diff lib/jekyll/converters/markdown.rb">@@ -120,7 +120,7 @@ def convert(content)
-           rd = RDiscount.new(content, *@rdiscount_extensions)
-           html = rd.to_html
-           if rd.generate_toc and html.include?(@config['rdiscount']['toc_token'])
--            html.gsub!(@config['rdiscount']['toc_token'], rd.toc_content)
-+            html.gsub!(@config['rdiscount']['toc_token'], rd.toc_content.force_encoding('utf-8'))
-           end
-</code></pre>
-
-<p>接下来就是render出来的效果，样子丑到让人无法直视：</p>
-
-<p><img src="/downloads/images/2014_05/gist_render_output_orig.jpg" title="Don't touch me..." alt="original gist render output" /></p>
-
-<p>大概看了一下Octopress的文档，原来代码片断的样式（包括gist的渲染样式）都在<a href="https://github.com/imathis/octopress/blob/master/.themes/classic/sass/partials/_syntax.scss">_syntax.scss</a>里面。这个文件2012年就没有更新过了，但是github的gist输出在2013年有过变化，所以就有些不匹配了。</p>
-
-<p>打开自己的模板，大概调了一下这个sass，主要是和其他的代码高亮一致：</p>
-
-<p><img src="/downloads/images/2014_05/gist_render_output.jpg" title="Don't touch me..." alt="current gist render output" /></p>
-
-<p>调整的地方见<a href="https://gist.github.com/lenciel/ecc8b3805ed346727abe">这里</a>:</p>
-
-<pre><code class="diff _sass/partials/_syntax.scss">diff --git a/46501e4:sass/partials/_syntax.scss b/02b0441:sass/partials/_syntax.scss
-index 137d475..5465286 100644
---- a/46501e4:sass/partials/_syntax.scss
-+++ b/02b0441:sass/partials/_syntax.scss
-@@ -22,10 +22,6 @@
-   @include border-radius(0);
- }
-
--.line-data {
--   font-size: 13px;
--}
--
- figure.code, .gist-file, pre {
-   @include box-shadow(rgba(#000, .06) 0 0 10px);
-   .highlight pre { @include box-shadow(none); }
-@@ -43,10 +39,8 @@ html .gist .gist-file {
-     margin-bottom: 0;
-   }
-   .gist-syntax {
--    background: #01222d !important;
--    color: #d5dee2 !important;
--    padding: 0 2em;
-     border-bottom: 0 !important;
-+    background: none !important;
-     .gist-highlight {
-       background: $base03 !important;
-     }
-@@ -57,17 +51,15 @@ html .gist .gist-file {
-   }
-   .gist-meta {
-    padding: .6em 0.8em;
-+   border: 1px solid lighten($base02, 2) !important;
-+   color: $base01;
-    font-size: .7em !important;
-    @if $solarized == light {
--     color: $base01;
--     border: 1px solid lighten($base02, 2) !important;
-      background: lighten($base03, 2) $noise-bg;
-      border: 1px solid $pre-border !important;
-      border-top: 1px solid lighten($base03, 2) !important;
-    } @else {
--     background: #01222d $noise-bg;
--     text-shadow: none !important;
--     color: #d5dee2;
-+     background: $base02 $noise-bg;
-    }
-    @extend .sans;
-    line-height: 1.5em;
-@@ -77,7 +69,7 @@ html .gist .gist-file {
-       &amp;:hover { color: $base1 !important; }
-     }
-     a[href*='#file'] {
--      position: absolute; top: 0; left:0; right:0px;
-+      position: absolute; top: 0; left:0; right:-10px;
-       color: #474747 !important;
-       @extend .code-title;
-       &amp;:hover { color: $link-color !important; }
-@@ -221,7 +213,7 @@ pre, .highlight, .gist-highlight {
-   &amp;::-webkit-scrollbar-thumb:horizontal { background: $solar-scroll-thumb;  -webkit-border-radius: 4px; border-radius: 4px }
- }
-
--.highlight code {
-+.highlight code { 
-   @extend .pre-code; background: #000;
- }
- figure.code {
-@@ -267,11 +259,3 @@ figure.code {
-   text-shadow: #cbcccc 0 1px 0;
-   padding-left: 3em;
- }
--
--.gist-file {
--  font-size:.8em !important;
--}
--
--table.lines{
--  width: 100%;
--}
-</code></pre>
 ]]></content>
   </entry>
   
