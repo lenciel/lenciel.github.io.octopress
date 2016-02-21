@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-02-21T20:25:14+08:00</updated>
+  <updated>2016-02-21T20:41:38+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -14,21 +14,21 @@
 
   
   <entry>
-    <title type="html"><![CDATA[如何使用Chrome自定义搜索]]></title>
+    <title type="html"><![CDATA[使用Chrome自定义搜索引擎快速查找资源]]></title>
     <link href="http://lenciel.cn/2016/02/how-can-everybody-use-chrome/"/>
     <updated>2016-02-20T11:53:34+08:00</updated>
     <id>http://lenciel.cn/2016/02/how-can-everybody-use-chrome</id>
-    <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用&#8221;Google搜索定制化&#8221;+&ldquo;Chrome浏览器快捷搜索入口&#8221;，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
+    <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用<code>带参数Google搜索</code>+<code>Chrome快捷搜索入口</code>，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
 
 <p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
 
-<a name="Google..............."></a>
-<h3>Google搜索定制化</h3>
+<a name="L.........Google......"></a>
+<h3>带参数Google搜索</h3>
 
-<p>google的搜索语法一般用户可能不太知道，但其实对找东西很有用。大家都可以常用的有：</p>
+<p>Google可以带参数搜索一般用户可能不太用到，但其实对找东西很有用。完整的说明可以自己找来看，对普通用户也非常有用的有：</p>
 
-<a name="L.."></a>
-<h4>&ldquo;&rdquo;</h4>
+<a name="L........."></a>
+<h4>双引号</h4>
 
 <p>把搜索词放在双引号中，代表完全匹配搜索，也就是说搜索结果返回的页面包含双引号中出现的所有的词，连顺序也必须完全匹配。</p>
 
@@ -44,22 +44,17 @@
 
 <p>用来搜索某个域名下的所有文件，比如在百度网盘里面搜索名字包含Hadoop的文件，就可以搜索<code>Hadoop site:pan.baidu.com</code>。</p>
 
-<a name="L-"></a>
-<h4>-</h4>
+<a name="L......"></a>
+<h4>减号</h4>
 
-<p>代表搜索不包含减号后面的词的页面。使用这个指令时减号前面必须是空格，减号后面没有空格，紧跟着需要排除的词。</p>
-
-<a name="L."></a>
-<h4>*</h4>
-
-<p>是常用的通配符，也可以用在搜索中，代表任何文字。</p>
+<p>代表搜索不包含减号后面的词的页面。使用这个指令时减号前面必须是空格，减号后面紧跟着需要排除的词。</p>
 
 <p>熟练掌握并且综合使用上面这些语法，你就可以非常快速地找到你需要的东西了。</p>
 
-<a name="L.............................."></a>
-<h3>浏览器的搜索快捷入口</h3>
+<a name="Chrome.................."></a>
+<h3>Chrome快捷搜索入口</h3>
 
-<p>Chrome为你提供了快捷方式来使用搜索。按<code>Cmd+L</code>（Windows平台大概是<code>Ctrl+L</code>）进入地址栏，然后输入要搜索的内容，回车，就会使用你的默认搜索引擎进行搜索。</p>
+<p>Chrome为你提供了快捷方式来使用搜索。<code>Cmd+L</code>（Windows平台大概是<code>Ctrl+L</code>）进入地址栏，然后输入要搜索的内容，回车，就会使用你的默认搜索引擎进行搜索。</p>
 
 <p>假如你要切换一个搜索引擎，比如你的默认引擎是Google，偶尔你需要用百度来搜索，只需要在地址栏里面先敲<code>baidu</code>，然后按<code>Tab</code>键，然后输入你需要搜索的关键字并回车，就可以了。</p>
 
@@ -69,18 +64,16 @@
 
 <p><img src="/downloads/images/2016_02/manage_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
-<a name="L...................................."></a>
-<h3>自定义搜索的快捷方式创建</h3>
+<a name="L................................."></a>
+<h3>创建使用自定义搜索引擎</h3>
 
 <p>一旦开始使用自定义搜索，你就会发现有些搜索使用频率相当高。</p>
 
-<p>比如之前提到的在百度盘里面搜索某个文件。</p>
+<p>比如在百度盘里面搜索某个文件。</p>
 
 <p>再比如在<a href="http://quora.com/">Quora</a>或者<a href="http://zhihu.com">知乎</a>里面搜索包含某个关键字的问答。</p>
 
-<p>再比如在<a href="https://pinboard.com">Pinboard</a>里面搜索你自己收藏的书签。</p>
-
-<p>这个时候你只需要在搜索引擎的配置列表的最下方添加一个自定义的搜索引擎：</p>
+<p>这个时候你只需要在搜索引擎列表的末尾添加一个自定义项：</p>
 
 <p><img src="/downloads/images/2016_02/custom_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
@@ -91,13 +84,13 @@
 
 <p>注意URL这个参数需要做<a href="https://docs.oracle.com/javase/7/docs/api/java/net/URLEncoder.html">urlencode</a>，所以空格变成了<code>+</code>，<code>site:pan.baidu.com</code>变成了<code>site%3Apan.baidu.com</code>。</p>
 
-<p>如果你不知道<code>urlencode</code>怎么做，有个简单的办法就是先到Google上完成一次搜索，然后从地址栏上面复制粘贴下来。</p>
+<p>如果你不知道<code>urlencode</code>怎么做，可以先到Google上完成一次目标搜索，然后从地址栏上面复制下来。</p>
 
-<p>定义好了以后，你只需要在地址栏里面输入Keyword（panb），然后按<code>Tab</code>键，再输入你需要查找的资源，回车，就可以看到结果了。</p>
+<p>定义好了自定义搜索引擎以后，你只需要在地址栏里面输入Keyword（panb），然后按<code>Tab</code>键，再输入你需要查找的资源，回车，就可以看到结果了。</p>
 
-<p>==具体使用过程请参考下面这个视频==</p>
+<p>具体使用过程请参考下面这个视频：</p>
 
-<p><video width='640' height='320' preload='none' controls poster='downloads/images/2016_02/chrome_custom_search.png'><source src='downloads/video/chrome_custom_search.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video></p>
+<p><video width='640' height='320' preload='none' controls poster=''><source src='href="http://lenciel.cn/downloads/video/chrome_custom_search.mp4">http://lenciel.cn/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
 ]]></content>
   </entry>
   
