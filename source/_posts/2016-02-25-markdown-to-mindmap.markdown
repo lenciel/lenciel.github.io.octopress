@@ -47,7 +47,7 @@ categories:
 
 ![Vhost threshold](/downloads/images/2016_02/mindmap_2.png "Don't touch me...")
 
-还有个未尽事宜就是Markdown里面的链接，生成图片的时候要把方括号、圆括号以及圆括号里面的链接去掉，不然就太那看了：
+还有个未尽事宜就是Markdown里面的链接，生成图片的时候要把方括号、圆括号以及圆括号里面的链接去掉，不然就太难看了：
 
 ![Vhost threshold](/downloads/images/2016_02/mindmap_3.png "Don't touch me...")
 
