@@ -10,9 +10,9 @@ categories:
 
 ---
 
-[去年过年](http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/)弄了一次，最近受[StuQ](http://www.stuq.org/subject/skill-map/)和[leohxj](https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html)的启发又开始整理适合我司的每个职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。
+去年过年整理了一次[p4f的技术栈](http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/)，最近受[StuQ](http://www.stuq.org/subject/skill-map/)和[leohxj](https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html)的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。
 
-图片形式的文档都有一个麻烦的地方，就是不太好做版本控制和review。比如如果本座来整理前端技能图谱，总希望：
+图片形式的文档都有一个麻烦的地方，就是不太好做版本控制和review。比如如果本座来整理Web前端技能图谱，总希望：
 
 - 能够发给前端组的人review
 - 能够放到代码库，让前端组维护起来，根据业界动态不断更新
