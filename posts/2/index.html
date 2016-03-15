@@ -9,7 +9,9 @@
   <meta name="author" content="Lenciel Li">
 
   
-  <meta name="description" content="每个人的生命中都有一个胖子。 我的胖子叫卫豆。 卫豆为什么叫卫豆我已经有些忘了。也许是因为英语课给自己取名叫Vivid，于是大家叫他卫卫豆。但是铅球跳高双料冠军的他感觉AAB的名字太过娘炮，所以我们截取了两位有效位数。 居然有些忘了：以我自觉傲人的memory插装量而言， &hellip;">
+  <meta name="description" content="Why? Why not? How? 导出原始微信的音频消息 使用iTunes创建一个不加密备份
+导出备份中的微信应用文件夹（可以使用iExplorer试用版）
+找到你需要转换的音频文件所在文件夹 转换silk3编码音频为mp3 如果你是mac机器，只需要安装ffmpeg（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,14 +32,18 @@
   
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://lenciel.cn/posts/2" />
-<meta property="og:description" content="每个人的生命中都有一个胖子。 我的胖子叫卫豆。 卫豆为什么叫卫豆我已经有些忘了。也许是因为英语课给自己取名叫Vivid，于是大家叫他卫卫豆。但是铅球跳高双料冠军的他感觉AAB的名字太过娘炮，所以我们截取了两位有效位数。 居然有些忘了：以我自觉傲人的memory插装量而言， &hellip;" />
+<meta property="og:description" content="Why? Why not? How? 导出原始微信的音频消息 使用iTunes创建一个不加密备份
+导出备份中的微信应用文件夹（可以使用iExplorer试用版）
+找到你需要转换的音频文件所在文件夹 转换silk3编码音频为mp3 如果你是mac机器，只需要安装ffmpeg（ &hellip;" />
 
 <meta property="og:site_name" content="http://lenciel.cn" />
 <meta property="article:author" content="http://lenciel.cn">
 
 
 
-<meta itemprop="description" content="每个人的生命中都有一个胖子。 我的胖子叫卫豆。 卫豆为什么叫卫豆我已经有些忘了。也许是因为英语课给自己取名叫Vivid，于是大家叫他卫卫豆。但是铅球跳高双料冠军的他感觉AAB的名字太过娘炮，所以我们截取了两位有效位数。 居然有些忘了：以我自觉傲人的memory插装量而言， &hellip;" />
+<meta itemprop="description" content="Why? Why not? How? 导出原始微信的音频消息 使用iTunes创建一个不加密备份
+导出备份中的微信应用文件夹（可以使用iExplorer试用版）
+找到你需要转换的音频文件所在文件夹 转换silk3编码音频为mp3 如果你是mac机器，只需要安装ffmpeg（ &hellip;" />
 
 
 <!-- Combine multiple fonts into one request -->
@@ -98,6 +104,104 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/12/extract-audio-message-from-wechat/">提取微信语音消息</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-24T13:05:21+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:05 pm</span></time>
+        
+           | <a href="/2015/12/extract-audio-message-from-wechat/#disqus_thread"
+             data-disqus-identifier="http://lenciel.cn/2015/12/extract-audio-message-from-wechat/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><a name="Why."></a>
+<h3>Why?</h3>
+
+<p>Why not?</p>
+
+<a name="How."></a>
+<h3>How?</h3>
+
+<a name="L................................."></a>
+<h4>导出原始微信的音频消息</h4>
+
+<ul>
+<li>使用iTunes创建一个不加密备份</li>
+<li>导出备份中的微信应用文件夹（可以使用iExplorer试用版）</li>
+<li>找到你需要转换的音频文件所在文件夹</li>
+</ul>
+
+
+<a name="L......silk3...............mp3"></a>
+<h4>转换silk3编码音频为mp3</h4>
+
+<p>如果你是mac机器，只需要安装ffmpeg（推荐使用homebrew）然后运行脚本：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">python</span> <span class="n">wechat2mp3</span><span class="o">.</span><span class="n">py</span> <span class="err">待转换音频所在文件夹</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你是其他系统，确认你装好了ffmpeg之后，需要<a href="https://github.com/gaozehua/SILKCodec">自己编译SILK解码库</a>。</p>
+
+<a name="Seriously.Why."></a>
+<h3>Seriously Why?</h3>
+
+<p>常温常压下我并不需要导出微信的语音，之所以有这个需求是因为蒙爷在三亚经常用微信跟我们唠嗑：</p>
+
+<p><audio controls loop preload><source src="/downloads/audio/mm_voice.mp3"></audio></p>
+
+<p>听到这样销魂的声音你就算不想保存，也想要转发，对不对？</p>
+
+<p>毕竟作为一名中国人，你已经有8个亲戚群了，对不对？</p>
+
+<p>然后微信奇怪的生态圈构建方式就是，各种封闭。</p>
+
+<p>微信公众号是世间少有的不允许外链的媒体，微信客户端是世间少有的不允许导出聊天记录的聊天工具。</p>
+
+<p>它的想法大概是，你珍贵的瞬间都在我这里（微信专门做了“收藏”这个功能让你把这些片段上传到微信的服务器，打着不让它们丢失的旗号），那你就逃不出我的手掌心了。</p>
+
+<a name="Seriously.How."></a>
+<h3>Seriously How?</h3>
+
+<p>使用iTunes创建一个不加密的备份，然后连接iExplorer，会看到打开iTunes备份的选项：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>打开后在<code>App</code>文件夹下面导出微信文件夹：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>在导出的文件夹下面有个Audio目录，你可以根据语音消息的数量大概确认需要导出的目录（目录是个hash），然后到<code>DB/MM.sqlite</code>下面去打开<code>Chat_[hash]</code>这个表里面，看看消息来确认：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>二进制查看其中的任意一个文件，可以看到是<a href="https://en.wikipedia.org/wiki/SILK">SILK</a>编码的（skype早期版本包括lync都是使用的这种编码方式）：</p>
+
+<p><img src="/downloads/images/2015_12/extract_wechat_4.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>接下来你只需要按照<a href="https://github.com/lenciel/wechat2mp3">repo</a>里面的指导(愿主保佑你是用Mac因为那最简单)来进行文件转换就可以了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -521,131 +625,6 @@
 <p>觉得自己都能做好的人，一定是参考的样本太过于局限：很多时候你需要和自己差不多资质的选手比较，才能发现更多的专注意味着什么。而实际上大多数真正做好了的人，资质比你更好并且比你专注多了。</p>
 
 <p>所以呢？</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2015/06/the-next-fucking-new-feature/">好的引导流程胜过10个新功能</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-26T13:55:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:55 pm</span></time>
-        
-           | <a href="/2015/06/the-next-fucking-new-feature/#disqus_thread"
-             data-disqus-identifier="http://lenciel.cn/2015/06/the-next-fucking-new-feature/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>SNS的有趣之处就在于，经常你会看到一些话，让你对着屏幕点头不已。比如下面这句：</p>
-
-<p><img src="/downloads/images/2015_06/the_next_new_feature.png" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>Joshua Porter的这段话看起来是吐槽，但又实实在在的发生在参与创业大潮的你我身边。在2000年互联网泡沫破灭之前，那些最终幻灭的高科技公司的发展轨迹无非是：</p>
-
-<ol>
-<li>用一个美好的想法或者概念融资</li>
-<li>花9-12个月的时间推出一个产品</li>
-<li>花大把的PR费用去做推广和宣传</li>
-<li>发展无法满足预期</li>
-<li>花6-9个月推出产品2.0版本</li>
-<li>重复#1-#5，直到烧完所有的融资</li>
-</ol>
-
-
-<p>在2000年之后，经过这十来年的发展，业界总结了很多的经验教训。我们在团队里面推行了敏捷、TDD等各种各样的方法论，我们在架构上进行了从monolithic到microservice的演进，我们的部署开始容器化并且都是Devops来完成了。</p>
-
-<p>所有的人都充满信心的宣布，我们现在通过迭代，能够以较低的成本快速推出新版本了。然后，当你观察身边那些高科技公司的时候你发现：</p>
-
-<ol>
-<li>用一个美好的想法或者概念融资</li>
-<li>花3-6个月推出一个应用（web app、手机app或者干脆是基于微信开发的app）</li>
-<li>提交到各种应用市场然后发动PR攻势</li>
-<li>发展无法满足预期</li>
-<li>买关键字、买量、买推广</li>
-<li>发展无法满足预期</li>
-<li>花3-6个月推出应用2.0版本</li>
-<li>重复#1-#7，直到烧光融资</li>
-</ol>
-
-
-<p>Hmmm&hellip;所以也难免有人会说这其实没有什么不同嘛：</p>
-
-<p><img src="/downloads/images/2015_06/chuangyeban.png" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<p>然而无论预警者的声音再大声，作为创业者这种&#8221;启动-失败-再启动&#8221;的反复试错的精神都已经成为了我们的信条。的确，就跟你打开一张刮刮乐发现没奖时一样，如果我们做出来的项目没有人用，那么再来一次无疑是最轻松最诱人的选择。</p>
-
-<p>然而如果你仔细看数据的话，会发现下一次失败是那样的必然。</p>
-
-<a name="L.............................."></a>
-<h1>数据：冷启动后的留存</h1>
-
-<p>下面这个曲线是从业者们最不愿意面对的曲线，展示了从流量导入到一个月后可怜的留存数据：</p>
-
-<p><img src="/downloads/images/2015_06/the_tragic_curve.png" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-<ul>
-<li>1000个UV访问</li>
-<li>200个用户注册(20%)</li>
-<li>160个用户完成注册(80%)</li>
-<li>次日上线40%</li>
-<li>次周上线20%</li>
-<li>次月上线10%</li>
-</ul>
-
-
-<p>也就是说30天后，日活用户大概是2%左右：而且你还不要觉得这数据很惨。如果去搜集真实产品的数据来看，除开IM类产品，大多数的产品甚至完不成这样的数据。</p>
-
-<p>所以，做互联网产品首先要接受一个现实：你多半比拿破仑派去<a href="http://www.douban.com/note/207589154/">入侵俄罗斯</a>的大军要<a href="https://en.wikipedia.org/wiki/Grande_Arm%C3%A9e#1810.E2.80.931812">崩得更快</a></p>
-
-<a name="L..............."></a>
-<h1>加新功能？</h1>
-
-<p>当悲观的数据被端到面前的时候，决策层首先要明白，大多数时候加入任何新功能都不能把曲线扳回来。最容易出现的错误就是：</p>
-
-<ol>
-<li>加入的功能不是服务于大多数人：特别是如果加入的功能仅仅服务于已经注册或者已经使用过产品的用户，而不是目前还不是用户的或者刚刚注册为用户的人群</li>
-<li>加入的功能没有体现在大多数人能感知的地方：特别是如果加入了新功能，但是在用户进行注册或者使用的流程里面没有提示他们，让他们根本感知不到</li>
-</ol>
-
-
-<p>这些错误之所以很容易犯，是因为我们作为产品设计和开发的人，很愿意把时间花在&#8221;很高级&#8221;或者&#8221;很酷&#8221;的功能上。而这些所谓的增加用户&#8221;粘性&#8221;的高级功能，如果你看看上面那条曲线，你会发现大多数是没有任何意义的：一个在用户使用产品第七天才会用到的功能，对于在第四天之后就不再出现的用户来说，等于没有。</p>
-
-<p>其实在产品设计里面有一个概念是所谓的&#8221;engagement wall&#8221;。那些需要用户关联支付渠道或者累积经验值才能解锁的功能，或者是深度使用才能挖掘出来的功能，被认为是藏在墙后面的。比如微信上面的拍摄分享视频，发送红包等等。那些可以通过简单的投入就能让用户体验到价值的功能则被认为是在这堵墙外面的。比如微信上浏览好友的朋友圈，点个赞等等。把什么样的功能作为吸引用户的糖果放在面上，把什么样的功能放在墙里面藏着并激励用户来解锁它们，是需要经过精心设计的，但有一个规则不会变：那些放在墙里面的功能，是没法改变曲线的走势的。</p>
-
-<a name="L......................................."></a>
-<h1>如何选择下一个新加的功能？</h1>
-
-<p>首先想好要不要挑。</p>
-
-<p>如果产品还在初期，你可能需要做的是精细打磨现有的功能，而不是加入新功能。新功能，特别是我们自认为可以&#8221;扭转乾坤&#8221;的新功能，往往意味着巨大的风险，巨大的投入，巨大的预期，以及极大的失败可能性。你需要掂量自己和团队是否能够承受得住。</p>
-
-<p>决定好要挑？那就先去全面深入地了解你面对的问题域和你的用户的所思所想，搜集那些真正能够带来转化率的功能，然后：</p>
-
-<ol>
-<li>做那些能够影响最多人的功能：成功的产品会把最多的时间花在那些非用户或者是随便来玩玩的用户使用的功能上，比如<a href="https://www.useronboard.com/how-slack-onboards-new-users/">Slack的引导流程</a>，比如<a href="http://blog.leadpages.net/landing-page-trends/">Medium的访客评论</a>。</li>
-<li>做那些能够带来转化的功能：特别是在精力和人力有限的时候，做影响曲线前半段走势的功能：注册、登录、引导等等，特别是首次登录后的引导。不同的产品类型，需要引导的方向是不一样的。测试平台上，你要引导用户顺畅的完成一次测试；SNS你要引导用户添加好友，完成第一次对话或者分享；云服务，你要引导用户完成机器创建、带宽选择、域名解析等等动作，让他可以使用你的服务。根据你的业务，给用户一个舒适度极高的引导流程，带来的转化率的提升是非常高的。</li>
-</ol>
-
-
-<p>然后？</p>
-
-<p>Let&rsquo;s keep our fingers crossed and God bless us&hellip;</p>
 </div>
   
   
