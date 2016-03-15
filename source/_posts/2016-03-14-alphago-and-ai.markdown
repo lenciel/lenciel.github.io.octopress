@@ -54,7 +54,7 @@ As soon as it works, no one calls it AI.
 
 人工智能的奠基，公认是在60年前的[达特茅斯会议](https://zh.wikipedia.org/wiki/%E8%BE%BE%E7%89%B9%E7%9F%9B%E6%96%AF%E4%BC%9A%E8%AE%AE)，原因之一是会议的正式名字：“人工智能夏季研讨会” (Summer Research Project on Artificial Intelligence)，据考证这是Artificial Intelligence首次被正式公开使用。叫这么玄幻主要是大会的经费需要找洛克菲勒基金会申请：目的并没有完全达到，$13500的预算被批准了$7500。
 
-但这次花销略低于国企普通招待晚宴的会议产生的影响却是深远的，我们只需要看看与会者名单他们人生轨迹的变化：
+但这次花销略低于国企普通招待晚宴的会议产生的影响却是深远的，我们只需要看看与会者他们人生轨迹的变化：
 
 香农（C. E. Shannon）：信息论的奠基人不用介绍了，当时已经是贝尔实验室大佬的香农，是因为和图灵交流后对计算机下棋有了兴趣（在1949年和1950年他发表了[两篇讲计算机下棋](https://chessprogramming.wikispaces.com/Claude+Shannon)的文章），还是被拉去当腰封的，现在很难弄清了：总之这会议对香老爷产生的影响不大。
 
