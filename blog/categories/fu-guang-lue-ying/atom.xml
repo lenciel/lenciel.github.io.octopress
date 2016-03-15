@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 浮光掠影 | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/fu-guang-lue-ying/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -21,7 +21,9 @@
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_08/before_sunrise_1.jpg" title="Don't touch me..." alt="before sunrise1" />
 <img src="/downloads/images/2014_08/before_sunrise_2.jpg" title="Don't touch me..." alt="before sunrise2" /></p>
 
-<p><blockquote><p>&ldquo;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&rdquo;</p><footer><strong>Ethan Hawke  <a href="http://www.imdb.com/title/tt0112471/">http://www.imdb.com/title/tt0112471/</a> Before Sunrise(1995)</strong></footer></blockquote></p>
+<p>{% blockquote Ethan Hawke  <a href="http://www.imdb.com/title/tt0112471/">http://www.imdb.com/title/tt0112471/</a> Before Sunrise(1995)%}
+&ldquo;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -32,7 +34,9 @@
     <id>http://lenciel.cn/2014/05/this-is-not-happiness</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/false_start.gif" title="Don't touch me..." alt="this isn't happiness" /></p>
 
-<p><blockquote><p>&ldquo;Simplicity is comlexity resolved.&rdquo;</p><footer><strong>Constantin Brancusi  <a href="http://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i">http://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i</a> Yatzer(1911)</strong></footer></blockquote></p>
+<p>{% blockquote Constantin Brancusi  <a href="http://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i">http://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i</a> Yatzer(1911)%}
+&ldquo;Simplicity is comlexity resolved.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -50,7 +54,9 @@
 <img src="/downloads/images/iwdrm/tumblr_n5hh9kJw1i1shrw6zo7_400.gif" title="Don't touch me..." alt="Go and love more" />
 <img src="/downloads/images/iwdrm/tumblr_n5hh9kJw1i1shrw6zo8_400.gif" title="Don't touch me..." alt="Go and love more" /></p>
 
-<p><blockquote><p>&ldquo;We are only here briefly, and in this moment I want to allow myself joy.&rdquo;</p><footer><strong>Pat Solitano  <a href="http://www.imdb.com/title/tt1798709/">http://www.imdb.com/title/tt1798709/</a> Her(2013)</strong></footer></blockquote></p>
+<p>{% blockquote Pat Solitano  <a href="http://www.imdb.com/title/tt1798709/">http://www.imdb.com/title/tt1798709/</a> Her(2013)%}
+&ldquo;We are only here briefly, and in this moment I want to allow myself joy.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -61,7 +67,9 @@
     <id>http://lenciel.cn/2014/05/you-mean-more-to-me</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/you_mean_more_to_me.gif" title="Don't touch me..." alt="You Mean More To Me" /></p>
 
-<p><blockquote><p>&ldquo;You mean more to me than any scientific truth.&rdquo;</p><footer><strong>Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972)</strong></footer></blockquote></p>
+<p>{% blockquote Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972) %}
+&ldquo;You mean more to me than any scientific truth.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -72,7 +80,11 @@
     <id>http://lenciel.cn/2014/04/change-the-light</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/change_the_light.gif" title="Don't touch me..." alt="Change the light" /></p>
 
-<p><blockquote><p>&ldquo;It’s just that it may change the light.&rdquo;</p></p><p><a name="L...endblockquote..."></a><br/><h2></p><footer><strong>Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)</strong></footer></blockquote></h2>
+<p>{% blockquote  Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)%}
+&ldquo;It’s just that it may change the light.&rdquo;</p>
+
+<a name="L...endblockquote..."></a>
+<h2>{% endblockquote %}</h2>
 ]]></content>
   </entry>
   

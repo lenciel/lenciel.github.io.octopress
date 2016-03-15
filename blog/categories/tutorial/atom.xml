@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tutorial | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -863,7 +863,9 @@ $ pip install svn+http://somedomain.com/path/to/svn-repo#egg=packagename
 
 <p><code>virtualenv</code>无疑是当前Python开发者心中“必知必会”类的工具了。<code>virtualenv</code>主要就是提供一个“独立的”Python开发环境。为什么需要“独立”的开发环境？在不知道<code>virtualenv</code>之前Python包满坑满谷的本座自然是有很多槽可以吐，不过最好的答案是<code>virtualenv</code>的文档里面说的：</p>
 
-<p><blockquote><p>The basic problem being addressed is one of dependencies and versions, and indirectly permissions. Imagine you have an application that needs version 1 of LibFoo, but another application requires version 2. How can you use both these applications? If you install everything into /usr/lib/python2.7/site-packages (or whatever your platform’s standard location is), it’s easy to end up in a situation where you unintentionally upgrade an application that shouldn’t be upgraded.</p></blockquote></p>
+<p>{% blockquote %}
+The basic problem being addressed is one of dependencies and versions, and indirectly permissions. Imagine you have an application that needs version 1 of LibFoo, but another application requires version 2. How can you use both these applications? If you install everything into /usr/lib/python2.7/site-packages (or whatever your platform’s standard location is), it’s easy to end up in a situation where you unintentionally upgrade an application that shouldn’t be upgraded.
+{% endblockquote %}</p>
 
 <p>简单来说，就是每个工程使用自己独立的<code>virtualenv</code>进行开发，所有该工程需要依赖的Package都安装在这个<code>virutalenv</code>里面。<code>virutalenv</code>的安装同样是使用<code>pip</code>：</p>
 

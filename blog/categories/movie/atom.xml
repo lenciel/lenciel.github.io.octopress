@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Movie | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/movie/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -61,7 +61,9 @@
 
 <p>这也是为什么罗曼·罗兰在《约翰·克利斯朵夫》里面说的这段话会引起那么多人的共鸣：</p>
 
-<p><blockquote><p>大多数人在他们二三十岁时就死去了，因为过了那个年龄，他们只是自己的影子，此后的余生则是在模仿自己中度过。日复一日，更机械，更装腔作势地重复他们在有生之年的所作所为，所思所想，所爱所恨。</p></blockquote></p>
+<p>{% blockquote %}
+大多数人在他们二三十岁时就死去了，因为过了那个年龄，他们只是自己的影子，此后的余生则是在模仿自己中度过。日复一日，更机械，更装腔作势地重复他们在有生之年的所作所为，所思所想，所爱所恨。
+{% endblockquote %}</p>
 
 <p>看这电影的时候，我还会想起自己最喜欢的电影《一一》。杨德昌无非是挑了一个普通的中产阶级家庭，白描一把，让你看到，每个个体都在日复一日重复自己的生活；而个体之间，年幼者又在重复年长者曾经的生活。</p>
 
@@ -78,7 +80,9 @@
     <id>http://lenciel.cn/2014/05/you-mean-more-to-me</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/you_mean_more_to_me.gif" title="Don't touch me..." alt="You Mean More To Me" /></p>
 
-<p><blockquote><p>&ldquo;You mean more to me than any scientific truth.&rdquo;</p><footer><strong>Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972)</strong></footer></blockquote></p>
+<p>{% blockquote Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972) %}
+&ldquo;You mean more to me than any scientific truth.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   
@@ -89,7 +93,11 @@
     <id>http://lenciel.cn/2014/04/change-the-light</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/change_the_light.gif" title="Don't touch me..." alt="Change the light" /></p>
 
-<p><blockquote><p>&ldquo;It’s just that it may change the light.&rdquo;</p></p><p><a name="L...endblockquote..."></a><br/><h2></p><footer><strong>Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)</strong></footer></blockquote></h2>
+<p>{% blockquote  Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)%}
+&ldquo;It’s just that it may change the light.&rdquo;</p>
+
+<a name="L...endblockquote..."></a>
+<h2>{% endblockquote %}</h2>
 ]]></content>
   </entry>
   
@@ -150,7 +158,10 @@
 
 <p>最出彩的一幕就是接Ennis电话的一幕，小说中写Lureen的语调是：</p>
 
-<p><blockquote><p>&ldquo;&hellip;she was polite but the little voice was cold as snow&rdquo;<br/>(&hellip;她的声音听起来是很礼貌的，那细细的语调却又冷若冰霜)</p></blockquote></p>
+<p>{% blockquote %}
+&ldquo;&hellip;she was polite but the little voice was cold as snow&rdquo;
+(&hellip;她的声音听起来是很礼貌的，那细细的语调却又冷若冰霜)
+{% endblockquote %}</p>
 
 <p>   本座看过之后就很想看看这种东西怎么去演，结果电影中的Lureen那满眼泪痕心如刀割，却着装一丝不苟谈吐丝毫不乱的样子，和DH里Bree发布丧夫消息时何其相似。</p>
 
@@ -160,7 +171,9 @@
 
 <p>影片中Jack和Ennis每次相约出游的一幕幕情景，实在是本座的最爱。即便是对着山峦溪流的空镜头，也能让人感觉到情意的流动。那种相伴山水隔绝尘世，两心相惜聚散依依的感觉，实在是本座再熟悉不过，几乎就要击掌朗诵：“逝者如斯，不舍昼夜。”两个人最后一次相聚，Jack那一段台词和小说里面的一字不差：</p>
 
-<p><blockquote><p>Tell you what, we could a had a good life together, a fuckin real good life. You wouldn&rsquo;t do it, Ennis, so what we got now is Brokeback Mountain. Everything built on that. It’s all we got, boy, fuckin all, so I hope you know that if you don&rsquo;t never know the rest. Count the damn few times we been together in twenty years. Measure the fuckin short leash you keep me on, then ask me about Mexico and then tell me you’ll kill me for needin it and not hardly never getting it. You got no fuckin idea how bad it gets. I’m not you. I can’t make it on a couple a high-altitude fucks once or twice a year. You’re too much for me, Ennis, you son of a whoreson bitch. I wish I knew how to quit you.</p></blockquote>
+<p>{% blockquote %}
+Tell you what, we could a had a good life together, a fuckin real good life. You wouldn&rsquo;t do it, Ennis, so what we got now is Brokeback Mountain. Everything built on that. It’s all we got, boy, fuckin all, so I hope you know that if you don&rsquo;t never know the rest. Count the damn few times we been together in twenty years. Measure the fuckin short leash you keep me on, then ask me about Mexico and then tell me you’ll kill me for needin it and not hardly never getting it. You got no fuckin idea how bad it gets. I’m not you. I can’t make it on a couple a high-altitude fucks once or twice a year. You’re too much for me, Ennis, you son of a whoreson bitch. I wish I knew how to quit you.
+{% endblockquote %}
    
 通过这段话，我们就会理解两人由不羁少年变得逐渐沧桑，Jack仍然一有机会就驱车十几个小时只求一聚，并且每次都会试着说服爱人和自己团聚，然而又常常出轨偷腥。而Ennis少年时代目睹同志牛仔被处死的惨状在他内心深处造成的梦魇，却是Jack用再多的柔情也无法扑灭的。最终Ennis还是无法迈出最后一步，只能在懊悔中孤独的承受没有Jack相守的断背山，实在让人唏嘘。</p>
 

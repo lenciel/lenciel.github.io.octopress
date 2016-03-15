@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -88,7 +88,9 @@
 
 <p>但是借鉴得再多，不花时间总结，还是难成系统。最近看到一本Butterick的<a href="http://practicaltypography.com/typography-in-ten-minutes.html">好书</a>，对字体设计的原则做了一番高度归纳，并且声称：</p>
 
-<p><blockquote><p>this is a bold claim, but i stand be­hind it: if you learn and fol­low these five ty­pog­ra­phy rules, you will be a bet­ter ty­pog­ra­ph­er than 95% of pro­fes­sion­al writ­ers and 70% of pro­fes­sion­al de­sign­ers. (The rest of this book will raise you to the 99th per­centile in both categories.)</p></blockquote></p>
+<p>{% blockquote %}
+this is a bold claim, but i stand be­hind it: if you learn and fol­low these five ty­pog­ra­phy rules, you will be a bet­ter ty­pog­ra­ph­er than 95% of pro­fes­sion­al writ­ers and 70% of pro­fes­sion­al de­sign­ers. (The rest of this book will raise you to the 99th per­centile in both categories.)
+{% endblockquote %}</p>
 
 <p>归纳出来的原则共有5条：</p>
 

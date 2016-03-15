@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -22,11 +22,19 @@
 
 <p>这是自带词典对pathos的解释：</p>
 
-<p><blockquote><p>pathos /ˈpāˌTHäs/, a quality that evokes pity or sadness</p></blockquote></p>
+<p>{% blockquote %}
+pathos /ˈpāˌTHäs/, a quality that evokes pity or sadness
+{% endblockquote %}</p>
 
 <p>这是《韦氏词典》的：</p>
 
-<p><blockquote><p>pathos /ˈpāˌTHäs/, n.</p></p><p><ol><br/><li><p>The quality or character of those emotions, traits, or experiences which are personal, and therefore restricted and evanescent; transitory and idiosyncratic dispositions or feelings as distinguished from those which are universal and deep-seated in character; — opposed to ethos.</p></li><br/><li><p>That quality or property of anything which touches the feelings or excites emotions and passions, esp., that which awakens tender emotions, such as pity, sorrow, and the like; contagious warmth of feeling, action, or expression; pathetic quality; as, the pathos of a picture, of a poem, or of a cry.</p></blockquote></p></li>
+<p>{% blockquote %}
+pathos /ˈpāˌTHäs/, n.</p>
+
+<ol>
+<li><p>The quality or character of those emotions, traits, or experiences which are personal, and therefore restricted and evanescent; transitory and idiosyncratic dispositions or feelings as distinguished from those which are universal and deep-seated in character; — opposed to ethos.</p></li>
+<li><p>That quality or property of anything which touches the feelings or excites emotions and passions, esp., that which awakens tender emotions, such as pity, sorrow, and the like; contagious warmth of feeling, action, or expression; pathetic quality; as, the pathos of a picture, of a poem, or of a cry.
+{% endblockquote %}</p></li>
 </ol>
 
 

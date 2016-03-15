@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Iwdrm | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/iwdrm/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -296,7 +296,9 @@
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_08/before_sunrise_1.jpg" title="Don't touch me..." alt="before sunrise1" />
 <img src="/downloads/images/2014_08/before_sunrise_2.jpg" title="Don't touch me..." alt="before sunrise2" /></p>
 
-<p><blockquote><p>&ldquo;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&rdquo;</p><footer><strong>Ethan Hawke  <a href="http://www.imdb.com/title/tt0112471/">http://www.imdb.com/title/tt0112471/</a> Before Sunrise(1995)</strong></footer></blockquote></p>
+<p>{% blockquote Ethan Hawke  <a href="http://www.imdb.com/title/tt0112471/">http://www.imdb.com/title/tt0112471/</a> Before Sunrise(1995)%}
+&ldquo;I believe if there’s any kind of God it wouldn’t be in any of us, not you or me but just this little space in between. If there’s any kind of magic in this world it must be in the attempt of understanding someone, sharing something.&rdquo;
+{% endblockquote %}</p>
 ]]></content>
   </entry>
   

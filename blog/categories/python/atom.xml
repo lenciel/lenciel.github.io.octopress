@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:46:19+08:00</updated>
+  <updated>2016-03-15T23:51:20+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -34,7 +34,9 @@
 
 <p>当然，Snakefood这种基于文件依赖的复杂度分析其实不算特别靠谱，这可不是什么<a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic complexity</a>，更像是开飞机的时候边排查“事故征兆”边驾驶的辅助工具。作者自己是这么说的：</p>
 
-<p><blockquote><p>Producing pretty graphs is fun, but I found the most leverage of it when I try to make my code simpler, I generate the graph and inspect unexpected dependencies and try to refactor my code to simply the dependency graph as much as possible.</p><footer><strong>Martin Blais</strong></footer></blockquote></p>
+<p>{% blockquote Martin Blais%}
+Producing pretty graphs is fun, but I found the most leverage of it when I try to make my code simpler, I generate the graph and inspect unexpected dependencies and try to refactor my code to simply the dependency graph as much as possible.
+{% endblockquote %}</p>
 
 <p>下面是本座心目中永远的&#8221;优雅Python代码第一名&#8221;<a href="http://docs.python-requests.org/en/latest/">Requests</a>的分析结果：</p>
 
