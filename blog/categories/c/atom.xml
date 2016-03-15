@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/c/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -22,9 +22,7 @@
 
 <p>读了这64KB能干嘛？用报这个bug的人的话来说：</p>
 
-<p>{% blockquote %}
-Without using any privileged information or credentials we were able steal from ourselves the secret keys used for our X.509 certificates, user names and passwords, instant messages, emails and business critical documents and communication.
-{% endblockquote %}</p>
+<p><blockquote><p>Without using any privileged information or credentials we were able steal from ourselves the secret keys used for our X.509 certificates, user names and passwords, instant messages, emails and business critical documents and communication.</p></blockquote></p>
 
 <p>那么读取64KB内存和获取这么多关键信息究竟有什么关系呢？</p>
 

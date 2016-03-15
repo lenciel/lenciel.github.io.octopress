@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Course | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/course/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -23,14 +23,7 @@
 
 <p>Quora上有一个著名的<a href="http://www.quora.com/Startup-Advice-and-Strategy/As-first-time-entrepreneurs-what-part-of-the-process-are-people-often-completely-blind-to/answer/Mike-Sellers">问答</a>，Mike Sellers的答案里面有一部分在江湖上流传很广：</p>
 
-<p>{% blockquote %}
-An idea is not a mockup
-A mockup is not a prototype
-A prototype is not a program
-A program is not a product
-A product is not a business
-And a business is not profits
-{% endblockquote %}</p>
+<p><blockquote><p>An idea is not a mockup<br/>A mockup is not a prototype<br/>A prototype is not a program<br/>A program is not a product<br/>A product is not a business<br/>And a business is not profits</p></blockquote></p>
 
 <p>这里描述了一个从点子到产品到盈利的状态机，在每个阶段，都有很多人失败了，无法进入下一个阶段。失败的原因，主要是因为面对的系统足够复杂时，可能会有不可预见的各种<a href="http://www.maa.org/devlin/devlin_05_03.html">缺陷</a>。特别是对我们搞技术的而言，虽然可能走完Program这个阶段，但是后面的三个阶段才是真正考验的开始。</p>
 
@@ -94,13 +87,7 @@ And a business is not profits
 
 <p><a href="http://www.wired.com/wired/archive//6.11/metcalfe_pr.html">Bob Metcalfe</a>，以太网的发明者，3Com的创始人却有另一种认识：</p>
 
-<p>{% blockquote %}
-Metcalfe says his proudest accomplishment at the company was as head of sales and marketing. He claims credit for bringing revenue from zero to more than $1 million a month by 1984. And he&rsquo;s careful to point out that it was this aptitude - not his skill as an inventor - that earned him his fortune.</p>
-
-<p>&ldquo;Flocks of MIT engineers come over here,&rdquo; Metcalfe tells me, leading me up the back staircase at Beacon Street. &ldquo;I love them, so I invite them. They look at this and say, &lsquo;Wow! What a great house! I want to invent something like Ethernet.&rdquo;&rsquo; The walls of the narrow stairway are lined with photos and framed documents, like the first stock certificate issued at 3Com, four Ethernet patents, a photo of Metcalfe and Boggs, and articles Metcalfe has written for The New York Times and The Wall Street Journal.</p>
-
-<p>&ldquo;I have to sit&#8217;em down for an hour and say, &lsquo;No, I don&rsquo;t have this house because I invented Ethernet. I have this house because I went to Cleveland and Schenectady and places like that. I sold Ethernet for a decade. That&rsquo;s why I have this house. It had nothing to do with that brainstorm in 1973.&rdquo;&rsquo;
-{% endblockquote %}</p>
+<p><blockquote><p>Metcalfe says his proudest accomplishment at the company was as head of sales and marketing. He claims credit for bringing revenue from zero to more than $1 million a month by 1984. And he&rsquo;s careful to point out that it was this aptitude - not his skill as an inventor - that earned him his fortune.</p></p><p><p>&ldquo;Flocks of MIT engineers come over here,&rdquo; Metcalfe tells me, leading me up the back staircase at Beacon Street. &ldquo;I love them, so I invite them. They look at this and say, &lsquo;Wow! What a great house! I want to invent something like Ethernet.&rdquo;&rsquo; The walls of the narrow stairway are lined with photos and framed documents, like the first stock certificate issued at 3Com, four Ethernet patents, a photo of Metcalfe and Boggs, and articles Metcalfe has written for The New York Times and The Wall Street Journal.</p></p><p><p>&ldquo;I have to sit&#8217;em down for an hour and say, &lsquo;No, I don&rsquo;t have this house because I invented Ethernet. I have this house because I went to Cleveland and Schenectady and places like that. I sold Ethernet for a decade. That&rsquo;s why I have this house. It had nothing to do with that brainstorm in 1973.&rdquo;&rsquo;</p></blockquote></p>
 
 <p>从一定程度上这种认识反应了另一种普遍的观点： <strong>执行力，而不是点子，才是创业的关键</strong> 。这种在Hacker News上被<a href="https://www.google.com.hk/search?q=site%3Anews.ycombinator.com+idea+not+execution&amp;qscrl=1">一而再再而三的提及</a>的观点确实是有道理的：冒出一个“创建社交网络”的点子很简单，但是要把它涉及的各种细节，大到是采用<a href="https://www.facebook.com/">对称</a>还是<a href="https://twitter.com/">非对称</a>的社交网络小到“Poke”应该怎么实现，考虑清楚，就不那么容易了。而即使考虑清楚上线后用户也很多，怎么把流行转化成盈利就更加艰难了：看看Second Life或者Digg的下场多么凄惨。</p>
 
@@ -115,13 +102,7 @@ Metcalfe says his proudest accomplishment at the company was as head of sales an
 
 <p>除开前面两个观点之外，还有一种观点。站在投资者角度，可以把&#8221;点子&#8221;对应到&#8221;产品&#8221;，把&#8221;执行力&#8221;对应到&#8221;团队&#8221;。也就是说，一个足够好的团队是可以推动各种执行层面的细节（财务上的，商务上的，技术上的，法律上的），把一个好的点子落实成一个产品的。但是这些仍然不是全部。用<a href="http://pmarchive.com/guide_to_startups_part4.html">Marc Andreessen</a>的话来说：</p>
 
-<p>{% blockquote %}
-Personally, I’ll take the third position – I’ll assert that market is the most impor- tant factor in a startup’s success or failure.</p>
-
-<p>Why?</p>
-
-<p>In a great market – a market with lots of real potential customers – the market pulls product out of the startup. The market needs to be fulfilled and the market will be fulfilled, by the first viable product that comes along. The product doesn’t need to be great; it just has to basically work. And, the market doesn’t care how good the team is, as long as the team can produce that viable product.
-{% endblockquote %}</p>
+<p><blockquote><p>Personally, I’ll take the third position – I’ll assert that market is the most impor- tant factor in a startup’s success or failure.</p></p><p><p>Why?</p></p><p><p>In a great market – a market with lots of real potential customers – the market pulls product out of the startup. The market needs to be fulfilled and the market will be fulfilled, by the first viable product that comes along. The product doesn’t need to be great; it just has to basically work. And, the market doesn’t care how good the team is, as long as the team can produce that viable product.</p></blockquote></p>
 
 <a name="L.strong.......................................................................................strong."></a>
 <h5><strong>那么究竟什么是最重要的：产品/点子，执行力/团队，还是市场?</strong></h5>

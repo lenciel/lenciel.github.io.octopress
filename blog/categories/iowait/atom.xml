@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Iowait | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/iowait/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -27,9 +27,7 @@
 
 <p>iowait的定义为：</p>
 
-<p>{% blockquote %}
-iowait is time that the processor/processors are waiting (i.e. is in an idle state and does nothing), during which there in fact was outstanding disk I/O requests.
-{% endblockquote %}</p>
+<p><blockquote><p>iowait is time that the processor/processors are waiting (i.e. is in an idle state and does nothing), during which there in fact was outstanding disk I/O requests.</p></blockquote></p>
 
 <p>也就是至少有一个I/O在进行时CPU处于<code>idle</code>状态的比例。</p>
 

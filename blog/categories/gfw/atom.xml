@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gfw | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/gfw/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -157,7 +157,38 @@ $ android update sdk -u -s --all
     <id>http://lenciel.cn/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
     <content type="html"><![CDATA[<p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
 
-<p>{% gist lenciel/d353a04a3a7bc0278ec6 autossh.lenciel.plist %}</p>
+<p><div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
+<noscript><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+  &lt;key&gt;KeepAlive&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;Label&lt;/key&gt;
+  &lt;string&gt;autossh.lenciel&lt;/string&gt;
+  &lt;key&gt;ProgramArguments&lt;/key&gt;
+  &lt;array&gt;
+    &lt;string&gt;/opt/boxen/homebrew/bin/autossh&lt;/string&gt;
+    &lt;string&gt;-M&lt;/string&gt;
+    &lt;string&gt;20000&lt;/string&gt;
+    &lt;string&gt;-f&lt;/string&gt;
+    &lt;string&gt;-i&lt;/string&gt;
+    &lt;string&gt;~/.ssh/fuckgfw&lt;/string&gt;
+    &lt;string&gt;-N&lt;/string&gt;
+    &lt;string&gt;-L&lt;/string&gt;
+    &lt;string&gt;0.0.0.0:3189:localhost:31280&lt;/string&gt;
+    &lt;string&gt;remotehost&lt;/string&gt;
+  &lt;/array&gt;
+  &lt;key&gt;RunAtLoad&lt;/key&gt;
+  &lt;true/&gt;
+  &lt;key&gt;WorkingDirectory&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/&lt;/string&gt;
+  &lt;key&gt;StandardErrorPath&lt;/key&gt;
+  &lt;string&gt;/opt/boxen/log/autossh/autossh.log&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

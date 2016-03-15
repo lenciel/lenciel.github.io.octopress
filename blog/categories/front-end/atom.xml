@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Front-end | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/front-end/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -46,11 +46,7 @@
 
 <p>于是就感觉是Chrome的password mananger在干坏事了。google了一下，发现<a href="http://www.theregister.co.uk/2014/04/09/chrome_makes_new_password_grab_in_version_34/">这么个消息</a>：</p>
 
-<p>{% blockquote %}</p>
-
-<p>Chrome 34 will now offer to remember and fill password fields in the presence of autocomplete=off.” That means that if a website turns off automatic password collection, Chrome will offer to do it anyway if password manager is enabled.</p>
-
-<p>{% endblockquote %}</p>
+<p><blockquote><p></p></p><p><p>Chrome 34 will now offer to remember and fill password fields in the presence of autocomplete=off.” That means that if a website turns off automatic password collection, Chrome will offer to do it anyway if password manager is enabled.</p></p><p><p></p></blockquote></p>
 
 <p>古德，瓦力瓦力古德。看了如果一个网站你选择了“记住密码”，Chrome的密码管理器就会被这个域名下包含了<code>$('input[name=password]')</code>的表单激活。并且它居然蠢到直接去找<code>password</code>上面一个input来填入用户名，how convenient&hellip;</p>
 

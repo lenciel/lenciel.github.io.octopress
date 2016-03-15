@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gif | @Lenciel]]></title>
   <link href="http://lenciel.cn/blog/categories/gif/atom.xml" rel="self"/>
   <link href="http://lenciel.cn/"/>
-  <updated>2016-03-15T23:51:20+08:00</updated>
+  <updated>2016-03-15T23:52:46+08:00</updated>
   <id>http://lenciel.cn/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -20,9 +20,7 @@
     <id>http://lenciel.cn/2014/05/you-mean-more-to-me</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/you_mean_more_to_me.gif" title="Don't touch me..." alt="You Mean More To Me" /></p>
 
-<p>{% blockquote Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972) %}
-&ldquo;You mean more to me than any scientific truth.&rdquo;
-{% endblockquote %}</p>
+<p><blockquote><p>&ldquo;You mean more to me than any scientific truth.&rdquo;</p><footer><strong>Donatas Banionis <a href="http://www.imdb.com/title/tt0069293/">http://www.imdb.com/title/tt0069293/</a> Солярис(1972)</strong></footer></blockquote></p>
 ]]></content>
   </entry>
   
@@ -33,11 +31,7 @@
     <id>http://lenciel.cn/2014/04/change-the-light</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/iwdrm/change_the_light.gif" title="Don't touch me..." alt="Change the light" /></p>
 
-<p>{% blockquote  Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)%}
-&ldquo;It’s just that it may change the light.&rdquo;</p>
-
-<a name="L...endblockquote..."></a>
-<h2>{% endblockquote %}</h2>
+<p><blockquote><p>&ldquo;It’s just that it may change the light.&rdquo;</p></p><p><a name="L...endblockquote..."></a><br/><h2></p><footer><strong>Tracy Chevalier  <a href="http://www.imdb.com/title/tt0335119/">http://www.imdb.com/title/tt0335119/</a> Girl with a Pearl Earring(2003)</strong></footer></blockquote></h2>
 ]]></content>
   </entry>
   
