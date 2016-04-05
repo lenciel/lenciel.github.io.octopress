@@ -78,6 +78,6 @@ https://www.google.com.hk/search?q=%s+site%3Apan.baidu.com
 
 具体使用过程请参考下面这个视频（略需要几秒加载）：
 
-{% video http://lenciel.cn/downloads/video/chrome_custom_search.mp4 640 320 http://lenciel.cn/downloads/images/2016_02/chrome_custom_search.png %}
+{% video http://lenciel.com/downloads/video/chrome_custom_search.mp4 640 320 http://lenciel.com/downloads/images/2016_02/chrome_custom_search.png %}
 
 

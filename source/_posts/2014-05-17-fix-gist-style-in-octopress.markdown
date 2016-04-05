@@ -17,7 +17,7 @@ categories:
 </code></pre></div>
 {% endraw %}
 
-比如[上篇文章](http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/)，理论上源代码就是这么一句：
+比如[上篇文章](http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/)，理论上源代码就是这么一句：
 
 {% raw %}
 <div class="highlight"><pre><code class="text">{% gist lenciel/637812a7dcbe8341b07b web_skill_list.md %}

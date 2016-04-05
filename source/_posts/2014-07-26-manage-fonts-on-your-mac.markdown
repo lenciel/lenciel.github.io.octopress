@@ -8,7 +8,7 @@ categories:
 - font
 ---
 
-对于从事设计工作的人员，难免要和字体打交道：因为[设计主要就是Typography的设计](http://lenciel.cn/2013/08/buttericks-practical-typography/)，而Typography的基础就是字体。
+对于从事设计工作的人员，难免要和字体打交道：因为[设计主要就是Typography的设计](http://lenciel.com/2013/08/buttericks-practical-typography/)，而Typography的基础就是字体。
 
 随着完成的项目越来越多，机器上的字体也就慢慢多起来，如何快速的找到自己想要的字体变成了问题。特别是大多数设计软件里，字体选择的界面都是一个下拉框：如果你有几百个字体加载到系统，几乎每次选择字体都是一场灾难。
 

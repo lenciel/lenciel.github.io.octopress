@@ -24,7 +24,7 @@ categories:
     $ brew up
 ```
 
-然后安装dnsmasq。注意安装命令的输出，结尾是有配置的简单说明的。因为我用了[boxen](http://lenciel.cn/2013/03/boxen-introduction/)所以路径不一定对每个人都适用，以你自己的输出为准：
+然后安装dnsmasq。注意安装命令的输出，结尾是有配置的简单说明的。因为我用了[boxen](http://lenciel.com/2013/03/boxen-introduction/)所以路径不一定对每个人都适用，以你自己的输出为准：
 
 ```bash
     $ brew install dnsmasq
