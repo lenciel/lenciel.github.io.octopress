@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lenciel.cn/docs/unicode-in-python">
+  <link rel="canonical" href="http://lenciel.com/docs/unicode-in-python">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -30,12 +30,12 @@
   <link href="http://feeds.feedburner.com/github/lenciel" rel="alternate" title="@Lenciel" type="application/atom+xml">
   <meta property="og:title" content="Python2里面使用Unicode" /><meta itemprop="name" content="Python2里面使用Unicode" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://lenciel.cn/docs/unicode-in-python" />
+<meta property="og:url" content="http://lenciel.com/docs/unicode-in-python" />
 <meta property="og:description" content="Python2里面使用Unicode Feb 17th, 2014 1:24 pm 用Python的时候，为下面这样的报错苦恼？ 1
 &gt; UnicodeDecodeError: ‘ascii’ codec can’t decode in position 10: ordinal not &hellip;" />
 
-<meta property="og:site_name" content="http://lenciel.cn" />
-<meta property="article:author" content="http://lenciel.cn">
+<meta property="og:site_name" content="http://lenciel.com" />
+<meta property="article:author" content="http://lenciel.com">
 <meta property="article:published_time" content="2014-02-17 13:24" />
 
 
@@ -85,7 +85,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:lenciel.cn" />
+    <input type="hidden" name="q" value="site:lenciel.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -118,7 +118,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>&gt; UnicodeDecodeError: ‘ascii’ codec can’t decode in position 10: ordinal not in range(128)...</span></code></pre></td></tr></table></div></figure>
 
 
-<p>嗯哼，本座在用lxml抓网页回来进行解析的时候，也遇到了类似的错误。从解决问题的过程来看，其实Python 2对unicode的支持已经很好了。你首先需要知道Unicode只是一种概念而不是一种实现（把字符表示到内存或者文件里面）。如果你还不清楚基本概念，可以<a href="http://lenciel.cn/docs/unicode-complete/">先学习一下</a>。然后，我们只需要了解python具体实现的一些细节：</p>
+<p>嗯哼，本座在用lxml抓网页回来进行解析的时候，也遇到了类似的错误。从解决问题的过程来看，其实Python 2对unicode的支持已经很好了。你首先需要知道Unicode只是一种概念而不是一种实现（把字符表示到内存或者文件里面）。如果你还不清楚基本概念，可以<a href="http://lenciel.com/docs/unicode-complete/">先学习一下</a>。然后，我们只需要了解python具体实现的一些细节：</p>
 
 <a name="encode.decode"></a>
 <h2>encode/decode</h2>
@@ -358,7 +358,7 @@
 
 
 <ul>
-<li>BOM这东西对UTF-16和UTF-32（python不支持）是很关键的，但是对UTF-8而言可有可无，因为后者不需要大小端对齐（详情请看<a href="http://lenciel.cn/docs/unicode-complete/">这里</a>）。BOM在windows平台上见到得较多，长度2个bytes到4个bytes不等，codec提供了方法检验BOM：</li>
+<li>BOM这东西对UTF-16和UTF-32（python不支持）是很关键的，但是对UTF-8而言可有可无，因为后者不需要大小端对齐（详情请看<a href="http://lenciel.com/docs/unicode-complete/">这里</a>）。BOM在windows平台上见到得较多，长度2个bytes到4个bytes不等，codec提供了方法检验BOM：</li>
 </ul>
 
 
@@ -453,8 +453,8 @@ Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopre
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lenciel.cn/docs/unicode-in-python/index.html';
-        var disqus_url = 'http://lenciel.cn/docs/unicode-in-python/index.html';
+        var disqus_identifier = 'http://lenciel.com/docs/unicode-in-python/index.html';
+        var disqus_url = 'http://lenciel.com/docs/unicode-in-python/index.html';
         var disqus_script = 'embed.js';
       
     (function () {

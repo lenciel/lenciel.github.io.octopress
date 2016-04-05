@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Tool | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/tool/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/blog/categories/tool/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Boxen Introduction]]></title>
-    <link href="http://lenciel.cn/2013/03/boxen-introduction/"/>
+    <link href="http://lenciel.com/2013/03/boxen-introduction/"/>
     <updated>2013-03-31T08:28:00+08:00</updated>
-    <id>http://lenciel.cn/2013/03/boxen-introduction</id>
+    <id>http://lenciel.com/2013/03/boxen-introduction</id>
     <content type="html"><![CDATA[<p>如果列举开发人员在工作中最讨厌的部分，估计搭建开发环境得票率肯定可以排进前三。年初Github开源了自己内部的Privision框架<a href="http://boxen.github.com/">Boxen</a>，趁着新笔记本需要起轿，尝试了一把。</p>
 
 <a name="Boxen............"></a>

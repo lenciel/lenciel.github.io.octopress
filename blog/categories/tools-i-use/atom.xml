@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/tools-i-use/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/blog/categories/tools-i-use/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[从Markdown列表转换成脑图]]></title>
-    <link href="http://lenciel.cn/2016/02/markdown-to-mindmap/"/>
+    <link href="http://lenciel.com/2016/02/markdown-to-mindmap/"/>
     <updated>2016-02-25T21:19:33+08:00</updated>
-    <id>http://lenciel.cn/2016/02/markdown-to-mindmap</id>
-    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
+    <id>http://lenciel.com/2016/02/markdown-to-mindmap</id>
+    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
 
 <p>图片形式的文档都有一个麻烦的地方，就是不太好做版本控制和review。比如如果本座来整理Web前端技能图谱，总希望：</p>
 
@@ -54,7 +54,7 @@
 
 <p><img src="/downloads/images/2016_02/mindmap_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
-<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
+<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
 
 <p>然后，通过脚本把文档里面的<code>#</code>转换成<code>\t</code>，就可以得到能够直接粘贴到MindNode里面生成脑图的文本了。如果你是使用Mac，还可以直接把转换脚本创建成一个<code>service</code>通过<code>Automator</code>安装，这样你在任何一个Markdown文档上选中需要生成脑图的部分，右键就可以了：</p>
 
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用Chrome自定义搜索引擎快速查找资源]]></title>
-    <link href="http://lenciel.cn/2016/02/how-can-everybody-use-chrome/"/>
+    <link href="http://lenciel.com/2016/02/how-can-everybody-use-chrome/"/>
     <updated>2016-02-20T11:53:34+08:00</updated>
-    <id>http://lenciel.cn/2016/02/how-can-everybody-use-chrome</id>
+    <id>http://lenciel.com/2016/02/how-can-everybody-use-chrome</id>
     <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用<code>带参数Google搜索</code>+<code>Chrome快捷搜索入口</code>，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
 
 <p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
@@ -143,15 +143,15 @@
 
 <p>具体使用过程请参考下面这个视频（略需要几秒加载）：</p>
 
-<p><video width='640' height='320' preload='none' controls poster=''><source src='href="http://lenciel.cn/downloads/video/chrome_custom_search.mp4">http://lenciel.cn/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
+<p><video width='640' height='320' preload='none' controls poster=''><source src='href="http://lenciel.com/downloads/video/chrome_custom_search.mp4">http://lenciel.com/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[提取微信语音消息]]></title>
-    <link href="http://lenciel.cn/2015/12/extract-audio-message-from-wechat/"/>
+    <link href="http://lenciel.com/2015/12/extract-audio-message-from-wechat/"/>
     <updated>2015-12-24T13:05:21+08:00</updated>
-    <id>http://lenciel.cn/2015/12/extract-audio-message-from-wechat</id>
+    <id>http://lenciel.com/2015/12/extract-audio-message-from-wechat</id>
     <content type="html"><![CDATA[<a name="Why."></a>
 <h3>Why?</h3>
 
@@ -185,7 +185,7 @@
 
 <p>常温常压下我并不需要导出微信的语音，之所以有这个需求是因为蒙爷在三亚经常用微信跟我们唠嗑：</p>
 
-<p><audio controls loop preload><source src="http://lenciel.cn/downloads/audio/mm_voice.mp3"></audio></p>
+<p><audio controls loop preload><source src="http://lenciel.com/downloads/audio/mm_voice.mp3"></audio></p>
 
 <p>听到这样销魂的声音你就算不想保存，也想要转发，对不对？</p>
 
@@ -222,10 +222,10 @@
   
   <entry>
     <title type="html"><![CDATA[Palm4fun Tech Stack Review Part II]]></title>
-    <link href="http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others/"/>
+    <link href="http://lenciel.com/2015/02/p4f-tech-stack-part-2-others/"/>
     <updated>2015-02-20T14:11:19+08:00</updated>
-    <id>http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others</id>
-    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
+    <id>http://lenciel.com/2015/02/p4f-tech-stack-part-2-others</id>
+    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
 
 <a name="Application..amp..Data"></a>
 <h2>Application &amp; Data</h2>
@@ -324,9 +324,9 @@
   
   <entry>
     <title type="html"><![CDATA[Goodbye Palm4fun, and the Tech Stack Review Part I]]></title>
-    <link href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/"/>
+    <link href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/"/>
     <updated>2015-01-04T14:44:23+08:00</updated>
-    <id>http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops</id>
+    <id>http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2015_01/goodbye_palm4fun.png" title="Don't touch me..." alt="goodbye" /></p>
 
 <p>大概两年前，和Bergkamp、194一次计划外的聊天之后，<strike>出于保护直肠的目的</strike>，本座离开了基友密布的<a href="http://www.myriadgroup.com/">Myriad</a>，作为Palm4fun的联合创始人之一，开始捣鼓着自己创业。</p>
@@ -338,7 +338,7 @@
 <li>搭建和维护各种IT系统让大家的工作更加轻松</li>
 <li>对各种项目进行技术选型、风险评估和报价</li>
 <li>培养有palm4fun自己特色的团队文化</li>
-<li>甚至是，设计我们的logo和<a href="http://lenciel.cn/2014/09/logo-test/">T-Shirt</a></li>
+<li>甚至是，设计我们的logo和<a href="http://lenciel.com/2014/09/logo-test/">T-Shirt</a></li>
 </ul>
 
 

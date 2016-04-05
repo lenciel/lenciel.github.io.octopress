@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Review | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/review/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/blog/categories/review/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,12 +15,12 @@
   
   <entry>
     <title type="html"><![CDATA[《鸟人》]]></title>
-    <link href="http://lenciel.cn/2015/02/birdman/"/>
+    <link href="http://lenciel.com/2015/02/birdman/"/>
     <updated>2015-02-25T20:02:27+08:00</updated>
-    <id>http://lenciel.cn/2015/02/birdman</id>
-    <content type="html"><![CDATA[<p><img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_1.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_2.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_3.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
+    <id>http://lenciel.com/2015/02/birdman</id>
+    <content type="html"><![CDATA[<p><img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_1.jpg" title="Don't touch me..." alt="Vhost threshold" />
+<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_2.jpg" title="Don't touch me..." alt="Vhost threshold" />
+<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_3.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 
 <p>今年奥斯卡最佳电影颁给了《鸟人》，喜欢电影的小伙伴们纷纷起立&hellip;</p>
@@ -73,9 +73,9 @@
   
   <entry>
     <title type="html"><![CDATA[如何review产品的UX设计]]></title>
-    <link href="http://lenciel.cn/2014/05/what-to-ask-about-design/"/>
+    <link href="http://lenciel.com/2014/05/what-to-ask-about-design/"/>
     <updated>2014-05-12T22:45:33+08:00</updated>
-    <id>http://lenciel.cn/2014/05/what-to-ask-about-design</id>
+    <id>http://lenciel.com/2014/05/what-to-ask-about-design</id>
     <content type="html"><![CDATA[<p>产品设计中UX设计是很重要的一方面，毕竟是拿来见人的嘛。像我这样的工程师怎么去构思自己产品的UX设计或者是review别人的设计呢？当然还是工程师的思维方式了：</p>
 
 <ul>
@@ -89,7 +89,7 @@
 </ul>
 
 
-<p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.cn/">我心中的好设计</a>。</p>
+<p>我知道做设计的都很讨厌问题太多的人，没关系我会开始公示一下<a href="http://nd.lenciel.com/">我心中的好设计</a>。</p>
 ]]></content>
   </entry>
   

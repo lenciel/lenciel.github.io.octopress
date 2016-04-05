@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Rants | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/rants/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/blog/categories/rants/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[关于工作与生活]]></title>
-    <link href="http://lenciel.cn/2015/10/the-solution-of-work-life-balance/"/>
+    <link href="http://lenciel.com/2015/10/the-solution-of-work-life-balance/"/>
     <updated>2015-10-04T00:06:16+08:00</updated>
-    <id>http://lenciel.cn/2015/10/the-solution-of-work-life-balance</id>
+    <id>http://lenciel.com/2015/10/the-solution-of-work-life-balance</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2015_10/dilbert_work_life_balance.png" title="Don't touch me..." alt="work life balance" /></p>
 
 <p>前面说了，<a href="http://lenciel.cn/2015/10/the-myth-of-work-life-balance/">Work Life Balance的神话其实并不靠谱</a>。</p>
@@ -112,7 +112,7 @@
 
 <p>组织和个人努力的方向，都应该是让有效时间内输出最大化：说简单一点儿，即便有必要加班，目的都应该是为了能尽早达到按时下班，而不是在公司里面形成一种”多花点儿时间就能做出更多东西”的错觉。</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_10/no_one_wants_more_work.png" alt="" width="420" height="294" align="left" style="margin:5px"/></p>
+<p><img src="http://lenciel.com/downloads/images/2015_10/no_one_wants_more_work.png" alt="" width="420" height="294" align="left" style="margin:5px"/></p>
 
 <p>拿我个人来说，很长一段时间以来都很忙，每周工作时间常常超过80个小时。虽然也知道<a href="http://blog.sina.com.cn/s/blog_5d7e3c150100h2c8.html">人生是玩5个球</a>之类的道理，但却并不觉得自己的选择有什么问题：目前确实有那么多事情需要处理，自己又很愿意花时间去处理它们。</p>
 
@@ -139,9 +139,9 @@
   
   <entry>
     <title type="html"><![CDATA[Work Life Balance的神话]]></title>
-    <link href="http://lenciel.cn/2015/10/the-myth-of-work-life-balance/"/>
+    <link href="http://lenciel.com/2015/10/the-myth-of-work-life-balance/"/>
     <updated>2015-10-02T22:35:05+08:00</updated>
-    <id>http://lenciel.cn/2015/10/the-myth-of-work-life-balance</id>
+    <id>http://lenciel.com/2015/10/the-myth-of-work-life-balance</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2015_10/work_life_balance.jpg" title="Don't touch me..." alt="work life balance" /></p>
 
 <p>最近有几个事情让我在这方面想了很多。</p>
@@ -174,7 +174,7 @@
 
 <p>包括这次Amazon的新闻一出，先后参与了Facebook和Asana的创建，31岁就已经攒下79亿美刀身家的<a href="http://www.forbeschina.com/review/billionaires/home/106757.shtml">达斯汀·莫斯科维茨</a>就发了<a href="https://medium.com/life-learning/work-hard-live-well-ead679cb506d">一篇雄文</a>表达自己的态度：如果能够再来一次，他希望自己在创建Facebook的过程中能够过得轻松一些。</p>
 
-<p>文章里面提到的那个一周不能工作超过40个小时的理论，我<a href="http://lenciel.cn/2013/05/the-myth-of-productivity/">之前也唠叨</a>过。实际上这个结论福特在1926年就调查得出了，并且开始<a href="http://www.history.com/this-day-in-history/ford-factory-workers-get-40-hour-week">实施在自己的汽车厂</a>。</p>
+<p>文章里面提到的那个一周不能工作超过40个小时的理论，我<a href="http://lenciel.com/2013/05/the-myth-of-productivity/">之前也唠叨</a>过。实际上这个结论福特在1926年就调查得出了，并且开始<a href="http://www.history.com/this-day-in-history/ford-factory-workers-get-40-hour-week">实施在自己的汽车厂</a>。</p>
 
 <a name="L.........Work.Life.Balance......"></a>
 <h2>说好的Work Life Balance呢？</h2>
@@ -189,7 +189,7 @@
 
 <p>现在好了，发现其实全世界大多数从业者的日子都没什么大的区别（注意我这里说的从业者不包括各路水货混子嘴炮流选手），真是给了本座莫大的安慰。</p>
 
-<p>还在M记的时候，<a href="http://lenciel.cn/2012/03/do-not-burn-out-yourself/">我就挺关注burnout</a>的，因为自己确实有过经历，所以很怕带的团队里有小伙伴中招。</p>
+<p>还在M记的时候，<a href="http://lenciel.com/2012/03/do-not-burn-out-yourself/">我就挺关注burnout</a>的，因为自己确实有过经历，所以很怕带的团队里有小伙伴中招。</p>
 
 <p>出来创业为了大家不搞出内伤，我们不打卡不搞绩效不规定上下班时间不限制休假长度。</p>
 
@@ -207,9 +207,9 @@
   
   <entry>
     <title type="html"><![CDATA[Agile and Scrum, the Love Story]]></title>
-    <link href="http://lenciel.cn/2015/03/agile-and-scrum/"/>
+    <link href="http://lenciel.com/2015/03/agile-and-scrum/"/>
     <updated>2015-03-07T03:05:36+08:00</updated>
-    <id>http://lenciel.cn/2015/03/agile-and-scrum</id>
+    <id>http://lenciel.com/2015/03/agile-and-scrum</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2015_03/minime.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>本次吐槽献给Scrum Master们。毕竟了解了软件社区其实对Agile和Scrum的情绪已经有些像走到结尾的爱情故事，也许可以让大家在工作中不要把自己和大家SM得太惨。加上我们进新公司之后也在推行敏捷流程，不如整理一下本座对这套东西好鬼复杂的情绪&hellip;</p>
@@ -357,9 +357,9 @@
   
   <entry>
     <title type="html"><![CDATA[Disappointment & Confidence]]></title>
-    <link href="http://lenciel.cn/2015/02/the-confidence-and-disappointment/"/>
+    <link href="http://lenciel.com/2015/02/the-confidence-and-disappointment/"/>
     <updated>2015-02-28T14:02:26+08:00</updated>
-    <id>http://lenciel.cn/2015/02/the-confidence-and-disappointment</id>
+    <id>http://lenciel.com/2015/02/the-confidence-and-disappointment</id>
     <content type="html"><![CDATA[<p>I wrote this in English because it is a habbit I have: when I&rsquo;m frustrated, I wrote in English.</p>
 
 <p>It feels safer and warmer because it seems no one will take time to read it carefully when the language is switched.</p>
@@ -402,9 +402,9 @@
   
   <entry>
     <title type="html"><![CDATA[TLDR是什么?]]></title>
-    <link href="http://lenciel.cn/2014/11/the-stories-of-the-bible-in-tldr-form/"/>
+    <link href="http://lenciel.com/2014/11/the-stories-of-the-bible-in-tldr-form/"/>
     <updated>2014-11-24T10:47:31+08:00</updated>
-    <id>http://lenciel.cn/2014/11/the-stories-of-the-bible-in-tldr-form</id>
+    <id>http://lenciel.com/2014/11/the-stories-of-the-bible-in-tldr-form</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_11/bible_story.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>很多人问什么是<code>TL;DR</code>，其实是<code>Too long, didn't read</code>的缩写，一般用来暗示下面是一段摘要，如果你对这长得要死的文章的细节没兴趣，读读它就可以了。</p>

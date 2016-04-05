@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[@Lenciel]]></title>
-  <link href="http://lenciel.cn/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -14,11 +14,170 @@
 
   
   <entry>
+    <title type="html"><![CDATA[人工智能，奇点及其他(二)]]></title>
+    <link href="http://lenciel.com/2016/03/alphago-ai-part2/"/>
+    <updated>2016-03-20T16:01:14+08:00</updated>
+    <id>http://lenciel.com/2016/03/alphago-ai-part2</id>
+    <content type="html"><![CDATA[<p><a href="http://lenciel.com/2016/03/alphago-and-ai/">上一篇</a>留下了几个问题：</p>
+
+<ul>
+<li>人工智能和人类智慧究竟有没有一点点可比性？</li>
+<li>如果有，究竟发展到什么阶段了呢？</li>
+<li>既然发展到这里了，奇点到底存不存在？人类要不要完呢？</li>
+</ul>
+
+
+<p>人类有这些疑问是自然而然的，特别是人工智能目前由“认知派”扛大旗：既然是模拟大脑的工作原理，难免就要被拿来和大脑本身的机能做比较。</p>
+
+<p>本座谨慎地尝试一下从窘迫了几十年的“认知派”们为了科研经费发明的各种古里古怪的名词里面（比如因为AlphaGo蹿红的“深度学习”，就是辛顿在多年的神经网络研究受冷遇好不容易化到缘之后搞出来的新瓶装旧酒的词）脱身，站在更高层面上来回答一下这些问题。</p>
+
+<a name="L..........................."></a>
+<h3>人工智能和人类智慧</h3>
+
+<p>目前显然是没有什么可比性的。</p>
+
+<p>不说直觉，情感等等，就拿学习能力来说，李世乭在几盘对弈里面各种充满策略的尝试，还没有机器能完成：人类如何通过极少的样本迅速地提升对本来未知领域的学习能力，还是个谜。</p>
+
+<p>那为什么很多比我们靠近前沿的专家对如此羸弱的人工智能忧心忡忡呢？</p>
+
+<p>这很大程度上是基于人类科技发展速度的一个推断。</p>
+
+<p>比如这两天刘诗诗和吴奇隆结婚画面太感人，本座看到微信评论里面有一条“想穿越回清朝去见见四阿哥”被顶了几千次。</p>
+
+<p>不知道迷恋这类穿越戏码的人有没有想过一个问题：如果把社会把他/她作为神接受的程度叫做”装神认可度”，在时间轴上不同年代的人，要达到类似神的地位，需要往前穿越多少年？</p>
+
+<p>比如从现代穿回清代，召集当时社会最聪明的100个人，要用什么来证明自己是神呢？可控核聚变、相对论还是引力波？是不是手机就够了？要不飞机地铁？或者国家电网？</p>
+
+<p>在人类生活的方方面面，可以说出各种东西把当时最聪明的人骇到瞠目结舌。</p>
+
+<p>那么如果是一个清代的人要刷到相同的装神认可度，需要往前穿越多久呢？</p>
+
+<p>如果穿的时间距离差不多，到元明这些时候，那么还是在封建社会，可能并没有办法当神。但如果来到刀耕火种的农业社会，比如夏商周，只需要表演一次九九乘法表，可能性就会大大增加。</p>
+
+<p>那么如果是一个商朝的人要获得相同的装神接受度，需要往前穿越多久呢？</p>
+
+<p>大概穿越到石器时代都不太够，可能得往公元前几十万年还不会好好保存火的年代去了。</p>
+
+<p>这种装神接受度的剧烈变化，说明了两个问题：</p>
+
+<ol>
+<li>人类的进化过程是非常缓慢的</li>
+<li>人类科技发展是具有加速度的</li>
+</ol>
+
+
+<p>上篇提到过的明斯基的高徒，也是奇点理论的宣传者<a href="https://zh.wikipedia.org/wiki/%E9%9B%B7%E8%92%99%E5%BE%B7%C2%B7%E5%BA%93%E8%8C%A8%E9%AD%8F%E5%B0%94">库兹韦尔</a>的预测是：人类在2000到2020年20年间的科技发展成就，要相当于前面2000年的总和。</p>
+
+<p>也正是在“科技在以很大的加速度发展，人类自己的进化却非常缓慢”这样所有人都容易认可的理论支撑下，人工智能的威胁才被很多主流科学家拿出来讨论：他们觉得作为提供加速度的一方，还是有必要提醒一下缓慢的一方。</p>
+
+<p>比如斯蒂芬·霍金就说过：</p>
+
+<blockquote><p>一旦发展出相当于或者超越人类智慧的人工智能技术，它（人工智能）就会脱离控制，以不断加快的速度重新设计自己。但是人类受到缓慢生物进化的限制，无法与其竞争，甚至可能最终被超越。</p></blockquote>
+
+
+<p>那么，这种虽然现在还很蠢，但进化得超快的东西，究竟要多久超越我们呢？</p>
+
+<a name="L..........................."></a>
+<h3>人工智能的发展阶段</h3>
+
+<p>和那些科幻片里面自以为是最后遭遇灭顶之灾的人类一样，我们早就给“人工智能”的发展划分了严格的阶段：</p>
+
+<ul>
+<li>Artificial Narrow Intelligence (ANI)</li>
+<li>Artificial General Intelligence (AGI)</li>
+<li>Artificial Superintelligence (ASI)</li>
+</ul>
+
+
+<a name="ANI"></a>
+<h4>ANI</h4>
+
+<p>指能够有效处理的问题域有局限的AI，在很多文章里面也被称为<code>Weak AI</code>：除开下围棋下赢李世乭，其实我们每天的生活里面也充满了ANI：</p>
+
+<ul>
+<li>你的手机里面有siri这样的个人助手，有网易云音乐这种可以给你推荐你喜爱风格歌曲的音乐程序等等ANI系统</li>
+<li>当你在京东上搜了情趣内衣，你上其他网站的时候老是有情趣小窗弹出来：广告系统里面也到处都是ANI</li>
+<li>Google的在线翻译，微信的语音识别，Soundcloud的你哼它猜，凡此种种都是ANI</li>
+<li>但你其实连不上Google，因为GFW也是用ANI在<a href="http://arxiv.org/abs/1603.04865">识别加密流量</a>啊</li>
+<li>你觉得烦，扔掉电脑和手机，开车出门：车里面的ANI系统更多了，什么ABS，什么智能省油，而且，车都快不需要你开了你也知道吧</li>
+</ul>
+
+
+<p>如果我们仅仅处于ANI里面，好像也无伤大雅。甚至可能有些开心：因为机器做了枯燥的事情，我们则去处理需要创意的部分。</p>
+
+<p> Vernor Vinge, 1993<a href="https://www-rohan.sdsu.edu/faculty/vinge/misc/singularity.html">里面</a>说过：</p>
+
+<blockquote><p>We are on the edge of change comparable to the rise of human life on Earth.</p></blockquote>
+
+
+<p>这个变化，就是从ANI到AGI的变化。</p>
+
+<a name="AGI"></a>
+<h4>AGI</h4>
+
+<p>AGI，在AlphaGo的总结里面也<a href="https://googleblog.blogspot.hk/2016/03/what-we-learned-in-seoul-with-alphago.html">提到了</a>，很多文章里面也被称为<code>Strong AI</code>，Linda Gottfredson对它有个比较正式的定义：</p>
+
+<blockquote><p>A very general mental capability that, among other things, involves the ability to reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience.</p></blockquote>
+
+
+<p>从ANI到AGI，难点在哪里？为什么计算，策略，语言翻译等等，对电脑来说越来越容易；视觉，感觉，运动，和预测，对电脑来说仍然很难？</p>
+
+<p>Knuth老爹的评价最好懂：</p>
+
+<blockquote><p>AI has by now succeeded in doing essentially everything that requires ‘thinking’ but has failed to do most of what people and animals do ‘without thinking.&#8217;</p></blockquote>
+
+
+<p>的确，我们对自己的大脑是如何工作的本来就不清楚。当我们伸手去撩妹的时候，这么个看起来不需要“过脑”的动作，其实是需要肌肉，神经，骨骼由大脑统一指挥，由几百万年进化形成的复杂系统配合完成的。对于计算机来说，如果看不准，或者力道控制不好，可能撩出骨髓穿刺等各种令人遗憾的效果。</p>
+
+<p>即像“看准”，“捏稳”等等范畴的问题解决了，那也只是“认识世界”，要达到人类的智力水平，更难的事情摆在后面：感受世界。</p>
+
+<p>高兴、满意、解脱和苟且要如何区别？眉来眼去之后要不要跟一个欲说还休？《霸王别姬》比《霸王硬上弓》好在哪里？</p>
+
+<a name="L...ANI...AGI"></a>
+<h4>从ANI到AGI</h4>
+
+<p>看起来如此遥不可及的目标，靠人类科技的大爆发怎么到达？</p>
+
+<a name="L.................."></a>
+<h5>计算能力爆炸</h5>
+
+<p>科学家认为人类大脑的计算能力是每秒10的16次方这个量级的。</p>
+
+<p>确实很变态，但其实已经有一台计算机已经超越了这个数字：那就是中国国防科大研制的<a href="https://www.zhihu.com/question/21217971">天河二</a>。</p>
+
+<p>当然，造价一亿美金，占地720平方米，24兆瓦功耗（满配跑一年电费1.5亿人民币）不是一个很容易接受的超越方式对不对？</p>
+
+<p>但不要忘了摩尔定律：假设计算能力会以每十年便宜100倍的速度降价，所以高高在上的模拟人脑需要的计算能力，很快就不是问题了。</p>
+
+<a name="L..............."></a>
+<h4>更巧妙的解</h4>
+
+<p>AI Caliber 2) Artificial General Intelligence (AGI): Sometimes referred to as Strong AI, or Human-Level AI, Artificial General Intelligence refers to a computer that is as smart as a human across the board—a machine that can perform any intellectual task that a human being can. Creating AGI is a much harder task than creating ANI, and we’re yet to do it. Professor Linda Gottfredson describes intelligence as “a very general mental capability that, among other things, involves the ability to reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience.” AGI would be able to do all of those things as easily as you can.</p>
+
+<p>AI Caliber 3) Artificial Superintelligence (ASI): Oxford philosopher and leading AI thinker Nick Bostrom defines superintelligence as “an intellect that is much smarter than the best human brains in practically every field, including scientific creativity, general wisdom and social skills.” Artificial Superintelligence ranges from a computer that’s just a little smarter than a human to one that’s trillions of times smarter—across the board. ASI is the reason the topic of AI is such a spicy meatball and why the words “immortality” and “extinction” will both appear in these posts multiple times.</p>
+
+<a name="L.................................ANI"></a>
+<h4>目前的阶段：世界已经被ANI</h4>
+
+<p>在特定的问题域，机器已经远远超过了人类，因此我们日常生活中遍布着ANI：</p>
+
+<a name="L......"></a>
+<h3>奇点</h3>
+
+<p>Secondly, you’ve probably heard the term “singularity” or “technological singularity.” This term has been used in math to describe an asymptote-like situation where normal rules no longer apply. It’s been used in physics to describe a phenomenon like an infinitely small, dense black hole or the point we were all squished into right before the Big Bang. Again, situations where the usual rules don’t apply. In 1993, Vernor Vinge wrote a famous essay in which he applied the term to the moment in the future when our technology’s intelligence exceeds our own—a moment for him when life as we know it will be forever changed and normal rules will no longer apply. Ray Kurzweil then muddled things a bit by defining the singularity as the time when the Law of Accelerating Returns has reached such an extreme pace that technological progress is happening at a seemingly-infinite pace, and after which we’ll be living in a whole new world. I found that many of today’s AI thinkers have stopped using the term, and it’s confusing anyway, so I won’t use it much here (even though we’ll be focusing on that idea throughout).</p>
+
+<p>站在历史的进程里面，如果是大牛的视线是这样的：</p>
+
+<p>而≤</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[人工智能，奇点及其他(一)]]></title>
-    <link href="http://lenciel.cn/2016/03/alphago-and-ai/"/>
+    <link href="http://lenciel.com/2016/03/alphago-and-ai/"/>
     <updated>2016-03-15T02:59:42+08:00</updated>
-    <id>http://lenciel.cn/2016/03/alphago-and-ai</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2016_03/go_ai.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+    <id>http://lenciel.com/2016/03/alphago-and-ai</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2016_03/go_ai.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>3月14日，是个很魔性的日子：这天是爱因斯坦的生日，也是卡尔马克思的忌日，还是“π日&#8221;——纪念圆周率弄的“数学节&#8221;，忒魔性。</p>
 
@@ -137,10 +296,10 @@
   
   <entry>
     <title type="html"><![CDATA[从Markdown列表转换成脑图]]></title>
-    <link href="http://lenciel.cn/2016/02/markdown-to-mindmap/"/>
+    <link href="http://lenciel.com/2016/02/markdown-to-mindmap/"/>
     <updated>2016-02-25T21:19:33+08:00</updated>
-    <id>http://lenciel.cn/2016/02/markdown-to-mindmap</id>
-    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
+    <id>http://lenciel.com/2016/02/markdown-to-mindmap</id>
+    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
 
 <p>图片形式的文档都有一个麻烦的地方，就是不太好做版本控制和review。比如如果本座来整理Web前端技能图谱，总希望：</p>
 
@@ -182,25 +341,25 @@
 
 <p>这样贴到MindNode里面，就会生成下面的脑图：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2016_02/mindmap_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2016_02/mindmap_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
-<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="http://lenciel.cn/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
+<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
 
 <p>然后，通过脚本把文档里面的<code>#</code>转换成<code>\t</code>，就可以得到能够直接粘贴到MindNode里面生成脑图的文本了。如果你是使用Mac，还可以直接把转换脚本创建成一个<code>service</code>通过<code>Automator</code>安装，这样你在任何一个Markdown文档上选中需要生成脑图的部分，右键就可以了：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2016_02/mindmap_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2016_02/mindmap_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>还有个未尽事宜就是在转换脚本里面加一个步骤：Markdown里面的链接，生成图片的时候把方括号、圆括号以及圆括号里面的链接去掉，不然就太难看了：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2016_02/mindmap_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2016_02/mindmap_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[使用Chrome自定义搜索引擎快速查找资源]]></title>
-    <link href="http://lenciel.cn/2016/02/how-can-everybody-use-chrome/"/>
+    <link href="http://lenciel.com/2016/02/how-can-everybody-use-chrome/"/>
     <updated>2016-02-20T11:53:34+08:00</updated>
-    <id>http://lenciel.cn/2016/02/how-can-everybody-use-chrome</id>
+    <id>http://lenciel.com/2016/02/how-can-everybody-use-chrome</id>
     <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用<code>带参数Google搜索</code>+<code>Chrome快捷搜索入口</code>，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
 
 <p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
@@ -245,7 +404,7 @@
 
 <p>在地址栏里面敲入<code>chrome://settings/</code>，然后进入搜索引擎的配置你就可以看到它们：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2016_02/manage_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2016_02/manage_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <a name="L................................."></a>
 <h3>创建使用自定义搜索引擎</h3>
@@ -258,7 +417,7 @@
 
 <p>这个时候你只需要在搜索引擎列表的末尾添加一个自定义项：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2016_02/custom_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2016_02/custom_search_engine.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>比如我们添加一个<code>Keyword</code>是<code>panb</code>的搜索引擎，它的URL是：</p>
 
@@ -274,15 +433,15 @@
 
 <p>具体使用过程请参考下面这个视频（略需要几秒加载）：</p>
 
-<p><video width='640' height='320' preload='none' controls poster='http://lenciel.cn/downloads/images/2016_02/chrome_custom_search.png'><source src='http://lenciel.cn/downloads/video/chrome_custom_search.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video></p>
+<p><video width='640' height='320' preload='none' controls poster='http://lenciel.com/downloads/images/2016_02/chrome_custom_search.png'><source src='http://lenciel.com/downloads/video/chrome_custom_search.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[记一次成功的过年]]></title>
-    <link href="http://lenciel.cn/2016/02/happy-new-year/"/>
+    <link href="http://lenciel.com/2016/02/happy-new-year/"/>
     <updated>2016-02-13T22:41:48+08:00</updated>
-    <id>http://lenciel.cn/2016/02/happy-new-year</id>
+    <id>http://lenciel.com/2016/02/happy-new-year</id>
     <content type="html"><![CDATA[<p>过年在三亚呆了一周。</p>
 
 <p>虽然中学毕业就已经习惯了在外面跑，像今年这样一大家子人到外地过年，却还是头次。</p>
@@ -341,9 +500,9 @@
   
   <entry>
     <title type="html"><![CDATA[提取微信语音消息]]></title>
-    <link href="http://lenciel.cn/2015/12/extract-audio-message-from-wechat/"/>
+    <link href="http://lenciel.com/2015/12/extract-audio-message-from-wechat/"/>
     <updated>2015-12-24T13:05:21+08:00</updated>
-    <id>http://lenciel.cn/2015/12/extract-audio-message-from-wechat</id>
+    <id>http://lenciel.com/2015/12/extract-audio-message-from-wechat</id>
     <content type="html"><![CDATA[<a name="Why."></a>
 <h3>Why?</h3>
 
@@ -379,7 +538,7 @@
 
 <p>常温常压下我并不需要导出微信的语音，之所以有这个需求是因为蒙爷在三亚经常用微信跟我们唠嗑：</p>
 
-<p><audio controls loop preload><source src="http://lenciel.cn/downloads/audio/mm_voice.mp3"></audio></p>
+<p><audio controls loop preload><source src="http://lenciel.com/downloads/audio/mm_voice.mp3"></audio></p>
 
 <p>听到这样销魂的声音你就算不想保存，也想要转发，对不对？</p>
 
@@ -396,19 +555,19 @@
 
 <p>使用iTunes创建一个不加密的备份，然后连接iExplorer，会看到打开iTunes备份的选项：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_12/extract_wechat_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_12/extract_wechat_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>打开后在<code>App</code>文件夹下面导出微信文件夹：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_12/extract_wechat_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_12/extract_wechat_2.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>在导出的文件夹下面有个Audio目录，你可以根据语音消息的数量大概确认需要导出的目录（目录是个hash），然后到<code>DB/MM.sqlite</code>下面去打开<code>Chat_[hash]</code>这个表里面，看看消息来确认：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_12/extract_wechat_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_12/extract_wechat_3.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>二进制查看其中的任意一个文件，可以看到是<a href="https://en.wikipedia.org/wiki/SILK">SILK</a>编码的（skype早期版本包括lync都是使用的这种编码方式）：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_12/extract_wechat_4.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_12/extract_wechat_4.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>接下来你只需要按照<a href="https://github.com/lenciel/wechat2mp3">repo</a>里面的指导(愿主保佑你是用Mac因为那最简单)来进行文件转换就可以了。</p>
 ]]></content>
@@ -416,9 +575,9 @@
   
   <entry>
     <title type="html"><![CDATA[卫豆]]></title>
-    <link href="http://lenciel.cn/2015/10/vivid/"/>
+    <link href="http://lenciel.com/2015/10/vivid/"/>
     <updated>2015-10-24T03:30:20+08:00</updated>
-    <id>http://lenciel.cn/2015/10/vivid</id>
+    <id>http://lenciel.com/2015/10/vivid</id>
     <content type="html"><![CDATA[<p>每个人的生命中都有一个胖子。</p>
 
 <p>我的胖子叫卫豆。</p>
@@ -481,7 +640,7 @@
 
 <p>因为是大学生涯最后一届比赛，我心情并不太好，就有些嫌弃他显然已经41D以上的胸膛。所以合影的时候我们像两个文明人一样相拥而立。</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_10/vivid.png" title="Don't touch me..." alt="vivid" />
+<p><img src="http://lenciel.com/downloads/images/2015_10/vivid.png" title="Don't touch me..." alt="vivid" />
 <em>2006年绵阳 卫豆和我</em></p>
 
 <p>后来我也工作了，假期虽然都会约出来见见，但我们再也没有机会在球场上碰面，也就失去了合影和拥抱的理由。</p>
@@ -584,10 +743,10 @@
   
   <entry>
     <title type="html"><![CDATA[关于工作与生活]]></title>
-    <link href="http://lenciel.cn/2015/10/the-solution-of-work-life-balance/"/>
+    <link href="http://lenciel.com/2015/10/the-solution-of-work-life-balance/"/>
     <updated>2015-10-04T00:06:16+08:00</updated>
-    <id>http://lenciel.cn/2015/10/the-solution-of-work-life-balance</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_10/dilbert_work_life_balance.png" title="Don't touch me..." alt="work life balance" /></p>
+    <id>http://lenciel.com/2015/10/the-solution-of-work-life-balance</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2015_10/dilbert_work_life_balance.png" title="Don't touch me..." alt="work life balance" /></p>
 
 <p>前面说了，<a href="http://lenciel.cn/2015/10/the-myth-of-work-life-balance/">Work Life Balance的神话其实并不靠谱</a>。</p>
 
@@ -681,7 +840,7 @@
 
 <p>组织和个人努力的方向，都应该是让有效时间内输出最大化：说简单一点儿，即便有必要加班，目的都应该是为了能尽早达到按时下班，而不是在公司里面形成一种”多花点儿时间就能做出更多东西”的错觉。</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_10/no_one_wants_more_work.png" alt="" width="420" height="294" align="left" style="margin:5px"/></p>
+<p><img src="http://lenciel.com/downloads/images/2015_10/no_one_wants_more_work.png" alt="" width="420" height="294" align="left" style="margin:5px"/></p>
 
 <p>拿我个人来说，很长一段时间以来都很忙，每周工作时间常常超过80个小时。虽然也知道<a href="http://blog.sina.com.cn/s/blog_5d7e3c150100h2c8.html">人生是玩5个球</a>之类的道理，但却并不觉得自己的选择有什么问题：目前确实有那么多事情需要处理，自己又很愿意花时间去处理它们。</p>
 
@@ -708,10 +867,10 @@
   
   <entry>
     <title type="html"><![CDATA[Work Life Balance的神话]]></title>
-    <link href="http://lenciel.cn/2015/10/the-myth-of-work-life-balance/"/>
+    <link href="http://lenciel.com/2015/10/the-myth-of-work-life-balance/"/>
     <updated>2015-10-02T22:35:05+08:00</updated>
-    <id>http://lenciel.cn/2015/10/the-myth-of-work-life-balance</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_10/work_life_balance.jpg" title="Don't touch me..." alt="work life balance" /></p>
+    <id>http://lenciel.com/2015/10/the-myth-of-work-life-balance</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2015_10/work_life_balance.jpg" title="Don't touch me..." alt="work life balance" /></p>
 
 <p>最近有几个事情让我在这方面想了很多。</p>
 
@@ -743,7 +902,7 @@
 
 <p>包括这次Amazon的新闻一出，先后参与了Facebook和Asana的创建，31岁就已经攒下79亿美刀身家的<a href="http://www.forbeschina.com/review/billionaires/home/106757.shtml">达斯汀·莫斯科维茨</a>就发了<a href="https://medium.com/life-learning/work-hard-live-well-ead679cb506d">一篇雄文</a>表达自己的态度：如果能够再来一次，他希望自己在创建Facebook的过程中能够过得轻松一些。</p>
 
-<p>文章里面提到的那个一周不能工作超过40个小时的理论，我<a href="http://lenciel.cn/2013/05/the-myth-of-productivity/">之前也唠叨</a>过。实际上这个结论福特在1926年就调查得出了，并且开始<a href="http://www.history.com/this-day-in-history/ford-factory-workers-get-40-hour-week">实施在自己的汽车厂</a>。</p>
+<p>文章里面提到的那个一周不能工作超过40个小时的理论，我<a href="http://lenciel.com/2013/05/the-myth-of-productivity/">之前也唠叨</a>过。实际上这个结论福特在1926年就调查得出了，并且开始<a href="http://www.history.com/this-day-in-history/ford-factory-workers-get-40-hour-week">实施在自己的汽车厂</a>。</p>
 
 <a name="L.........Work.Life.Balance......"></a>
 <h2>说好的Work Life Balance呢？</h2>
@@ -758,7 +917,7 @@
 
 <p>现在好了，发现其实全世界大多数从业者的日子都没什么大的区别（注意我这里说的从业者不包括各路水货混子嘴炮流选手），真是给了本座莫大的安慰。</p>
 
-<p>还在M记的时候，<a href="http://lenciel.cn/2012/03/do-not-burn-out-yourself/">我就挺关注burnout</a>的，因为自己确实有过经历，所以很怕带的团队里有小伙伴中招。</p>
+<p>还在M记的时候，<a href="http://lenciel.com/2012/03/do-not-burn-out-yourself/">我就挺关注burnout</a>的，因为自己确实有过经历，所以很怕带的团队里有小伙伴中招。</p>
 
 <p>出来创业为了大家不搞出内伤，我们不打卡不搞绩效不规定上下班时间不限制休假长度。</p>
 
@@ -776,12 +935,12 @@
   
   <entry>
     <title type="html"><![CDATA[好的引导流程胜过10个新功能]]></title>
-    <link href="http://lenciel.cn/2015/06/the-next-fucking-new-feature/"/>
+    <link href="http://lenciel.com/2015/06/the-next-fucking-new-feature/"/>
     <updated>2015-06-26T13:55:49+08:00</updated>
-    <id>http://lenciel.cn/2015/06/the-next-fucking-new-feature</id>
+    <id>http://lenciel.com/2015/06/the-next-fucking-new-feature</id>
     <content type="html"><![CDATA[<p>SNS的有趣之处就在于，经常你会看到一些话，让你对着屏幕点头不已。比如下面这句：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_06/the_next_new_feature.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_06/the_next_new_feature.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>Joshua Porter的这段话看起来是吐槽，但又实实在在的发生在参与创业大潮的你我身边。在2000年互联网泡沫破灭之前，那些最终幻灭的高科技公司的发展轨迹无非是：</p>
 
@@ -813,7 +972,7 @@
 
 <p>Hmmm&hellip;所以也难免有人会说这其实没有什么不同嘛：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_06/chuangyeban.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_06/chuangyeban.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>然而无论预警者的声音再大声，作为创业者这种&#8221;启动-失败-再启动&#8221;的反复试错的精神都已经成为了我们的信条。的确，就跟你打开一张刮刮乐发现没奖时一样，如果我们做出来的项目没有人用，那么再来一次无疑是最轻松最诱人的选择。</p>
 
@@ -824,7 +983,7 @@
 
 <p>下面这个曲线是从业者们最不愿意面对的曲线，展示了从流量导入到一个月后可怜的留存数据：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_06/the_tragic_curve.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_06/the_tragic_curve.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <ul>
 <li>1000个UV访问</li>
@@ -878,10 +1037,10 @@
   
   <entry>
     <title type="html"><![CDATA[Django其实不是MVC]]></title>
-    <link href="http://lenciel.cn/2015/03/django-is-not-that-much-mvc/"/>
+    <link href="http://lenciel.com/2015/03/django-is-not-that-much-mvc/"/>
     <updated>2015-03-30T11:36:24+08:00</updated>
-    <id>http://lenciel.cn/2015/03/django-is-not-that-much-mvc</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_03/mvc.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
+    <id>http://lenciel.com/2015/03/django-is-not-that-much-mvc</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2015_03/mvc.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>很多时候<a href="https://www.djangoproject.com/">Django</a>都被称为是一个MVC框架 — <code>Model-View-Controller</code>。这样说的人要么就是已经熟悉过其他的MVC框架，所以看到Django有自己的Template系统和<code>views.py</code>来放各种逻辑代码，就想当然的认为Django也是；要么就是其实没有真正实践过Django，从各种其他的错误文档里面看到或者是听说的。</p>
 
@@ -961,10 +1120,10 @@
   
   <entry>
     <title type="html"><![CDATA[Agile and Scrum, the Love Story]]></title>
-    <link href="http://lenciel.cn/2015/03/agile-and-scrum/"/>
+    <link href="http://lenciel.com/2015/03/agile-and-scrum/"/>
     <updated>2015-03-07T03:05:36+08:00</updated>
-    <id>http://lenciel.cn/2015/03/agile-and-scrum</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_03/minime.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+    <id>http://lenciel.com/2015/03/agile-and-scrum</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2015_03/minime.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>本次吐槽献给Scrum Master们。毕竟了解了软件社区其实对Agile和Scrum的情绪已经有些像走到结尾的爱情故事，也许可以让大家在工作中不要把自己和大家SM得太惨。加上我们进新公司之后也在推行敏捷流程，不如整理一下本座对这套东西好鬼复杂的情绪&hellip;</p>
 
@@ -997,11 +1156,11 @@
 
 <p>比如下面是一次提交之后Gitlab上提供的查看diff的界面：通过这样的方式review整个改动，比小伙伴坐在自己怀里结对编码要清楚得多（而且小伙伴坐在怀里的时候引发的羞赧常常让你难以把他的错误直接打到他脸上不是么）：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_03/gitlab_diff.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_03/gitlab_diff.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>所以我会经常在公司里面鼓动大家把输出都落到代码和文档里面。经过一段时间，就会慢慢看到有人在群里面问“那个什么什么是怎么回事”的时候，后面的回复是“你去看看confluence上xxx页面”或者是“这个是jira的xxx问题单讨论的”。</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_03/written_words_is_better.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_03/written_words_is_better.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>如果你的员工经常需要重复回答同一个问题，包括来个新员工这个环境怎么配那个Wifi的密码还需要人告诉他/她，你也好意思说自己是敏捷的？</p>
 
@@ -1040,7 +1199,7 @@
 
 <p>这也就是<a href="http://en.wikipedia.org/wiki/Marshall_McLuhan">Marshall McLuhan</a>的著名论断<code>The medium is the message</code> （<a href="http://www.wired.com">Wired</a>杂志把他视为办刊的精神导师，我觉得搞互联网的人都该看看他的书）:</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_03/mcluhan.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_03/mcluhan.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <a name="Daily.StandUp.or.Daily.FuckUp"></a>
 <h2>Daily StandUp or Daily FuckUp</h2>
@@ -1111,9 +1270,9 @@
   
   <entry>
     <title type="html"><![CDATA[Disappointment & Confidence]]></title>
-    <link href="http://lenciel.cn/2015/02/the-confidence-and-disappointment/"/>
+    <link href="http://lenciel.com/2015/02/the-confidence-and-disappointment/"/>
     <updated>2015-02-28T14:02:26+08:00</updated>
-    <id>http://lenciel.cn/2015/02/the-confidence-and-disappointment</id>
+    <id>http://lenciel.com/2015/02/the-confidence-and-disappointment</id>
     <content type="html"><![CDATA[<p>I wrote this in English because it is a habbit I have: when I&rsquo;m frustrated, I wrote in English.</p>
 
 <p>It feels safer and warmer because it seems no one will take time to read it carefully when the language is switched.</p>
@@ -1156,12 +1315,12 @@
   
   <entry>
     <title type="html"><![CDATA[《鸟人》]]></title>
-    <link href="http://lenciel.cn/2015/02/birdman/"/>
+    <link href="http://lenciel.com/2015/02/birdman/"/>
     <updated>2015-02-25T20:02:27+08:00</updated>
-    <id>http://lenciel.cn/2015/02/birdman</id>
-    <content type="html"><![CDATA[<p><img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_1.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_2.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.cn/downloads/images/2015_02/birdman_3.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
+    <id>http://lenciel.com/2015/02/birdman</id>
+    <content type="html"><![CDATA[<p><img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_1.jpg" title="Don't touch me..." alt="Vhost threshold" />
+<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_2.jpg" title="Don't touch me..." alt="Vhost threshold" />
+<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_3.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 
 <p>今年奥斯卡最佳电影颁给了《鸟人》，喜欢电影的小伙伴们纷纷起立&hellip;</p>
@@ -1215,41 +1374,41 @@
   
   <entry>
     <title type="html"><![CDATA[Let Me Show You the World]]></title>
-    <link href="http://lenciel.cn/2015/02/let-me-show-you-the-world/"/>
+    <link href="http://lenciel.com/2015/02/let-me-show-you-the-world/"/>
     <updated>2015-02-23T21:08:02+08:00</updated>
-    <id>http://lenciel.cn/2015/02/let-me-show-you-the-world</id>
+    <id>http://lenciel.com/2015/02/let-me-show-you-the-world</id>
     <content type="html"><![CDATA[<p>之前提过有一些机构<a href="http://www.ppgis.net/imagery.htm">开放</a>了卫星云图，可以用GIS信息通过接口去获取。从天上看，地球还是挺美的，很多都可以用来做手机的桌面，如果你需要下载无损的版本：<a href="http://pan.baidu.com/s/1sjuiOqx">click</a>，分享码:<code>gdyv</code>：</p>
 
-<p><link rel="stylesheet" type="text/css" href="http://lenciel.cn/downloads/static/css/elasticstack_slider.css" /></p>
+<p><link rel="stylesheet" type="text/css" href="http://lenciel.com/downloads/static/css/elasticstack_slider.css" /></p>
 
 <div class="slider-container">
     <ul id="elasticstack" class="elasticstack">
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r19961_39_2013.jpg" alt="01"/><h6>Lakes Ounianga - 乍得</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1460_39_2006.jpg" alt="02"/><h6>Barbuda - 安巴</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1585_39_2000.jpg" alt="03"/><h6>Maalhosmadulu Atoll - 马尔代夫</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r4937_39_2012.jpg" alt="04"/><h6>Pleiades Mon Saint Michel - 法国</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r870_39_2002.jpg" alt="05"/><h6>Nazca Lines - 秘鲁</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r950_39_2005.jpg" alt="01"/><h6>Chott El Djerid - 突尼斯</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1315_39_2002.jpg" alt="01"/><h6>Geba River Guinea - 比绍</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1385_39_2006.jpg" alt="01"/><h6>Dasht E Kavir - 伊朗</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1570_39_1995.jpg" alt="01"/><h6>Rub Al Khali - 沙特</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1560_39_2000.jpg" alt="01"/><h6>Namib Desert - 纳米比亚</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1650_39_1986.jpg" alt="01"/><h6>Tchernobyl - 乌克兰</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1675_39_2007.jpg" alt="01"/><h6>Nunavut - 加拿大</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r16692_39_2012.jpg" alt="01"/><h6>Gaborone Bostwana - 意大利</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r495_39_2002.jpg" alt="01"/><h6>Amsterdam - 荷兰</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r16680_39_2012.jpg" alt="01"/><h6>Uluru - 澳大利亚</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1140_39_2007.jpg" alt="01"/><h6>Al Wusta - 阿曼</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1080_39_2006.jpg" alt="01"/><h6>Darfur - 苏丹</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r920_39_2004.jpg" alt="01"/><h6>Taklamakan - 中国</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1580_39_2004.jpg" alt="01"/><h6>Grisons Region - 瑞士</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1660_39_2011.jpg" alt="01"/><h6>Puyehue Volcano - 智利</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1530_39_1999.jpg" alt="01"/><h6>Sahara - 马里</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r34229_39_2013.jpg" alt="01"/><h6>Spitzberg Glacier - 挪威</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r825_39_2006.jpg" alt="01"/><h6>Everglades National Park - 美国</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r20048_39_2013.jpg" alt="01"/><h6>Bissagos - 几内亚</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1400_39_2003.jpg" alt="01"/><h6>Wadi Rum - 约旦</h6></li>
-        <li><img src="http://lenciel.cn/downloads/images/2015_02/satellite_images/r1270_39_2004.jpg" alt="01"/><h6>Laguna Colorada 玻利维亚</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r19961_39_2013.jpg" alt="01"/><h6>Lakes Ounianga - 乍得</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1460_39_2006.jpg" alt="02"/><h6>Barbuda - 安巴</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1585_39_2000.jpg" alt="03"/><h6>Maalhosmadulu Atoll - 马尔代夫</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r4937_39_2012.jpg" alt="04"/><h6>Pleiades Mon Saint Michel - 法国</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r870_39_2002.jpg" alt="05"/><h6>Nazca Lines - 秘鲁</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r950_39_2005.jpg" alt="01"/><h6>Chott El Djerid - 突尼斯</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1315_39_2002.jpg" alt="01"/><h6>Geba River Guinea - 比绍</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1385_39_2006.jpg" alt="01"/><h6>Dasht E Kavir - 伊朗</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1570_39_1995.jpg" alt="01"/><h6>Rub Al Khali - 沙特</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1560_39_2000.jpg" alt="01"/><h6>Namib Desert - 纳米比亚</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1650_39_1986.jpg" alt="01"/><h6>Tchernobyl - 乌克兰</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1675_39_2007.jpg" alt="01"/><h6>Nunavut - 加拿大</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r16692_39_2012.jpg" alt="01"/><h6>Gaborone Bostwana - 意大利</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r495_39_2002.jpg" alt="01"/><h6>Amsterdam - 荷兰</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r16680_39_2012.jpg" alt="01"/><h6>Uluru - 澳大利亚</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1140_39_2007.jpg" alt="01"/><h6>Al Wusta - 阿曼</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1080_39_2006.jpg" alt="01"/><h6>Darfur - 苏丹</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r920_39_2004.jpg" alt="01"/><h6>Taklamakan - 中国</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1580_39_2004.jpg" alt="01"/><h6>Grisons Region - 瑞士</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1660_39_2011.jpg" alt="01"/><h6>Puyehue Volcano - 智利</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1530_39_1999.jpg" alt="01"/><h6>Sahara - 马里</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r34229_39_2013.jpg" alt="01"/><h6>Spitzberg Glacier - 挪威</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r825_39_2006.jpg" alt="01"/><h6>Everglades National Park - 美国</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r20048_39_2013.jpg" alt="01"/><h6>Bissagos - 几内亚</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1400_39_2003.jpg" alt="01"/><h6>Wadi Rum - 约旦</h6></li>
+        <li><img src="http://lenciel.com/downloads/images/2015_02/satellite_images/r1270_39_2004.jpg" alt="01"/><h6>Laguna Colorada 玻利维亚</h6></li>
     </ul>
 </div>
 
@@ -1259,13 +1418,13 @@
 
 
 
-<script src="http://lenciel.cn/downloads/static/js/draggabilly.pkgd.min.js"></script>
+<script src="http://lenciel.com/downloads/static/js/draggabilly.pkgd.min.js"></script>
 
 
-<script src="http://lenciel.cn/downloads/static/js/modernizr.custom.js"></script>
+<script src="http://lenciel.com/downloads/static/js/modernizr.custom.js"></script>
 
 
-<script src="http://lenciel.cn/downloads/static/js/elastiStack.js"></script>
+<script src="http://lenciel.com/downloads/static/js/elastiStack.js"></script>
 
 
 <script>
@@ -1279,9 +1438,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sam Altman给创业者的建议]]></title>
-    <link href="http://lenciel.cn/2015/02/startup-advices-from-sam-altman/"/>
+    <link href="http://lenciel.com/2015/02/startup-advices-from-sam-altman/"/>
     <updated>2015-02-22T22:22:00+08:00</updated>
-    <id>http://lenciel.cn/2015/02/startup-advices-from-sam-altman</id>
+    <id>http://lenciel.com/2015/02/startup-advices-from-sam-altman</id>
     <content type="html"><![CDATA[<p>去年创业界的一大盛事就是YC的CEO，斯坦福的退学生<a href="http://blog.samaltman.com/">Sam Altman</a>联手斯坦福大学，开设了课程CS183B：<a href="http://startupclass.samaltman.com/">How To Start A Startup</a>。十周共20节课程请来了各路顶尖人才，从创意、产品、团队和执行这四个YC认为创业最关键的维度分享了如何进行创业。</p>
 
 <p>如果你自己是创业者，个人建议是整个课程可以好好看一遍，反正就算你不会翻墙，因为YC巨大的号召力，国内也有人为这个课程专门做了<a href="http://startupclass.club/">镜像网站</a>并配了字幕。</p>
@@ -1328,10 +1487,10 @@
   
   <entry>
     <title type="html"><![CDATA[Palm4fun Tech Stack Review Part II]]></title>
-    <link href="http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others/"/>
+    <link href="http://lenciel.com/2015/02/p4f-tech-stack-part-2-others/"/>
     <updated>2015-02-20T14:11:19+08:00</updated>
-    <id>http://lenciel.cn/2015/02/p4f-tech-stack-part-2-others</id>
-    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
+    <id>http://lenciel.com/2015/02/p4f-tech-stack-part-2-others</id>
+    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
 
 <a name="Application..amp..Data"></a>
 <h2>Application &amp; Data</h2>
@@ -1341,7 +1500,7 @@
 <a name="Application.Hosting"></a>
 <h3>Application Hosting</h3>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_app_data_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_app_data_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
 
 <p>我们在选择云的时候，也有试用过“久负盛名”的几家大的。</p>
 
@@ -1361,7 +1520,7 @@
 <a name="Languages..amp..Frameworks"></a>
 <h3>Languages &amp; Frameworks</h3>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_app_data_2.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_app_data_2.png" title="Don't touch me..." alt="stack_devops_1" /></p>
 
 <p>这张图再画长一倍也不一定能画完，因为这部分特别是Web前端技术的变动实在是太大了。感觉JavaScript社区换框架、方法论、编译工具甚至是VM就像足球运动员换袜子一样勤。</p>
 
@@ -1384,28 +1543,28 @@
 <a name="Assets..amp..Media"></a>
 <h3>Assets &amp; Media</h3>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_app_data_3.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_app_data_3.png" title="Don't touch me..." alt="stack_devops_1" /></p>
 
 <p>这方面没什么好说的，一开始我们用的就是UCloud自带的服务。后面为Testbird开发项目的时候接触到了七牛云。不得不吐槽一下七牛云还处于快速增长期，不论是提供的服务的稳定性，还是文档更新的及时性，都还有很多值得提高的地方。</p>
 
 <a name="Data.Storage"></a>
 <h3>Data Storage</h3>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_app_data_4.png" title="Don't touch me..." alt="stack_app_data_4" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_app_data_4.png" title="Don't touch me..." alt="stack_app_data_4" /></p>
 
 <p>数据库我们一般本地开发用SQLite，stage和prod服务器用MySQL。之所以没有选择Postgresql是因为它那些很不错的功能我们在项目里面还没有需要，所以就偷懒选择了自己更熟悉的系统。</p>
 
 <a name="Libraries"></a>
 <h3>Libraries</h3>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_app_data_5.png" title="Don't touch me..." alt="stack_app_data_5" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_app_data_5.png" title="Don't touch me..." alt="stack_app_data_5" /></p>
 
 <p>这张图也是很难画完整的，因为它一直在变。不过我们基本上用ACE封装了一套自己的UI框架，对提高开发效率还是非常有用的。</p>
 
 <a name="Utilities"></a>
 <h2>Utilities</h2>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_utilities.png" title="Don't touch me..." alt="stack_utilities" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_utilities.png" title="Don't touch me..." alt="stack_utilities" /></p>
 
 <p>都是些中规中矩的选择，因为好的服务都在国内被封堵得比较彻底，不是吗？</p>
 
@@ -1418,7 +1577,7 @@
 <a name="Business.Tools"></a>
 <h2>Business Tools</h2>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_business_tools.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_business_tools.png" title="Don't touch me..." alt="stack_devops_1" /></p>
 
 <p>其实Trello和Slack这样的工具用好一个就足以撑起一家中等规模的公司了。可惜因为经常被墙，很多不能自己翻墙的同事或者客户用起来倍感艰辛。</p>
 
@@ -1430,10 +1589,10 @@
   
   <entry>
     <title type="html"><![CDATA[Goodbye Palm4fun, and the Tech Stack Review Part I]]></title>
-    <link href="http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops/"/>
+    <link href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/"/>
     <updated>2015-01-04T14:44:23+08:00</updated>
-    <id>http://lenciel.cn/2015/01/p4f-tech-stack-part-1-devops</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2015_01/goodbye_palm4fun.png" title="Don't touch me..." alt="goodbye" /></p>
+    <id>http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2015_01/goodbye_palm4fun.png" title="Don't touch me..." alt="goodbye" /></p>
 
 <p>大概两年前，和Bergkamp、194一次计划外的聊天之后，<strike>出于保护直肠的目的</strike>，本座离开了基友密布的<a href="http://www.myriadgroup.com/">Myriad</a>，作为Palm4fun的联合创始人之一，开始捣鼓着自己创业。</p>
 
@@ -1444,7 +1603,7 @@
 <li>搭建和维护各种IT系统让大家的工作更加轻松</li>
 <li>对各种项目进行技术选型、风险评估和报价</li>
 <li>培养有palm4fun自己特色的团队文化</li>
-<li>甚至是，设计我们的logo和<a href="http://lenciel.cn/2014/09/logo-test/">T-Shirt</a></li>
+<li>甚至是，设计我们的logo和<a href="http://lenciel.com/2014/09/logo-test/">T-Shirt</a></li>
 </ul>
 
 
@@ -1456,14 +1615,14 @@
 
 <p>跨年的时候，茕茕孑立的本座画了张思维导图，主要目的是把过去两年palm4fun的积累整理一下。画出来之后很多朋友希望我分享高清无码图：因为整个图非常大，不太适合在移动设备上看。</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_all.png" title="Don't touch me..." alt="stack_all" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_all.png" title="Don't touch me..." alt="stack_all" /></p>
 
 <p>其实在一开始选择这些的时候，基本上就是从运维支撑和测试部署工具、产品开发和数据管理、基础设施和功能模块以及商业工具四个维度出发，所以就拆成四个部分简单过一遍。特别声明：选择的依据和出发点主要是根据个人喜好，包括自己使用的体验以及眼缘，并没有特别的理由。比如我们用Reviewboard不用Phabricator，完全是因为团队中大多数人已经用习惯了。</p>
 
 <a name="Build.Test.Deploy"></a>
 <h2>Build/Test/Deploy</h2>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_devops_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_devops_1.png" title="Don't touch me..." alt="stack_devops_1" /></p>
 
 <ul>
 <li>我们没有用Gerrit或者Phabricator的原因是它们功能太多了</li>
@@ -1474,7 +1633,7 @@
 <a name="Monitoring"></a>
 <h2>Monitoring</h2>
 
-<p><img src="http://lenciel.cn/downloads/images/2015_01/p4f_stack_devops_2.png" title="Don't touch me..." alt="stack_devops_2" /></p>
+<p><img src="http://lenciel.com/downloads/images/2015_01/p4f_stack_devops_2.png" title="Don't touch me..." alt="stack_devops_2" /></p>
 
 <ul>
 <li>Sentry帮我们在用户找到我们之前找到了很多问题</li>
@@ -1487,9 +1646,9 @@
   
   <entry>
     <title type="html"><![CDATA[Making Fixture With Factory Boy and Faker]]></title>
-    <link href="http://lenciel.cn/2014/12/making-fixture-with-factory-boy-and-faker/"/>
+    <link href="http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
     <updated>2014-12-20T03:14:59+08:00</updated>
-    <id>http://lenciel.cn/2014/12/making-fixture-with-factory-boy-and-faker</id>
+    <id>http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
     <content type="html"><![CDATA[<p>我们在Django项目的开发和测试过程中经常需要mock一些数据作为<a href="https://docs.djangoproject.com/en/1.7/howto/initial-data/">fixture</a>，比较常见的做法是：</p>
 
 <ol>
@@ -1501,9 +1660,9 @@
 
 <p>这样对于大多数场景也算够用了，但是你总会遇到某一天客户走来说：“我想看看那个报表生成出来啥样，能不能创建两千条记录？”</p>
 
-<p>这种时候你大概你第一反应是把之前那个json搞来copy-paste出两千份数据。但很快你就会意识到那是不行的：要构建一个对象，你常常需要先构建它外键的对象，而实际上线的项目它的数据库结构是非常复杂的（数据库结构图的生成见<a href="http://lenciel.cn/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/">这里</a>），所以构建两千条记录的工作量会远远超过你的想象：</p>
+<p>这种时候你大概你第一反应是把之前那个json搞来copy-paste出两千份数据。但很快你就会意识到那是不行的：要构建一个对象，你常常需要先构建它外键的对象，而实际上线的项目它的数据库结构是非常复杂的（数据库结构图的生成见<a href="http://lenciel.com/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/">这里</a>），所以构建两千条记录的工作量会远远超过你的想象：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2014_12/database_design_visualization.png" title="schemaSpy..." alt="schemaSpy" /></p>
+<p><img src="http://lenciel.com/downloads/images/2014_12/database_design_visualization.png" title="schemaSpy..." alt="schemaSpy" /></p>
 
 <p>最近本座试用了<a href="https://github.com/rbarrois/factory_boy/">factory boy</a>和<a href="https://github.com/joke2k/faker">faker</a>的组合，感觉还比较好用。</p>
 
@@ -1766,14 +1925,14 @@
   
   <entry>
     <title type="html"><![CDATA[Integrate schemaSpy With Sphinx Build]]></title>
-    <link href="http://lenciel.cn/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/"/>
+    <link href="http://lenciel.com/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/"/>
     <updated>2014-12-18T00:26:32+08:00</updated>
-    <id>http://lenciel.cn/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization</id>
-    <content type="html"><![CDATA[<p><img src="http://lenciel.cn/downloads/images/2014_12/schemaSpy.png" title="schemaSpy..." alt="schemaSpy" /></p>
+    <id>http://lenciel.com/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization</id>
+    <content type="html"><![CDATA[<p><img src="http://lenciel.com/downloads/images/2014_12/schemaSpy.png" title="schemaSpy..." alt="schemaSpy" /></p>
 
 <p>在做项目的时候，客户或者合作的部门常常问研发要“数据库设计”。在古代，瀑布式开发的第一个阶段是做架构设计和写文档，所以这样的需求一般都能被“充分满足”。而在我们现在的项目节奏和迭代速度都很快，数据库的设计在项目初期经常也在变化，如何能够比较方便的文档化这些变更？</p>
 
-<p>对开发团队内部来说，我个人觉得Django的South或者是1.7之后加入的<a href="http://lenciel.cn/2014/08/django-1-dot-7-migrations/">Migration</a>里面每次变更生成的migration文件就已经足够开发人员了解底层的设计发生了什么变化。</p>
+<p>对开发团队内部来说，我个人觉得Django的South或者是1.7之后加入的<a href="http://lenciel.com/2014/08/django-1-dot-7-migrations/">Migration</a>里面每次变更生成的migration文件就已经足够开发人员了解底层的设计发生了什么变化。</p>
 
 <p>而对外提供的文档，主要是在更高层级进行设计的沟通，所以之前我们一般是通过<a href="https://github.com/django-extensions/django-extensions">django-extension</a>里面的<code>graph_models</code>命令来生成简单的关系图：</p>
 
@@ -1786,7 +1945,7 @@
 
 <p>效果如下：</p>
 
-<p><img src="http://lenciel.cn/downloads/images/2014_12/django_extension.svg" title="django-extension-sample..." alt="django-extension-sample" /></p>
+<p><img src="http://lenciel.com/downloads/images/2014_12/django_extension.svg" title="django-extension-sample..." alt="django-extension-sample" /></p>
 
 <p>这里的图是通过<a href="http://www.graphviz.org/">graphviz</a>来完成的，可以看到一般的了解也足够了，但是缺点主要是：</p>
 
@@ -1856,60 +2015,6 @@
 
 
 <p>然后在Jenkins调用的脚本里面加上<code>make dbv</code>就可以了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How I Use Evernote]]></title>
-    <link href="http://lenciel.cn/2014/12/how-i-use-evernote/"/>
-    <updated>2014-12-17T14:27:39+08:00</updated>
-    <id>http://lenciel.cn/2014/12/how-i-use-evernote</id>
-    <content type="html"><![CDATA[<p>其实之前也分享了一些<a href="http://lenciel.cn/blog/categories/tools-i-use/">自己使用的工具</a>，只是更偏重研发。今天跟另外一个也用Evernote的同事交流了一下我怎么用Evernote，效果还可以，干脆在年关将至的时候分享一下自己日常使用的一些软件。</p>
-
-<p>从Evernote开始。</p>
-
-<p>进入互联网时代，特别是移动互联网时代之后，获取各种信息变得越来越便捷了，如何管理这些纷繁的信息也自热而然成为一个需求。大多数像我一样的老人，一开始是用<a href="https://digg.com/">dig</a>和<a href="https://delicious.com/">delicious</a>这样基于书签的工具。因为在有google和云笔记本这种东西之前，大家都是靠装满了各种书签的&#8221;收藏夹&#8221;过活（年轻人是不能理解重装机器没有备份收藏夹的伤痛的）。</p>
-
-<p>但是这样的系统坏处就是它是&#8221;lazy-loading&#8221;的，你每次需要的时候，需要打开网页（如果你还能想起叫啥并且它们还健在的话）去找原来看到的信息，所以更适合用来做reference的整理。对于你真正希望梳理成自己知识的东西，更好的选择当然是使用所谓的PIM(Personal Information Management)软件。</p>
-
-<p>我2010年开始用Evernote，一直用的是免费版(空间对我来说够了，而且我也没有太多分享的需求)，它的优点包括：</p>
-
-<ul>
-<li>多(liang)种(you)多(bu)样(qi)的记录手段</li>
-<li>丰富灵活的管理方式</li>
-<li>跨平台跨设备云同步</li>
-<li>颜色还真水嫩啊</li>
-</ul>
-
-
-<p>但时间久了，Evernote里面的东西也多了起来。每次要找点儿什么基本上都是靠全文搜索，一直到我读到Michael Hyatt的<a href="http://michaelhyatt.com/evernote-tags.html">这篇文章</a>。</p>
-
-<p>简单来说，大多数人用Evernote都是以&#8221;笔记本(Notebook)&ldquo;为容器来整理Note的。Michael的意思是Notebook和Tag比有这么几个弱点：</p>
-
-<ol>
-<li>Notebook数量有限制（个人版250，企业版5000），Tag可以有100000个</li>
-<li>Notebook和Note是一对一的，Tag和Note是多对一的</li>
-<li>Notebook只能建一级嵌套（基本上就是说可以Group一下），Tag可以无限制多层级嵌套</li>
-</ol>
-
-
-<p>所以他推荐了使用Tag来进行Note的管理。</p>
-
-<p>除此之外他那篇文章里面还有个很重要的概念就是所有的文章先收到一个叫<code>Inbox</code>的Notebook，处理了之后再放到<code>Cabinet</code>里面去。这其实非常像我们使用邮箱：所有的邮件先被邮件系统放到Inbox，然后我们处理了之后打上相应的标签(ToDo, Later, &hellip;)，最后归档。</p>
-
-<p>所以我现在是这么Evernote的。</p>
-
-<p>首先，把Notebook减少到两个，一个是<code>Inbox</code>，一个是<code>Archive</code>。它们的作用跟我们的邮箱里面的Inbox和Archive是完全一样的。</p>
-
-<p>然后，如果在网上看到觉得还挺有意思的文章，就用Evernote收录到<code>Inbox</code>。</p>
-
-<p>注意，收录的时候我都习惯用下面的选项，去掉所有的样式：</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_12/evernote_chrome_clipper.png" title="Evernote Clipper" alt="Evernote Clipper" /></p>
-
-<p>最后，在整理Inbox的时候，对每篇文章做一些修修剪剪，给Note加上合适的Tag，然后放到<code>Archive</code>。可以看到，因为tag可以嵌套和展开，要找到自己感兴趣的文章变得容易很多：</p>
-
-<p><img src="http://lenciel.cn/downloads/images/2014_12/evernote_nested_tags.png" title="Evernote Clipper" alt="Evernote Clipper" /></p>
 ]]></content>
   </entry>
   

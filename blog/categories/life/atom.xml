@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Life | @Lenciel]]></title>
-  <link href="http://lenciel.cn/blog/categories/life/atom.xml" rel="self"/>
-  <link href="http://lenciel.cn/"/>
-  <updated>2016-03-16T10:26:44+08:00</updated>
-  <id>http://lenciel.cn/</id>
+  <link href="http://lenciel.com/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-05T22:35:07+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[An Accident of My Dog]]></title>
-    <link href="http://lenciel.cn/2013/07/my-dog/"/>
+    <link href="http://lenciel.com/2013/07/my-dog/"/>
     <updated>2013-07-06T22:57:00+08:00</updated>
-    <id>http://lenciel.cn/2013/07/my-dog</id>
+    <id>http://lenciel.com/2013/07/my-dog</id>
     <content type="html"><![CDATA[<p>今年2月4号，花卷被偶像派接到了我们家，处于眼睛基本刚刚能睁开的状态。</p>
 
 <p><img src="/downloads/images/huajuan_in_hands.jpg" title="Don't touch me..." alt="花卷来我家" /></p>
