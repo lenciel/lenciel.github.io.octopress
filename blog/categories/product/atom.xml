@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Product | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/product/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-05T23:13:59+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/product/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-06T14:56:17+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[好的引导流程胜过10个新功能]]></title>
-    <link href="http://lenciel.com/2015/06/the-next-fucking-new-feature/"/>
+    <link href="https://lenciel.com/2015/06/the-next-fucking-new-feature/"/>
     <updated>2015-06-26T13:55:49+08:00</updated>
-    <id>http://lenciel.com/2015/06/the-next-fucking-new-feature</id>
+    <id>https://lenciel.com/2015/06/the-next-fucking-new-feature</id>
     <content type="html"><![CDATA[<p>SNS的有趣之处就在于，经常你会看到一些话，让你对着屏幕点头不已。比如下面这句：</p>
 
 <p><img src="/downloads/images/2015_06/the_next_new_feature.png" title="Don't touch me..." alt="Vhost threshold" /></p>

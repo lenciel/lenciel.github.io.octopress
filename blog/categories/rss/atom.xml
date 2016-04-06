@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Rss | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/rss/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-05T23:13:59+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/rss/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-06T14:56:17+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Gone of Google Reader]]></title>
-    <link href="http://lenciel.com/2013/03/the-gone-of-google-reader/"/>
+    <link href="https://lenciel.com/2013/03/the-gone-of-google-reader/"/>
     <updated>2013-03-15T21:25:00+08:00</updated>
-    <id>http://lenciel.com/2013/03/the-gone-of-google-reader</id>
+    <id>https://lenciel.com/2013/03/the-gone-of-google-reader</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/google_reader.png" title="Don't touch me..." alt="Google reader is gone" /></p>
 
 <p>Google Reader关掉的消息出来做之后网上的反应其实是很耐人寻味的。</p>

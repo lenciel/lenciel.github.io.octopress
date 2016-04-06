@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Gist | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/gist/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-05T23:13:59+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/gist/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-06T14:56:17+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac上自启动autossh]]></title>
-    <link href="http://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
+    <link href="https://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
     <updated>2014-07-11T20:14:20+08:00</updated>
-    <id>http://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
+    <id>https://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
     <content type="html"><![CDATA[<p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
 
 <p><div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress里插入带中文Gist的问题和解决]]></title>
-    <link href="http://lenciel.com/2014/05/fix-gist-style-in-octopress/"/>
+    <link href="https://lenciel.com/2014/05/fix-gist-style-in-octopress/"/>
     <updated>2014-05-17T13:00:38+08:00</updated>
-    <id>http://lenciel.com/2014/05/fix-gist-style-in-octopress</id>
+    <id>https://lenciel.com/2014/05/fix-gist-style-in-octopress</id>
     <content type="html"><![CDATA[<p><a href="https://gist.github.com/">Gist</a>是Github提供用来管理和分享<a href="https://gist.github.com/lenciel/4105165">代码片断</a>或者<a href="https://gist.github.com/lenciel/3462897">文档片断</a>的服务。和传统的<a href="http://en.wikipedia.org/wiki/Snippet_(programming">snippet</a>)管理系统相比，Gist因为实际上依托了Github的实现技术，所以具有存储在云端、自动的版本化、语法高亮支持的语言种类齐全、分享的便利性高等等优势。</p>
 
 <p><a href="http://octopress.org">Octopress</a>里面引用你创建的gist的好处是显而易见的：你需要分享的<strong>内容</strong>在Gist那边被更好的管理了，而在日志里面用下面这样的语句就可以很容易的插入gist里面的内容:
@@ -71,7 +71,7 @@
 
 <p></p>
 
-<p>比如<a href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
+<p>比如<a href="https://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">上篇文章</a>，理论上源代码就是这么一句：</p>
 
 <p></p>
 
@@ -194,9 +194,9 @@ index 137d475..5465286 100644
   
   <entry>
     <title type="html"><![CDATA[Web开发知识结构]]></title>
-    <link href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/"/>
+    <link href="https://lenciel.com/2014/05/web-development-skill-set-and-reading-list/"/>
     <updated>2014-05-16T14:28:04+08:00</updated>
-    <id>http://lenciel.com/2014/05/web-development-skill-set-and-reading-list</id>
+    <id>https://lenciel.com/2014/05/web-development-skill-set-and-reading-list</id>
     <content type="html"><![CDATA[<p>这个list保存在了一个专门的<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">Gist里面</a>，方便更新。</p>
 
 <p><div><script src='https://gist.github.com/637812a7dcbe8341b07b.js?file=web_skill_list.md'></script>

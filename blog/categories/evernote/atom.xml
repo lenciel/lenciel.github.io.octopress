@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Evernote | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/evernote/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-05T23:13:59+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/evernote/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-06T14:56:17+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[How I Use Evernote]]></title>
-    <link href="http://lenciel.com/2014/12/how-i-use-evernote/"/>
+    <link href="https://lenciel.com/2014/12/how-i-use-evernote/"/>
     <updated>2014-12-17T14:27:39+08:00</updated>
-    <id>http://lenciel.com/2014/12/how-i-use-evernote</id>
-    <content type="html"><![CDATA[<p>其实之前也分享了一些<a href="http://lenciel.com/blog/categories/tools-i-use/">自己使用的工具</a>，只是更偏重研发。今天跟另外一个也用Evernote的同事交流了一下我怎么用Evernote，效果还可以，干脆在年关将至的时候分享一下自己日常使用的一些软件。</p>
+    <id>https://lenciel.com/2014/12/how-i-use-evernote</id>
+    <content type="html"><![CDATA[<p>其实之前也分享了一些<a href="https://lenciel.com/blog/categories/tools-i-use/">自己使用的工具</a>，只是更偏重研发。今天跟另外一个也用Evernote的同事交流了一下我怎么用Evernote，效果还可以，干脆在年关将至的时候分享一下自己日常使用的一些软件。</p>
 
 <p>从Evernote开始。</p>
 
