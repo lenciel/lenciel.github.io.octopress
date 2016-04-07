@@ -6,7 +6,7 @@ url: https://lenciel.com
 title: '@Lenciel'
 subtitle: Thoughts and Rants.
 author: Lenciel Li
-simple_search: http://google.com/search
+simple_search: https://google.com/search
 description: "My press though github pages and octopress."
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
