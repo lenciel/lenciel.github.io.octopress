@@ -9,7 +9,7 @@ categories:
 - tips
 ---
 
-Python的标准库实在是[不够用](http://lenciel.com/2013/10/recharging-the-python-standard-library/)，所以一个很常见的情况是我们需要在每个项目使用的`virtualenv`里面都安装一些常用的库。
+Python的标准库实在是[不够用](https://lenciel.com/2013/10/recharging-the-python-standard-library/)，所以一个很常见的情况是我们需要在每个项目使用的`virtualenv`里面都安装一些常用的库。
 
 为了加速安装的过程，有两个小窍门。
 
