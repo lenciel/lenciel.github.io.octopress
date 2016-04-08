@@ -10,7 +10,7 @@ categories:
 - tech-stack
 ---
 
-距离[上篇](https://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/)略久，主要最近很忙。
+距离[上篇](http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/)略久，主要最近很忙。
 
 ## Application & Data
 
