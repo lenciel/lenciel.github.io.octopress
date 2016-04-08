@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: History | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/history/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/history/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[NASA造笔的事情也是假的]]></title>
-    <link href="https://lenciel.com/2013/10/the-myth-of-nasas-expensive-space-pens/"/>
+    <link href="http://lenciel.com/2013/10/the-myth-of-nasas-expensive-space-pens/"/>
     <updated>2013-10-12T12:46:00+08:00</updated>
-    <id>https://lenciel.com/2013/10/the-myth-of-nasas-expensive-space-pens</id>
+    <id>http://lenciel.com/2013/10/the-myth-of-nasas-expensive-space-pens</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/space-pen.jpg" title="Don't touch me..." alt="Space Pen" /></p>
 
 <p>在软件开发中我们一说到避免过度设计，经常有两个例子会被抬出来，其中一个就是NASA造了昂贵的太空笔，然后俄罗斯用很简单的方案解决问题的故事（另一个大概就是传送带旁边放电风扇的故事）。<a href="http://www.snopes.com/business/genius/spacepen.asp">NASA造笔的故事</a>大概是这样的:</p>

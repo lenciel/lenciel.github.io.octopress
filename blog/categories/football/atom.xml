@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Football | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/football/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/football/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Yeah~世界杯来了]]></title>
-    <link href="https://lenciel.com/2006/06/world-cup-2006/"/>
+    <link href="http://lenciel.com/2006/06/world-cup-2006/"/>
     <updated>2006-06-09T01:47:00+08:00</updated>
-    <id>https://lenciel.com/2006/06/world-cup-2006</id>
-    <content type="html"><![CDATA[<p><img style="WIDTH: 168px; HEIGHT: 221px; margin-right: 45px;" alt="world cup 2006" src="https://lenciel.com/downloads/images/world_cup_2006.png" align="left" border="0" />有这么一种理论：</p>
+    <id>http://lenciel.com/2006/06/world-cup-2006</id>
+    <content type="html"><![CDATA[<p><img style="WIDTH: 168px; HEIGHT: 221px; margin-right: 45px;" alt="world cup 2006" src="http://lenciel.com/downloads/images/world_cup_2006.png" align="left" border="0" />有这么一种理论：</p>
 
 <ul>
 <li>1978/1986年的冠军是阿根廷，<code>1978+1986=3964</code>  </li>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Toturials | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/toturials/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/toturials/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Oauth: Introduction and Tips]]></title>
-    <link href="https://lenciel.com/2013/07/oauth-introduction-and-tips/"/>
+    <link href="http://lenciel.com/2013/07/oauth-introduction-and-tips/"/>
     <updated>2013-07-22T09:53:00+08:00</updated>
-    <id>https://lenciel.com/2013/07/oauth-introduction-and-tips</id>
+    <id>http://lenciel.com/2013/07/oauth-introduction-and-tips</id>
     <content type="html"><![CDATA[<a name="Terminology...Reference"></a>
 <h2>Terminology / Reference</h2>
 
@@ -221,7 +221,7 @@ oauth_callback_confirmed=true
 
 <p>一般被叫成 <code>two-legged</code> 的OAuth其实是只有一步的。</p>
 
-<p><img src="https://lenciel.com/downloads/images/oauth_flow_1.png" align="right" /></p>
+<p><img src="http://lenciel.com/downloads/images/oauth_flow_1.png" align="right" /></p>
 
 <ol>
 <li>应用发送一个 <strong>signed</strong> request 到服务提供商，request里包括:
@@ -254,7 +254,7 @@ oauth_callback_confirmed=true
 
 <p>真正的<code>two-legged</code>是1.0a版本的OAuth。</p>
 
-<p><img src="https://lenciel.com/downloads/images/oauth_flow_2.png" align="right" /></p>
+<p><img src="http://lenciel.com/downloads/images/oauth_flow_2.png" align="right" /></p>
 
 <ol>
 <li>应用发送一个 <strong>signed</strong> request到服务提供商请求一个 <code>Request Token</code>，request里包括:
@@ -299,7 +299,7 @@ oauth_callback_confirmed=true
 
 <p>最完备同时也是带来最多麻烦的一个版本，特别是引入了需要用户操作来确认的部分，增加了开发和交互上的复杂度。一开始推出的时候，让很多用户感到不知所措。</p>
 
-<p><img src="https://lenciel.com/downloads/images/oauth_flow_3.png" align="right" /></p>
+<p><img src="http://lenciel.com/downloads/images/oauth_flow_3.png" align="right" /></p>
 
 <ol>
 <li>应用发送一个 <strong>signed</strong> request到服务提供商请求一个 <code>Request Token</code>，request里包括:
@@ -366,7 +366,7 @@ oauth_callback_confirmed=true
 
 <p>非主流的一种实现，但是确实是存在的：发明者是Twitter的Raffi。这种实现允许在首次发送的请求token里面多带两个header，这样可以通过代理的方式在代理服务商那里对原始服务商的用户进行认证。</p>
 
-<p><img src="https://lenciel.com/downloads/images/oauth_flow_4.png" align="right" /></p>
+<p><img src="http://lenciel.com/downloads/images/oauth_flow_4.png" align="right" /></p>
 
 <ol>
 <li>应用发送一个 <strong>signed</strong> request到代理服务提供商，request里包括:
@@ -401,7 +401,7 @@ oauth_callback_confirmed=true
 
 <p>这种方式返回的一般是具有只读性质的access token，并且这种token能操作的资源也是有限的。比如Twitter的DM（类似私信）就不能使用xAuth而必须用完整的<code>three-legged</code>流程获取token才能取到。</p>
 
-<p><img src="https://lenciel.com/downloads/images/oauth_flow_5.png" align="right" /></p>
+<p><img src="http://lenciel.com/downloads/images/oauth_flow_5.png" align="right" /></p>
 
 <ol>
 <li>应用请求用户的Credentials</li>

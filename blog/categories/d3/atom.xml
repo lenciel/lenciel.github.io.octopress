@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: D3 | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/d3/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/d3/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,28 +15,28 @@
   
   <entry>
     <title type="html"><![CDATA[勾股定理]]></title>
-    <link href="https://lenciel.com/2014/04/time-to-talk-about-math/"/>
+    <link href="http://lenciel.com/2014/04/time-to-talk-about-math/"/>
     <updated>2014-04-02T14:30:00+08:00</updated>
-    <id>https://lenciel.com/2014/04/time-to-talk-about-math</id>
+    <id>http://lenciel.com/2014/04/time-to-talk-about-math</id>
     <content type="html"><![CDATA[<p>这篇日志主要是想试试:</p>
 
 <ul>
-<li>怎么把<code>d3.js</code>和<code>AngularJS</code>集成到<a href="https://lenciel.com/2013/03/blog-with-octopress-and-github-pages/">octopress</a>，因为<a href="http://vudlab.com/bart/">setosa</a>很酷</li>
+<li>怎么把<code>d3.js</code>和<code>AngularJS</code>集成到<a href="http://lenciel.com/2013/03/blog-with-octopress-and-github-pages/">octopress</a>，因为<a href="http://vudlab.com/bart/">setosa</a>很酷</li>
 <li>怎么在某篇日志里面支持specific的js和css</li>
 </ul>
 
 
 <p>玩了一下并不是很麻烦，于是这个静态站点可以干的事情就&#8221;动态&#8221;多了。比如把课本里面的<a href="http://aleph0.clarku.edu/~djoyce/java/elements/bookI/propI47.html">勾股定理</a>通过画图证明一下(点击黑色背景字母有彩蛋)：</p>
 
-<p><link rel="stylesheet" type="text/css" href="https://lenciel.com/downloads/static/css/math_d3_angular.css"></p>
+<p><link rel="stylesheet" type="text/css" href="http://lenciel.com/downloads/static/css/math_d3_angular.css"></p>
 
-<script src="https://lenciel.com/downloads/static/js/d3.min.js" charset="utf-8"></script>
-
-
-<script src="https://lenciel.com/downloads/static/js/angular.min.js" charset="utf-8"></script>
+<script src="http://lenciel.com/downloads/static/js/d3.min.js" charset="utf-8"></script>
 
 
-<script src="https://lenciel.com/downloads/static/js/math_d3_angular.js" charset="utf-8"></script>
+<script src="http://lenciel.com/downloads/static/js/angular.min.js" charset="utf-8"></script>
+
+
+<script src="http://lenciel.com/downloads/static/js/math_d3_angular.js" charset="utf-8"></script>
 
 
 

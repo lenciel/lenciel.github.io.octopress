@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Gfw | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/gfw/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/gfw/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Update Android Sdk With Shadowsocks Proxy]]></title>
-    <link href="https://lenciel.com/2014/09/update-android-sdk-with-proxy/"/>
+    <link href="http://lenciel.com/2014/09/update-android-sdk-with-proxy/"/>
     <updated>2014-09-02T02:30:35+08:00</updated>
-    <id>https://lenciel.com/2014/09/update-android-sdk-with-proxy</id>
+    <id>http://lenciel.com/2014/09/update-android-sdk-with-proxy</id>
     <content type="html"><![CDATA[<p>博格坎普说，我们android项目的build挂了。</p>
 
 <p>去Jenkins看了一下，日志里面的错误是：</p>
@@ -152,9 +152,9 @@ $ android update sdk -u -s --all
   
   <entry>
     <title type="html"><![CDATA[Mac上自启动autossh]]></title>
-    <link href="https://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
+    <link href="http://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel/"/>
     <updated>2014-07-11T20:14:20+08:00</updated>
-    <id>https://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
+    <id>http://lenciel.com/2014/07/fuck-the-gfw-with-ssh-tunnel</id>
     <content type="html"><![CDATA[<p>If you know what it is then you know what it is. Let&rsquo;s fuck the GFW.</p>
 
 <p><div><script src='https://gist.github.com/d353a04a3a7bc0278ec6.js?file=autossh.lenciel.plist'></script>
@@ -194,9 +194,9 @@ $ android update sdk -u -s --all
   
   <entry>
     <title type="html"><![CDATA[Mac下后台运行goagent]]></title>
-    <link href="https://lenciel.com/2013/11/replace-goagentx-with-lines-of-scripts/"/>
+    <link href="http://lenciel.com/2013/11/replace-goagentx-with-lines-of-scripts/"/>
     <updated>2013-11-14T13:22:00+08:00</updated>
-    <id>https://lenciel.com/2013/11/replace-goagentx-with-lines-of-scripts</id>
+    <id>http://lenciel.com/2013/11/replace-goagentx-with-lines-of-scripts</id>
     <content type="html"><![CDATA[<p>几年过去了，<a href="https://code.google.com/p/goagent/">Goagent</a>是本座翻墙唯一的选择。在Mac上使用它最开始我用了<a href="https://github.com/ohdarling/GoAgentX">GoAgentX</a>，但使用了一段时间之后发现几个不太满意的地方：</p>
 
 <ul>

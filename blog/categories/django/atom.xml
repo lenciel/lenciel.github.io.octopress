@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Django | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/django/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-04-07T15:27:33+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/django/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-04-08T10:25:24+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Django其实不是MVC]]></title>
-    <link href="https://lenciel.com/2015/03/django-is-not-that-much-mvc/"/>
+    <link href="http://lenciel.com/2015/03/django-is-not-that-much-mvc/"/>
     <updated>2015-03-30T11:36:24+08:00</updated>
-    <id>https://lenciel.com/2015/03/django-is-not-that-much-mvc</id>
+    <id>http://lenciel.com/2015/03/django-is-not-that-much-mvc</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2015_03/mvc.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>很多时候<a href="https://www.djangoproject.com/">Django</a>都被称为是一个MVC框架 — <code>Model-View-Controller</code>。这样说的人要么就是已经熟悉过其他的MVC框架，所以看到Django有自己的Template系统和<code>views.py</code>来放各种逻辑代码，就想当然的认为Django也是；要么就是其实没有真正实践过Django，从各种其他的错误文档里面看到或者是听说的。</p>
@@ -98,9 +98,9 @@
   
   <entry>
     <title type="html"><![CDATA[Making Fixture With Factory Boy and Faker]]></title>
-    <link href="https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
+    <link href="http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
     <updated>2014-12-20T03:14:59+08:00</updated>
-    <id>https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
+    <id>http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
     <content type="html"><![CDATA[<p>我们在Django项目的开发和测试过程中经常需要mock一些数据作为<a href="https://docs.djangoproject.com/en/1.7/howto/initial-data/">fixture</a>，比较常见的做法是：</p>
 
 <ol>
@@ -293,9 +293,9 @@ def setUp(self):
   
   <entry>
     <title type="html"><![CDATA[Correct Django Site Name During DB Migration]]></title>
-    <link href="https://lenciel.com/2014/11/correct-django-site-name-in-sentry/"/>
+    <link href="http://lenciel.com/2014/11/correct-django-site-name-in-sentry/"/>
     <updated>2014-11-02T16:50:40+08:00</updated>
-    <id>https://lenciel.com/2014/11/correct-django-site-name-in-sentry</id>
+    <id>http://lenciel.com/2014/11/correct-django-site-name-in-sentry</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_11/sentry_incorrect_site.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <a name="Problem"></a>
@@ -385,13 +385,13 @@ def setUp(self):
   
   <entry>
     <title type="html"><![CDATA[Data Migration in Django 1.7 (2)]]></title>
-    <link href="https://lenciel.com/2014/08/django-1-dot-7-migrations-part-2/"/>
+    <link href="http://lenciel.com/2014/08/django-1-dot-7-migrations-part-2/"/>
     <updated>2014-08-11T03:59:47+08:00</updated>
-    <id>https://lenciel.com/2014/08/django-1-dot-7-migrations-part-2</id>
+    <id>http://lenciel.com/2014/08/django-1-dot-7-migrations-part-2</id>
     <content type="html"><![CDATA[<p>在应用开发的过程中，我们会遇到migration主要分为：</p>
 
 <ol>
-<li>Schema Migrations：数据库schema的变化，也就是我们前面<a href="https://lenciel.com/2014/08/django-1-dot-7-migrations/">讨论的内容</a></li>
+<li>Schema Migrations：数据库schema的变化，也就是我们前面<a href="http://lenciel.com/2014/08/django-1-dot-7-migrations/">讨论的内容</a></li>
 <li>Data Migrations：数据的变化，比如需要批量变更数据或者备份在其他地方的历史数据</li>
 </ol>
 
@@ -457,9 +457,9 @@ class Migration(migrations.Migration):
   
   <entry>
     <title type="html"><![CDATA[Data Migration in Django 1.7 (1)]]></title>
-    <link href="https://lenciel.com/2014/08/django-1-dot-7-migrations/"/>
+    <link href="http://lenciel.com/2014/08/django-1-dot-7-migrations/"/>
     <updated>2014-08-05T11:12:41+08:00</updated>
-    <id>https://lenciel.com/2014/08/django-1-dot-7-migrations</id>
+    <id>http://lenciel.com/2014/08/django-1-dot-7-migrations</id>
     <content type="html"><![CDATA[<p>Django 1.7已经发布一段时间了，基本上这个版本最主要的改动就是加入了<code>migrations</code>。</p>
 
 <p>在过去，几乎所有的Django项目都是用South来处理数据变更的。而在Django1.7版本，South的作者Andrew Godwin把<code>migrations</code>加到了Django Core里面。</p>
