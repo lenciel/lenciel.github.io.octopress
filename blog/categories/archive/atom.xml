@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Archive | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/archive/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/archive/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[后患无穷]]></title>
-    <link href="http://lenciel.com/2008/07/write-no-letter/"/>
+    <link href="https://lenciel.com/2008/07/write-no-letter/"/>
     <updated>2008-07-13T00:57:00+08:00</updated>
-    <id>http://lenciel.com/2008/07/write-no-letter</id>
-    <content type="html"><![CDATA[<p><img style="padding-right:2px; border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="190" alt="never write letters" src="http://lenciel.com/downloads/images/do_never_write_letters.jpg" width="142" align="left" border="0" /> “如果我对你说过谎，那是因为我必须向你证明假的就是真的”</p>
+    <id>https://lenciel.com/2008/07/write-no-letter</id>
+    <content type="html"><![CDATA[<p><img style="padding-right:2px; border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="190" alt="never write letters" src="https://lenciel.com/downloads/images/do_never_write_letters.jpg" width="142" align="left" border="0" /> “如果我对你说过谎，那是因为我必须向你证明假的就是真的”</p>
 
 <p>—— 让·罗凯尔《异物》</p>
 

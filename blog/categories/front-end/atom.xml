@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Front-end | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/front-end/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/front-end/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tricky Bugs Are Tricky]]></title>
-    <link href="http://lenciel.com/2014/06/tricky-bugs/"/>
+    <link href="https://lenciel.com/2014/06/tricky-bugs/"/>
     <updated>2014-06-23T13:05:33+08:00</updated>
-    <id>http://lenciel.com/2014/06/tricky-bugs</id>
+    <id>https://lenciel.com/2014/06/tricky-bugs</id>
     <content type="html"><![CDATA[<p>最近接连遇到非常tricky的bug。</p>
 
 <p>首先是跟<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a>有关的。话说自从google被墙，我们使用了google map或者google font的网站就被客户不停投诉各种打不开。本座只好去找国内可用的CDN，居然发现<a href="http://libs.useso.com/">360的CDN</a>不但有常用的jquery库和fontawsome这些资源，还对google font做了镜像，于是就用了它。</p>

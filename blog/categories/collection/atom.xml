@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Collection | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/collection/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/collection/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Web开发知识结构]]></title>
-    <link href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/"/>
+    <link href="https://lenciel.com/2014/05/web-development-skill-set-and-reading-list/"/>
     <updated>2014-05-16T14:28:04+08:00</updated>
-    <id>http://lenciel.com/2014/05/web-development-skill-set-and-reading-list</id>
+    <id>https://lenciel.com/2014/05/web-development-skill-set-and-reading-list</id>
     <content type="html"><![CDATA[<p>这个list保存在了一个专门的<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">Gist里面</a>，方便更新。</p>
 
 <p><div><script src='https://gist.github.com/637812a7dcbe8341b07b.js?file=web_skill_list.md'></script>

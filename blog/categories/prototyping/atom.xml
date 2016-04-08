@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Prototyping | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/prototyping/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/prototyping/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quartz Composer和Origami试玩]]></title>
-    <link href="http://lenciel.com/2014/06/quartz-composer-and-origami/"/>
+    <link href="https://lenciel.com/2014/06/quartz-composer-and-origami/"/>
     <updated>2014-06-26T22:57:05+08:00</updated>
-    <id>http://lenciel.com/2014/06/quartz-composer-and-origami</id>
+    <id>https://lenciel.com/2014/06/quartz-composer-and-origami</id>
     <content type="html"><![CDATA[<p>这篇不是教程，不会讲述怎么安装需要的软件，怎么用它们来做软件原型。只是记录分享一下我对这套东西的感受和评价。</p>
 
 <p>动态设计，也就是<a href="http://v.youku.com/v_show/id_XMzIyNTk1NTMy.html">Motion Design</a>或者是<a href="http://en.wikipedia.org/wiki/Motion_graphic_design">Motion Graphic Design</a>其实已经火了很长一段时间了：你只要经常去Dribble上逛就可以看到很多非常优秀的作品。国内的团队经过一段时间的学习和追赶，目前这方面的水平也很不错：从去年开始，BAT的大多数App的splash或者tutorial都已经不再是静态的图片而是动态图了。</p>
@@ -44,7 +44,7 @@
 
 <p>最后，如果你是程序员，习惯了写CSS/JS来控制界面，要适应QC的图形化编程（类似VB那样先选控件再改属性然后绑事件）还是蛮蛋疼的。比如它里面的设定偏移量来定位元素的方式，就让本座觉得用起来非常虐心。</p>
 
-<p><img src="http://lenciel.com/downloads/images/2014_06/qc_yx_intro.gif" title="intro" alt="Don't touch me" width="35%" style="margin-left:30px"><img src="http://lenciel.com/downloads/images/2014_06/qc_yx_bd.gif" title="bd" alt="Don't touch me" width="38%" style="margin-left:30px"></p>
+<p><img src="https://lenciel.com/downloads/images/2014_06/qc_yx_intro.gif" title="intro" alt="Don't touch me" width="35%" style="margin-left:30px"><img src="https://lenciel.com/downloads/images/2014_06/qc_yx_bd.gif" title="bd" alt="Don't touch me" width="38%" style="margin-left:30px"></p>
 
 ]]></content>
   </entry>

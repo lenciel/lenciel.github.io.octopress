@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Web-dev | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/web-dev/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/web-dev/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[CSS里的width:100%和width:auto]]></title>
-    <link href="http://lenciel.com/2011/09/width_with_percentage_in_css/"/>
+    <link href="https://lenciel.com/2011/09/width_with_percentage_in_css/"/>
     <updated>2011-09-22T09:53:00+08:00</updated>
-    <id>http://lenciel.com/2011/09/width_with_percentage_in_css</id>
-    <content type="html"><![CDATA[<p><img height="200" alt="block" src="http://lenciel.com/downloads/images/2011_09/width100css.jpg" width="178" align="left" style="margin:5px"/> 这似乎是CSS里面最简单的一个概念：如果你希望一个block-level的元素填满整个父容器的所有空白，只需要为这个元素声明<font color="#0080ff">width:100%</font>这个属性就可以了。</p>
+    <id>https://lenciel.com/2011/09/width_with_percentage_in_css</id>
+    <content type="html"><![CDATA[<p><img height="200" alt="block" src="https://lenciel.com/downloads/images/2011_09/width100css.jpg" width="178" align="left" style="margin:5px"/> 这似乎是CSS里面最简单的一个概念：如果你希望一个block-level的元素填满整个父容器的所有空白，只需要为这个元素声明<font color="#0080ff">width:100%</font>这个属性就可以了。</p>
 
 <p>但从个人经验和搜索结果看，大概很多CSS使用者都有过加上这个属性后挠头不已的惨痛回忆。最后很多人不得不经过反复试验后重新转回使用绝对值的长和宽。</p>
 

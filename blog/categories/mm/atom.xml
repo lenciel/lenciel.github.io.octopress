@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mm | @Lenciel]]></title>
-  <link href="http://lenciel.com/blog/categories/mm/atom.xml" rel="self"/>
-  <link href="http://lenciel.com/"/>
-  <updated>2016-04-08T10:25:24+08:00</updated>
-  <id>http://lenciel.com/</id>
+  <link href="https://lenciel.com/blog/categories/mm/atom.xml" rel="self"/>
+  <link href="https://lenciel.com/"/>
+  <updated>2016-04-08T10:54:59+08:00</updated>
+  <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Edward Gorey]]></title>
-    <link href="http://lenciel.com/2014/04/edward-gorey/"/>
+    <link href="https://lenciel.com/2014/04/edward-gorey/"/>
     <updated>2014-04-29T13:48:21+08:00</updated>
-    <id>http://lenciel.com/2014/04/edward-gorey</id>
+    <id>https://lenciel.com/2014/04/edward-gorey</id>
     <content type="html"><![CDATA[<p>最近偶像派在说要买一些给蒙爷看的绘本。</p>
 
 <p>这让我想起来《读库》有几期专门在梳理国内外那些有名的插画家。的确，纸质书最让人怀念的就是里面那些精致的插画。</p>
@@ -27,17 +27,17 @@
 <p>当然，这些要拿来做蒙爷的启蒙教育绘本当然是过分“黑暗”了一些。不过从技术上来说，试试怎么把图片叠得好看总是一样的。</p>
 
 <p>所以，让我们看看Edward Gorey画的一些知名小说的封面吧（他能一直在作家圈子有帮朋友似乎也是因为画了不少封面）：
-<link rel="stylesheet" type="text/css" href="http://lenciel.com/downloads/static/css/elasticstack_slider.css" /></p>
+<link rel="stylesheet" type="text/css" href="https://lenciel.com/downloads/static/css/elasticstack_slider.css" /></p>
 
 <div class="slider-container">
     <ul id="elasticstack" class="elasticstack">
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_kafka.jpg" alt="01"/><h6>Amerika</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james2.jpg" alt="02"/><h6>The Ambassadors</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james3.jpg" alt="03"/><h6>The Awkward Age</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james4.jpg" alt="04"/><h6>What Maisie Knows</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_conrad1.jpg" alt="05"/><h6>Victory</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_conrad2.jpg" alt="06"/><h6>Chance</h6></li>
-        <li><img src="http://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_gogol1.jpg" alt="07"/><h6>喂&#8230;最后一张了</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_kafka.jpg" alt="01"/><h6>Amerika</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james2.jpg" alt="02"/><h6>The Ambassadors</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james3.jpg" alt="03"/><h6>The Awkward Age</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_james4.jpg" alt="04"/><h6>What Maisie Knows</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_conrad1.jpg" alt="05"/><h6>Victory</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_conrad2.jpg" alt="06"/><h6>Chance</h6></li>
+        <li><img src="https://lenciel.com/downloads/images/2014_04/edward_gorey/gorey_gogol1.jpg" alt="07"/><h6>喂&#8230;最后一张了</h6></li>
     </ul>
 </div>
 
@@ -47,10 +47,10 @@
 
 
 
-<script src="http://lenciel.com/downloads/static/js/draggabilly.pkgd.min.js"></script>
+<script src="https://lenciel.com/downloads/static/js/draggabilly.pkgd.min.js"></script>
 
 
-<script src="http://lenciel.com/downloads/static/js/elastiStack.js"></script>
+<script src="https://lenciel.com/downloads/static/js/elastiStack.js"></script>
 
 
 <script>
