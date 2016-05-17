@@ -1,6 +1,10 @@
 require "rubygems"
 require "bundler/setup"
 require "stringex"
+require "colorize"
+require "html_compressor"
+require "parallel"
+require "ruby-progressbar"
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
@@ -26,6 +30,10 @@ themes_dir      = ".themes"   # directory for blog files
 new_post_ext    = "markdown"  # default new post file extension when using the new_post task
 new_page_ext    = "markdown"  # default new page file extension when using the new_page task
 server_port     = "4000"      # port for preview server eg. localhost:4000
+
+n_cores = 4
+js_for_combine   = { 'app.js' => ['libs/modernizr.custom.55630.js', 'ender.js', 'libs/jquery.min.js', 'octopress.js'],
+                     '404.js' => ['libs/jquery.min.js'] }
 
 if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   puts '## Set the codepage to 65001 for Windows machines'
@@ -57,6 +65,7 @@ task :generate do
   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
   puts "## Generating Site with Jekyll"
   system "compass compile --css-dir #{source_dir}/stylesheets"
+  # Rake::Task[:minify_js].execute
   system "jekyll build"
 end
 
@@ -222,7 +231,7 @@ task :deploy do
     File.delete(".preview-mode")
     Rake::Task[:generate].execute
   end
-
+  Rake::Task[:minify_html].execute
   Rake::Task[:copydot].invoke(source_dir, public_dir)
   Rake::Task["#{deploy_default}"].execute
 end
@@ -401,4 +410,50 @@ desc "list tasks"
 task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
+end
+
+desc "Combine and minify js"
+task :minify_js do
+  scripts_dir = "#{source_dir}/javascripts"
+  js_for_combine.each do |k, v|
+    if File.exist?("#{scripts_dir}/#{k}")
+      newer = false
+      v.each do |j|
+        if File.mtime("#{scripts_dir}/#{j}") > File.mtime("#{scripts_dir}/#{k}")
+          puts "## Newer file " + "#{j}".colorize(:blue) + " is found"
+          newer = true
+          break
+        end
+      end
+    else
+      newer = true
+    end
+    if newer
+      puts "   Combining and Minify js: " + "#{k}".colorize(:red)
+      output = File.new("#{scripts_dir}/#{k}", "w")
+      v.each do |j|
+        output << File.read("#{scripts_dir}/#{j}")
+      end
+      output.close
+      system "uglifyjs #{scripts_dir}/#{k} -o #{scripts_dir}/#{k.split('.')[0]}.packed.js -p 5 -m -c"
+    end
+  end
+end
+
+desc "Minify HTML"
+task :minify_html, :dir do |t, args|
+  args.with_defaults(:dir => "#{public_dir}")
+  htmls = Dir.glob("#{args.dir}/**/*.html")
+  progressbar = ProgressBar.create(:title => "Minify HTML",
+                                   :starting_at => 0,
+                                   :total => htmls.size,
+                                   :format => '%t, %a |%b%i| %p%')
+  compressor = HtmlCompressor::HtmlCompressor.new
+  Parallel.map(htmls, :in_threads => n_cores) do |f|
+    input = File.read(f)
+    output = File.open("#{f}", "w")
+    output << compressor.compress(input)
+    output.close
+    progressbar.increment
+  end
 end
