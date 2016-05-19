@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="https://lenciel.com/atom.xml" rel="self"/>
   <link href="https://lenciel.com/"/>
-  <updated>2016-05-18T22:55:17+08:00</updated>
+  <updated>2016-05-19T15:26:53+08:00</updated>
   <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Starry Starry Night]]></title>
+    <link href="https://lenciel.com/2016/05/starry-starry-night/"/>
+    <updated>2016-05-19T13:57:30+08:00</updated>
+    <id>https://lenciel.com/2016/05/starry-starry-night</id>
+    <content type="html"><![CDATA[<p><img src="https://lenciel.com/downloads/images/2016_05/essay_harry_potter.png" title="Don't touch me..." alt="Vhost threshold" /></p>
+
+<p>看paper是不是比较无聊的事情？</p>
+
+<p>我试着在自己看的每篇论文标题前面加上&#8221;Harry Potter and The&#8221;，要不你也试试？</p>
+
+<p>当然，更好的状态是，其实你不是因为要做某个事情在看paper，而是出于好玩。</p>
+
+<p>比如最近我看了一篇<a href="https://lenciel.com/downloads/code/2016JAHH_19_18C.pdf">paper</a>，名字叫“Seasonal Dating of Sappho’s ‘Midnight Poem’ Revisited”。</p>
+
+<p><a href="https://zh.wikipedia.org/wiki/%E8%8E%8E%E5%AD%9A">Sappho</a>作为古希腊&#8221;第十繆斯&#8221;，在国内没有多显赫的名声，能找到的只有豆瓣上一篇和她相关艺术品的<a href="https://site.douban.com/109824/widget/notes/245567/note/208098917/">介绍文章</a>。其实她的腕儿相当大，女同的称呼<code>lesbian</code>就取自她的居住地<code>Lesbos</code>。</p>
+
+<p>而这篇论文是说，如何根据Sappho下面这首诗里面的描述，来判断这首诗写作于一年里面的什么时节。</p>
+
+<blockquote><p>The Moon hath left the sky;<br/>Lost is the Pleiads&#8217; light;<br/>It is midnight<br/>And time slips by;<br/>But on my couch alone I lie.</p></blockquote>
+
+
+<p>其中<a href="http://earthsky.org/favorite-star-patterns/pleiades-star-cluster-enjoys-worldwide-renown">Pleiasds</a>，如果你喜欢科幻的话肯定不会陌生，就是著名的金牛座七姐妹星团：昴宿星团（阿根廷一直有一帮人号称自己是来自这个星球，但其实这个星团有数不清的恒星组成）。</p>
+
+<p>所以，Sappho她：</p>
+
+<ol>
+<li>住在Lesbos</li>
+<li>在午夜之前看到昴宿星团消失在地平线</li>
+</ol>
+
+
+<p>在这些信息的帮助下，天文学家通过<a href="http://astronomy.starrynight.com/">软件</a>重建当时的星图，来得出了以下的结论：</p>
+
+<blockquote><p>Assuming that Sappho observed from Mytilene on the island of Lesbos, we determined that in 570 BC the Pleiades set before midnight from 25 January on, and were lost to the evening twilight completely by 6 April.</p></blockquote>
+
+
+<p>发了paper之后，作者还<a href="http://www.eurekalert.org/pub_releases/2016-05/uota-usu051316.php">嘚瑟</a>了一下，大概是说”这种准确描述星象和时间的作品实在是少，被我们抓到（发了篇有趣的paper）哇哈哈哈“。</p>
+
+<p>的确，要比较明确地描述，你首先得认识，能做到这点的诗人可不多。比如我<a href="https://movie.douban.com/subject/2373195/">Walt H. White</a>枕边放的Walt Whitman是搞清楚了的：</p>
+
+<blockquote><p>Up through the darkness,<br/>While ravening clouds, the burial clouds, in black masses spreading,<br/>Lower sullen and fast athwart and down the sky,<br/>Amid a transparent clear belt of ether yet left in the east,<br/>Ascends large and calm the lord-star Jupiter,<br/>And nigh at hand, only a very little above,<br/>Swim the delicate sisters the Pleiades.</p></blockquote>
+
+
+<p>再比如我大杜甫是搞清楚了的：</p>
+
+<blockquote><p>人生不相见，动如参与商。<br/>今夕复何夕，共此灯烛光。</p></blockquote>
+
+
+<p>参和商两个星，没法同时出现，用来形容人生不相见算是恰如其分。</p>
+
+<p>还有流行歌选集《诗经》那些写词的是搞清楚了的：</p>
+
+<blockquote><p>七月流火，九月授衣。</p></blockquote>
+
+
+<p><code>火</code>是指<a href="http://www.bud.org.tw/chen/chen0008.htm">心宿二</a>，所以<code>七月流火</code>是说这颗星逐渐<a href="http://iask.sina.com.cn/b/10608508.html">从天空中消失</a>。</p>
+
+<p>至于什么”七月流火，酷暑难耐“的用法，倒是现代人自己没有搞清楚了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[一天很长，十年很短]]></title>
@@ -1602,285 +1664,6 @@
 <li>一开始我们用过Nagios，它的设计也很不错，就是界面太&hellip;</li>
 <li>Zabbix帮我们远离主机因为硬盘满了或者内存不够驾崩的场面</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Making Fixture With Factory Boy and Faker]]></title>
-    <link href="https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
-    <updated>2014-12-20T03:14:59+08:00</updated>
-    <id>https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
-    <content type="html"><![CDATA[<p>我们在Django项目的开发和测试过程中经常需要mock一些数据作为<a href="https://docs.djangoproject.com/en/1.7/howto/initial-data/">fixture</a>，比较常见的做法是：</p>
-
-<ol>
-<li>进行一些操作创建测试数据</li>
-<li>使用<code>dumpdata</code>命令导出json格式的数据</li>
-<li>以导出的json为模板构造测试数据用<code>loaddata</code>命令导入到数据库</li>
-</ol>
-
-
-<p>这样对于大多数场景也算够用了，但是你总会遇到某一天客户走来说：“我想看看那个报表生成出来啥样，能不能创建两千条记录？”</p>
-
-<p>这种时候你大概你第一反应是把之前那个json搞来copy-paste出两千份数据。但很快你就会意识到那是不行的：要构建一个对象，你常常需要先构建它外键的对象，而实际上线的项目它的数据库结构是非常复杂的（数据库结构图的生成见<a href="http://lenciel.com/2014/12/integrate-schemaspy-with-sphinx-build-for-django-database-design-visualization/">这里</a>），所以构建两千条记录的工作量会远远超过你的想象：</p>
-
-<p><img src="https://lenciel.com/downloads/images/2014_12/database_design_visualization.png" title="schemaSpy..." alt="schemaSpy" /></p>
-
-<p>最近本座试用了<a href="https://github.com/rbarrois/factory_boy/">factory boy</a>和<a href="https://github.com/joke2k/faker">faker</a>的组合，感觉还比较好用。</p>
-
-<a name="Factory.Boy"></a>
-<h2>Factory Boy</h2>
-
-<p>最开始找这类批量生成测试数据的库，主要考察的是<a href="https://github.com/vandersonmota/model_mommy">Model Mommy</a>和<a href="https://github.com/rbarrois/factory_boy/">Factory Boy</a>。看了一下文档感觉两者的差别并不算很大，但是<a href="http://movie.douban.com/subject/1898357/">Factory Girl</a>里面的<a href="http://movie.douban.com/celebrity/1003485/">Sienna Miller</a>实在是让人过目不忘所以有什么好犹豫的呢？</p>
-
-<p>Factories的文档上说明了基本的用法，需要注意的主要是如何生成有一定依赖关系的一组测试对象。</p>
-
-<a name="L............"></a>
-<h3>数据构造</h3>
-
-<p>Factory Boy下的数据构造主要是通过<code>Sequence</code>和<code>Fuzz</code>两个包来完成。</p>
-
-<p><code>Sequence</code>故名思议是顺序生成的，比如你要让生成的数据有规律的用户名和电话号码，这样你看到电话<code>13000000001</code>就是是对应<code>user0001</code>：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">user</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">u&#39;user</span><span class="si">%04d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
-</span><span class='line'><span class="n">phone</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">u&#39;1300000</span><span class="si">%04d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>而<code>Fuzz</code>则是随机的，主要用来构造像学校、专业或者生日这样的数据：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">card_bank</span> <span class="o">=</span> <span class="n">FuzzyChoice</span><span class="p">([</span><span class="s">u&#39;中国银行&#39;</span><span class="p">,</span> <span class="s">u&#39;中国招商银行&#39;</span><span class="p">,</span> <span class="s">u&#39;中国工商银行&#39;</span><span class="p">,</span>
-</span><span class='line'>                      <span class="s">u&#39;中国建设银行&#39;</span><span class="p">,</span> <span class="s">u&#39;成都银行&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="n">major</span> <span class="o">=</span> <span class="n">FuzzyChoice</span><span class="p">([</span><span class="s">u&#39;地球物理学&#39;</span><span class="p">,</span> <span class="s">u&#39;大气科学&#39;</span><span class="p">,</span> <span class="s">u&#39;海洋科学&#39;</span><span class="p">,</span> <span class="s">u&#39;力学&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;农业工程&#39;</span><span class="p">,</span> <span class="s">u&#39;环境科学&#39;</span><span class="p">,</span> <span class="s">u&#39;心理学&#39;</span><span class="p">,</span> <span class="s">u&#39;统计学&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;系统科学&#39;</span><span class="p">,</span> <span class="s">u&#39;地矿&#39;</span><span class="p">,</span> <span class="s">u&#39;机械&#39;</span><span class="p">,</span> <span class="s">u&#39;仪器仪表&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;能源动力&#39;</span><span class="p">,</span> <span class="s">u&#39;电气信息&#39;</span><span class="p">,</span> <span class="s">u&#39;土建&#39;</span><span class="p">,</span> <span class="s">u&#39;测绘&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;环境与安全&#39;</span><span class="p">,</span> <span class="s">u&#39;化工与制药&#39;</span><span class="p">,</span> <span class="s">u&#39;交通运输&#39;</span><span class="p">,</span> <span class="s">u&#39;海洋工程;&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;航空航天&#39;</span><span class="p">,</span> <span class="s">u&#39;武器&#39;</span><span class="p">,</span> <span class="s">u&#39;工程力学&#39;</span><span class="p">,</span> <span class="s">u&#39;生物工程&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;公安技术&#39;</span><span class="p">,</span> <span class="s">u&#39;材料科学&#39;</span><span class="p">,</span> <span class="s">u&#39;材料&#39;</span><span class="p">,</span> <span class="s">u&#39;水利&#39;</span><span class="p">,</span>
-</span><span class='line'>                  <span class="s">u&#39;林业工程&#39;</span><span class="p">,</span> <span class="s">u&#39;轻工纺织食品&#39;</span><span class="p">,</span> <span class="s">u&#39;电子信息科学&#39;</span><span class="p">,</span> <span class="s">u&#39;其他&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="n">birthday</span> <span class="o">=</span> <span class="n">FuzzyNaiveDateTime</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1992</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>当然，有的字段，比如姓名、地址这类通过顺序或者是随机的从某个设定的集合抽取效果都不够理想，后面会看到怎么用<a href="https://github.com/joke2k/faker">faker</a>来构造它们。</p>
-
-<a name="L.................."></a>
-<h3>关联对象生成</h3>
-
-<p>关联对象的关系有很多种(1:1, 1:n, n:1, n:n)，主要都是通过组合运用<code>SubFactory</code>和<code>RelatedFactory</code>两者来生成，但具体的构造方式和先构造谁都要以实际情况而定。比如我们有User和Tester这样的1:1的关系：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Tester</span><span class="p">(</span><span class="n">TimeBaseModel</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span>
-</span><span class='line'>                                <span class="n">verbose_name</span><span class="o">=</span><span class="s">u&#39;账号&#39;</span><span class="p">,</span>
-</span><span class='line'>                                <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;tester&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="o">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这里在考虑是在<code>TesterFactory</code>里面把<code>User</code>作为<code>SubFactory</code>来生成，还是在<code>UserFactory</code>里面把<code>Tester</code>作为<code>RelatedFactory</code>来生成，主要就是看先后关系。很显然，在这里我们应该先构造系统里的User：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TestUserFactory</span><span class="p">(</span><span class="n">UserFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="o">...</span>
-</span><span class='line'>    <span class="n">tester</span> <span class="o">=</span> <span class="n">RelatedFactory</span><span class="p">(</span><span class="s">&#39;apps.tester.factories.TesterFactory&#39;</span><span class="p">,</span> <span class="s">&#39;user&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这段代码告诉系统，在每个<code>TestUser</code>被构造的时候，用构造出来的<code>user</code>来创建一个1:1的<code>Tester</code>。这个<code>Tester</code>的构造会在<code>user</code>的<code>save</code>之前完成。</p>
-
-<p>然后在<code>Tester</code>的构造过程中你可以直接通过<code>SelfAttribute</code>使用传入的<code>user</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TesterFactory</span><span class="p">(</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="o">...</span>
-</span><span class='line'>    <span class="n">phone</span> <span class="o">=</span> <span class="n">SelfAttribute</span><span class="p">(</span><span class="s">&#39;user.phone&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">nick_name</span> <span class="o">=</span> <span class="n">SelfAttribute</span><span class="p">(</span><span class="s">&#39;user.nick_name&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">creator</span> <span class="o">=</span> <span class="n">SelfAttribute</span><span class="p">(</span><span class="s">&#39;user&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>再比如，我们的<code>Tester</code>和<code>PlatformTask</code>都会关联到测试任务<code>TesterTask</code>，它们俩看起来都是<code>ForeinKey</code>。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TesterTask</span><span class="p">(</span><span class="n">TestingDeviceMixin</span><span class="p">,</span> <span class="n">TimeBaseModel</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Tester</span><span class="p">,</span>
-</span><span class='line'>                              <span class="n">verbose_name</span><span class="o">=</span><span class="s">u&#39;测试人&#39;</span><span class="p">,</span> <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">platform_task</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">PlatformTask</span><span class="p">,</span>
-</span><span class='line'>                                      <span class="n">verbose_name</span><span class="o">=</span><span class="s">u&#39;任务&#39;</span><span class="p">,</span>
-</span><span class='line'>                                      <span class="n">related_name</span><span class="o">=</span><span class="s">u&#39;tester_tasks&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>但对生成数据而言，我们的目标会是每个<code>Tester</code>在被创建的时候，都给它创建一个以这个<code>Tester</code>为<code>owner</code>的<code>TesterTask</code>，并且给这个<code>TesterTask</code>创建一个关联的<code>PlatformTask</code>。</p>
-
-<p>于是我们的写法就会是，首先在<code>TesterFactory</code>里面使用<code>RelatedFactory</code>来创建<code>TesterTask</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TesterFactory</span><span class="p">(</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="o">...</span>
-</span><span class='line'>    <span class="n">tester_task</span> <span class="o">=</span> <span class="n">RelatedFactory</span><span class="p">(</span><span class="s">&#39;apps.tester.factories.TesterTaskFactory&#39;</span><span class="p">,</span> <span class="s">&#39;owner&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="o">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后在<code>TesterTaskFactory</code>里面创建<code>PlatformTask</code>，并且在构造的时候使用传入的<code>owner</code>的参数：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TesterTaskFactory</span><span class="p">(</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
-</span><span class='line'>    <span class="o">...</span>
-</span><span class='line'>    <span class="n">platform_task</span> <span class="o">=</span> <span class="n">SubFactory</span><span class="p">(</span><span class="s">&#39;apps.platformtask.factories.PlatformTaskFactory&#39;</span><span class="p">,</span>
-</span><span class='line'>                               <span class="n">company</span><span class="o">=</span><span class="n">SelfAttribute</span><span class="p">(</span><span class="s">&#39;..owner.user.company&#39;</span><span class="p">),</span>
-</span><span class='line'>                               <span class="n">owner</span><span class="o">=</span><span class="n">SelfAttribute</span><span class="p">(</span><span class="s">&#39;..owner.user&#39;</span><span class="p">))</span>
-</span><span class='line'>    <span class="o">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<a name="faker"></a>
-<h2>faker</h2>
-
-<p>有很多字段，比如姓名、地址这些，纯粹用Fuzz的办法很难做到“贴近真实”。<a href="https://github.com/joke2k/faker">faker</a>就是用来解决这类字段的。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">faker</span> <span class="kn">import</span> <span class="n">Factory</span>
-</span><span class='line'><span class="n">fake</span> <span class="o">=</span> <span class="n">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">fake</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
-</span><span class='line'><span class="c"># &#39;Lucy Cechtelar&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">fake</span><span class="o">.</span><span class="n">address</span><span class="p">()</span>
-</span><span class='line'><span class="c"># &quot;426 Jordy Lodge</span>
-</span><span class='line'><span class="c">#  Cartwrightshire, SC 88120-6700&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">fake</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-</span><span class='line'><span class="c"># Sint velit eveniet. Rerum atque repellat voluptatem quia rerum. Numquam excepturi</span>
-</span><span class='line'><span class="c"># beatae sint laudantium consequatur. Magni occaecati itaque sint et sit tempore. Nesciunt</span>
-</span><span class='line'><span class="c"># amet quidem. Iusto deleniti cum autem ad quia aperiam.</span>
-</span><span class='line'><span class="c"># A consectetur quos aliquam. In iste aliquid et aut similique suscipit. Consequatur qui</span>
-</span><span class='line'><span class="c"># quaerat iste minus hic expedita. Consequuntur error magni et laboriosam. Aut aspernatur</span>
-</span><span class='line'><span class="c"># voluptatem sit aliquam. Dolores voluptatum est.</span>
-</span><span class='line'><span class="c"># Aut molestias et maxime. Fugit autem facilis quos vero. Eius quibusdam possimus est.</span>
-</span><span class='line'><span class="c"># Ea quaerat et quisquam. Deleniti sunt quam. Adipisci consequatur id in occaecati.</span>
-</span><span class='line'><span class="c"># Et sint et. Ut ducimus quod nemo ab voluptatum.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这个包最可爱的地方就是支持本地化，比如一个随机的中文姓名可以这么去构造：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">faker</span> <span class="o">=</span> <span class="n">FakerFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;zh_CN&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">name</span> <span class="o">=</span> <span class="n">lazy_attribute</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">faker</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<a name="L......fixture"></a>
-<h2>生成fixture</h2>
-
-<p>因为<a href="https://github.com/rbarrois/factory_boy/">factory boy</a>和<a href="https://github.com/joke2k/faker">faker</a>主要的作用是在测试里面去mock数据，所以要用它们生成fixture不是那么容易。这是因为Django的整个设计上就很注意避免你把测试的数据写到生产的数据库，所以测试都会在一个在<code>Setup</code>阶段被创建，在<code>TearDown</code>阶段被删除的临时数据库里面进行（我看了一下，在开发版本的Django上已经加了一个<code>--keepdb</code>的参数使得你可以<a href="https://docs.djangoproject.com/en/dev/ref/django-admin/#django-admin-option---keepdb">保留你用来运行测试的数据库了</a>）。</p>
-
-<p>所以我们可以在一个测试的<code>Setup</code>阶段把数据生成后，直接调用<code>dumpdata</code>命令来把数据<code>dump</code>出去：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">company</span> <span class="o">=</span> <span class="n">CompanyFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">TestUserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">company</span><span class="o">=</span><span class="n">company</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">TestUserFactory</span><span class="o">.</span><span class="n">create_batch</span><span class="p">(</span><span class="n">company</span><span class="o">=</span><span class="n">company</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c">#for test_user in test_users:</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">create_fixture</span><span class="p">(</span><span class="s">&#39;tester&#39;</span><span class="p">,</span> <span class="s">&#39;tester.json&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">create_fixture</span><span class="p">(</span><span class="s">&#39;account&#39;</span><span class="p">,</span> <span class="s">&#39;account.json&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>注意，这里在创建的时候指定id主要是为了让初始的id比较大，避免和系统里面已经有的id撞车导致你构造的测试数据在<code>loaddata</code>的时候报错或者覆盖现有数据。</p>
-
-<p>其中，<code>create_fixture</code>函数内容如下：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">create_fixture</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">buf</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">management</span><span class="o">.</span><span class="n">call_command</span><span class="p">(</span><span class="s">&#39;dumpdata&#39;</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">buf</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">buf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>
