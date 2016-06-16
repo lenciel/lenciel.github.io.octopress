@@ -15,12 +15,12 @@ categories:
 
 其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。
 
-但它的有趣之处在于，验证码，也就是CAPTCHA，本身就是'Completely automated Public Turing test to tell Computers and Humans Apart'的缩写，也就是说在设计上它的目的就是要：
+但它的有趣之处在于，验证码，也就是CAPTCHA，本身就是'Completely Automated Public Turing test to tell Computers and Humans Apart'的缩写，也就是说在设计上它的目的就是要：
 
 1. 让人很容易认识出来
 2. 让机器很难认识出来
 
-所以如果你电脑识别出来了验证码，要么就是它特别容易，要么就是你实现了很不错的人工智能算法，这篇文章是讲第一种情况。
+所以如果你电脑识别出来了验证码，要么就是它特别容易不符合#2的要求，要么就是你实现了很不错的人工智能算法，这篇文章是讲第一种情况。
 
 传统的做法来识别OCR，主要需要处理的是下面三个环节：
 
