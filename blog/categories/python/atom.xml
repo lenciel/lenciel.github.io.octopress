@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | @Lenciel]]></title>
   <link href="https://lenciel.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="https://lenciel.com/"/>
-  <updated>2016-06-15T15:07:14+08:00</updated>
+  <updated>2016-06-16T18:23:41+08:00</updated>
   <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,188 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[简单验证码的快速识别]]></title>
+    <link href="https://lenciel.com/2016/06/python-captcha-solution/"/>
+    <updated>2016-06-16T13:48:14+08:00</updated>
+    <id>https://lenciel.com/2016/06/python-captcha-solution</id>
+    <content type="html"><![CDATA[<p>昨天饭局上聊起来自动化测试或者是别的奇怪事业里经常需要面对的一个问题：验证码识别。</p>
+
+<p>其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。</p>
+
+<p>但它的有趣之处在于，验证码，也就是CAPTCHA，本身就是&#8217;Completely automated Public Turing test to tell Computers and Humans Apart&#8217;的缩写，也就是说在设计上它的目的就是要：</p>
+
+<ol>
+<li>让人很容易认识出来</li>
+<li>让机器很难认识出来</li>
+</ol>
+
+
+<p>所以如果你电脑识别出来了验证码，要么就是它特别容易，要么就是你实现了很不错的人工智能算法，这篇文章是讲第一种情况。</p>
+
+<p>传统的做法来识别OCR，主要需要处理的是下面三个环节：</p>
+
+<ol>
+<li>图片二值化</li>
+<li>字符的分割</li>
+<li>字符的识别</li>
+</ol>
+
+
+<a name="L.................."></a>
+<h3>二值化怎么做</h3>
+
+<p>所谓的“二值化”，就是图片上的像素要么灰度是255（白），要么是0（黑）。大致的思路就是把灰度大于或等于阈值的像素判为属于你关注的文字，置成0；其他的像素点灰度置为255。</p>
+
+<p>具体的操作，我一般使用下面几种方式：</p>
+
+<ol>
+<li>如果是特别简单地处理，用PIL库</li>
+<li>如果是比较复杂的但是不需要很细致的控制，用<a href="http://imagemagick.sourceforge.net/">ImageMagick</a>的<code>convert</code>命令</li>
+<li>如果是特别复杂，需要反复试验各种算法的，用OpenCV</li>
+</ol>
+
+
+<p>所以下面这两个验证码，哪个的难度大一些？</p>
+
+<p style="font-size: 0.8em;
+"><img src="https://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+图1. 微林的验证码</p>
+
+
+
+
+<p style="font-size: 0.8em;
+"><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+图2. 饭局后J.Snow提供的验证码</p>
+
+
+<p>如果你脑子里面没有二值化的概念大概会觉得第一个难度大一些，因为以人眼的视线去考虑，好像第一张要“难分辨”一些。</p>
+
+<p>但其实第一张图所有的噪声都是花花绿绿的颜色，而验证码本身是纯粹的黑色，这种图片处理起来是相对容易的。只需要找到验证码像素点的颜色，用这种颜色选取这些像素点，拷贝到一张全白的图片上面即可。</p>
+
+<p>要获取验证码的像素颜色可以<a href="http://www.boyter.org/decoding-captchas/">参考这里</a>的思路，把图片转成256色的，然后对所有的像素做一个统计然后标出它们在整个图片里面出现的频率。因为觉得原文里面的代码写得比较啰嗦（要学会写lamda啊）就做了一些修改：</p>
+
+<pre><code class="python">import sys
+from PIL import Image
+
+
+def get_top_pixels(file_path, min_pt_num):
+    im = Image.open(file_path)
+    im = im.convert("P")
+    top_pixels = []
+
+    for index in enumerate(im.histogram()):
+        if index[1] &gt; int(min_pt_num):
+            top_pixels.append(index)
+
+    return sorted(top_pixels, key=lambda x: x[1], reverse=True)
+
+
+if __name__ == '__main__':
+    print(get_top_pixels(sys.argv[1], sys.argv[2]))
+</code></pre>
+
+<p>这个程序运行的结果如下：</p>
+
+<p><blockquote><p>$ python get_histdata.py regcode.png 30</p></p><p><p>[(0, 1471), (1, 214), (10, 110), (11, 97), (2, 85), (9, 83), (6, 66), (8, 58), (7, 49), (5, 37)]</p></blockquote></p>
+
+<p>拿到了颜色，就可以写一个简单的程序从图片里面拷贝这些像素到一张干净的图：</p>
+
+<pre><code class="python">import sys
+from PIL import Image
+
+
+def clean_image(file_path, key_pix):
+    im = Image.open(file_path)
+    im = im.convert("P")
+    im2 = Image.new("P", im.size, 255)
+
+    for x in range(im.size[1]):
+        for y in range(im.size[0]):
+            pix = im.getpixel((y, x))
+            # color of pixel to get
+            if pix == key_pix:
+                im2.putpixel((y, x), 0)
+
+    im2.save("convert_%s.png" % key_pix)
+
+
+if __name__ == '__main__':
+    clean_image(sys.argv[1], sys.argv[2])
+</code></pre>
+
+<p>出现的最多的<code>0</code>显然是背景色，所以对<code>1</code>和<code>10</code>运行脚本：</p>
+
+<p><blockquote><p>$ python convert_grayscale.py regcode.png 1<br/>$ python convert_grayscale.py regcode.png 10</p></blockquote></p>
+
+<p>结果如下：</p>
+
+<p><img src="https://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+
+
+<p>很明显目标像素是1而不是10。</p>
+
+<p>而J. Snow的这张图，首先验证码本身就是幻彩的而不是均匀一致的颜色，然后噪声又都是用这些幻彩颜色来生成的，所以如果只是简单的对颜色排序，会得到下面的结果：</p>
+
+<p><blockquote><p>[(225, 349), (139, 170), (182, 161), (219, 95), (224, 64), (189, 54), (175, 47), (218, 40), (90, 36), (96, 33)]</p></blockquote></p>
+
+<p>然后我们对排名靠前的像素进行提取会得到下面的结果：</p>
+
+<p><img src="https://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+
+
+<p>这种情况下怎么办？直观观察一下验证码，会发现背景噪声点相比验证码像素点来说很少（这也正常，都是一个颜色如果太多就没法看了）， 很适合先做一些切割，然后进行模糊匹配（因为验证码的像素是幻彩的不是单一的，需要匹配相近像素点），然后再做二值化。</p>
+
+<p>直接用IM的convert来处理比写代码简单：</p>
+
+<pre><code class="bash">$ convert 1.pic.jpg -gravity Center -crop 48x16+0+0  +repage -fuzz 50% -fill white -opaque white -fill black +opaque white resultimage.jpg
+</code></pre>
+
+<p>效果如下：</p>
+
+<p><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+
+
+<a name="L.................."></a>
+<h3>字符怎么分割</h3>
+
+<p>其实整个验证码的识别里面，最难的是分割。特别是很多严肃的验证码，字体不是标准字体或者会变形，互相还可能粘连或者重叠，分割起来是非常难的。</p>
+
+<p>但这里拿到的验证码相对简单，这部分不是问题就不展开了。</p>
+
+<a name="L..............."></a>
+<h3>字符的识别</h3>
+
+<p>对于这里拿到的验证码而言，因为都是标准字体，可以直接使用OCR的开源工具读取，比如<a href="https://github.com/tesseract-ocr/tesseract/wiki">tesseract</a>：</p>
+
+<pre><code class="bash">$ tesseract resultimage.jpg -psm 7 output &amp;&amp; cat output.txt
+
+Tesseract Open Source OCR Engine v3.04.01 with Leptonica
+Warning in pixReadMemJpeg: work-around: writing to a temp file
+
+YLNU
+</code></pre>
+
+<p>如果不是标准字体的，因为分割完毕了就拿到了独立的字符，要识别就可以建一个模型，不断的训练它，来识别每个字符。</p>
+
+<a name="L..........................."></a>
+<h3>如果是更困难的呢？</h3>
+
+<p>可能你会觉得围棋电脑都会下了，那么认识验证码为什么还是比较难？</p>
+
+<p>其实<a href="https://www.google.com.hk/search?safe=off&amp;q=CNN+captcha&amp;oq=CNN+captcha&amp;gs_l=serp.3...1563.1932.0.2169.3.3.0.0.0.0.0.0..0.0....0...1c.1.64.serp..3.0.0.q4EdDQLrqyk">随便搜一下</a>就会发现有很多人在做这方面的实验，主要的思路就是把n个字符组成的验证码当成有n个标签的图片来用CNN来解决。加上最近很多大公司开放了自己的人工智能平台，比如Google的Tensorflow，我们这些没有大量计算资源的普通人也可以用它们实现自己的想法了。</p>
+
+<p>推荐参考链接：</p>
+
+<ol>
+<li><a href="https://matthewearl.github.io/2016/05/06/cnn-anpr/">CNN辨认车牌</a></li>
+<li><a href="http://www.cs.sjsu.edu/faculty/pollett/masters/Semesters/Spring15/geetika/CS298%20Slides%20-%20PDF">CNN验证码识别</a></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How Complex Your Python Project Is?]]></title>
@@ -143,393 +325,6 @@ index-url = http://pypi.v2ex.com/simple
 
 
 <p>为了不在每次运行<code>pip install -r requirements.txt</code>的时候都下载一堆依赖，你还可以打开pip的<a href="http://lenciel.cn/2013/10/pip-download-cache/">download cache</a>。如果整个公司在做项目的时候都需要经常使用一些包，甚至可以考虑<a href="https://github.com/wolever/pip2pi">做一个Pypi</a>的库来共享，类似于Maven的Repo。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cryptography and Python]]></title>
-    <link href="https://lenciel.com/2013/07/cryptography-and-python/"/>
-    <updated>2013-07-25T15:13:00+08:00</updated>
-    <id>https://lenciel.com/2013/07/cryptography-and-python</id>
-    <content type="html"><![CDATA[<p>这周我们的一个项目里面需要调用第三方接口。对方的安全机制是调用时要进行加密和校验，但它们的文档没有描述具体是怎么加密的，而是给了一段代码：</p>
-
-<pre><code class="java">    private static BASE64Encoder base64 = new BASE64Encoder();
-//  private static byte[] myIV = { 50, 51, 52, 53, 54, 55, 56, 57 };
-//  private static byte[] myIV = null;
-//  private static String strkey = "W9qPIzjaVGKUp7CKRk/qpCkg/SCMkQRu"; // 字节数必须是8的倍数
-    //密钥
-    private static String strkey = "NDg5MDY2NjczMxxxxXXXXXyNzUzNTg2";
-    private static String removeBR(String str) {
-        StringBuffer sf = new StringBuffer(str);
-
-        for (int i = 0; i &lt; sf.length(); ++i)
-        {
-          if (sf.charAt(i) == '\n')
-          {
-            sf = sf.deleteCharAt(i);
-          }
-        }
-        for (int i = 0; i &lt; sf.length(); ++i)
-        {
-          if (sf.charAt(i) == '\r')
-          {
-            sf = sf.deleteCharAt(i);
-          }
-        }
-        return sf.toString();
-    }
-
-    private static String desEncrypt(String input) throws Exception
-    {
-
-        BASE64Decoder base64d = new BASE64Decoder();
-        DESedeKeySpec p8ksp = null;
-        p8ksp = new DESedeKeySpec(base64d.decodeBuffer(strkey));
-        Key key = null;
-        key = SecretKeyFactory.getInstance("DESede").generateSecret(p8ksp);
-
-        byte[] plainBytes = (byte[])null;
-        Cipher cipher = null;
-        byte[] cipherText = (byte[])null;
-        //“算法/模式/填充”
-        plainBytes = input.getBytes("UTF8");
-        cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
-        SecretKeySpec myKey = new SecretKeySpec(key.getEncoded(), "DESede");
- //       IvParameterSpec ivspec = new IvParameterSpec(myIV);
-        cipher.init(1, myKey);
-        cipherText = cipher.doFinal(plainBytes);
-        return removeBR(base64.encode(cipherText));
-    }
-
-    private static String desDecrypt(String cipherText) throws Exception
-    {
-
-        BASE64Decoder base64d = new BASE64Decoder();
-        DESedeKeySpec p8ksp = null;
-        p8ksp = new DESedeKeySpec(base64d.decodeBuffer(strkey));
-        Key key = null;
-        key = SecretKeyFactory.getInstance("DESede").generateSecret(p8ksp);
-
-        Cipher cipher = null;
-        byte[] inPut = base64d.decodeBuffer(cipherText);
-        //“算法/模式/填充”
-        cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
-        SecretKeySpec myKey = new SecretKeySpec(key.getEncoded(), "DESede");
- //       IvParameterSpec ivspec = new IvParameterSpec(myIV);
-        cipher.init(2, myKey);
-        byte[] output = cipher.doFinal(inPut);
-        return new String(output, "UTF8");
-    }
-</code></pre>
-
-<p>很明显，在提供文档的同学看来大家都是JEE程序员。仔细看了半天这两个函数<code>desEncrypt</code>和<code>desDecrypt</code>外加Google，才明白是<code>DES3</code>算法。</p>
-
-<p>接着这份文档的后面还有另一个对加密的描述也是代码，不过这次比较明显是MD5：</p>
-
-<pre><code class="java">public static final String MD5(String s)
-{
-  char hexDigits[] = {
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    'a', 'b', 'c', 'd', 'e', 'f'
-    };
-  char str[] = null;
-  byte strTemp[] = s.getBytes();
-  MessageDigest mdTemp;
-  try {
-    mdTemp = MessageDigest.getInstance("MD5");
-    mdTemp.update(strTemp);
-    byte md[] = mdTemp.digest();
-    int j = md.length;
-    str = new char[j * 2];
-    int k = 0;
-    for (int i = 0; i &lt; j; i++)
-    {
-      byte b = md[i];
-      str[k++] = hexDigits[b &gt;&gt; 4 &amp; 0xf];
-      str[k++] = hexDigits[b &amp; 0xf];
-    }
-  } catch (NoSuchAlgorithmException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-  }
-
-  return new String(str);
-}
-</code></pre>
-
-<p>这些算法用python来实现当然就简单多了:MD5就是一句话，看起来非常复杂的DES3也不过几句话:</p>
-
-<pre><code class="python">from pyDes import triple_des, ECB, PAD_PKCS5
-import base64
-import datetime
-
-input_str = "test string"
-
-key_base64_str = base64.b64decode("NDg5MDY2NjczMxxxxXXXXXyNzUzNTg2", "utf-8")
-key_bytes = key_base64_str.encode('utf-8')
-k = triple_des(key_bytes, ECB, pad=None, padmode=PAD_PKCS5)
-d = base64.b64encode(k.encrypt(input_str))
-print d
-</code></pre>
-
-<p>当然，要明白这些算法究竟怎么回事才叫认真负责的态度：下面这些内容主要来自<a href="http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/">这篇文章</a></p>
-
-<a name="L.strong.Hash..strong."></a>
-<h2><strong>Hash</strong></h2>
-
-<p>hash就是给输入的字符串生成一个固定长度的字符串（被称为hash值）。理想的hash要满足：</p>
-
-<ul>
-<li>根据生成的字符串非常难猜到输入的字符串</li>
-<li>任意两个不同的字符串不会生成相同的hash值</li>
-<li>如果输入字符串没有变生成的hash值应该不会变</li>
-</ul>
-
-
-<p><img src="/downloads/images/hash.png" title="Don't touch me..." alt="hash" /></p>
-
-<p>hash函数可以被用来计算checksum，也可以用来进行数字签名和认证。</p>
-
-<a name="L.strong.MD5..strong."></a>
-<h3><strong>MD5</strong></h3>
-
-<p>1991年面世的一种hash算法，生成的字符串长度为128bit。</p>
-
-<p>它的算法详情可以看<a href="http://tools.ietf.org/html/rfc1321">这里</a>，简单说如下：</p>
-
-<ul>
-<li>首先需要对字符串进行扩展，使其位长对512求余的结果等于448。因此，位长（Bits Length）将被扩展至N*512+448，N为一个非负整数，N可以是零。填充的方法一般是在信息的后面填充一个1和无数个0，直到满足上面的条件时才停止用0对信息的填充。</li>
-<li>然后，在这个结果后面附加一个以64位二进制表示的填充前信息长度。经过这两步的处理，现在的位长是 <code>N*512+448+64 = (N+1）*512</code>，即长度恰好是512的整数倍。</li>
-<li>最后以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。</li>
-</ul>
-
-
-<p>MD5对碰撞攻击(不同的输入生成相同的hash)等攻击的抵抗力比较差。</p>
-
-<p>在python中使用MD5:</p>
-
-<pre><code class="python">import os
-from Crypto.Hash import MD5
-
-def get_file_checksum(filename):
-    h = MD5.new()
-    chunk_size = 8192
-    with open(filename, 'rb') as f:
-        while True:
-            chunk = f.read(chunk_size)
-            if len(chunk) == 0:
-                break
-            h.update(chunk)
-    return h.hexdigest()
-</code></pre>
-
-<a name="L.strong...............strong."></a>
-<h2><strong>加密算法</strong></h2>
-
-<p>加密算法使用key把输入的文本变成加密的文本。有两种加密的方式：分块和流。分块处理的单位是固定大小比如8或者16个bytes，流则是一个一个byte。只有知道了解密的<code>key</code>才能对加密的文本进行解密。</p>
-
-<a name="L.em.........em."></a>
-<h3><em>分块</em></h3>
-
-<p>DES是分块加密的一种，其处理对象的大小是8个bytes。DES最简单的模式是所谓的<code>ECB( electronic code book)模式</code>，也就是每个block都是独立加密，最后组成整个加密后的文本。</p>
-
-<p><img src="/downloads/images/block_cipher_ebc.png" title="Don't touch me..." alt="ecb" /></p>
-
-<p>使用pycrpto对文本使用<code>DES/ECB</code>加密很简单。假设key是<code>10234567</code>，而我们要加密的文本是<code>abcdefgh</code>，那么：</p>
-
-<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import DES
-&gt;&gt;&gt; des = DES.new('01234567', DES.MODE_ECB)
-&gt;&gt;&gt; text = 'abcdefgh'
-&gt;&gt;&gt; cipher_text = des.encrypt(text)
-&gt;&gt;&gt; cipher_text
-'\xec\xc2\x9e\xd9] a\xd0'
-&gt;&gt;&gt; des.decrypt(cipher_text)
-'abcdefgh'
-</code></pre>
-
-<p>比<code>ECB</code>更健壮的是<code>CFB (Cipher feedback)</code>模式，也就是先组合前面加密的文本和待加密的文本，然后进行加密。</p>
-
-<p><img src="/downloads/images/block_cipher_cfb.png" title="Don't touch me..." alt="cfb" /></p>
-
-<p>下面的例子说明了算法的工作流程：待加密的是<code>abcdefghijklmnop</code>，两倍8bytes。首先生成一个随机的字符串作为初始的<code>iv</code>来生成两个<code>DES</code>对象，一个用来加密一个用来解密。之所以需要这两个对象，是因为<code>feedback</code>值会随着block被加密后变化。</p>
-
-<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import DES
-&gt;&gt;&gt; from Crypto import Random
-&gt;&gt;&gt; iv = Random.get_random_bytes(8)
-&gt;&gt;&gt; des1 = DES.new('01234567', DES.MODE_CFB, iv)
-&gt;&gt;&gt; des2 = DES.new('01234567', DES.MODE_CFB, iv)
-&gt;&gt;&gt; text = 'abcdefghijklmnop'
-&gt;&gt;&gt; cipher_text = des1.encrypt(text)
-&gt;&gt;&gt; cipher_text
-"?\\\x8e\x86\xeb\xab\x8b\x97'\xa1W\xde\x89!\xc3d"
-&gt;&gt;&gt; des2.decrypt(cipher_text)
-'abcdefghijklmnop'
-</code></pre>
-
-<a name="L.em......em."></a>
-<h3><em>流</em></h3>
-
-<p>这些算法基于一个个bytes，所以block的大小总是1 byte。pycrypto提供了两个这样的算法：<code>ARC4</code> 和 <code>XOR</code>。这种基于流的算法只有一种模式：<code>ECB</code>。</p>
-
-<p>下面是一个<code>ARC4</code>的算法，使用了key <code>01234567</code>:</p>
-
-<pre><code class="python">&gt;&gt;&gt; from Crypto.Cipher import ARC4
-&gt;&gt;&gt; obj1 = ARC4.new('01234567')
-&gt;&gt;&gt; obj2 = ARC4.new('01234567')
-&gt;&gt;&gt; text = 'abcdefghijklmnop'
-&gt;&gt;&gt; cipher_text = obj1.encrypt(text)
-&gt;&gt;&gt; cipher_text
-'\xf0\xb7\x90{#ABXY9\xd06\x9f\xc0\x8c '
-&gt;&gt;&gt; obj2.decrypt(cipher_text)
-'abcdefghijklmnop'
-</code></pre>
-
-<a name="L.strong...............strong."></a>
-<h3><strong>应用程序</strong></h3>
-
-<p>在程序里面我们常常使用DES3对文件进行加密解密操作。一般来说操作对象是文件时，总是分成一个个chunck来处理以免占用太多内存。如果读入的chunck少于16bytes，就需要扩展它才能进行加密。</p>
-
-<pre><code class="python">import os
-from Crypto.Cipher import DES3
-
-def encrypt_file(in_filename, out_filename, chunk_size, key, iv):
-    des3 = DES3.new(key, DES3.MODE_CFB, iv)
-
-    with open(in_filename, 'r') as in_file:
-        with open(out_filename, 'w') as out_file:
-            while True:
-                chunk = in_file.read(chunk_size)
-                if len(chunk) == 0:
-                    break
-                elif len(chunk) % 16 != 0:
-                    chunk += ' ' * (16 - len(chunk) % 16)
-                out_file.write(des3.encrypt(chunk))
-
-def decrypt_file(in_filename, out_filename, chunk_size, key, iv):
-    des3 = DES3.new(key, DES3.MODE_CFB, iv)
-
-    with open(in_filename, 'r') as in_file:
-        with open(out_filename, 'w') as out_file:
-            while True:
-                chunk = in_file.read(chunk_size)
-                if len(chunk) == 0:
-                    break
-                out_file.write(des3.decrypt(chunk))
-</code></pre>
-
-<p>有了上面定义的这两个函数我们可以这样使用它们：</p>
-
-<pre><code class="python">from Crypto import Random
-iv = Random.get_random_bytes(8)
-with open('to_enc.txt', 'r') as f:
-    print 'to_enc.txt: %s' % f.read()
-encrypt_file('to_enc.txt', 'to_enc.enc', 8192, key, iv)
-with open('to_enc.enc', 'r') as f:
-    print 'to_enc.enc: %s' % f.read()
-decrypt_file('to_enc.enc', 'to_enc.dec', 8192, key, iv)
-with open('to_enc.dec', 'r') as f:
-    print 'to_enc.dec: %s' % f.read()
-</code></pre>
-
-<p>程序的输出如下：</p>
-
-<pre><code class="bash">to_enc.txt: this content needs to be encrypted.
-
-to_enc.enc: ??~?E??.??]!=)??"t?
-                                JpDw???R?UN0?=??R?UN0?}0r?FV9
-to_enc.dec: this content needs to be encrypted.
-</code></pre>
-
-<a name="L.strong.Public-key.algorithms..strong."></a>
-<h2><strong>Public-key algorithms</strong></h2>
-
-<p>上面提到的加密算法的一大问题是双方都需要知道key。而<code>public-key算法</code>提供了两个key，一个用来加密，一个用来解密。</p>
-
-<p><img src="/downloads/images/public_private_key.png" title="Don't touch me..." alt="ecb" /></p>
-
-<a name="L.strong.public.private.key..strong."></a>
-<h3><strong>public/private key</strong></h3>
-
-<p>使用pycrpto很容易就可以生成一对<code>private/public key</code>，生成key的时候必须规定key的长度，越长越安全。除开长度，还需要设定生成key的方法。下面是一个使用RSA生成1024bit长度key的过程：</p>
-
-<pre><code class="python">&gt;&gt;&gt; from Crypto.PublicKey import RSA
-&gt;&gt;&gt; from Crypto import Random
-&gt;&gt;&gt; random_generator = Random.new().read
-&gt;&gt;&gt; key = RSA.generate(1024, random_generator)
-&gt;&gt;&gt; key
-&lt;_RSAobj @0x7f60cf1b57e8 n(1024),e,d,p,q,u,private&gt;
-</code></pre>
-
-<p>key对象有一系列的方法：
-- <code>can_encrypt()</code> 返回是否能用key来加密数据
-- <code>can_sign()</code> 返回是否能用key来进行签名
-- <code>has_private()</code> 返回是否有private key</p>
-
-<pre><code class="python">&gt;&gt;&gt; key.can_encrypt()
-True
-&gt;&gt;&gt; key.can_sign()
-True
-&gt;&gt;&gt; key.has_private()
-True
-</code></pre>
-
-<a name="L.strong.........strong."></a>
-<h3><strong>加密</strong></h3>
-
-<p>现在我们有了一对key，我们就可以加密一些数据了。加密的时候使用的是公钥: <code>public key</code> ：</p>
-
-<pre><code class="python">&gt;&gt;&gt; public_key = key.publickey()
-&gt;&gt;&gt; enc_data = public_key.encrypt('abcdefgh', 32)
-&gt;&gt;&gt; enc_data
-('\x11\x86\x8b\xfa\x82\xdf\xe3sN ~@\xdbP\x85
-\x93\xe6\xb9\xe9\x95I\xa7\xadQ\x08\xe5\xc8$9\x81K\xa0\xb5\xee\x1e\xb5r
-\x9bH)\xd8\xeb\x03\xf3\x86\xb5\x03\xfd\x97\xe6%\x9e\xf7\x11=\xa1Y&lt;\xdc
-\x94\xf0\x7f7@\x9c\x02suc\xcc\xc2j\x0c\xce\x92\x8d\xdc\x00uL\xd6.
-\x84~/\xed\xd7\xc5\xbe\xd2\x98\xec\xe4\xda\xd1L\rM`\x88\x13V\xe1M\n X
-\xce\x13 \xaf\x10|\x80\x0e\x14\xbc\x14\x1ec\xf6Rs\xbb\x93\x06\xbe',)
-</code></pre>
-
-<a name="L.strong.........strong."></a>
-<h3><strong>解密</strong></h3>
-
-<p>只要有用于解密的私钥(private key)解密是很简单的：</p>
-
-<pre><code class="python">&gt;&gt;&gt; key.decrypt(enc_data)
-'abcdefgh'
-</code></pre>
-
-<a name="L.strong.........strong."></a>
-<h3><strong>签名</strong></h3>
-
-<p>对信息进行签名，可以用来验证信息的作者，让我们相信它的来源。下面这个例子展示了如何先算出信息的hash值，然后送给RSA key的<code>sign()</code>方法。使用其他算法如<code>DSA</code>或者是<code>ElGamal</code>也类似。</p>
-
-<pre><code class="python">&gt;&gt;&gt; from Crypto.Hash import MD5
-&gt;&gt;&gt; from Crypto.PublicKey import RSA
-&gt;&gt;&gt; from Crypto import Random
-&gt;&gt;&gt; key = RSA.generate(1024, random_generator)
-&gt;&gt;&gt; text = 'abcdefgh'
-&gt;&gt;&gt; hash = MD5.new(text).digest()
-&gt;&gt;&gt; hash
-'\xe8\xdc@\x81\xb144\xb4Q\x89\xa7 \xb7{h\x18'
-&gt;&gt;&gt; signature = key.sign(hash, '')
-&gt;&gt;&gt; signature
-(1549358700992033008647390368952919655009213441715588267926189797
-14352832388210003027089995136141364041133696073722879839526120115
-25996986614087200336035744524518268136542404418603981729787438986
-50177007820700181992412437228386361134849096112920177007759309019
-6400328917297225219942913552938646767912958849053L,)
-</code></pre>
-
-<a name="L.strong.........strong."></a>
-<h3><strong>验证</strong></h3>
-
-<p>只要有公钥，验证信息就很简单了。未加密的文本和签名一起被发送给接收方。接收方计算hash值然后调用公钥的<code>verify()</code>方法来进行验证：</p>
-
-<pre><code class="python">&gt;&gt;&gt; text = 'abcdefgh'
-&gt;&gt;&gt; hash = MD5.new(text).digest()
-&gt;&gt;&gt; public_key.verify(hash, signature)
-True
-</code></pre>
 ]]></content>
   </entry>
   
