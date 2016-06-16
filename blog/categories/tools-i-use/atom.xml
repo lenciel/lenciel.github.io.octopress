@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
   <link href="https://lenciel.com/blog/categories/tools-i-use/atom.xml" rel="self"/>
   <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T18:23:41+08:00</updated>
+  <updated>2016-06-16T18:54:20+08:00</updated>
   <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[简单验证码的快速识别]]></title>
     <link href="https://lenciel.com/2016/06/python-captcha-solution/"/>
-    <updated>2016-06-16T13:48:14+08:00</updated>
+    <updated>2016-06-16T18:48:14+08:00</updated>
     <id>https://lenciel.com/2016/06/python-captcha-solution</id>
     <content type="html"><![CDATA[<p>昨天饭局上聊起来自动化测试或者是别的奇怪事业里经常需要面对的一个问题：验证码识别。</p>
 
