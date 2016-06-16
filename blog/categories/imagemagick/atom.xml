@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Imagemagick | @Lenciel]]></title>
   <link href="https://lenciel.com/blog/categories/imagemagick/atom.xml" rel="self"/>
   <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T18:54:20+08:00</updated>
+  <updated>2016-06-16T19:04:00+08:00</updated>
   <id>https://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -22,7 +22,7 @@
 
 <p>其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。</p>
 
-<p>但它的有趣之处在于，验证码，也就是CAPTCHA，本身就是&#8217;Completely automated Public Turing test to tell Computers and Humans Apart&#8217;的缩写，也就是说在设计上它的目的就是要：</p>
+<p>但它的有趣之处在于，验证码，也就是CAPTCHA，本身就是&#8217;Completely Automated Public Turing test to tell Computers and Humans Apart&#8217;的缩写，也就是说在设计上它的目的就是要：</p>
 
 <ol>
 <li>让人很容易认识出来</li>
@@ -30,7 +30,7 @@
 </ol>
 
 
-<p>所以如果你电脑识别出来了验证码，要么就是它特别容易，要么就是你实现了很不错的人工智能算法，这篇文章是讲第一种情况。</p>
+<p>所以如果你电脑识别出来了验证码，要么就是它特别容易不符合#2的要求，要么就是你实现了很不错的人工智能算法，这篇文章是讲第一种情况。</p>
 
 <p>传统的做法来识别OCR，主要需要处理的是下面三个环节：</p>
 
