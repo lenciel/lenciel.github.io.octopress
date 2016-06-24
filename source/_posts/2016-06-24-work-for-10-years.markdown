@@ -55,7 +55,7 @@ categories:
 People who discover the power and beauty of high-level, abstract ideas often make the mistake of believing that concrete ideas at lower levels are relatively worthless and might as well be forgotten. (…) on the contrary, the best computer scientists are thoroughly grounded in basic concepts of how computers actually work, and indeed that the essence of computer science is an ability to understand many levels of abstraction simultaneously.
 {% endblockquote %}
 
-当然，软件开发这职场里面，大多数人每天都很忙。有的是忙着开虚头巴脑的会；有的人是忙着混各种会议各种圈子；有的是忙着假装加班好不用回家带孩子，在公司里面看会儿视频打会儿游戏。
+当然，软件开发这职场里面，大多数人每天都很忙。有的是忙着开虚头巴脑的会；有的人是忙着混各种论坛、讲座和圈子；有的是忙着假装加班好不用回家带孩子，在公司里面看会儿视频打会儿游戏。
 
 这些忙，既骗别人，也骗自己。
 
