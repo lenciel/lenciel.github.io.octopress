@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Python | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/python/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[简单验证码的快速识别]]></title>
-    <link href="https://lenciel.com/2016/06/python-captcha-solution/"/>
+    <link href="http://lenciel.com/2016/06/python-captcha-solution/"/>
     <updated>2016-06-16T18:48:14+08:00</updated>
-    <id>https://lenciel.com/2016/06/python-captcha-solution</id>
+    <id>http://lenciel.com/2016/06/python-captcha-solution</id>
     <content type="html"><![CDATA[<p>昨天饭局上聊起来自动化测试或者是别的奇怪事业里经常需要面对的一个问题：验证码识别。</p>
 
 <p>其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。</p>
@@ -58,14 +58,14 @@
 <p>所以下面这两个验证码，哪个的难度大一些？</p>
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图1. 微林的验证码</p>
 
 
 
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图2. 饭局后J.Snow提供的验证码</p>
 
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
 
 <p>结果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>很明显目标像素是1而不是10。</p>
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
 <p>然后我们对排名靠前的像素进行提取会得到下面的结果：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>这种情况下怎么办？直观观察一下验证码，会发现背景噪声点相比验证码像素点来说很少（这也正常，都是一个颜色如果太多就没法看了）， 很适合先做一些切割，然后进行模糊匹配（因为验证码的像素是幻彩的不是单一的，需要匹配相近像素点），然后再做二值化。</p>
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
 <p>效果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <a name="L.................."></a>
@@ -197,9 +197,9 @@ YLNU
   
   <entry>
     <title type="html"><![CDATA[How Complex Your Python Project Is?]]></title>
-    <link href="https://lenciel.com/2014/08/how-complex-your-python-project-is/"/>
+    <link href="http://lenciel.com/2014/08/how-complex-your-python-project-is/"/>
     <updated>2014-08-31T21:04:47+08:00</updated>
-    <id>https://lenciel.com/2014/08/how-complex-your-python-project-is</id>
+    <id>http://lenciel.com/2014/08/how-complex-your-python-project-is</id>
     <content type="html"><![CDATA[<p>最近诸事不顺，却也理所应当。</p>
 
 <p>晚间时段迷上写字和画画，大概是因为之前看<a href="http://www.imdb.com/title/tt0460740/">《Cashback》</a>印象太深刻，觉得这些是美好遗失前力挽狂澜的技艺。</p>
@@ -245,9 +245,9 @@ YLNU
   
   <entry>
     <title type="html"><![CDATA[Fix Python After Upgrade to Maverick]]></title>
-    <link href="https://lenciel.com/2013/10/maverick-and-python/"/>
+    <link href="http://lenciel.com/2013/10/maverick-and-python/"/>
     <updated>2013-10-24T22:02:00+08:00</updated>
-    <id>https://lenciel.com/2013/10/maverick-and-python</id>
+    <id>http://lenciel.com/2013/10/maverick-and-python</id>
     <content type="html"><![CDATA[<p>升级到最新的osx版本Maverick之后，打开iTerm2就报错：</p>
 
 <pre><code class="bash">Traceback (most recent call last):
@@ -287,10 +287,10 @@ sudo easy_install -U pip
   
   <entry>
     <title type="html"><![CDATA[打开pip的download Cache]]></title>
-    <link href="https://lenciel.com/2013/10/pip-download-cache/"/>
+    <link href="http://lenciel.com/2013/10/pip-download-cache/"/>
     <updated>2013-10-17T13:25:00+08:00</updated>
-    <id>https://lenciel.com/2013/10/pip-download-cache</id>
-    <content type="html"><![CDATA[<p>Python的标准库实在是<a href="https://lenciel.com/2013/10/recharging-the-python-standard-library/">不够用</a>，所以一个很常见的情况是我们需要在每个项目使用的<code>virtualenv</code>里面都安装一些常用的库。</p>
+    <id>http://lenciel.com/2013/10/pip-download-cache</id>
+    <content type="html"><![CDATA[<p>Python的标准库实在是<a href="http://lenciel.com/2013/10/recharging-the-python-standard-library/">不够用</a>，所以一个很常见的情况是我们需要在每个项目使用的<code>virtualenv</code>里面都安装一些常用的库。</p>
 
 <p>为了加速安装的过程，有两个小窍门。</p>
 
@@ -309,9 +309,9 @@ index-url = http://pypi.v2ex.com/simple
   
   <entry>
     <title type="html"><![CDATA[给Python标准库充电]]></title>
-    <link href="https://lenciel.com/2013/10/recharging-the-python-standard-library/"/>
+    <link href="http://lenciel.com/2013/10/recharging-the-python-standard-library/"/>
     <updated>2013-10-17T12:27:00+08:00</updated>
-    <id>https://lenciel.com/2013/10/recharging-the-python-standard-library</id>
+    <id>http://lenciel.com/2013/10/recharging-the-python-standard-library</id>
     <content type="html"><![CDATA[<p>Python的自荐页面<a href="http://www.python.org/about/">About Python</a>上号称自家的标准库是&#8221;batteries included&#8221;的，但实际情况却不是这样。对Python标准库的批评几乎从来没有中断过。著名的Python包<a href="http://docs.python-requests.org/en/latest/">Requests</a>的作者甚至决定永久把Requests保持为第三方库而拒绝加入标准库，他的理由是：<a href="http://www.leancrew.com/all-this/2012/04/where-modules-go-to-die/">加入标准库就会死翘翘</a>。</p>
 
 <p>再举个例子，我们最近的项目里面都用到了<a href="https://pypi.python.org/pypi/pytz/">pytz</a>。标准库里面的datetime是支持时区的（tzinfo类），但是并没有包含时区信息（tzinfo是抽象类需要自己实现）。遵照前人的经验使用pytz是最好的办法<a href="" title="[如何在datetime转换中保存时区信息](http://stackoverflow.com/questions/14762518/python-datetime-strptime-and-strftime-how-to-preserve-the-timezone-informat).    ">^1</a>。</p>

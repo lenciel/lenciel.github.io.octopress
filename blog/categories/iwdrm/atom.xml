@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Iwdrm | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/iwdrm/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/iwdrm/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[一天很长，十年很短]]></title>
-    <link href="https://lenciel.com/2016/05/but-does-it-float/"/>
+    <link href="http://lenciel.com/2016/05/but-does-it-float/"/>
     <updated>2016-05-18T20:50:55+08:00</updated>
-    <id>https://lenciel.com/2016/05/but-does-it-float</id>
+    <id>http://lenciel.com/2016/05/but-does-it-float</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2016_05/ppl_5.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>夏天来了。</p>
@@ -66,9 +66,9 @@
   
   <entry>
     <title type="html"><![CDATA[记一次成功的过年]]></title>
-    <link href="https://lenciel.com/2016/02/happy-new-year/"/>
+    <link href="http://lenciel.com/2016/02/happy-new-year/"/>
     <updated>2016-02-13T22:41:48+08:00</updated>
-    <id>https://lenciel.com/2016/02/happy-new-year</id>
+    <id>http://lenciel.com/2016/02/happy-new-year</id>
     <content type="html"><![CDATA[<p>过年在三亚呆了一周。</p>
 
 <p>虽然中学毕业就已经习惯了在外面跑，像今年这样一大家子人到外地过年，却还是头次。</p>
@@ -127,9 +127,9 @@
   
   <entry>
     <title type="html"><![CDATA[突然死亡]]></title>
-    <link href="https://lenciel.com/2014/12/sudden-death/"/>
+    <link href="http://lenciel.com/2014/12/sudden-death/"/>
     <updated>2014-12-09T04:26:28+08:00</updated>
-    <id>https://lenciel.com/2014/12/sudden-death</id>
+    <id>http://lenciel.com/2014/12/sudden-death</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_12/snow_night.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>窗外的雪越来越大，很快就盖住了最后一点道路的痕迹。</p>
@@ -280,9 +280,9 @@
   
   <entry>
     <title type="html"><![CDATA[偶然事件]]></title>
-    <link href="https://lenciel.com/2014/08/but-does-it-flow/"/>
+    <link href="http://lenciel.com/2014/08/but-does-it-flow/"/>
     <updated>2014-08-21T03:54:13+08:00</updated>
-    <id>https://lenciel.com/2014/08/but-does-it-flow</id>
+    <id>http://lenciel.com/2014/08/but-does-it-flow</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_08/just_let_it_go.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>葛明走了之后，我们去火葬场送他。</p>
@@ -341,9 +341,9 @@
   
   <entry>
     <title type="html"><![CDATA[It's August Now, Boy...]]></title>
-    <link href="https://lenciel.com/2014/08/before-sunrise/"/>
+    <link href="http://lenciel.com/2014/08/before-sunrise/"/>
     <updated>2014-08-04T23:47:03+08:00</updated>
-    <id>https://lenciel.com/2014/08/before-sunrise</id>
+    <id>http://lenciel.com/2014/08/before-sunrise</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_08/before_sunrise_1.jpg" title="Don't touch me..." alt="before sunrise1" />
 <img src="/downloads/images/2014_08/before_sunrise_2.jpg" title="Don't touch me..." alt="before sunrise2" /></p>
 

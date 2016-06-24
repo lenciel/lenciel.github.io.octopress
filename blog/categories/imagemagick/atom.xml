@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Imagemagick | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/imagemagick/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/imagemagick/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[简单验证码的快速识别]]></title>
-    <link href="https://lenciel.com/2016/06/python-captcha-solution/"/>
+    <link href="http://lenciel.com/2016/06/python-captcha-solution/"/>
     <updated>2016-06-16T18:48:14+08:00</updated>
-    <id>https://lenciel.com/2016/06/python-captcha-solution</id>
+    <id>http://lenciel.com/2016/06/python-captcha-solution</id>
     <content type="html"><![CDATA[<p>昨天饭局上聊起来自动化测试或者是别的奇怪事业里经常需要面对的一个问题：验证码识别。</p>
 
 <p>其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。</p>
@@ -58,14 +58,14 @@
 <p>所以下面这两个验证码，哪个的难度大一些？</p>
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图1. 微林的验证码</p>
 
 
 
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图2. 饭局后J.Snow提供的验证码</p>
 
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
 
 <p>结果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>很明显目标像素是1而不是10。</p>
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
 <p>然后我们对排名靠前的像素进行提取会得到下面的结果：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>这种情况下怎么办？直观观察一下验证码，会发现背景噪声点相比验证码像素点来说很少（这也正常，都是一个颜色如果太多就没法看了）， 很适合先做一些切割，然后进行模糊匹配（因为验证码的像素是幻彩的不是单一的，需要匹配相近像素点），然后再做二值化。</p>
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
 <p>效果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <a name="L.................."></a>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Tools-i-use | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/tools-i-use/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/tools-i-use/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[简单验证码的快速识别]]></title>
-    <link href="https://lenciel.com/2016/06/python-captcha-solution/"/>
+    <link href="http://lenciel.com/2016/06/python-captcha-solution/"/>
     <updated>2016-06-16T18:48:14+08:00</updated>
-    <id>https://lenciel.com/2016/06/python-captcha-solution</id>
+    <id>http://lenciel.com/2016/06/python-captcha-solution</id>
     <content type="html"><![CDATA[<p>昨天饭局上聊起来自动化测试或者是别的奇怪事业里经常需要面对的一个问题：验证码识别。</p>
 
 <p>其实验证码的识别，技术上来说可以作为古老的OCR（Optical Character Recognition）问题的一个子集：因为OCR其实就是从图片上把文字认出来嘛。</p>
@@ -58,14 +58,14 @@
 <p>所以下面这两个验证码，哪个的难度大一些？</p>
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图1. 微林的验证码</p>
 
 
 
 
 <p style="font-size: 0.8em;
-"><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
+"><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><br/>
 图2. 饭局后J.Snow提供的验证码</p>
 
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
 
 <p>结果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_1.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_10.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>很明显目标像素是1而不是10。</p>
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
 <p>然后我们对排名靠前的像素进行提取会得到下面的结果：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="https://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/convert_225.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_139.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_182.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"><img src="http://lenciel.com/downloads/images/2016_06/convert_219.png" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <p>这种情况下怎么办？直观观察一下验证码，会发现背景噪声点相比验证码像素点来说很少（这也正常，都是一个颜色如果太多就没法看了）， 很适合先做一些切割，然后进行模糊匹配（因为验证码的像素是幻彩的不是单一的，需要匹配相近像素点），然后再做二值化。</p>
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
 <p>效果如下：</p>
 
-<p><img src="https://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
+<p><img src="http://lenciel.com/downloads/images/2016_06/orig_code_2.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://lenciel.com/downloads/images/2016_06/convert_im.jpg" title="Don't touch me..." alt="Vhost threshold" data-pin-nopin="true"></p>
 
 
 <a name="L.................."></a>
@@ -197,10 +197,10 @@ YLNU
   
   <entry>
     <title type="html"><![CDATA[从Markdown列表转换成脑图]]></title>
-    <link href="https://lenciel.com/2016/02/markdown-to-mindmap/"/>
+    <link href="http://lenciel.com/2016/02/markdown-to-mindmap/"/>
     <updated>2016-02-25T21:19:33+08:00</updated>
-    <id>https://lenciel.com/2016/02/markdown-to-mindmap</id>
-    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="https://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
+    <id>http://lenciel.com/2016/02/markdown-to-mindmap</id>
+    <content type="html"><![CDATA[<p>去年过年整理了一次<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">p4f的技术栈</a>，最近受<a href="http://www.stuq.org/subject/skill-map/">StuQ</a>和<a href="https://leohxj.gitbooks.io/front-end-database/content/interview/skill-path.html">leohxj</a>的启发又开始整理适合我司的各个研发职位的技能图谱：这类树状的图片其实就是脑图(Mindmap)。</p>
 
 <p>图片形式的文档都有一个麻烦的地方，就是不太好做版本控制和review。比如如果本座来整理Web前端技能图谱，总希望：</p>
 
@@ -236,7 +236,7 @@ YLNU
 
 <p><img src="/downloads/images/2016_02/mindmap_1.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
-<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="https://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
+<p>但是上面的格式，如果是以Markdown的格式放到代码库里面，有略显难看。所以更进一步，你可以先用Markdown的<code>#</code>来标不同层级，使得文档本身可以在网页上显示成规则的列表，<a href="http://lenciel.com/2014/05/web-development-skill-set-and-reading-list/">类似这样</a>，它的原始Markdown文件在<a href="https://gist.github.com/lenciel/637812a7dcbe8341b07b">这里</a>。</p>
 
 <p>然后，通过脚本把文档里面的<code>#</code>转换成<code>\t</code>，就可以得到能够直接粘贴到MindNode里面生成脑图的文本了。如果你是使用Mac，还可以直接把转换脚本创建成一个<code>service</code>通过<code>Automator</code>安装，这样你在任何一个Markdown文档上选中需要生成脑图的部分，右键就可以了：</p>
 
@@ -250,9 +250,9 @@ YLNU
   
   <entry>
     <title type="html"><![CDATA[使用Chrome自定义搜索引擎快速查找资源]]></title>
-    <link href="https://lenciel.com/2016/02/how-can-everybody-use-chrome/"/>
+    <link href="http://lenciel.com/2016/02/how-can-everybody-use-chrome/"/>
     <updated>2016-02-20T11:53:34+08:00</updated>
-    <id>https://lenciel.com/2016/02/how-can-everybody-use-chrome</id>
+    <id>http://lenciel.com/2016/02/how-can-everybody-use-chrome</id>
     <content type="html"><![CDATA[<p>这篇文章讨论的办法，主要是结合使用<code>带参数Google搜索</code>+<code>Chrome快捷搜索入口</code>，鉴于众所周知的原因，如果你不会翻墙可能不能直接使用。</p>
 
 <p>但是鉴于国内搜索引擎功能上多少都有借鉴Google，浏览器多少都有借鉴Chrome，所以这里讨论的办法也许用其他&#8221;搜索&#8221;+&ldquo;浏览器&#8221;组合也可以使用。只是我们都知道国内搜索引擎索引出来的结果有多离奇，所以效果上可能会打一些折扣。</p>
@@ -325,15 +325,15 @@ YLNU
 
 <p>具体使用过程请参考下面这个视频（略需要几秒加载）：</p>
 
-<p><video width='640' height='320' preload='none' controls poster=''><source src='href="https://lenciel.com/downloads/video/chrome_custom_search.mp4">https://lenciel.com/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
+<p><video width='640' height='320' preload='none' controls poster=''><source src='href="http://lenciel.com/downloads/video/chrome_custom_search.mp4">http://lenciel.com/downloads/video/chrome_custom_search.mp4</a>&#8217; ></video></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[提取微信语音消息]]></title>
-    <link href="https://lenciel.com/2015/12/extract-audio-message-from-wechat/"/>
+    <link href="http://lenciel.com/2015/12/extract-audio-message-from-wechat/"/>
     <updated>2015-12-24T13:05:21+08:00</updated>
-    <id>https://lenciel.com/2015/12/extract-audio-message-from-wechat</id>
+    <id>http://lenciel.com/2015/12/extract-audio-message-from-wechat</id>
     <content type="html"><![CDATA[<a name="Why."></a>
 <h3>Why?</h3>
 
@@ -367,7 +367,7 @@ YLNU
 
 <p>常温常压下我并不需要导出微信的语音，之所以有这个需求是因为蒙爷在三亚经常用微信跟我们唠嗑：</p>
 
-<p><audio controls loop preload><source src="https://lenciel.com/downloads/audio/mm_voice.mp3"></audio></p>
+<p><audio controls loop preload><source src="http://lenciel.com/downloads/audio/mm_voice.mp3"></audio></p>
 
 <p>听到这样销魂的声音你就算不想保存，也想要转发，对不对？</p>
 
@@ -404,10 +404,10 @@ YLNU
   
   <entry>
     <title type="html"><![CDATA[Palm4fun Tech Stack Review Part II]]></title>
-    <link href="https://lenciel.com/2015/02/p4f-tech-stack-part-2-others/"/>
+    <link href="http://lenciel.com/2015/02/p4f-tech-stack-part-2-others/"/>
     <updated>2015-02-20T14:11:19+08:00</updated>
-    <id>https://lenciel.com/2015/02/p4f-tech-stack-part-2-others</id>
-    <content type="html"><![CDATA[<p>距离<a href="https://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
+    <id>http://lenciel.com/2015/02/p4f-tech-stack-part-2-others</id>
+    <content type="html"><![CDATA[<p>距离<a href="http://lenciel.com/2015/01/p4f-tech-stack-part-1-devops/">上篇</a>略久，主要最近很忙。</p>
 
 <a name="Application..amp..Data"></a>
 <h2>Application &amp; Data</h2>

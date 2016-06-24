@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Testing | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/testing/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/testing/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Making Fixture With Factory Boy and Faker]]></title>
-    <link href="https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
+    <link href="http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker/"/>
     <updated>2014-12-20T03:14:59+08:00</updated>
-    <id>https://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
+    <id>http://lenciel.com/2014/12/making-fixture-with-factory-boy-and-faker</id>
     <content type="html"><![CDATA[<p>我们在Django项目的开发和测试过程中经常需要mock一些数据作为<a href="https://docs.djangoproject.com/en/1.7/howto/initial-data/">fixture</a>，比较常见的做法是：</p>
 
 <ol>

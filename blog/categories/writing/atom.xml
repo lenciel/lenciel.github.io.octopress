@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Writing | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/writing/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/writing/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[一颗赛艇]]></title>
-    <link href="https://lenciel.com/2016/05/the-exciting-writings/"/>
+    <link href="http://lenciel.com/2016/05/the-exciting-writings/"/>
     <updated>2016-05-06T04:26:09+08:00</updated>
-    <id>https://lenciel.com/2016/05/the-exciting-writings</id>
+    <id>http://lenciel.com/2016/05/the-exciting-writings</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2016_05/jpm.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>昨天立夏，闷热异常，晚上终于来了几声雷，却是雷声大雨点小。</p>
@@ -72,9 +72,9 @@
   
   <entry>
     <title type="html"><![CDATA[人工智能，奇点及其他(一)]]></title>
-    <link href="https://lenciel.com/2016/03/alphago-and-ai/"/>
+    <link href="http://lenciel.com/2016/03/alphago-and-ai/"/>
     <updated>2016-03-15T02:59:42+08:00</updated>
-    <id>https://lenciel.com/2016/03/alphago-and-ai</id>
+    <id>http://lenciel.com/2016/03/alphago-and-ai</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2016_03/go_ai.png" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>3月14日，是个很魔性的日子：这天是爱因斯坦的生日，也是卡尔马克思的忌日，还是“π日&#8221;——纪念圆周率弄的“数学节&#8221;，忒魔性。</p>
@@ -192,9 +192,9 @@
   
   <entry>
     <title type="html"><![CDATA[记一次成功的过年]]></title>
-    <link href="https://lenciel.com/2016/02/happy-new-year/"/>
+    <link href="http://lenciel.com/2016/02/happy-new-year/"/>
     <updated>2016-02-13T22:41:48+08:00</updated>
-    <id>https://lenciel.com/2016/02/happy-new-year</id>
+    <id>http://lenciel.com/2016/02/happy-new-year</id>
     <content type="html"><![CDATA[<p>过年在三亚呆了一周。</p>
 
 <p>虽然中学毕业就已经习惯了在外面跑，像今年这样一大家子人到外地过年，却还是头次。</p>
@@ -253,9 +253,9 @@
   
   <entry>
     <title type="html"><![CDATA[突然死亡]]></title>
-    <link href="https://lenciel.com/2014/12/sudden-death/"/>
+    <link href="http://lenciel.com/2014/12/sudden-death/"/>
     <updated>2014-12-09T04:26:28+08:00</updated>
-    <id>https://lenciel.com/2014/12/sudden-death</id>
+    <id>http://lenciel.com/2014/12/sudden-death</id>
     <content type="html"><![CDATA[<p><img src="/downloads/images/2014_12/snow_night.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
 
 <p>窗外的雪越来越大，很快就盖住了最后一点道路的痕迹。</p>
@@ -406,10 +406,10 @@
   
   <entry>
     <title type="html"><![CDATA[聚散有期]]></title>
-    <link href="https://lenciel.com/2014/09/no-happy-ending/"/>
+    <link href="http://lenciel.com/2014/09/no-happy-ending/"/>
     <updated>2014-09-22T04:20:15+08:00</updated>
-    <id>https://lenciel.com/2014/09/no-happy-ending</id>
-    <content type="html"><![CDATA[<p><img alt="block" src="https://lenciel.com/downloads/images/2014_09/death_words.jpg" style="margin:5px;width:40%" align="left" />上周参加了偶像派她爷爷的90大寿，这周就迎来了她另一位爷爷离世的消息。</p>
+    <id>http://lenciel.com/2014/09/no-happy-ending</id>
+    <content type="html"><![CDATA[<p><img alt="block" src="http://lenciel.com/downloads/images/2014_09/death_words.jpg" style="margin:5px;width:40%" align="left" />上周参加了偶像派她爷爷的90大寿，这周就迎来了她另一位爷爷离世的消息。</p>
 
 <p>这位爷爷是我丈母娘保娘(干妈)的老伴，在一场事后被认为是回光返照的愉快聊天后，他独自在卧室睡去，再也没有醒来。</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Vagrant | @Lenciel]]></title>
-  <link href="https://lenciel.com/blog/categories/vagrant/atom.xml" rel="self"/>
-  <link href="https://lenciel.com/"/>
-  <updated>2016-06-16T19:04:00+08:00</updated>
-  <id>https://lenciel.com/</id>
+  <link href="http://lenciel.com/blog/categories/vagrant/atom.xml" rel="self"/>
+  <link href="http://lenciel.com/"/>
+  <updated>2016-06-24T14:01:36+08:00</updated>
+  <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vagrant for Django I: Basic]]></title>
-    <link href="https://lenciel.com/2013/06/vagrant-on-mac-os-x/"/>
+    <link href="http://lenciel.com/2013/06/vagrant-on-mac-os-x/"/>
     <updated>2013-06-19T15:19:00+08:00</updated>
-    <id>https://lenciel.com/2013/06/vagrant-on-mac-os-x</id>
+    <id>http://lenciel.com/2013/06/vagrant-on-mac-os-x</id>
     <content type="html"><![CDATA[<p>Vagrant<a href="http://www.vagrantup.com/vmware">最近支持了VMWare</a>，但是要钱的东西我们玩不起。本系列主要分享一下Vagrant+VirtualBox搭配起来如何使用。</p>
 
 <a name="L......VirtualBox"></a>
