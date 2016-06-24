@@ -196,4 +196,4 @@ s.decode(utf-8-sig)
 
 * 有些第三方库如果没有支持unicode功能的话，你要自己重写一部分wrapper。自己写的代码，在ut的时候一定要用unicode进行测试。
 
- [1]: https://lenciel.com/docs/unicode-complete/
+ [1]: http://lenciel.com/docs/unicode-complete/

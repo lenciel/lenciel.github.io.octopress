@@ -10,10 +10,10 @@ categories:
 - CI
 ---
 
-对软件公司，特别是互联网软件公司来说，发布流程是企业的[核心竞争力](https://lenciel.com/2013/05/the-importance-of-deploy-as-will/)。
+对软件公司，特别是互联网软件公司来说，发布流程是企业的[核心竞争力](http://lenciel.com/2013/05/the-importance-of-deploy-as-will/)。
 
 那么什么是一个好的发布流程呢？Github（别忘了它本身也是一家软件公司）的CTO在介绍[Boxen
-](https://lenciel.com/2013/03/boxen-introduction/)的时候说过，他们公司新员工从拿电脑到可以开始编码只要30分钟，这给混过几家10w+员工公司的我带来的震撼特别强烈。
+](http://lenciel.com/2013/03/boxen-introduction/)的时候说过，他们公司新员工从拿电脑到可以开始编码只要30分钟，这给混过几家10w+员工公司的我带来的震撼特别强烈。
 
 所以我觉得，一个好的软件发布流程应该是：
 
