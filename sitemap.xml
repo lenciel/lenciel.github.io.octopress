@@ -1171,6 +1171,14 @@
   </url>
   
   <url>
+    <loc>http://lenciel.com/2007/03/love-and-accidents-1/</loc>
+    
+    <lastmod>2007-03-26T14:03:43+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://lenciel.com/2007/02/movie-review-memories-of-matruko/</loc>
     
     <lastmod>2007-02-11T19:53:00+08:00</lastmod>
@@ -1237,63 +1245,63 @@
   
   <url>
     <loc>http://lenciel.com/404.html</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/blog/archives/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/docs/unicode-complete/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/about/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/docs/unicode-in-python/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/docs/x2blog-to-wordpress/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/docs/scsi-sata-reliability/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://lenciel.com/docs/dive-into-linux-boot/</loc>
-    <lastmod>2016-06-24T23:06:13+08:00</lastmod>
+    <lastmod>2016-08-02T17:23:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
