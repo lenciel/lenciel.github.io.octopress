@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "记一次突然的旅行"
-date: 2016-08-23 20:59:07 +0800
+date: 2016-08-29 03:59:07 +0800
 comments: true
 categories: 
 
