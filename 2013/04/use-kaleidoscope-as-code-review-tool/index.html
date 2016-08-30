@@ -10,7 +10,7 @@
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','http://lenciel.qiniudn.com/analytics.js','ga');
 
   ga('create', 'UA-175991-6', 'auto');
   ga('send', 'pageview');
@@ -19,21 +19,7 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git config --global alias.ksreview <span class="s1">&#39;!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f&#39;</span>
 </span></code></pre></td></tr></table></div></figure> <p>安装完毕之后就可以用下面的命令来做diff了：</p> <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git ksreview feature-branch-name-or-sha mainline-branch-name
-</span></code></pre></td></tr></table></div></figure> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2013-04-14T20:57:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:57 pm</span></time> <span class="categories"> <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/tools/'>tools</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2013/04/first-steps-on-a-new-server/" title="Previous Post: First steps on a new server">&laquo; First steps on a new server</a> <a class="basic-alignment right" href="/2013/05/the-myth-of-productivity/" title="Next Post: The myth of productivity">The myth of productivity &raquo;</a> </p> </footer> </article> <section> <h1>Comments</h1> <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> </div> </section> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
-      var disqus_shortname = 'lencielgithub';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://lenciel.com/2013/04/use-kaleidoscope-as-code-review-tool/';
-        var disqus_url = 'http://lenciel.com/2013/04/use-kaleidoscope-as-code-review-tool/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script> <script type="text/javascript">
+</span></code></pre></td></tr></table></div></figure> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2013-04-14T20:57:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:57 pm</span></time> <span class="categories"> <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/tools/'>tools</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2013/04/first-steps-on-a-new-server/" title="Previous Post: First steps on a new server">&laquo; First steps on a new server</a> <a class="basic-alignment right" href="/2013/05/the-myth-of-productivity/" title="Next Post: The myth of productivity">The myth of productivity &raquo;</a> </p> </footer> </article> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
   var stylesheet = document.createElement('link');
   stylesheet.href = '/stylesheets/screen.css';
   stylesheet.rel = 'stylesheet';

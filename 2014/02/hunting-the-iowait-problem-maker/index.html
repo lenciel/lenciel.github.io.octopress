@@ -10,7 +10,7 @@
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','http://lenciel.qiniudn.com/analytics.js','ga');
 
   ga('create', 'UA-175991-6', 'auto');
   ga('send', 'pageview');
@@ -112,21 +112,7 @@
 </span><span class='line'>root      7585  7.6  0.0   6000   968 ?        D    06:34   0:04                  \_ /usr/bin/updatedb.mlocate</span></code></pre></td></tr></table></div></figure> <p>嗯，原来是<code>/usr/bin/updatedb.mlocate</code>。Google了一下<a href="" title="http://ubuntuforums.org/showthread.php?t=1243951&amp;page=2&amp;p=7844783#post7844783">^1</a>发现其实关掉也没什么：</p> <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo killall updatedb.mlocate
-</span><span class='line'>sudo chmod -x /etc/cron.daily/mlocate</span></code></pre></td></tr></table></div></figure> <p>整个世界清静了。</p> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2014-02-24T09:22:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:22 am</span></time> <span class="categories"> <a class='category' href='/blog/categories/devops/'>devops</a>, <a class='category' href='/blog/categories/iowait/'>iowait</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/server/'>server</a>, <a class='category' href='/blog/categories/tips/'>tips</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2014/02/not-a-dancer/" title="Previous Post: Not Much of A Dancer">&laquo; Not Much of A Dancer</a> <a class="basic-alignment right" href="/2014/03/understanding/" title="Next Post: Understanding">Understanding &raquo;</a> </p> </footer> </article> <section> <h1>Comments</h1> <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> </div> </section> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
-      var disqus_shortname = 'lencielgithub';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://lenciel.com/2014/02/hunting-the-iowait-problem-maker/';
-        var disqus_url = 'http://lenciel.com/2014/02/hunting-the-iowait-problem-maker/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script> <script type="text/javascript">
+</span><span class='line'>sudo chmod -x /etc/cron.daily/mlocate</span></code></pre></td></tr></table></div></figure> <p>整个世界清静了。</p> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2014-02-24T09:22:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:22 am</span></time> <span class="categories"> <a class='category' href='/blog/categories/devops/'>devops</a>, <a class='category' href='/blog/categories/iowait/'>iowait</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/server/'>server</a>, <a class='category' href='/blog/categories/tips/'>tips</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2014/02/not-a-dancer/" title="Previous Post: Not Much of A Dancer">&laquo; Not Much of A Dancer</a> <a class="basic-alignment right" href="/2014/03/understanding/" title="Next Post: Understanding">Understanding &raquo;</a> </p> </footer> </article> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
   var stylesheet = document.createElement('link');
   stylesheet.href = '/stylesheets/screen.css';
   stylesheet.rel = 'stylesheet';
