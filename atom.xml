@@ -4,7 +4,7 @@
   <title><![CDATA[@Lenciel]]></title>
   <link href="http://lenciel.com/atom.xml" rel="self"/>
   <link href="http://lenciel.com/"/>
-  <updated>2016-09-09T05:48:08+08:00</updated>
+  <updated>2016-09-09T16:55:16+08:00</updated>
   <id>http://lenciel.com/</id>
   <author>
     <name><![CDATA[Lenciel Li]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[英文的形容词排序]]></title>
+    <link href="http://lenciel.com/2016/09/adjective-word-order/"/>
+    <updated>2016-09-09T10:13:32+08:00</updated>
+    <id>http://lenciel.com/2016/09/adjective-word-order</id>
+    <content type="html"><![CDATA[<p>其实也是中学的时候很困扰我的事情。当时是背老师说的口诀：“限描大形新，色地材用名”，也就是“限制性形容词>描述性形容词->大小->形状->新旧->颜色->地域->材料->用途”。</p>
+
+<p>后来在大学里面听其他省的同学说，他们老师讲的是“限数描大形，新色国材名”或者是“总限观，大形令，色国才”什么的。</p>
+
+<p>但其实做题的时候，硬背这些用处不大：一般读起来顺口的就是对的，所谓“语感”。</p>
+
+<p>今天才知道，原来对于真正的英语国家的人，他们也是凭感觉在说的。《剑桥词典》是<a href="http://dictionary.cambridge.org/us/grammar/british-grammar/adjectives-order">这样说的</a>。
+Mark Forsyth在<a href="https://www.amazon.com/exec/obidos/ASIN/1848316216/ref=nosim/0sil8">The Elements of Eloquence</a>里面却讲了另外一个顺序。</p>
+
+<p>他说《魔戒》作者托尔金在7岁就写了自己人生第一个故事《a green great dragon》（绿色大龙），拿给他妈妈看。妈妈告诉他说：“绝不可以说green great drgon，只能说great green dragon（大的绿龙）。”</p>
+
+<p>托尔金因为妈妈的话受了很大的打击，好些年都没有再写东西。</p>
+
+<p>于是他接着写到：</p>
+
+<blockquote><p>&#8230;adjectives in English absolutely have to be in this order: opinion-size-age-shape-colour-origin-material-purpose Noun. So you can have a lovely little old rectangular green French silver whittling knife. But if you mess with that word order in the slightest you&#8217;ll sound like a maniac.</p></blockquote>
+
+
+<p>但很快就有人向作者质疑，比如虽然&#8221;lovely little boy&#8221;是对的而&#8221;little lovely boy&#8221;是错的，但&#8221;big bad wolf&#8221;却是对的而&#8221;bad big wolf&#8221;是错的。比如虽然&#8221;big old aok&#8221;一般是对的， 但Yosemite国家公园里面可就有一条路就叫&#8221;the Old Big Oak Flat Road&#8221;。</p>
+
+<p>一路搜索很快就被导到Language Log的<a href="http://languagelog.ldc.upenn.edu/nll/?p=27890">这篇文章</a>，它列了好几个有趣的paper：</p>
+
+<p>Richard Sproat和Chi-lin Shih合作的&#8221;<a href="http://link.springer.com/chapter/10.1007/978-94-011-3818-5_30">The Cross-Linguistic Distribution of Adjective Ordering Restrictions</a>&#8221;</p>
+
+<p>Alexandra Teodorescu写的&#8221;<a href="http://www.lingref.com/cpp/wccfl/25/paper1473.pdf">Adjective Ordering Restrictions Revisited</a>&#8221;</p>
+
+<p>Stefanie Wulff写的&#8221;<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.90.2790&amp;rep=rep1&amp;type=pdf">A multifactorial corpus analysis of adjective order in English</a>&#8221;</p>
+
+<p>其中燕姿（燕姿是叫Stefanie么）的结论特别有意思：</p>
+
+<blockquote><p>This paper is concerned with the question of which factors govern prenominal adjective order (AO) in English. In particular, the analysis aims to overcome shortfalls of previous analyses by, firstly, adopting a multifactorial approach integrating all variables postulated in the literature, thereby doing justice to the well-established fact that cognitive and psychological processes are multivariate and complex. Secondly, the phenomenon is investigated on the basis of a large corpus, rendering the results obtained more representative and valid of naturally occurring language than those of previous studies. To this end, corpus-linguistic operationalizations of phonological, syntactic, semantic and pragmatic determinants of AO are devised and entered into a Linear Discriminant Analysis, which determines the relative influence of all variables (semantic variables being most important) and yields a classification accuracy of 78%. Moreover, by means of the operationalizations developed in this analysis, the ordering of yet unanalyzed adjective strings can be predicted with about equal accuracy (73.5%).</p></blockquote>
+
+
+<p>也就是说，在分析了大量的文本之后发现，两个相邻形容词符合固定排序（可以被算法命中）的概率只有73.5%：考虑到两个东西的顺序，随便定一个去猜也是50%的命中率，这基本上就说明没有什么固定的顺序嘛。</p>
+
+<p>那为什么有些形容词的组合确实是固定的顺序呢？比如&#8221;bigger and better&#8221;，比如&#8221;back and forth&#8221;。Copper和Ross写的&#8221;<a href="http://www-personal.umich.edu/~jlawler/haj/worldorder.pdf">World Order</a>&ldquo;里面说：</p>
+
+<blockquote><p>In each of these cases, and in numerous others, the ordering of the two conjuncts is rigidly fixed in normal speech. We will refer to such cases as &#8220;freezes&#8221;. Abraham (1950) and Malkiel (1959) have treated various aspects of this phenomenon. Our own study in this area has focused on two related problems: (1) the problem of trying to specify the types of linguistic environments in which freezes are apt to occur; and (2) the problem of specifying the rules that determine the linear order of two or more fixed conjuncts in particular frozen environments. Although our goal of solving these problems seemed manageable enough at first glance, we have been continually smitten since our initial attempts to tackle these questions by the enormity of the freezing phenomenon itself. Currently, we believe that the study of freezing touches rather directly on matters that extend to a variety of both linguistic and psychological issues. We report below our preliminary progress on this seemingly endless journey. which we hope will eventually culminate in a fairly explicit theory of freezing and its relation to the variety of mental factors we explore here.</p></blockquote>
+
+
+<p>啊哈，所以他们研究了半天是说：“本来各种顺序都在被使用，但是突然其中一种顺序就被freeze下来了。我们也不知道为什么有些组合固定下来了，这个跟语法没关系，也许是心理学范畴，希望有天我们会懂。”</p>
+
+<p>本座觉得其实也不难懂。语言就是被用的多的就有生命力。本来哪种顺序都可以，因为一些有影响力的人或者地方用了其中的一种顺序，这种顺序就流行起来，别的顺序就渐渐消亡。就好像“喜庆祥和”和“祥和喜庆”估计都是可以的，但是你看了二十年春晚，当然就会觉得“祥和喜庆的夜晚”有些怪怪的。</p>
+
+<p>现在有了互联网，这种现象应该会更厉害了吧。</p>
+
+<p>也多亏了互联网，我们今天要弄明白一个东西，实在是比以前容易太多了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[记一碗滚烫的鸡汤]]></title>
@@ -1779,65 +1834,6 @@ ap1.init();
 <p>I wish all the best for her and hope she take the time to relax and learn, and come back not just with her enhanced UX expertise, but also with the knowledge that everybody boarding on a new ship will have the same disappointment problem and you can always conquer it with small wins.</p>
 
 <p>Good Luck!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[《鸟人》]]></title>
-    <link href="http://lenciel.com/2015/02/birdman/"/>
-    <updated>2015-02-25T20:02:27+08:00</updated>
-    <id>http://lenciel.com/2015/02/birdman</id>
-    <content type="html"><![CDATA[<p><img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_1.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_2.jpg" title="Don't touch me..." alt="Vhost threshold" />
-<img style="width:30%" src="http://lenciel.com/downloads/images/2015_02/birdman_3.jpg" title="Don't touch me..." alt="Vhost threshold" /></p>
-
-
-<p>今年奥斯卡最佳电影颁给了《鸟人》，喜欢电影的小伙伴们纷纷起立&hellip;</p>
-
-<p>毕竟从82届的《拆弹部队》算起，到85届的《为奴十二载》，年年美国主旋律，今年能够给一部足够有特色的杰作，而不是再给《SELMA》或者是《美国狙击手》这样的“美国好电影”，算是奥斯卡“迷途知返”。</p>
-
-<p>另外有很多人觉得2014年是电影的小年，所以呼声最高的《鸟人》和《少年时代》都是小众电影。但其实这年有达内兄弟，有诺兰，有大卫芬奇，有波兰斯基，挺大的一年。</p>
-
-<p>而《鸟人》在这样的“大年”也走得很曲折：在《少年时代》起跑阶段一家独大的状况下，《鸟人》在后半程接连拿下了PGA（制片人工会）最佳影片，SAG（演员工会）最佳群戏和DGA（导演工会）最佳导演，最终在奥斯卡翻盘。</p>
-
-<p>那么这部最佳电影究竟在说什么？</p>
-
-<p>有人说它讽刺了电影工业，那些超能英雄电影，那些看起来光鲜其实脆弱的明星。</p>
-
-<p>也有人讨厌它晃晃悠悠分不清戏里戏外台前台后的伪长镜头。</p>
-
-<p>我觉得它说的问题其实是任何人都需要面对的冲突：内心和现实的冲突。电影里的主角配角，街头朗诵《麦克白》的醉汉，以及雷蒙德卡佛的小说，其实都围绕着这根主线。</p>
-
-<p>每个人都会时不时地希望完全遵从自己的内心去生活。演员想不用管剧评家说什么；女儿想不用管父母说什么；老公想不用管老婆说什么；想在戏台上和Lesley真正来一发的Mike想不管所有人说什么。换句话说，不管有钱没钱，我们都希望不用管其他人是什么感受任性一下。</p>
-
-<p>所以电影故意在每个角色突破现实的时候制造一种欣快感，并且通过戏中戏和长镜头弱化虚幻和现实的边界让那些快感迅速升级。</p>
-
-<p>然后马上伴随紧密鼓点端出一地鸡毛的苦涩现实：每个人毕竟都被现实生活所禁锢。</p>
-
-<p>大多数人当然会觉得Riggan，Mike，Sam，Lesley这样的人太傻太敏感太脆弱。</p>
-
-<p>这里的大多数人包括Riggan穿着内裤走在时代广场的时候，那些拿起手机拍的看客。包括打开微信疯狂的摇完几块钱的红包，然后传播“看开”、“放下”、“断舍离”的你我。</p>
-
-<p>我们按照社会规定的模式活着。别人和自己的差别太大，就气恼一番；自己和别人一模一样，又不由悲哀。面对内心和现实的冲突时，往往选择埋葬自我，接受现实。</p>
-
-<p>如此而已。</p>
-
-<p>就算是Riggan本尊也需要在化妆镜上贴着句话时时提醒自己：</p>
-
-<p><code>A thing is a thing, not what is said of that thing</code></p>
-
-<p>那些人们愿意为之慷慨赴死的东西，比如爱情，比如自由，很多时候，它们代表的无非是个体对现实的置之度外。</p>
-
-<p>这也是为什么罗曼·罗兰在《约翰·克利斯朵夫》里面说的这段话会引起那么多人的共鸣：</p>
-
-<blockquote><p>大多数人在他们二三十岁时就死去了，因为过了那个年龄，他们只是自己的影子，此后的余生则是在模仿自己中度过。日复一日，更机械，更装腔作势地重复他们在有生之年的所作所为，所思所想，所爱所恨。</p></blockquote>
-
-
-<p>看这电影的时候，我还会想起自己最喜欢的电影《一一》。杨德昌无非是挑了一个普通的中产阶级家庭，白描一把，让你看到，每个个体都在日复一日重复自己的生活；而个体之间，年幼者又在重复年长者曾经的生活。</p>
-
-<p>在这样循规蹈矩的生活中，那些敏感而挣扎着的人类，或许是痛苦的，但也是伟大的。</p>
-
-<p>因为人类可以称为文明的大多数内容，都是那些敏感而挣扎着的人类在“个体对现实的妥协”和“个体对现实的抵抗和超越”这两者的冲撞中生产出来的。</p>
 ]]></content>
   </entry>
   
