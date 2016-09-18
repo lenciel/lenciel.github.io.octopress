@@ -29,15 +29,15 @@ Mark Forsyth在[The Elements of Eloquence](https://www.amazon.com/exec/obidos/AS
 ...adjectives in English absolutely have to be in this order: opinion-size-age-shape-colour-origin-material-purpose Noun. So you can have a lovely little old rectangular green French silver whittling knife. But if you mess with that word order in the slightest you'll sound like a maniac. 
 {% endblockquote %}
 
-但很快就有人向作者质疑，比如虽然"lovely little boy"是对的而"little lovely boy"是错的，但"big bad wolf"却是对的而"bad big wolf"是错的。比如虽然"big old aok"一般是对的， 但Yosemite国家公园里面可就有一条路就叫"the Old Big Oak Flat Road"。
+但很快就有人向作者质疑，比如虽然“lovely little boy”是对的而“little lovely boy”是错的，但“big bad wolf”却是对的而“bad big wolf”是错的。比如虽然“big old oak”一般是对的， 但Yosemite国家公园里面可就有一条路就叫“the Old Big Oak Flat Road”。
 
 一路搜索很快就被导到Language Log的[这篇文章](http://languagelog.ldc.upenn.edu/nll/?p=27890)，它列了好几个有趣的paper：
 
-Richard Sproat和Chi-lin Shih合作的"[The Cross-Linguistic Distribution of Adjective Ordering Restrictions](http://link.springer.com/chapter/10.1007/978-94-011-3818-5_30)"
+Richard Sproat和Chi-lin Shih合作的“[The Cross-Linguistic Distribution of Adjective Ordering Restrictions](http://link.springer.com/chapter/10.1007/978-94-011-3818-5_30)”
 
-Alexandra Teodorescu写的"[Adjective Ordering Restrictions Revisited](http://www.lingref.com/cpp/wccfl/25/paper1473.pdf)"
+Alexandra Teodorescu写的“[Adjective Ordering Restrictions Revisited](http://www.lingref.com/cpp/wccfl/25/paper1473.pdf)”
 
-Stefanie Wulff写的"[A multifactorial corpus analysis of adjective order in English](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.90.2790&rep=rep1&type=pdf)"
+Stefanie Wulff写的“[A multifactorial corpus analysis of adjective order in English](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.90.2790&rep=rep1&type=pdf)”
 
 其中燕姿（燕姿是叫Stefanie么）的结论特别有意思：
 
