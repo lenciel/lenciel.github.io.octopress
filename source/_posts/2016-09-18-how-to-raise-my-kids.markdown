@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "如何带娃"
-date: 2016-09-18 03:30:41 +0800
+date: 2016-09-18 21:30:41 +0800
 comments: true
 categories: 
 
@@ -86,7 +86,7 @@ Such results contradict long-established ideas suggesting that expert performanc
 
 所以，过去的家长大概养小孩儿是跟样盆景差不多的：按照自己的科属、盆子的大小和见过的实例，家长对自己的孩子不断施肥、除虫、修枝剪枝。这当然很容易就会有TED讲座里面说的over-parenting的问题：毕竟这盆景再好看，究竟是家长觉得拿出去风光，还是小孩子自己觉得舒服，很难讲。
 
-今后就更像养野花了...先呼啦啦长得满坑满谷...然后再去收拾。
+今后就更应该像养野花...先呼啦啦长得满坑满谷...然后再去收拾。
 
 要做到这样，略不容易。
 
