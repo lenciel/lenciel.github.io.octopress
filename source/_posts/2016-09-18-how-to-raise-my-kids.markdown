@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "如何带娃"
-date: 2016-09-18 10:30:41 +0800
+date: 2016-09-18 03:30:41 +0800
 comments: true
 categories: 
 
 - parenting
-- study
+- kids
 
 ---
 
