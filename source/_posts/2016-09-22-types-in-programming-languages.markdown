@@ -11,7 +11,9 @@ categories:
 
 ---
 
-这两天正好看到了“[FP in Scala](http://www.amazon.com/Functional-Programming-Scala-Paul-Chiusano/dp/1617290653)”的作者Paul Chiusano关于静态类型语言的优点的一篇[blog](https://pchiusano.github.io/2016-09-15/static-vs-dynamic.html)，刚好最近在看很多Scala写的代码，再参考下面这些之前看过的文章([1](https://github.com/tel/old-blog/blob/master/_posts/2014-07-08-all_you_wanted_to_know_about_types_but_were_afraid_to_ask.md), [2](https://github.com/tel/old-blog/blob/master/_posts/2014-08-08-six_points_about_type_safety.md), [3](https://danluu.com/empirical-pl/), [4](https://gist.github.com/garybernhardt/122909856b570c5c457a6cd674795a9c))，对类型系统打个总结。
+这两天看了“[FP in Scala](http://www.amazon.com/Functional-Programming-Scala-Paul-Chiusano/dp/1617290653)”的作者Paul Chiusano关于静态类型语言的优点的一篇[blog](https://pchiusano.github.io/2016-09-15/static-vs-dynamic.html)。刚好最近在看很多Scala写的代码，仔细一想，好像大多数语言都在尝试把类型系统加强（不仅仅是Scala、Swift、Rust这些当红的，连[Ceylon](https://ceylon-lang.org/) 这样的语言也越来越火了）。
+
+所以也结合之前看过的一些文章([1](https://github.com/tel/old-blog/blob/master/_posts/2014-07-08-all_you_wanted_to_know_about_types_but_were_afraid_to_ask.md), [2](https://github.com/tel/old-blog/blob/master/_posts/2014-08-08-six_points_about_type_safety.md), [3](https://danluu.com/empirical-pl/), [4](https://gist.github.com/garybernhardt/122909856b570c5c457a6cd674795a9c))，对类型系统打个总结。
 
 ### 类型
 
