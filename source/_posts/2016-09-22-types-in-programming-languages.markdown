@@ -173,3 +173,34 @@ add x y = x + y
 
 随着时间推移，具备更强大的类型系统的语言有着越来越流行的趋势（这个趋势从很多动态语言里面被加入了gradual typing的功能也能感受到）。而火爆的Go应该是一个蛮特别的反例，它也被很多推崇更强大类型系统的静态语言用户者批判它的设计者在开倒车。第二组里面的Java和C#是目前被广泛使用的，有成熟生态系统的语言。第三组是目前有了进入主流趋势的，有着大公司在背后支持的（比如Mozilla的Rust或者是Apple的Swift）。第四组看起来还离主流很远，但是究竟后面会不会有凶猛的发展势头也很难说清：就像第三组里面的这些语言十年前也没人知晓一样。
 
+下面，让我来一段魔性的代码：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int addi(int a, int b) {
+    return a + b;
+}
+
+char *adds(char *a, char *b) {
+    char *res = malloc(strlen(a) + strlen(b) + 1);
+    strcpy(res, a);
+    strcat(res, b);
+    return res;
+}
+
+#define add(a, b) _Generic(a, int: addi, char*: adds)(a, b)
+
+int main(void) {
+    int a = 1, b = 2;
+    printf("%d\n", add(a, b)); // 3
+
+    char *c = "hello ", *d = "world";
+    printf("%s\n", add(c, d)); // hello world
+
+    return 0;
+}
+```
+
