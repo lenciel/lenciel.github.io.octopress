@@ -33,7 +33,59 @@
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">add</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">Nat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">y</span> <span class="p">:</span> <span class="n">Nat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="n">auto</span> <span class="n">smaller</span> <span class="p">:</span> <span class="n">LT</span> <span class="n">x</span> <span class="n">y</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">Nat</span>
 </span><span class='line'><span class="n">add</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-</span></code></pre></td></tr></table></div></figure> <p>我们如果在调用的时候写了<code>add 2 1</code>，那么编译器就会直接报错。非常少语言有这样的表达能力，大多数时候我们要做类似的check只能在runtime，所以我们只能写类似于<code>if x&gt;=y : raise SomeError()</code>的语句。</p> <p>所以，越强的类型系统，表达能力就越强，但是也要注意的是这样语言的复杂度也上去了。</p> <p>我们可以看看按类型系统由弱到强排列的一些常见的编程语言：</p> <ul> <li>C (1972), Go (2009): 类型系统很弱，甚至连generic的类型都不支持</li> <li>Java (1995), C# (2000): 支持generic的类型</li> <li>Haskell (1990), Rust (2010), Swift (2014): 提供了更强大的类型系统</li> <li>Agda (2007), Idris (2011): 类型系统更加强大，但是学习的人还很少（虽然学了的人都表示亢奋）</li> </ul> <p>随着时间推移，具备更强大的类型系统的语言有着越来越流行的趋势（这个趋势从很多动态语言里面被加入了gradual typing的功能也能感受到）。而火爆的Go应该是一个蛮特别的反例，它也被很多推崇更强大类型系统的静态语言用户者批判它的设计者在开倒车。第二组里面的Java和C#是目前被广泛使用的，有成熟生态系统的语言。第三组是目前有了进入主流趋势的，有着大公司在背后支持的（比如Mozilla的Rust或者是Apple的Swift）。第四组看起来还离主流很远，但是究竟后面会不会有凶猛的发展势头也很难说清：就像第三组里面的这些语言十年前也没人知晓一样。</p> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2016-09-22T15:53:18+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time> <span class="categories"> <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/rants/'>rants</a>, <a class='category' href='/blog/categories/thoughts/'>thoughts</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2016/09/how-to-raise-my-kids/" title="Previous Post: 如何带娃">&laquo; 如何带娃</a> </p> </footer> </article> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
+</span></code></pre></td></tr></table></div></figure> <p>我们如果在调用的时候写了<code>add 2 1</code>，那么编译器就会直接报错。非常少语言有这样的表达能力，大多数时候我们要做类似的check只能在runtime，所以我们只能写类似于<code>if x&gt;=y : raise SomeError()</code>的语句。</p> <p>所以，越强的类型系统，表达能力就越强，但是也要注意的是这样语言的复杂度也上去了。</p> <p>我们可以看看按类型系统由弱到强排列的一些常见的编程语言：</p> <ul> <li>C (1972), Go (2009): 类型系统很弱，甚至连generic的类型都不支持</li> <li>Java (1995), C# (2000): 支持generic的类型</li> <li>Haskell (1990), Rust (2010), Swift (2014): 提供了更强大的类型系统</li> <li>Agda (2007), Idris (2011): 类型系统更加强大，但是学习的人还很少（虽然学了的人都表示亢奋）</li> </ul> <p>随着时间推移，具备更强大的类型系统的语言有着越来越流行的趋势（这个趋势从很多动态语言里面被加入了gradual typing的功能也能感受到）。而火爆的Go应该是一个蛮特别的反例，它也被很多推崇更强大类型系统的静态语言用户者批判它的设计者在开倒车。第二组里面的Java和C#是目前被广泛使用的，有成熟生态系统的语言。第三组是目前有了进入主流趋势的，有着大公司在背后支持的（比如Mozilla的Rust或者是Apple的Swift）。第四组看起来还离主流很远，但是究竟后面会不会有凶猛的发展势头也很难说清：就像第三组里面的这些语言十年前也没人知晓一样。</p> <p>下面，让我来一段魔性的代码：</p> <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdlib.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">addi</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="nf">adds</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">strcpy</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">strcat</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#define add(a, b) _Generic(a, int: addi, char*: adds)(a, b)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">));</span> <span class="c1">// 3</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">char</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="s">&quot;hello &quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span> <span class="o">=</span> <span class="s">&quot;world&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">));</span> <span class="c1">// hello world</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure> </div> <footer> <p class="meta"> <span class="byline author vcard">Posted by <span class="fn">Lenciel Li</span></span> <time class='entry-date' datetime='2016-09-22T15:53:18+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time> <span class="categories"> <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/rants/'>rants</a>, <a class='category' href='/blog/categories/thoughts/'>thoughts</a> </span> </p> <div class="sharing"> </div> <p class="meta"> <a class="basic-alignment left" href="/2016/09/how-to-raise-my-kids/" title="Previous Post: 如何带娃">&laquo; 如何带娃</a> </p> </footer> </article> </div> <aside class="sidebar"> </aside> </div> </div> <footer role="contentinfo"><p> Blog theme: <a href="https://github.com/lenciel/octopress-theme-lenciel">Octopress-Lenciel 0.1</a> <span class="theme-version">Copyright &copy; 2016 - Lenciel Li</span> <section class="contruction-wrap"> <div class="contruction"></div> </section> </p> </footer> <script type="text/javascript">
   var stylesheet = document.createElement('link');
   stylesheet.href = '/stylesheets/screen.css';
   stylesheet.rel = 'stylesheet';
